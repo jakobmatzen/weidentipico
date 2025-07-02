@@ -1,4 +1,4 @@
-import { PrismaClient } from '../../prisma/generated/client'
+import { PrismaClient } from '../../generated/prisma'
 
 let prisma: PrismaClient
 
@@ -10,7 +10,6 @@ export function createContext() {
     if (!prisma) {
         prisma = new PrismaClient()
     }
-
     return { prisma }
 }
 
