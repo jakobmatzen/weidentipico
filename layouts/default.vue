@@ -1,5 +1,57 @@
+<script setup lang="ts">
+import type { NavigationMenuItem } from '@nuxt/ui'
+
+const links = computed<NavigationMenuItem[]>(() => [[{
+    label: 'Wetten',
+    icon: 'i-lucide-dices',
+    to: '/'
+}, {
+    label: 'Marktplatz',
+    icon: 'i-lucide-store',
+    defaultOpen: true,
+    children: [{
+        label: 'Suchen',
+        icon: 'i-lucide-search',
+    }, {
+        label: 'Inserieren',
+        icon: 'i-lucide-list-plus',
+    }]
+}, {
+    label: 'Leaderboard',
+    icon: 'i-lucide-chart-no-axes-column',
+}, {
+    label: 'Meins',
+    icon: 'i-lucide-user',
+}]])
+</script>
+
 <template>
     <div class="min-h-screen">
-        <slot />
+        <div class="flex justify-between p-2 border-b border-neutral-800 shadow-lg items-center">
+            <UIcon name="i-lucide-slack" class="h-6 w-6 ml-2 text-primary-400" />
+            <UDrawer direction="right" :handle="false">
+                <UButton variant="link" icon="i-lucide-menu" size="xl" />
+                <template #header>
+                    <div class="flex items-center pb-4 border-b border-neutral-800">
+                        <UAvatar src="https://github.com/shadcn.png" size="lg" />
+                        <div class="flex flex-col ml-3 justify-center">
+                            <span class="text-sm font-medium">Jakob Matzen</span>
+                            <span class="text-xs mt-1 text-neutral-400">NKoins: 1000</span>
+                        </div>
+                    </div>
+                </template>
+                <template #body>
+                    <UNavigationMenu :items="links" orientation="vertical" />
+                </template>
+                <template #footer>
+                    <div class="w-full flex justify-center pt-4 border-t border-neutral-800">
+                        <UButton label="Abmelden" variant="link" icon="i-lucide-log-out" />
+                    </div>
+                </template>
+            </UDrawer>
+        </div>
+        <div class="p-6">
+            <slot />
+        </div>
     </div>
 </template>

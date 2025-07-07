@@ -13,5 +13,5 @@ export default defineNuxtConfig({
     transpile: ['trpc-nuxt']
   },
   compatibilityDate: '1999-03-01',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 })
