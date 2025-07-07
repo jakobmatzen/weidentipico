@@ -30,5 +30,6 @@ export const useUserStore = defineStore('userStore', {
                 this.loading = false
             }
         }
-    }
+    },
+    persist: true
 })
