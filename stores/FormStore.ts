@@ -8,7 +8,7 @@ interface State {
 export const useFormStore = defineStore('formStore', {
     state: (): State => ({
         loginForm: {
-            email: '',
+            username: '',
             password: ''
         }
     }),

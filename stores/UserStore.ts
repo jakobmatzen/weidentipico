@@ -29,6 +29,23 @@ export const useUserStore = defineStore('userStore', {
             finally {
                 this.loading = false
             }
+        },
+        async login(username: string, password: string) {
+            this.loading = true
+            try {
+                const user = this.users.find((user: User) => user.username === username && user.password === password)
+                if (user) {
+                    this.user = user
+                } else {
+                    throw new Error('Benutzername oder Passwort falsch.')
+                }
+                this.loading = false
+            }
+            catch (error) {
+                useNotificationStore().addError(useNotificationStore().getErrorMessage(error))
+                this.loading = false
+                return error
+            }
         }
     },
     persist: true
