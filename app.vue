@@ -1,12 +1,25 @@
 <script setup lang="ts">
-import { usePrefetchStore } from '~/stores/PrefetchStore'
-
 await usePrefetchStore().fetchData()
+
+const { notificationList } = storeToRefs(useNotificationStore())
+
+watch(notificationList.value, () => {
+  if (notificationList.value.length > 0) {
+    useToast().add({
+      title: notificationList.value[0].title,
+      description: notificationList.value[0].message,
+      color: notificationList.value[0].color,
+      duration: 5000,
+    })
+    notificationList.value.shift()
+  }
+})
 </script>
 
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <UApp :toaster="{ expand: true }">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>
