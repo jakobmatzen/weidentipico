@@ -10,8 +10,8 @@ const links = computed<NavigationMenuItem[]>(() => [[{
     icon: 'i-lucide-store',
     defaultOpen: true,
     children: [{
-        label: 'Suchen',
-        icon: 'i-lucide-search',
+        label: 'Angebote',
+        icon: 'i-lucide-tags',
     }, {
         label: 'Inserieren',
         icon: 'i-lucide-list-plus',
@@ -26,9 +26,9 @@ const links = computed<NavigationMenuItem[]>(() => [[{
 </script>
 
 <template>
-    <div class="min-h-screen">
-        <div class="flex justify-between p-2 border-b border-neutral-800 shadow-lg items-center">
-            <UIcon name="i-lucide-slack" class="h-6 w-6 ml-2 text-primary-400" />
+    <div class="h-screen flex flex-col overflow-hidden">
+        <div class="flex justify-between p-2 border-b border-neutral-800 shadow-lg items-center flex-shrink-0">
+            <UIcon name="i-lucide-tent-tree" class="h-6 w-6 ml-2 text-primary-400" />
             <UDrawer direction="right" :handle="false">
                 <UButton variant="link" icon="i-lucide-menu" size="xl" />
                 <template #header>
@@ -50,7 +50,7 @@ const links = computed<NavigationMenuItem[]>(() => [[{
                 </template>
             </UDrawer>
         </div>
-        <div class="p-6">
+        <div class="flex-1 overflow-hidden">
             <slot />
         </div>
     </div>
