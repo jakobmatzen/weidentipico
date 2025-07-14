@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt'
   ],
+  imports: {
+    dirs: ['stores']
+  },
   colorMode: {
     preference: 'dark'
   },

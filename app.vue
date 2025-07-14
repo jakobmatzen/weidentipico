@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { usePrefetchStore } from '~/stores/PrefetchStore'
-
 await usePrefetchStore().fetchData()
 </script>
 
