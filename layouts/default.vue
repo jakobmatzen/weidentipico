@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+import { LazySharedLogoutDialog } from '#components'
 
 const links = computed<NavigationMenuItem[]>(() => [[{
     label: 'Wetten',
@@ -45,7 +46,8 @@ const links = computed<NavigationMenuItem[]>(() => [[{
                 </template>
                 <template #footer>
                     <div class="w-full flex justify-center pt-4 border-t border-neutral-800">
-                        <UButton label="Abmelden" variant="link" icon="i-lucide-log-out" />
+                        <UButton label="Abmelden" variant="link" icon="i-lucide-log-out"
+                            @click="useOverlay().create(LazySharedLogoutDialog).open()" />
                     </div>
                 </template>
             </UDrawer>
