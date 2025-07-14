@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { UserWallet } from './UserWallet'
 
 interface BaseUser {
     id: string
@@ -6,6 +7,7 @@ interface BaseUser {
     lastName: string
     username: string
     password: string
+    userWallet?: UserWallet
 }
 
 /**
@@ -21,6 +23,7 @@ export class User implements BaseUser {
     lastName: string
     username: string
     password: string
+    userWallet?: UserWallet
 
     /**
      * Initializes a new instance of the User class with given arguments.
@@ -32,6 +35,7 @@ export class User implements BaseUser {
         this.lastName = args.lastName
         this.username = args.username
         this.password = args.password
+        this.userWallet = args.userWallet
     }
 
     /**
@@ -44,7 +48,8 @@ export class User implements BaseUser {
             firstName: this.firstName,
             lastName: this.lastName,
             username: this.username,
-            password: this.password
+            password: this.password,
+            userWallet: this.userWallet?.toJson()
         }
     }
 
@@ -62,7 +67,8 @@ export class User implements BaseUser {
                 firstName: data.firstName,
                 lastName: data.lastName,
                 username: data.username,
-                password: data.password
+                password: data.password,
+                userWallet: data.userWallets ? UserWallet.parseFromDbData(data.userWallets) : undefined
             })
             return item
         }
@@ -85,7 +91,8 @@ export class User implements BaseUser {
                 firstName: data.firstName,
                 lastName: data.lastName,
                 username: data.username,
-                password: data.password
+                password: data.password,
+                userWallet: data.userWallet
             })
             return item
         }

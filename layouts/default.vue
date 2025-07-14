@@ -2,6 +2,8 @@
 import type { NavigationMenuItem } from '@nuxt/ui'
 import { LazySharedLogoutDialog } from '#components'
 
+const { user } = storeToRefs(useUserStore())
+
 const links = computed<NavigationMenuItem[]>(() => [[{
     label: 'Wetten',
     icon: 'i-lucide-dices',
@@ -36,8 +38,8 @@ const links = computed<NavigationMenuItem[]>(() => [[{
                     <div class="flex items-center pb-4 border-b border-neutral-800">
                         <UAvatar src="https://github.com/shadcn.png" size="lg" />
                         <div class="flex flex-col ml-3 justify-center">
-                            <span class="text-sm font-medium">Jakob Matzen</span>
-                            <span class="text-xs mt-1 text-neutral-400">NKoins: 1000</span>
+                            <span class="text-sm font-medium">{{ user?.firstName }} {{ user?.lastName }}</span>
+                            <span class="text-xs mt-1 text-neutral-400">NKoins: {{ user?.userWallet?.balance }}</span>
                         </div>
                     </div>
                 </template>
