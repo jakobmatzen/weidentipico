@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DIRECT_URL")
+}
+
+model users {
+  id                              Int           @id @default(autoincrement())
+  firstName                       String
+  lastName                        String
+  username                        String
+  password                        String
+  role                            Int?
+  tradeOffers                     tradeOffers[]
+  trades_trades_customerIdTousers trades[]      @relation("trades_customerIdTousers")
+  trades_trades_supplierIdTousers trades[]      @relation("trades_supplierIdTousers")
+  userWallets                     userWallets?
+  roles                           roles?        @relation(fields: [role], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model betDetails {
+  id          Int    @id @default(autoincrement())
+  betId       Int?
+  description String
+  quote       Float  @db.Real
+  value       Int
+  bets        bets?  @relation(fields: [betId], references: [id], onDelete: Restrict)
+}
+
+model bets {
+  id                         Int          @id @default(autoincrement())
+  description                String
+  created_at                 DateTime     @default(now()) @db.Timestamptz(6)
+  deadline_at                DateTime     @db.Timestamptz(6)
+  status                     Int?
+  betDetails                 betDetails[]
+  status_bets_statusTostatus status?      @relation("bets_statusTostatus", fields: [status], references: [id], onDelete: Restrict)
+}
+
+model roles {
+  id          Int     @id @default(autoincrement())
+  description String
+  users       users[]
+}
+
+model services {
+  id          Int    @id @default(autoincrement())
+  description String
+}
+
+model status {
+  id                       Int    @id @default(autoincrement())
+  description              String
+  bets_bets_statusTostatus bets[] @relation("bets_statusTostatus")
+}
+
+model tradeOffers {
+  id         BigInt   @id @default(autoincrement())
+  tradeId    Int?
+  userId     Int?
+  value      Int
+  isAccepted Boolean?
+  createdAt  DateTime @default(now()) @db.Timestamptz(6)
+  trades     trades?  @relation(fields: [tradeId], references: [id], onDelete: Restrict)
+  users      users?   @relation(fields: [userId], references: [id], onDelete: Restrict)
+}
+
+model trades {
+  id                             Int           @id @default(autoincrement())
+  supplierId                     Int?
+  customerId                     Int?
+  service                        String?
+  createdAt                      DateTime      @default(now()) @db.Timestamptz(6)
+  deadlineAt                     DateTime?     @db.Timestamptz(6)
+  tradedAt                       DateTime?     @db.Timestamptz(6)
+  tradeOffers                    tradeOffers[]
+  users_trades_customerIdTousers users?        @relation("trades_customerIdTousers", fields: [customerId], references: [id], onDelete: Restrict)
+  users_trades_supplierIdTousers users?        @relation("trades_supplierIdTousers", fields: [supplierId], references: [id], onDelete: Restrict)
+}
+
+model userWallets {
+  id      Int   @id @default(autoincrement())
+  balance Int   @default(0)
+  users   users @relation(fields: [id], references: [id])
+}

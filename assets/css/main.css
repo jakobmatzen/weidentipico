@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+    --font-sans: 'Geist', sans-serif;
+
+    --color-primary-50: #fff4f1;
+    --color-primary-100: #ffe7e1;
+    --color-primary-200: #ffd2c7;
+    --color-primary-300: #ffb3a0;
+    --color-primary-400: #ff9c83;
+    --color-primary-500: #f8613b;
+    --color-primary-600: #e5451d;
+    --color-primary-700: #c13714;
+    --color-primary-800: #a03014;
+    --color-primary-900: #842e18;
+    --color-primary-950: #481407;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Custom ellipsis classes */
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-ellipsis-200 {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-ellipsis-300 {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
