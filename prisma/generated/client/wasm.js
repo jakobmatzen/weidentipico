@@ -129,14 +129,6 @@ exports.Prisma.UsersScalarFieldEnum = {
   role: 'role'
 };
 
-exports.Prisma.BetDetailsScalarFieldEnum = {
-  id: 'id',
-  betId: 'betId',
-  description: 'description',
-  quote: 'quote',
-  value: 'value'
-};
-
 exports.Prisma.BetsScalarFieldEnum = {
   id: 'id',
   description: 'description',
@@ -184,6 +176,21 @@ exports.Prisma.UserWalletsScalarFieldEnum = {
   balance: 'balance'
 };
 
+exports.Prisma.BetEntriesScalarFieldEnum = {
+  id: 'id',
+  optionId: 'optionId',
+  userId: 'userId',
+  amount: 'amount'
+};
+
+exports.Prisma.BetOptionsScalarFieldEnum = {
+  id: 'id',
+  betId: 'betId',
+  description: 'description',
+  quote: 'quote',
+  value: 'value'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -202,14 +209,15 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   users: 'users',
-  betDetails: 'betDetails',
   bets: 'bets',
   roles: 'roles',
   services: 'services',
   status: 'status',
   tradeOffers: 'tradeOffers',
   trades: 'trades',
-  userWallets: 'userWallets'
+  userWallets: 'userWallets',
+  betEntries: 'betEntries',
+  betOptions: 'betOptions'
 };
 
 /**

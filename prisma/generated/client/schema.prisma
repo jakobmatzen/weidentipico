@@ -15,20 +15,12 @@ model users {
   username                        String
   password                        String
   role                            Int?
+  betEntries                      betEntries[]
   tradeOffers                     tradeOffers[]
   trades_trades_customerIdTousers trades[]      @relation("trades_customerIdTousers")
   trades_trades_supplierIdTousers trades[]      @relation("trades_supplierIdTousers")
   userWallets                     userWallets?
   roles                           roles?        @relation(fields: [role], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model betDetails {
-  id          Int    @id @default(autoincrement())
-  betId       Int?
-  description String
-  quote       Float  @db.Real
-  value       Int
-  bets        bets?  @relation(fields: [betId], references: [id], onDelete: Restrict)
 }
 
 model bets {
@@ -37,7 +29,7 @@ model bets {
   created_at                 DateTime     @default(now()) @db.Timestamptz(6)
   deadline_at                DateTime     @db.Timestamptz(6)
   status                     Int?
-  betDetails                 betDetails[]
+  betOptions                 betOptions[]
   status_bets_statusTostatus status?      @relation("bets_statusTostatus", fields: [status], references: [id], onDelete: Restrict)
 }
 
@@ -86,4 +78,25 @@ model userWallets {
   id      Int   @id @default(autoincrement())
   balance Int   @default(0)
   users   users @relation(fields: [id], references: [id])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model betEntries {
+  id         Int         @id @default(autoincrement())
+  optionId   Int?
+  userId     Int?
+  amount     Int
+  betOptions betOptions? @relation(fields: [optionId], references: [id], onDelete: Restrict)
+  users      users?      @relation(fields: [userId], references: [id], onDelete: Restrict)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model betOptions {
+  id          Int          @id(map: "betDetails_pkey") @default(autoincrement())
+  betId       Int?
+  description String
+  quote       Float        @db.Real
+  value       Int
+  betEntries  betEntries[]
+  bets        bets?        @relation(fields: [betId], references: [id], onDelete: Restrict, map: "betDetails_betId_fkey")
 }

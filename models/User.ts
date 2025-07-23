@@ -7,6 +7,7 @@ interface BaseUser {
     lastName: string
     username: string
     password: string
+    role: number
     userWallet?: UserWallet
 }
 
@@ -23,6 +24,7 @@ export class User implements BaseUser {
     lastName: string
     username: string
     password: string
+    role: number
     userWallet?: UserWallet
 
     /**
@@ -35,6 +37,7 @@ export class User implements BaseUser {
         this.lastName = args.lastName
         this.username = args.username
         this.password = args.password
+        this.role = args.role
         this.userWallet = args.userWallet
     }
 
@@ -49,6 +52,7 @@ export class User implements BaseUser {
             lastName: this.lastName,
             username: this.username,
             password: this.password,
+            role: this.role,
             userWallet: this.userWallet?.toJson()
         }
     }
@@ -68,6 +72,7 @@ export class User implements BaseUser {
                 lastName: data.lastName,
                 username: data.username,
                 password: data.password,
+                role: data.role,
                 userWallet: data.userWallets ? UserWallet.parseFromDbData(data.userWallets) : undefined
             })
             return item
@@ -92,6 +97,7 @@ export class User implements BaseUser {
                 lastName: data.lastName,
                 username: data.username,
                 password: data.password,
+                role: data.role,
                 userWallet: data.userWallet
             })
             return item
@@ -111,6 +117,7 @@ export class User implements BaseUser {
             firstName: z.string(),
             lastName: z.string(),
             username: z.string(),
+            role: z.number(),
             password: z.string()
         })
     }
