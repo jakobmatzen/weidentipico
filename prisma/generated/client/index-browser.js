@@ -188,7 +188,7 @@ exports.Prisma.BetOptionsScalarFieldEnum = {
   betId: 'betId',
   description: 'description',
   quote: 'quote',
-  value: 'value'
+  amount: 'amount'
 };
 
 exports.Prisma.SortOrder = {

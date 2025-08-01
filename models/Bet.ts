@@ -1,0 +1,118 @@
+import { z } from 'zod'
+import { BetOption } from './BetOption'
+
+interface BaseBet {
+    id: number
+    description: string
+    createdAt: Date
+    deadlineAt: Date
+    status: number
+    betOptions?: BetOption[]
+}
+
+/**
+ * @param id The identifier of the bet.
+ * @param description The description of the bet.
+ * @param createdAt The date and time the bet was created.
+ * @param deadlineAt The date and time the bet will be closed.
+ * @param status The status of the bet.
+ */
+export class Bet implements BaseBet {
+    id: number
+    description: string
+    createdAt: Date
+    deadlineAt: Date
+    status: number
+    betOptions?: BetOption[]
+
+    /**
+     * Initializes a new instance of the Bet class with given arguments.
+     * @param {BaseBet} args - The arguments for initializing the bet.
+     */
+    constructor(args: BaseBet) {
+        this.id = args.id
+        this.description = args.description
+        this.createdAt = args.createdAt
+        this.deadlineAt = args.deadlineAt
+        this.status = args.status
+        this.betOptions = args.betOptions
+    }
+
+    /**
+     * Returns a JSON representation of the Bet object.
+     * @returns {object} JSON representation
+     */
+    toJson() {
+        return {
+            id: this.id,
+            description: this.description,
+            createdAt: this.createdAt,
+            deadlineAt: this.deadlineAt,
+            status: this.status,
+            betOptions: this.betOptions ? this.betOptions.map((option: BetOption) => option.toJson()) : []
+        }
+    }
+
+    /**
+     * Converts database data into a Bet object.
+     * Throws an error if conversion fails.
+     * @param {any} data - The data from the database.
+     * @returns {Bet} The resulting Bet object.
+     * @throws Error if conversion fails.
+     */
+    static parseFromDbData(data: any): Bet {
+        try {
+            const item: Bet = new Bet({
+                id: data.id,
+                description: data.description,
+                createdAt: data.createdAt,
+                deadlineAt: data.deadlineAt,
+                status: data.status,
+                betOptions: data.betOptions ? data.betOptions.map((option: any) => BetOption.parseFromDbData(option)) : undefined
+            })
+            return item
+        }
+        catch {
+            throw new Error('Fehler: Wetten kann nicht in Klasse übersetzt werden.')
+        }
+    }
+
+    /**
+     * Converts JSON data into a Bet object.
+     * Throws an error if conversion fails.
+     * @param {any} data - The JSON data.
+     * @returns {Bet} The resulting Bet object.
+     * @throws Error if conversion fails.
+     */
+    static parseFromJsonData(data: any): Bet {
+        try {
+            const item: Bet = new Bet({
+                id: data.id,
+                description: data.description,
+                createdAt: data.createdAt,
+                deadlineAt: data.deadlineAt,
+                status: data.status,
+                betOptions: data.betOptions
+            })
+            return item
+        }
+        catch {
+            throw new Error('Fehler: Wetten kann nicht in Klasse übersetzt werden.')
+        }
+    }
+
+    /**
+     * Returns a Zod schema object for creating a Bet.
+     * @returns {z.ZodObject} The Zod schema.
+     */
+    static getZodObject() {
+        return z.object({
+            id: z.string(),
+            description: z.string(),
+            createdAt: z.date(),
+            deadlineAt: z.date(),
+            status: z.number(),
+            betOptions: z.array(BetOption.getZodObject())
+        })
+    }
+}

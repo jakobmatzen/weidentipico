@@ -96,7 +96,7 @@ model betOptions {
   betId       Int?
   description String
   quote       Float        @db.Real
-  value       Int
+  amount      Int
   betEntries  betEntries[]
   bets        bets?        @relation(fields: [betId], references: [id], onDelete: Restrict, map: "betDetails_betId_fkey")
 }

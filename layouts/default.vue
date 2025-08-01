@@ -29,7 +29,7 @@ const links = computed<NavigationMenuItem[]>(() => [[{
 }, {
     label: 'Wetten erstellen',
     icon: 'i-lucide-circle-fading-plus',
-    to: '/add-bets',
+    to: '/add-bet',
     class: user.value?.role !== 1 ? 'hidden' : ''
 }]])
 </script>

@@ -12005,14 +12005,14 @@ export namespace Prisma {
     id: number | null
     betId: number | null
     quote: number | null
-    value: number | null
+    amount: number | null
   }
 
   export type BetOptionsSumAggregateOutputType = {
     id: number | null
     betId: number | null
     quote: number | null
-    value: number | null
+    amount: number | null
   }
 
   export type BetOptionsMinAggregateOutputType = {
@@ -12020,7 +12020,7 @@ export namespace Prisma {
     betId: number | null
     description: string | null
     quote: number | null
-    value: number | null
+    amount: number | null
   }
 
   export type BetOptionsMaxAggregateOutputType = {
@@ -12028,7 +12028,7 @@ export namespace Prisma {
     betId: number | null
     description: string | null
     quote: number | null
-    value: number | null
+    amount: number | null
   }
 
   export type BetOptionsCountAggregateOutputType = {
@@ -12036,7 +12036,7 @@ export namespace Prisma {
     betId: number
     description: number
     quote: number
-    value: number
+    amount: number
     _all: number
   }
 
@@ -12045,14 +12045,14 @@ export namespace Prisma {
     id?: true
     betId?: true
     quote?: true
-    value?: true
+    amount?: true
   }
 
   export type BetOptionsSumAggregateInputType = {
     id?: true
     betId?: true
     quote?: true
-    value?: true
+    amount?: true
   }
 
   export type BetOptionsMinAggregateInputType = {
@@ -12060,7 +12060,7 @@ export namespace Prisma {
     betId?: true
     description?: true
     quote?: true
-    value?: true
+    amount?: true
   }
 
   export type BetOptionsMaxAggregateInputType = {
@@ -12068,7 +12068,7 @@ export namespace Prisma {
     betId?: true
     description?: true
     quote?: true
-    value?: true
+    amount?: true
   }
 
   export type BetOptionsCountAggregateInputType = {
@@ -12076,7 +12076,7 @@ export namespace Prisma {
     betId?: true
     description?: true
     quote?: true
-    value?: true
+    amount?: true
     _all?: true
   }
 
@@ -12171,7 +12171,7 @@ export namespace Prisma {
     betId: number | null
     description: string
     quote: number
-    value: number
+    amount: number
     _count: BetOptionsCountAggregateOutputType | null
     _avg: BetOptionsAvgAggregateOutputType | null
     _sum: BetOptionsSumAggregateOutputType | null
@@ -12198,7 +12198,7 @@ export namespace Prisma {
     betId?: boolean
     description?: boolean
     quote?: boolean
-    value?: boolean
+    amount?: boolean
     betEntries?: boolean | betOptions$betEntriesArgs<ExtArgs>
     bets?: boolean | betOptions$betsArgs<ExtArgs>
     _count?: boolean | BetOptionsCountOutputTypeDefaultArgs<ExtArgs>
@@ -12209,7 +12209,7 @@ export namespace Prisma {
     betId?: boolean
     description?: boolean
     quote?: boolean
-    value?: boolean
+    amount?: boolean
     bets?: boolean | betOptions$betsArgs<ExtArgs>
   }, ExtArgs["result"]["betOptions"]>
 
@@ -12218,7 +12218,7 @@ export namespace Prisma {
     betId?: boolean
     description?: boolean
     quote?: boolean
-    value?: boolean
+    amount?: boolean
     bets?: boolean | betOptions$betsArgs<ExtArgs>
   }, ExtArgs["result"]["betOptions"]>
 
@@ -12227,10 +12227,10 @@ export namespace Prisma {
     betId?: boolean
     description?: boolean
     quote?: boolean
-    value?: boolean
+    amount?: boolean
   }
 
-  export type betOptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "betId" | "description" | "quote" | "value", ExtArgs["result"]["betOptions"]>
+  export type betOptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "betId" | "description" | "quote" | "amount", ExtArgs["result"]["betOptions"]>
   export type betOptionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     betEntries?: boolean | betOptions$betEntriesArgs<ExtArgs>
     bets?: boolean | betOptions$betsArgs<ExtArgs>
@@ -12254,7 +12254,7 @@ export namespace Prisma {
       betId: number | null
       description: string
       quote: number
-      value: number
+      amount: number
     }, ExtArgs["result"]["betOptions"]>
     composites: {}
   }
@@ -12684,7 +12684,7 @@ export namespace Prisma {
     readonly betId: FieldRef<"betOptions", 'Int'>
     readonly description: FieldRef<"betOptions", 'String'>
     readonly quote: FieldRef<"betOptions", 'Float'>
-    readonly value: FieldRef<"betOptions", 'Int'>
+    readonly amount: FieldRef<"betOptions", 'Int'>
   }
     
 
@@ -13251,7 +13251,7 @@ export namespace Prisma {
     betId: 'betId',
     description: 'description',
     quote: 'quote',
-    value: 'value'
+    amount: 'amount'
   };
 
   export type BetOptionsScalarFieldEnum = (typeof BetOptionsScalarFieldEnum)[keyof typeof BetOptionsScalarFieldEnum]
@@ -13869,7 +13869,7 @@ export namespace Prisma {
     betId?: IntNullableFilter<"betOptions"> | number | null
     description?: StringFilter<"betOptions"> | string
     quote?: FloatFilter<"betOptions"> | number
-    value?: IntFilter<"betOptions"> | number
+    amount?: IntFilter<"betOptions"> | number
     betEntries?: BetEntriesListRelationFilter
     bets?: XOR<BetsNullableScalarRelationFilter, betsWhereInput> | null
   }
@@ -13879,7 +13879,7 @@ export namespace Prisma {
     betId?: SortOrderInput | SortOrder
     description?: SortOrder
     quote?: SortOrder
-    value?: SortOrder
+    amount?: SortOrder
     betEntries?: betEntriesOrderByRelationAggregateInput
     bets?: betsOrderByWithRelationInput
   }
@@ -13892,7 +13892,7 @@ export namespace Prisma {
     betId?: IntNullableFilter<"betOptions"> | number | null
     description?: StringFilter<"betOptions"> | string
     quote?: FloatFilter<"betOptions"> | number
-    value?: IntFilter<"betOptions"> | number
+    amount?: IntFilter<"betOptions"> | number
     betEntries?: BetEntriesListRelationFilter
     bets?: XOR<BetsNullableScalarRelationFilter, betsWhereInput> | null
   }, "id">
@@ -13902,7 +13902,7 @@ export namespace Prisma {
     betId?: SortOrderInput | SortOrder
     description?: SortOrder
     quote?: SortOrder
-    value?: SortOrder
+    amount?: SortOrder
     _count?: betOptionsCountOrderByAggregateInput
     _avg?: betOptionsAvgOrderByAggregateInput
     _max?: betOptionsMaxOrderByAggregateInput
@@ -13918,7 +13918,7 @@ export namespace Prisma {
     betId?: IntNullableWithAggregatesFilter<"betOptions"> | number | null
     description?: StringWithAggregatesFilter<"betOptions"> | string
     quote?: FloatWithAggregatesFilter<"betOptions"> | number
-    value?: IntWithAggregatesFilter<"betOptions"> | number
+    amount?: IntWithAggregatesFilter<"betOptions"> | number
   }
 
   export type usersCreateInput = {
@@ -14371,7 +14371,7 @@ export namespace Prisma {
   export type betOptionsCreateInput = {
     description: string
     quote: number
-    value: number
+    amount: number
     betEntries?: betEntriesCreateNestedManyWithoutBetOptionsInput
     bets?: betsCreateNestedOneWithoutBetOptionsInput
   }
@@ -14381,14 +14381,14 @@ export namespace Prisma {
     betId?: number | null
     description: string
     quote: number
-    value: number
+    amount: number
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput
   }
 
   export type betOptionsUpdateInput = {
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     betEntries?: betEntriesUpdateManyWithoutBetOptionsNestedInput
     bets?: betsUpdateOneWithoutBetOptionsNestedInput
   }
@@ -14398,7 +14398,7 @@ export namespace Prisma {
     betId?: NullableIntFieldUpdateOperationsInput | number | null
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     betEntries?: betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput
   }
 
@@ -14407,13 +14407,13 @@ export namespace Prisma {
     betId?: number | null
     description: string
     quote: number
-    value: number
+    amount: number
   }
 
   export type betOptionsUpdateManyMutationInput = {
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
   export type betOptionsUncheckedUpdateManyInput = {
@@ -14421,7 +14421,7 @@ export namespace Prisma {
     betId?: NullableIntFieldUpdateOperationsInput | number | null
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -15038,14 +15038,14 @@ export namespace Prisma {
     betId?: SortOrder
     description?: SortOrder
     quote?: SortOrder
-    value?: SortOrder
+    amount?: SortOrder
   }
 
   export type betOptionsAvgOrderByAggregateInput = {
     id?: SortOrder
     betId?: SortOrder
     quote?: SortOrder
-    value?: SortOrder
+    amount?: SortOrder
   }
 
   export type betOptionsMaxOrderByAggregateInput = {
@@ -15053,7 +15053,7 @@ export namespace Prisma {
     betId?: SortOrder
     description?: SortOrder
     quote?: SortOrder
-    value?: SortOrder
+    amount?: SortOrder
   }
 
   export type betOptionsMinOrderByAggregateInput = {
@@ -15061,14 +15061,14 @@ export namespace Prisma {
     betId?: SortOrder
     description?: SortOrder
     quote?: SortOrder
-    value?: SortOrder
+    amount?: SortOrder
   }
 
   export type betOptionsSumOrderByAggregateInput = {
     id?: SortOrder
     betId?: SortOrder
     quote?: SortOrder
-    value?: SortOrder
+    amount?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -16224,7 +16224,7 @@ export namespace Prisma {
   export type betOptionsCreateWithoutBetsInput = {
     description: string
     quote: number
-    value: number
+    amount: number
     betEntries?: betEntriesCreateNestedManyWithoutBetOptionsInput
   }
 
@@ -16232,7 +16232,7 @@ export namespace Prisma {
     id?: number
     description: string
     quote: number
-    value: number
+    amount: number
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput
   }
 
@@ -16284,7 +16284,7 @@ export namespace Prisma {
     betId?: IntNullableFilter<"betOptions"> | number | null
     description?: StringFilter<"betOptions"> | string
     quote?: FloatFilter<"betOptions"> | number
-    value?: IntFilter<"betOptions"> | number
+    amount?: IntFilter<"betOptions"> | number
   }
 
   export type statusUpsertWithoutBets_bets_statusTostatusInput = {
@@ -16785,7 +16785,7 @@ export namespace Prisma {
   export type betOptionsCreateWithoutBetEntriesInput = {
     description: string
     quote: number
-    value: number
+    amount: number
     bets?: betsCreateNestedOneWithoutBetOptionsInput
   }
 
@@ -16794,7 +16794,7 @@ export namespace Prisma {
     betId?: number | null
     description: string
     quote: number
-    value: number
+    amount: number
   }
 
   export type betOptionsCreateOrConnectWithoutBetEntriesInput = {
@@ -16846,7 +16846,7 @@ export namespace Prisma {
   export type betOptionsUpdateWithoutBetEntriesInput = {
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     bets?: betsUpdateOneWithoutBetOptionsNestedInput
   }
 
@@ -16855,7 +16855,7 @@ export namespace Prisma {
     betId?: NullableIntFieldUpdateOperationsInput | number | null
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
   export type usersUpsertWithoutBetEntriesInput = {
@@ -17110,13 +17110,13 @@ export namespace Prisma {
     id?: number
     description: string
     quote: number
-    value: number
+    amount: number
   }
 
   export type betOptionsUpdateWithoutBetsInput = {
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     betEntries?: betEntriesUpdateManyWithoutBetOptionsNestedInput
   }
 
@@ -17124,7 +17124,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     betEntries?: betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput
   }
 
@@ -17132,7 +17132,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
   export type usersCreateManyRolesInput = {
