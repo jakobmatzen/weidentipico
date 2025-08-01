@@ -11,6 +11,7 @@ const links = computed<NavigationMenuItem[]>(() => [[{
 }, {
     label: 'Marktplatz',
     icon: 'i-lucide-store',
+    class: 'cursor-pointer',
     defaultOpen: true,
     children: [{
         label: 'Angebote',
@@ -28,15 +29,15 @@ const links = computed<NavigationMenuItem[]>(() => [[{
 }, {
     label: 'Wetten erstellen',
     icon: 'i-lucide-circle-fading-plus',
-    to: '/bets/add',
+    to: '/add-bets',
     class: user.value?.role !== 1 ? 'hidden' : ''
 }]])
 </script>
 
 <template>
-    <div class="h-screen flex flex-col overflow-hidden">
+    <div class="h-[calc(100vh-5rem)] flex flex-col overflow-hidden">
         <div class="flex justify-between p-2 border-b border-neutral-800 shadow-lg items-center flex-shrink-0">
-            <UIcon name="i-lucide-tent-tree" class="h-6 w-6 ml-2 text-primary-400" />
+            <UIcon name="i-lucide-tent-tree" class="h-6 w-6 ml-2 text-primary-400" @click="navigateTo('/')" />
             <UDrawer direction="right" :handle="false">
                 <UButton variant="link" icon="i-lucide-menu" size="xl" />
                 <template #header>

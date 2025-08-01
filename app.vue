@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { de } from '@nuxt/ui/locale'
+
 await usePrefetchStore().fetchData()
 
 const { notificationList } = storeToRefs(useNotificationStore())
@@ -17,7 +19,7 @@ watch(notificationList.value, () => {
 </script>
 
 <template>
-  <UApp :toaster="{ expand: true }">
+  <UApp :locale="de" :toaster="{ expand: true }">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
-import type { LoginForm } from '~/types/Form'
+import type { BetForm, LoginForm } from '~/types/Form'
 
 interface State {
     loginForm: LoginForm
+    betForm: BetForm
 }
 
 export const useFormStore = defineStore('formStore', {
@@ -10,6 +11,15 @@ export const useFormStore = defineStore('formStore', {
         loginForm: {
             username: '',
             password: ''
+        },
+        betForm: {
+            title: '',
+            optionCount: 2,
+            options: [],
+            time: {
+                hours: new Date().getHours(),
+                minutes: new Date().getMinutes()
+            }
         }
     }),
     persist: true
