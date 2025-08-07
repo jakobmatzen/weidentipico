@@ -94,7 +94,7 @@ export class BetEntry implements BaseBetEntry {
      */
     static getZodObject() {
         return z.object({
-            id: z.number(),
+            id: z.number().optional(),
             optionId: z.number(),
             userId: z.number(),
             amount: z.number()

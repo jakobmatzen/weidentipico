@@ -5,7 +5,7 @@ interface BaseBetOption {
     id: number
     betId: number
     description: string
-    quote: number
+    weight: number
     amount: number
     betEntries?: BetEntry[]
 }
@@ -14,14 +14,14 @@ interface BaseBetOption {
  * @param id The identifier of the bet option.
  * @param betId The identifier of the bet.
  * @param description The description of the bet option.
- * @param quote The quote of the bet option.
+ * @param weight The weight of the bet option.
  * @param amount The amount of the bet option.
  */
 export class BetOption implements BaseBetOption {
     id: number
     betId: number
     description: string
-    quote: number
+    weight: number
     amount: number
     betEntries?: BetEntry[]
 
@@ -33,7 +33,7 @@ export class BetOption implements BaseBetOption {
         this.id = args.id
         this.betId = args.betId
         this.description = args.description
-        this.quote = args.quote
+        this.weight = args.weight
         this.amount = args.amount
         this.betEntries = args.betEntries
     }
@@ -47,7 +47,7 @@ export class BetOption implements BaseBetOption {
             id: this.id,
             betId: this.betId,
             description: this.description,
-            quote: this.quote,
+            weight: this.weight / 100,
             amount: this.amount,
             betEntries: this.betEntries ? this.betEntries.map((entry: BetEntry) => entry.toJson()) : []
         }
@@ -66,7 +66,7 @@ export class BetOption implements BaseBetOption {
                 id: data.id,
                 betId: data.betId,
                 description: data.description,
-                quote: data.quote,
+                weight: data.weight * 100,
                 amount: data.amount,
                 betEntries: data.betEntries ? data.betEntries.map((entry: any) => BetEntry.parseFromDbData(entry)) : undefined
             })
@@ -90,7 +90,7 @@ export class BetOption implements BaseBetOption {
                 id: data.id,
                 betId: data.betId,
                 description: data.description,
-                quote: data.quote,
+                weight: data.weight,
                 amount: data.amount,
                 betEntries: data.betEntries
             })
@@ -107,10 +107,10 @@ export class BetOption implements BaseBetOption {
      */
     static getZodObject() {
         return z.object({
-            id: z.number(),
+            id: z.number().optional(),
             betId: z.number(),
             description: z.string(),
-            quote: z.number(),
+            weight: z.number(),
             amount: z.number(),
             betEntries: z.array(BetEntry.getZodObject())
         })

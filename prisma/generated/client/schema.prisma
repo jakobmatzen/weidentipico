@@ -26,8 +26,8 @@ model users {
 model bets {
   id                         Int          @id @default(autoincrement())
   description                String
-  created_at                 DateTime     @default(now()) @db.Timestamptz(6)
-  deadline_at                DateTime     @db.Timestamptz(6)
+  createdAt                  DateTime     @default(now()) @db.Timestamptz(6)
+  deadlineAt                 DateTime     @db.Timestamptz(6)
   status                     Int?
   betOptions                 betOptions[]
   status_bets_statusTostatus status?      @relation("bets_statusTostatus", fields: [status], references: [id], onDelete: Restrict)
@@ -95,7 +95,7 @@ model betOptions {
   id          Int          @id(map: "betDetails_pkey") @default(autoincrement())
   betId       Int?
   description String
-  quote       Float        @db.Real
+  weight      Float        @db.Real
   amount      Int
   betEntries  betEntries[]
   bets        bets?        @relation(fields: [betId], references: [id], onDelete: Restrict, map: "betDetails_betId_fkey")

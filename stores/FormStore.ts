@@ -16,6 +16,7 @@ export const useFormStore = defineStore('formStore', {
             title: '',
             optionCount: 2,
             options: [],
+            date: new Date(),
             time: {
                 hours: new Date().getHours(),
                 minutes: new Date().getMinutes()

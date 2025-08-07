@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { BetOption } from './BetOption'
 
 interface BaseBet {
-    id: number
+    id?: number
     description: string
     createdAt: Date
     deadlineAt: Date
@@ -18,7 +18,7 @@ interface BaseBet {
  * @param status The status of the bet.
  */
 export class Bet implements BaseBet {
-    id: number
+    id?: number
     description: string
     createdAt: Date
     deadlineAt: Date
@@ -107,7 +107,7 @@ export class Bet implements BaseBet {
      */
     static getZodObject() {
         return z.object({
-            id: z.string(),
+            id: z.number().optional(),
             description: z.string(),
             createdAt: z.date(),
             deadlineAt: z.date(),

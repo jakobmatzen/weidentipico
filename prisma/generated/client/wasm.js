@@ -132,8 +132,8 @@ exports.Prisma.UsersScalarFieldEnum = {
 exports.Prisma.BetsScalarFieldEnum = {
   id: 'id',
   description: 'description',
-  created_at: 'created_at',
-  deadline_at: 'deadline_at',
+  createdAt: 'createdAt',
+  deadlineAt: 'deadlineAt',
   status: 'status'
 };
 
@@ -187,7 +187,7 @@ exports.Prisma.BetOptionsScalarFieldEnum = {
   id: 'id',
   betId: 'betId',
   description: 'description',
-  quote: 'quote',
+  weight: 'weight',
   amount: 'amount'
 };
 

@@ -9,7 +9,7 @@ const props = defineProps<{
 
 const emit = defineEmits(['select'])
 
-const date = defineModel<Date | null>()
+const date = defineModel<Date | string | null>()
 
 const df = new DateFormatter('de-DE', {
     dateStyle: 'medium'
