@@ -36,8 +36,10 @@ async function createBet() {
     if (error) {
         return
     }
+    useBetStore().fetchData()
     useFormStore().$reset()
     useNotificationStore().addSuccess('Wette erfolgreich erstellt.')
+    navigateTo('/')
 }
 
 function inputValidation(deadline: Date) {

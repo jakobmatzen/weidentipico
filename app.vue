@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { de } from '@nuxt/ui/locale'
 
-await usePrefetchStore().fetchData()
+usePrefetchStore().fetchData()
 
 const { notificationList } = storeToRefs(useNotificationStore())
 

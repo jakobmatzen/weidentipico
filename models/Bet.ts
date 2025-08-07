@@ -46,8 +46,8 @@ export class Bet implements BaseBet {
         return {
             id: this.id,
             description: this.description,
-            createdAt: this.createdAt,
-            deadlineAt: this.deadlineAt,
+            createdAt: new Date(new Date(this.createdAt).getTime() + 2 * 60 * 60 * 1000),
+            deadlineAt: new Date(new Date(this.deadlineAt).getTime() + 2 * 60 * 60 * 1000),
             status: this.status,
             betOptions: this.betOptions ? this.betOptions.map((option: BetOption) => option.toJson()) : []
         }
@@ -65,8 +65,8 @@ export class Bet implements BaseBet {
             const item: Bet = new Bet({
                 id: data.id,
                 description: data.description,
-                createdAt: data.createdAt,
-                deadlineAt: data.deadlineAt,
+                createdAt: new Date(new Date(data.createdAt).getTime() - 2 * 60 * 60 * 1000),
+                deadlineAt: new Date(new Date(data.deadlineAt).getTime() - 2 * 60 * 60 * 1000),
                 status: data.status,
                 betOptions: data.betOptions ? data.betOptions.map((option: any) => BetOption.parseFromDbData(option)) : undefined
             })

@@ -3,6 +3,26 @@ import { publicProcedure, router } from '../init'
 import { Bet } from '~/models/Bet'
 
 export const betRouter = router({
+    getAllBets: publicProcedure.query(async ({ ctx }) => {
+        try {
+            return ctx.prisma.bets.findMany({
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                include: {
+                    betOptions: {
+                        include: {
+                            betEntries: true
+                        }
+                    }
+                }
+            })
+        }
+        catch (error) {
+            console.error(`Fehler beim Laden der Wetten: ${error}`)
+            throw new Error('Die Wetten konnten nicht geladen werden.')
+        }
+    }),
     createBet: publicProcedure
         .input(z.object({
             bet: Bet.getZodObject(),
@@ -14,8 +34,8 @@ export const betRouter = router({
                     const bet = await prisma.bets.create({
                         data: {
                             description: input.bet.description,
-                            createdAt: new Date(new Date(input.bet.createdAt).getTime() + 2 * 60 * 60 * 1000),
-                            deadlineAt: new Date(new Date(input.bet.deadlineAt).getTime() + 2 * 60 * 60 * 1000),
+                            createdAt: input.bet.createdAt,
+                            deadlineAt: input.bet.deadlineAt,
                             status: input.bet.status
                         }
                     })

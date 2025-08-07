@@ -13,6 +13,7 @@ export const usePrefetchStore = defineStore('prefetchStore', {
             this.loading = true
             try {
                 await useUserStore().fetchData()
+                await useBetStore().fetchData()
             }
             catch (error) {
                 useNotificationStore().addError(useNotificationStore().getErrorMessage(error))
