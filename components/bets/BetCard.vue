@@ -22,7 +22,7 @@ function openBetDetails() {
   >
     <span class="truncate max-w-full font-medium text-sm">{{ bet.description }}</span>
     <div class="flex w-full justify-between mt-2 text-xs text-neutral-400">
-      <span><span class="font-semibold">{{ bet.participants }}</span> Teilnehmende</span>
+      <span><span class="font-semibold">{{ bet.participants === 1 ? bet.participants + ' Teilnehme/r' : bet.participants + ' Teilnehmende' }}</span></span>
       <span><span class="font-semibold">{{ bet.amount }}</span> NKoins</span>
     </div>
     <span class="mt-3 pt-3 border-t border-neutral-600 text-xs text-neutral-400">Schließt am

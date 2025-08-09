@@ -65,6 +65,16 @@ export const betRouter = router({
     .mutation(async ({ ctx, input }) => {
       try {
         await ctx.prisma.$transaction(async (prisma) => {
+          await prisma.userWallets.update({
+            where: {
+              id: input.betEntry.userId
+            },
+            data: {
+              balance: {
+                decrement: input.amount
+              }
+            }
+          })
           await prisma.betEntries.create({
             data: {
               optionId: input.betEntry.optionId,

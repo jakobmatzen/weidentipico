@@ -38,6 +38,7 @@ async function placeBet() {
     return
   }
   useBetStore().fetchData()
+  useUserStore().fetchData()
   useFormStore().$reset()
   useNotificationStore().addSuccess('Wette erfolgreich platziert.')
   emit('close')

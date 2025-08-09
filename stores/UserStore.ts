@@ -22,6 +22,10 @@ export const useUserStore = defineStore('userStore', {
         if (data) {
           this.users = data.map(raw => User.parseFromDbData(raw))
         }
+        const user = this.users.find((user: User) => user.id === this.user?.id)
+        if (user) {
+          this.user = user
+        }
       }
       catch (error) {
         useNotificationStore().addError(useNotificationStore().getErrorMessage(error))

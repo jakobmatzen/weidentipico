@@ -40,6 +40,7 @@ async function createBet() {
     return
   }
   useBetStore().fetchData()
+  useUserStore().fetchData()
   useFormStore().$reset()
   useNotificationStore().addSuccess('Wette erfolgreich erstellt.')
   navigateTo('/')
