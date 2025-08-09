@@ -24,10 +24,10 @@ async function login() {
 <template>
   <div class="flex flex-col h-full w-full items-center justify-center" @keydown.enter="login()">
     <UFormField label="Benutzername">
-      <UInput v-model="loginForm.username" />
+      <UInput v-model="loginForm.username" size="sm" />
     </UFormField>
     <UFormField label="Passwort" class="mt-2">
-      <UInput v-model="loginForm.password" type="password" />
+      <UInput v-model="loginForm.password" type="password" size="sm" />
     </UFormField>
     <UButton label="Login" class="mt-4" size="sm" @click="login()" />
   </div>

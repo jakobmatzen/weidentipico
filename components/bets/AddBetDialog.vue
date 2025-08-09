@@ -5,9 +5,7 @@ import { Bet } from '~/models/Bet'
 import { useBetStore } from '~/stores/BetStore'
 import { useFormStore } from '~/stores/FormStore'
 
-definePageMeta({
-  middleware: 'redirect-login'
-})
+const emit = defineEmits(['close'])
 
 const { betForm } = storeToRefs(useFormStore())
 
@@ -41,9 +39,8 @@ async function createBet() {
   }
   useBetStore().fetchData()
   useUserStore().fetchData()
-  useFormStore().$reset()
   useNotificationStore().addSuccess('Wette erfolgreich erstellt.')
-  navigateTo('/')
+  emit('close')
 }
 
 function inputValidation(deadline: Date) {
@@ -52,8 +49,8 @@ function inputValidation(deadline: Date) {
     useNotificationStore().addError('Bitte den Titel der Wette angeben.')
     isValid.value = false
   }
-  if (betForm.value.title.length > 50) {
-    useNotificationStore().addError('Der Titel darf maximal 50 Zeichen lang sein.')
+  if (betForm.value.title.length > 100) {
+    useNotificationStore().addError('Der Titel darf maximal 100 Zeichen lang sein.')
     isValid.value = false
   }
   if (deadline < new Date()) {
@@ -69,9 +66,11 @@ function inputValidation(deadline: Date) {
 </script>
 
 <template>
-  <div class="h-full flex flex-col items-center p-6">
+    <UModal title="Wette erstellen" :close="false" :dismissible="false">
+        <template #body>
+    <div class="h-full flex flex-col items-center">
     <UFormField label="Titel" class="w-full">
-      <UInput v-model="betForm.title" class="w-full" />
+      <UInput v-model="betForm.title" size="sm" class="w-full" />
     </UFormField>
     <UFormField label="Frist" class="w-full mt-4">
       <UButtonGroup class="w-full" size="sm">
@@ -83,18 +82,23 @@ function inputValidation(deadline: Date) {
       </UButtonGroup>
     </UFormField>
     <UFormField label="Anzahl der Optionen" class="w-full mt-4">
-      <USlider v-model="betForm.optionCount" :min="2" :max="16" class="mt-2" />
+      <USlider v-model="betForm.optionCount" :min="2" :max="16" class="mt-2" size="sm" />
       <div class="flex justify-center mt-2">
         <span class="text-sm">{{ betForm.optionCount }}</span>
       </div>
     </UFormField>
-    <div class="flex-1 w-full overflow-y-auto px-4 border border-neutral-700 rounded-lg pb-4 mt-4">
+    <div class="max-h-[13rem] overflow-y-auto w-full px-4 border border-neutral-700 rounded-lg pb-4 mt-4">
       <UFormField v-for="i in betForm.optionCount" :key="i" :label="`Option ${i}`" class="w-full mt-3">
-        <UInput v-model="betForm.options[i - 1]" class="w-full" />
+        <UInput v-model="betForm.options[i - 1]" size="sm" class="w-full" />
       </UFormField>
+        </div>
     </div>
-    <div class="flex justify-center mt-6 w-full">
-      <UButton label="Erstellen" size="sm" @click="createBet()" />
+    </template>
+  <template #footer>
+    <div class="flex">
+      <UButton label="Abbrechen" variant="outline" color="neutral" size="sm" @click="emit('close')" />
+      <UButton label="Erstellen" size="sm" class="ml-2" @click="createBet()" />
     </div>
-  </div>
+  </template>
+  </UModal>
 </template>

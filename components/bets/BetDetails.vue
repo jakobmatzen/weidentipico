@@ -50,7 +50,7 @@ async function placeBet() {
 </script>
 
 <template>
-  <UModal :close="false">
+  <UModal :close="false" :dismissible="false">
     <template #body>
       <div class="flex flex-col h-full">
         <span class="text-lg font-medium">{{ props.bet.description }}</span>
@@ -61,7 +61,7 @@ async function placeBet() {
             <span><span class="font-semibold">{{ props.bet.participants === 1 ? `${props.bet.participants} Teilnehme/r` : `${props.bet.participants} Teilnehmende` }}</span></span>
             <span><span class="font-semibold">{{ props.bet.amount }}</span> NKoins</span>
           </div>
-          <div class="max-h-[11rem] overflow-y-auto">
+          <div class="max-h-[15rem] overflow-y-auto">
             <URadioGroup
               v-model="selectedOption" :items="props.bet.betOptions" value-key="id"
               :description="false"

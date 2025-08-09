@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { LazyBetsAddBetDialog } from '#components'
 import { betFilterOptions } from '~/constants/BetFilter'
 
 definePageMeta({
@@ -18,7 +19,7 @@ const { betForm } = storeToRefs(useFormStore())
           <UButton v-model="betForm.selectedSort" variant="outline" color="neutral" :icon="betForm.selectedSort === 'asc' ? 'i-lucide-arrow-up' : 'i-lucide-arrow-down'" @click="betForm.selectedSort = betForm.selectedSort === 'asc' ? 'desc' : 'asc'" />
         </UButtonGroup>
       </div>
-      <UButton label="Erstellen" icon="i-lucide-circle-fading-plus" variant="outline" size="sm" to="/add-bet" />
+      <UButton label="Erstellen" icon="i-lucide-circle-fading-plus" variant="outline" size="sm" @click="useFormStore().$reset(), useOverlay().create(LazyBetsAddBetDialog).open()" />
     </div>
     <div class="flex-1 overflow-y-auto px-5 mt-4">
       <BetsBetCard v-for="bet in getBets" :key="bet.id" :bet="bet" />
