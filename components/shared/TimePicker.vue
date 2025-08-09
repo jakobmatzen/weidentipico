@@ -4,7 +4,7 @@ const time = defineModel<{ hours: number, minutes: number }>()
 
 <template>
   <UPopover>
-    <UButton color="neutral" variant="outline" class="w-full" :class="!time ? 'text-dimmed' : ''">
+    <UButton color="neutral" variant="outline" class="w-full" size="sm" :class="!time ? 'text-dimmed' : ''">
       {{ time ? `${time.hours}:${time.minutes === 0 ? '00' : time.minutes < 10 ? `0${time.minutes}`
         : time.minutes} Uhr` : 'Uhrzeit...' }}
     </UButton>

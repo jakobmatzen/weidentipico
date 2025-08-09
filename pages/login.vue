@@ -29,6 +29,6 @@ async function login() {
     <UFormField label="Passwort" class="mt-2">
       <UInput v-model="loginForm.password" type="password" />
     </UFormField>
-    <UButton label="Login" class="mt-4" @click="login()" />
+    <UButton label="Login" class="mt-4" size="sm" @click="login()" />
   </div>
 </template>

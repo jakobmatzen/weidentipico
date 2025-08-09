@@ -74,7 +74,7 @@ function inputValidation(deadline: Date) {
       <UInput v-model="betForm.title" class="w-full" />
     </UFormField>
     <UFormField label="Frist" class="w-full mt-4">
-      <UButtonGroup class="w-full">
+      <UButtonGroup class="w-full" size="sm">
         <SharedDatePicker
           v-model="betForm.date"
           :min-value="new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate())"
@@ -94,7 +94,7 @@ function inputValidation(deadline: Date) {
       </UFormField>
     </div>
     <div class="flex justify-center mt-6 w-full">
-      <UButton label="Erstellen" @click="createBet()" />
+      <UButton label="Erstellen" size="sm" @click="createBet()" />
     </div>
   </div>
 </template>

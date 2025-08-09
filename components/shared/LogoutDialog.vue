@@ -18,8 +18,8 @@ function logout() {
     </template>
     <template #footer>
       <div class="flex justify-end gap-2">
-        <UButton label="Abbrechen" variant="outline" color="neutral" @click="emit('close')" />
-        <UButton label="Abmelden" @click="logout()" />
+        <UButton label="Abbrechen" variant="outline" color="neutral" size="sm" @click="emit('close')" />
+        <UButton label="Abmelden" size="sm" @click="logout()" />
       </div>
     </template>
   </UModal>

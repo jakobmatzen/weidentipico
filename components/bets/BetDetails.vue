@@ -96,8 +96,8 @@ async function placeBet() {
       </div>
     </template>
     <template #footer="{ close }">
-      <UButton label="Schließen" variant="outline" color="neutral" @click="close()" />
-      <UButton label="Reingehen" color="primary" class="ml-2" @click="placeBet()" />
+      <UButton label="Schließen" variant="outline" color="neutral" size="sm" @click="close()" />
+      <UButton label="Reingehen" color="primary" class="ml-2" size="sm" @click="placeBet()" />
     </template>
   </UModal>
 </template>

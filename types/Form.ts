@@ -13,4 +13,6 @@ export interface BetForm {
     minutes: number
   }
   amount: number
+  selectedBetFilterOption: string
+  selectedSort: string
 }

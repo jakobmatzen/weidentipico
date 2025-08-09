@@ -21,7 +21,9 @@ export const useFormStore = defineStore('formStore', {
         hours: new Date().getHours(),
         minutes: new Date().getMinutes()
       },
-      amount: 1
+      amount: 1,
+      selectedBetFilterOption: 'deadlineAt',
+      selectedSort: 'asc'
     }
   }),
   persist: true

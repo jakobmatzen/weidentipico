@@ -38,7 +38,7 @@ function update() {
 <template>
   <UPopover>
     <UButton
-      color="neutral" variant="outline" class="w-full"
+      color="neutral" variant="outline" class="w-full" size="sm"
       :class="!modelValue && !props.placeholder ? 'text-dimmed' : ''"
     >
       {{ modelValue ? df.format(modelValue.toDate(getLocalTimeZone())) : props.placeholder ? props.placeholder
