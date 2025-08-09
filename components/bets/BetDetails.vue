@@ -28,6 +28,10 @@ watch(() => betForm.value.amount, () => {
 })
 
 async function placeBet() {
+  if (props.bet.deadlineAt < new Date()) {
+    useNotificationStore().addError('Die Wette ist bereits abgelaufen. Bitte lade die Seite neu.')
+    return
+  }
   const betEntry = new BetEntry({
     optionId: selectedOption.value as number,
     userId: user.value?.id!,

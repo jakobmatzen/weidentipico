@@ -12,6 +12,9 @@ export const betRouter = router({
         },
         include: {
           betOptions: {
+            orderBy: {
+              id: 'asc'
+            },
             include: {
               betEntries: true
             }

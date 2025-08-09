@@ -13,7 +13,23 @@ export const useBetStore = defineStore('betStore', {
     bets: []
   }),
   getters: {
-    getBets: state => state.bets
+    getBets: (state) => {
+      const userId = useUserStore().user?.id
+      return state.bets.filter(bet => {
+        if (bet.deadlineAt < new Date()) {
+          return false
+        }
+        if (userId && bet.betOptions) {
+          const userHasBet = bet.betOptions.some(option => 
+            option.betEntries?.some(entry => entry.userId === userId)
+          )
+          if (userHasBet) {
+            return false
+          }
+        }
+        return true
+      })
+    }
   },
   actions: {
     async fetchData() {
