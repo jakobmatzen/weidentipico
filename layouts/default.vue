@@ -10,27 +10,21 @@ const links = computed<NavigationMenuItem[]>(() => [[{
   to: '/'
 }, {
   label: 'Marktplatz',
-  icon: 'i-lucide-store',
-  class: 'cursor-pointer',
+  icon: 'i-lucide-store'
+}, {
+  label: 'Meins',
+  icon: 'i-lucide-user',
   defaultOpen: true,
   children: [{
-    label: 'Angebote',
-    icon: 'i-lucide-tags',
+    label: 'Wetten',
+    icon: 'i-lucide-dices',
   }, {
-    label: 'Inserieren',
-    icon: 'i-lucide-list-plus',
+    label: 'Marktplatz',
+    icon: 'i-lucide-store',
   }]
 }, {
   label: 'Leaderboard',
   icon: 'i-lucide-chart-no-axes-column',
-}, {
-  label: 'Meins',
-  icon: 'i-lucide-user',
-}, {
-  label: 'Wetten erstellen',
-  icon: 'i-lucide-circle-fading-plus',
-  to: '/add-bet',
-  class: user.value?.role !== 1 ? 'hidden' : ''
 }]])
 </script>
 
