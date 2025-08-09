@@ -1,10 +1,10 @@
 import { router } from '../init'
-import { userRouter } from './users'
 import { betRouter } from './bets'
+import { userRouter } from './users'
 
 export const appRouter = router({
-    bets: betRouter,
-    users: userRouter
+  bets: betRouter,
+  users: userRouter
 })
 
 // export type definition of API

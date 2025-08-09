@@ -1,56 +1,54 @@
-
 /**
  * Client
-**/
+ */
 
-import * as runtime from './runtime/library.js';
+import * as runtime from './runtime/library.js'
 import $Types = runtime.Types // general types
-import $Public = runtime.Types.Public
-import $Utils = runtime.Types.Utils
 import $Extensions = runtime.Types.Extensions
+import $Public = runtime.Types.Public
 import $Result = runtime.Types.Result
+import $Utils = runtime.Types.Utils
 
 export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
-
 /**
  * Model users
- * 
+ *
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 /**
  * Model bets
- * 
+ *
  */
 export type bets = $Result.DefaultSelection<Prisma.$betsPayload>
 /**
  * Model roles
- * 
+ *
  */
 export type roles = $Result.DefaultSelection<Prisma.$rolesPayload>
 /**
  * Model services
- * 
+ *
  */
 export type services = $Result.DefaultSelection<Prisma.$servicesPayload>
 /**
  * Model status
- * 
+ *
  */
 export type status = $Result.DefaultSelection<Prisma.$statusPayload>
 /**
  * Model tradeOffers
- * 
+ *
  */
 export type tradeOffers = $Result.DefaultSelection<Prisma.$tradeOffersPayload>
 /**
  * Model trades
- * 
+ *
  */
 export type trades = $Result.DefaultSelection<Prisma.$tradesPayload>
 /**
  * Model userWallets
- * 
+ *
  */
 export type userWallets = $Result.DefaultSelection<Prisma.$userWalletsPayload>
 /**
@@ -85,7 +83,7 @@ export class PrismaClient<
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
 
-    /**
+  /**
    * ##  Prisma Client ʲˢ
    *
    * Type-safe database client for TypeScript & Node.js
@@ -100,18 +98,18 @@ export class PrismaClient<
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
-  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  constructor(optionsArg?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>)
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient
 
   /**
    * Connect with the database
    */
-  $connect(): $Utils.JsPromise<void>;
+  $connect(): $Utils.JsPromise<void>
 
   /**
    * Disconnect from the database
    */
-  $disconnect(): $Utils.JsPromise<void>;
+  $disconnect(): $Utils.JsPromise<void>
 
   /**
    * Add a middleware
@@ -120,7 +118,7 @@ export class PrismaClient<
    */
   $use(cb: Prisma.Middleware): void
 
-/**
+  /**
    * Executes a prepared raw query and returns the number of affected rows.
    * @example
    * ```
@@ -129,7 +127,7 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
-  $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
+  $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>
 
   /**
    * Executes a raw query and returns the number of affected rows.
@@ -141,7 +139,7 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
-  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
+  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>
 
   /**
    * Performs a prepared raw query and returns the `SELECT` data.
@@ -152,7 +150,7 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
-  $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
+  $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>
 
   /**
    * Performs a raw query and returns the `SELECT` data.
@@ -164,8 +162,7 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
-  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
-
+  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>
 
   /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
@@ -177,117 +174,116 @@ export class PrismaClient<
    *   prisma.user.create({ data: { name: 'Alice' } }),
    * ])
    * ```
-   * 
+   *
    * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
    */
   $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
 
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
-
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
+  $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
     extArgs: ExtArgs
   }>>
 
-      /**
+  /**
    * `prisma.users`: Exposes CRUD operations for the **users** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.users.findMany()
-    * ```
-    */
-  get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Users
+   * const users = await prisma.users.findMany()
+   * ```
+   */
+  get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.bets`: Exposes CRUD operations for the **bets** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Bets
-    * const bets = await prisma.bets.findMany()
-    * ```
-    */
-  get bets(): Prisma.betsDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Bets
+   * const bets = await prisma.bets.findMany()
+   * ```
+   */
+  get bets(): Prisma.betsDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.roles`: Exposes CRUD operations for the **roles** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Roles
-    * const roles = await prisma.roles.findMany()
-    * ```
-    */
-  get roles(): Prisma.rolesDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Roles
+   * const roles = await prisma.roles.findMany()
+   * ```
+   */
+  get roles(): Prisma.rolesDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.services`: Exposes CRUD operations for the **services** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Services
-    * const services = await prisma.services.findMany()
-    * ```
-    */
-  get services(): Prisma.servicesDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Services
+   * const services = await prisma.services.findMany()
+   * ```
+   */
+  get services(): Prisma.servicesDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.status`: Exposes CRUD operations for the **status** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Statuses
-    * const statuses = await prisma.status.findMany()
-    * ```
-    */
-  get status(): Prisma.statusDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Statuses
+   * const statuses = await prisma.status.findMany()
+   * ```
+   */
+  get status(): Prisma.statusDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.tradeOffers`: Exposes CRUD operations for the **tradeOffers** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more TradeOffers
-    * const tradeOffers = await prisma.tradeOffers.findMany()
-    * ```
-    */
-  get tradeOffers(): Prisma.tradeOffersDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more TradeOffers
+   * const tradeOffers = await prisma.tradeOffers.findMany()
+   * ```
+   */
+  get tradeOffers(): Prisma.tradeOffersDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.trades`: Exposes CRUD operations for the **trades** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Trades
-    * const trades = await prisma.trades.findMany()
-    * ```
-    */
-  get trades(): Prisma.tradesDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Trades
+   * const trades = await prisma.trades.findMany()
+   * ```
+   */
+  get trades(): Prisma.tradesDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.userWallets`: Exposes CRUD operations for the **userWallets** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more UserWallets
-    * const userWallets = await prisma.userWallets.findMany()
-    * ```
-    */
-  get userWallets(): Prisma.userWalletsDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more UserWallets
+   * const userWallets = await prisma.userWallets.findMany()
+   * ```
+   */
+  get userWallets(): Prisma.userWalletsDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.betEntries`: Exposes CRUD operations for the **betEntries** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more BetEntries
-    * const betEntries = await prisma.betEntries.findMany()
-    * ```
-    */
-  get betEntries(): Prisma.betEntriesDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more BetEntries
+   * const betEntries = await prisma.betEntries.findMany()
+   * ```
+   */
+  get betEntries(): Prisma.betEntriesDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.betOptions`: Exposes CRUD operations for the **betOptions** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more BetOptions
-    * const betOptions = await prisma.betOptions.findMany()
-    * ```
-    */
-  get betOptions(): Prisma.betOptionsDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more BetOptions
+   * const betOptions = await prisma.betOptions.findMany()
+   * ```
+   */
+  get betOptions(): Prisma.betOptionsDelegate<ExtArgs, ClientOptions>
 }
 
 export namespace Prisma {
@@ -318,8 +314,6 @@ export namespace Prisma {
   export import raw = runtime.raw
   export import Sql = runtime.Sql
 
-
-
   /**
    * Decimal.js
    */
@@ -336,8 +330,8 @@ export namespace Prisma {
   export type MetricHistogramBucket = runtime.MetricHistogramBucket
 
   /**
-  * Extensions
-  */
+   * Extensions
+   */
   export import Extension = $Extensions.UserArgs
   export import getExtensionContext = runtime.Extensions.getExtensionContext
   export import Args = $Public.Args
@@ -349,7 +343,7 @@ export namespace Prisma {
    * Prisma Client JS version: 6.12.0
    * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
    */
-  export type PrismaVersion = {
+  export interface PrismaVersion {
     client: string
   }
 
@@ -358,7 +352,6 @@ export namespace Prisma {
   /**
    * Utility Types
    */
-
 
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
@@ -374,36 +367,36 @@ export namespace Prisma {
    */
   namespace NullTypes {
     /**
-    * Type of `Prisma.DbNull`.
-    *
-    * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    *
-    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
-    */
+     * Type of `Prisma.DbNull`.
+     *
+     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
+     *
+     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+     */
     class DbNull {
       private DbNull: never
       private constructor()
     }
 
     /**
-    * Type of `Prisma.JsonNull`.
-    *
-    * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    *
-    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
-    */
+     * Type of `Prisma.JsonNull`.
+     *
+     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
+     *
+     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+     */
     class JsonNull {
       private JsonNull: never
       private constructor()
     }
 
     /**
-    * Type of `Prisma.AnyNull`.
-    *
-    * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    *
-    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
-    */
+     * Type of `Prisma.AnyNull`.
+     *
+     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
+     *
+     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+     */
     class AnyNull {
       private AnyNull: never
       private constructor()
@@ -431,12 +424,12 @@ export namespace Prisma {
    */
   export const AnyNull: NullTypes.AnyNull
 
-  type SelectAndInclude = {
+  interface SelectAndInclude {
     select: any
     include: any
   }
 
-  type SelectAndOmit = {
+  interface SelectAndOmit {
     select: any
     omit: any
   }
@@ -444,7 +437,7 @@ export namespace Prisma {
   /**
    * Get the type of the value, that the Promise holds.
    */
-  export type PromiseType<T extends PromiseLike<any>> = T extends PromiseLike<infer U> ? U : T;
+  export type PromiseType<T extends PromiseLike<any>> = T extends PromiseLike<infer U> ? U : T
 
   /**
    * Get the return type of a function which returns a Promise.
@@ -455,11 +448,10 @@ export namespace Prisma {
    * From T, pick a set of properties whose keys are in the union K
    */
   type Prisma__Pick<T, K extends keyof T> = {
-      [P in K]: T[P];
-  };
+    [P in K]: T[P];
+  }
 
-
-  export type Enumerable<T> = T | Array<T>;
+  export type Enumerable<T> = T | Array<T>
 
   export type RequiredKeys<T> = {
     [K in keyof T]-?: {} extends Prisma__Pick<T, K> ? never : K
@@ -477,7 +469,7 @@ export namespace Prisma {
    */
   export type Subset<T, U> = {
     [key in keyof T]: key extends keyof U ? T[key] : never;
-  };
+  }
 
   /**
    * SelectSubset
@@ -487,11 +479,11 @@ export namespace Prisma {
   export type SelectSubset<T, U> = {
     [key in keyof T]: key extends keyof U ? T[key] : never
   } &
-    (T extends SelectAndInclude
-      ? 'Please either choose `select` or `include`.'
-      : T extends SelectAndOmit
-        ? 'Please either choose `select` or `omit`.'
-        : {})
+  (T extends SelectAndInclude
+    ? 'Please either choose `select` or `include`.'
+    : T extends SelectAndOmit
+      ? 'Please either choose `select` or `omit`.'
+      : {})
 
   /**
    * Subset + Intersection
@@ -500,9 +492,9 @@ export namespace Prisma {
   export type SubsetIntersection<T, U, K> = {
     [key in keyof T]: key extends keyof U ? T[key] : never
   } &
-    K
+  K
 
-  type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+  type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never }
 
   /**
    * XOR is needed to have a real mutually exclusive union type
@@ -510,26 +502,24 @@ export namespace Prisma {
    */
   type XOR<T, U> =
     T extends object ?
-    U extends object ?
+      U extends object ?
       (Without<T, U> & U) | (Without<U, T> & T)
-    : U : T
-
+        : U : T
 
   /**
    * Is T a Record?
    */
   type IsObject<T extends any> = T extends Array<any>
-  ? False
-  : T extends Date
-  ? False
-  : T extends Uint8Array
-  ? False
-  : T extends BigInt
-  ? False
-  : T extends object
-  ? True
-  : False
-
+    ? False
+    : T extends Date
+      ? False
+      : T extends Uint8Array
+        ? False
+        : T extends bigint
+          ? False
+          : T extends object
+            ? True
+            : False
 
   /**
    * If it's T[], return T
@@ -571,7 +561,7 @@ export namespace Prisma {
     [K in keyof O]: O[K] extends undefined ? At<O1, K> : O[K]
   } & {}
 
-  /** Helper Types for "Merge" **/
+  /** Helper Types for "Merge" */
   export type IntersectOf<U extends Union> = (
     U extends unknown ? (k: U) => void : never
   ) extends (k: infer I) => void
@@ -579,54 +569,55 @@ export namespace Prisma {
     : never
 
   export type Overwrite<O extends object, O1 extends object> = {
-      [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
-  } & {};
+    [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
+  } & {}
 
   type _Merge<U extends object> = IntersectOf<Overwrite<U, {
-      [K in keyof U]-?: At<U, K>;
-  }>>;
+    [K in keyof U]-?: At<U, K>;
+  }>>
 
-  type Key = string | number | symbol;
-  type AtBasic<O extends object, K extends Key> = K extends keyof O ? O[K] : never;
-  type AtStrict<O extends object, K extends Key> = O[K & keyof O];
-  type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
+  type Key = string | number | symbol
+  type AtBasic<O extends object, K extends Key> = K extends keyof O ? O[K] : never
+  type AtStrict<O extends object, K extends Key> = O[K & keyof O]
+  type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never
   export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
-      1: AtStrict<O, K>;
-      0: AtLoose<O, K>;
-  }[strict];
+    1: AtStrict<O, K>
+    0: AtLoose<O, K>
+  }[strict]
 
   export type ComputeRaw<A extends any> = A extends Function ? A : {
     [K in keyof A]: A[K];
-  } & {};
+  } & {}
 
   export type OptionalFlat<O> = {
     [K in keyof O]?: O[K];
-  } & {};
+  } & {}
 
   type _Record<K extends keyof any, T> = {
     [P in K]: T;
-  };
+  }
 
   // cause typescript not to expand types and preserve names
-  type NoExpand<T> = T extends unknown ? T : never;
+  type NoExpand<T> = T extends unknown ? T : never
 
   // this type assumes the passed object is entirely optional
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
-    ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
-    : never>;
+      ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
+      | { [P in keyof O as P extends K ? P : never]-?: O[P] } & O
+      : never
+  >
 
-  type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
+  type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never
 
-  export type Strict<U extends object> = ComputeRaw<_Strict<U>>;
-  /** End Helper Types for "Merge" **/
+  export type Strict<U extends object> = ComputeRaw<_Strict<U>>
+  /** End Helper Types for "Merge" */
 
-  export type Merge<U extends object> = ComputeRaw<_Merge<Strict<U>>>;
+  export type Merge<U extends object> = ComputeRaw<_Merge<Strict<U>>>
 
   /**
   A [[Boolean]]
-  */
+   */
   export type Boolean = True | False
 
   // /**
@@ -636,7 +627,7 @@ export namespace Prisma {
 
   /**
   0
-  */
+   */
   export type False = 0
 
   export type Not<B extends Boolean> = {
@@ -647,8 +638,8 @@ export namespace Prisma {
   export type Extends<A1 extends any, A2 extends any> = [A1] extends [never]
     ? 0 // anything `never` is false
     : A1 extends A2
-    ? 1
-    : 0
+      ? 1
+      : 0
 
   export type Has<U extends Union, U1 extends Union> = Not<
     Extends<Exclude<U1, U>, U1>
@@ -667,11 +658,9 @@ export namespace Prisma {
 
   export type Keys<U extends Union> = U extends unknown ? keyof U : never
 
-  type Cast<A, B> = A extends B ? A : B;
+  type Cast<A, B> = A extends B ? A : B
 
-  export const type: unique symbol;
-
-
+  export const type: unique symbol
 
   /**
    * Used by group by
@@ -694,14 +683,14 @@ export namespace Prisma {
       Extends<'NOT', K>
     > extends True
       ? // infer is only needed to not hit TS limit
-        // based on the brilliant idea of Pierre-Antoine Mills
-        // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
-        T[K] extends infer TK
+    // based on the brilliant idea of Pierre-Antoine Mills
+    // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
+      T[K] extends infer TK
         ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
         : never
       : {} extends FieldPaths<T[K]>
-      ? never
-      : K
+          ? never
+          : K
   }[keyof T]
 
   /**
@@ -721,33 +710,30 @@ export namespace Prisma {
    */
   type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}` ? never : T
 
-
   export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>
 
   type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>
 
-
   export const ModelName: {
-    users: 'users',
-    bets: 'bets',
-    roles: 'roles',
-    services: 'services',
-    status: 'status',
-    tradeOffers: 'tradeOffers',
-    trades: 'trades',
-    userWallets: 'userWallets',
-    betEntries: 'betEntries',
+    users: 'users'
+    bets: 'bets'
+    roles: 'roles'
+    services: 'services'
+    status: 'status'
+    tradeOffers: 'tradeOffers'
+    trades: 'trades'
+    userWallets: 'userWallets'
+    betEntries: 'betEntries'
     betOptions: 'betOptions'
-  };
+  }
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
 
-
-  export type Datasources = {
+  export interface Datasources {
     db?: Datasource
   }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{ extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
     returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
   }
 
@@ -756,7 +742,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "bets" | "roles" | "services" | "status" | "tradeOffers" | "trades" | "userWallets" | "betEntries" | "betOptions"
+      modelProps: 'users' | 'bets' | 'roles' | 'services' | 'status' | 'tradeOffers' | 'trades' | 'userWallets' | 'betEntries' | 'betOptions'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1506,25 +1492,25 @@ export namespace Prisma {
       payload: any
       operations: {
         $executeRaw: {
-          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]]
           result: any
         }
         $executeRawUnsafe: {
-          args: [query: string, ...values: any[]],
+          args: [query: string, ...values: any[]]
           result: any
         }
         $queryRaw: {
-          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]]
           result: any
         }
         $queryRawUnsafe: {
-          args: [query: string, ...values: any[]],
+          args: [query: string, ...values: any[]]
           result: any
         }
       }
     }
   }
-  export const defineExtension: $Extensions.ExtendsHook<"define", Prisma.TypeMapCb, $Extensions.DefaultArgs>
+  export const defineExtension: $Extensions.ExtendsHook<'define', Prisma.TypeMapCb, $Extensions.DefaultArgs>
   export type DefaultPrismaClient = PrismaClient
   export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
   export interface PrismaClientOptions {
@@ -1545,7 +1531,7 @@ export namespace Prisma {
      * ```
      * // Defaults to stdout
      * log: ['query', 'info', 'warn', 'error']
-     * 
+     *
      * // Emit as events
      * log: [
      *   { emit: 'stdout', level: 'query' },
@@ -1569,7 +1555,7 @@ export namespace Prisma {
     }
     /**
      * Global configuration for omitting model fields by default.
-     * 
+     *
      * @example
      * ```
      * const prisma = new PrismaClient({
@@ -1583,7 +1569,7 @@ export namespace Prisma {
      */
     omit?: Prisma.GlobalOmitConfig
   }
-  export type GlobalOmitConfig = {
+  export interface GlobalOmitConfig {
     users?: usersOmit
     bets?: betsOmit
     roles?: rolesOmit
@@ -1598,7 +1584,7 @@ export namespace Prisma {
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
-  export type LogDefinition = {
+  export interface LogDefinition {
     level: LogLevel
     emit: 'stdout' | 'event'
   }
@@ -1608,7 +1594,7 @@ export namespace Prisma {
     GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
     : never
 
-  export type QueryEvent = {
+  export interface QueryEvent {
     timestamp: Date
     query: string
     params: string
@@ -1616,13 +1602,12 @@ export namespace Prisma {
     target: string
   }
 
-  export type LogEvent = {
+  export interface LogEvent {
     timestamp: Date
     message: string
     target: string
   }
   /* End Types for Logging */
-
 
   export type PrismaAction =
     | 'findUnique'
@@ -1650,7 +1635,7 @@ export namespace Prisma {
   /**
    * These options are being passed into the middleware as "params"
    */
-  export type MiddlewareParams = {
+  export interface MiddlewareParams {
     model?: ModelName
     action: PrismaAction
     args: any
@@ -1667,14 +1652,14 @@ export namespace Prisma {
   ) => $Utils.JsPromise<T>
 
   // tested in getLogLevel.test.ts
-  export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
+  export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined
 
   /**
    * `PrismaClient` proxy available in interactive transactions.
    */
   export type TransactionClient = Omit<Prisma.DefaultPrismaClient, runtime.ITXClientDenyList>
 
-  export type Datasource = {
+  export interface Datasource {
     url?: string
   }
 
@@ -1682,19 +1667,18 @@ export namespace Prisma {
    * Count Types
    */
 
-
   /**
    * Count Type UsersCountOutputType
    */
 
-  export type UsersCountOutputType = {
+  export interface UsersCountOutputType {
     betEntries: number
     tradeOffers: number
     trades_trades_customerIdTousers: number
     trades_trades_supplierIdTousers: number
   }
 
-  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betEntries?: boolean | UsersCountOutputTypeCountBetEntriesArgs
     tradeOffers?: boolean | UsersCountOutputTypeCountTradeOffersArgs
     trades_trades_customerIdTousers?: boolean | UsersCountOutputTypeCountTrades_trades_customerIdTousersArgs
@@ -1705,7 +1689,7 @@ export namespace Prisma {
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the UsersCountOutputType
      */
@@ -1715,41 +1699,40 @@ export namespace Prisma {
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountBetEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface UsersCountOutputTypeCountBetEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: betEntriesWhereInput
   }
 
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountTradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface UsersCountOutputTypeCountTradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: tradeOffersWhereInput
   }
 
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountTrades_trades_customerIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface UsersCountOutputTypeCountTrades_trades_customerIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: tradesWhereInput
   }
 
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountTrades_trades_supplierIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface UsersCountOutputTypeCountTrades_trades_supplierIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: tradesWhereInput
   }
-
 
   /**
    * Count Type BetsCountOutputType
    */
 
-  export type BetsCountOutputType = {
+  export interface BetsCountOutputType {
     betOptions: number
   }
 
-  export type BetsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betOptions?: boolean | BetsCountOutputTypeCountBetOptionsArgs
   }
 
@@ -1757,7 +1740,7 @@ export namespace Prisma {
   /**
    * BetsCountOutputType without action
    */
-  export type BetsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the BetsCountOutputType
      */
@@ -1767,20 +1750,19 @@ export namespace Prisma {
   /**
    * BetsCountOutputType without action
    */
-  export type BetsCountOutputTypeCountBetOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetsCountOutputTypeCountBetOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: betOptionsWhereInput
   }
-
 
   /**
    * Count Type RolesCountOutputType
    */
 
-  export type RolesCountOutputType = {
+  export interface RolesCountOutputType {
     users: number
   }
 
-  export type RolesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface RolesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     users?: boolean | RolesCountOutputTypeCountUsersArgs
   }
 
@@ -1788,7 +1770,7 @@ export namespace Prisma {
   /**
    * RolesCountOutputType without action
    */
-  export type RolesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface RolesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the RolesCountOutputType
      */
@@ -1798,20 +1780,19 @@ export namespace Prisma {
   /**
    * RolesCountOutputType without action
    */
-  export type RolesCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface RolesCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: usersWhereInput
   }
-
 
   /**
    * Count Type StatusCountOutputType
    */
 
-  export type StatusCountOutputType = {
+  export interface StatusCountOutputType {
     bets_bets_statusTostatus: number
   }
 
-  export type StatusCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface StatusCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     bets_bets_statusTostatus?: boolean | StatusCountOutputTypeCountBets_bets_statusTostatusArgs
   }
 
@@ -1819,7 +1800,7 @@ export namespace Prisma {
   /**
    * StatusCountOutputType without action
    */
-  export type StatusCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface StatusCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the StatusCountOutputType
      */
@@ -1829,20 +1810,19 @@ export namespace Prisma {
   /**
    * StatusCountOutputType without action
    */
-  export type StatusCountOutputTypeCountBets_bets_statusTostatusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface StatusCountOutputTypeCountBets_bets_statusTostatusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: betsWhereInput
   }
-
 
   /**
    * Count Type TradesCountOutputType
    */
 
-  export type TradesCountOutputType = {
+  export interface TradesCountOutputType {
     tradeOffers: number
   }
 
-  export type TradesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface TradesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     tradeOffers?: boolean | TradesCountOutputTypeCountTradeOffersArgs
   }
 
@@ -1850,7 +1830,7 @@ export namespace Prisma {
   /**
    * TradesCountOutputType without action
    */
-  export type TradesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface TradesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the TradesCountOutputType
      */
@@ -1860,20 +1840,19 @@ export namespace Prisma {
   /**
    * TradesCountOutputType without action
    */
-  export type TradesCountOutputTypeCountTradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface TradesCountOutputTypeCountTradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: tradeOffersWhereInput
   }
-
 
   /**
    * Count Type BetOptionsCountOutputType
    */
 
-  export type BetOptionsCountOutputType = {
+  export interface BetOptionsCountOutputType {
     betEntries: number
   }
 
-  export type BetOptionsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetOptionsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betEntries?: boolean | BetOptionsCountOutputTypeCountBetEntriesArgs
   }
 
@@ -1881,7 +1860,7 @@ export namespace Prisma {
   /**
    * BetOptionsCountOutputType without action
    */
-  export type BetOptionsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetOptionsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the BetOptionsCountOutputType
      */
@@ -1891,10 +1870,9 @@ export namespace Prisma {
   /**
    * BetOptionsCountOutputType without action
    */
-  export type BetOptionsCountOutputTypeCountBetEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetOptionsCountOutputTypeCountBetEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: betEntriesWhereInput
   }
-
 
   /**
    * Models
@@ -1904,7 +1882,7 @@ export namespace Prisma {
    * Model users
    */
 
-  export type AggregateUsers = {
+  export interface AggregateUsers {
     _count: UsersCountAggregateOutputType | null
     _avg: UsersAvgAggregateOutputType | null
     _sum: UsersSumAggregateOutputType | null
@@ -1912,26 +1890,17 @@ export namespace Prisma {
     _max: UsersMaxAggregateOutputType | null
   }
 
-  export type UsersAvgAggregateOutputType = {
+  export interface UsersAvgAggregateOutputType {
     id: number | null
     role: number | null
   }
 
-  export type UsersSumAggregateOutputType = {
+  export interface UsersSumAggregateOutputType {
     id: number | null
     role: number | null
   }
 
-  export type UsersMinAggregateOutputType = {
-    id: number | null
-    firstName: string | null
-    lastName: string | null
-    username: string | null
-    password: string | null
-    role: number | null
-  }
-
-  export type UsersMaxAggregateOutputType = {
+  export interface UsersMinAggregateOutputType {
     id: number | null
     firstName: string | null
     lastName: string | null
@@ -1940,7 +1909,16 @@ export namespace Prisma {
     role: number | null
   }
 
-  export type UsersCountAggregateOutputType = {
+  export interface UsersMaxAggregateOutputType {
+    id: number | null
+    firstName: string | null
+    lastName: string | null
+    username: string | null
+    password: string | null
+    role: number | null
+  }
+
+  export interface UsersCountAggregateOutputType {
     id: number
     firstName: number
     lastName: number
@@ -1950,27 +1928,17 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type UsersAvgAggregateInputType = {
+  export interface UsersAvgAggregateInputType {
     id?: true
     role?: true
   }
 
-  export type UsersSumAggregateInputType = {
+  export interface UsersSumAggregateInputType {
     id?: true
     role?: true
   }
 
-  export type UsersMinAggregateInputType = {
-    id?: true
-    firstName?: true
-    lastName?: true
-    username?: true
-    password?: true
-    role?: true
-  }
-
-  export type UsersMaxAggregateInputType = {
+  export interface UsersMinAggregateInputType {
     id?: true
     firstName?: true
     lastName?: true
@@ -1979,7 +1947,16 @@ export namespace Prisma {
     role?: true
   }
 
-  export type UsersCountAggregateInputType = {
+  export interface UsersMaxAggregateInputType {
+    id?: true
+    firstName?: true
+    lastName?: true
+    username?: true
+    password?: true
+    role?: true
+  }
+
+  export interface UsersCountAggregateInputType {
     id?: true
     firstName?: true
     lastName?: true
@@ -1989,79 +1966,76 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which users to aggregate.
      */
     where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of users to fetch.
      */
     orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned users
-    **/
+     */
     _count?: true | UsersCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: UsersAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: UsersSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: UsersMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: UsersMaxAggregateInputType
   }
 
   export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
-        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateUsers[P]>
       : GetScalarType<T[P], AggregateUsers[P]>
   }
 
-
-
-
-  export type usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: usersWhereInput
     orderBy?: usersOrderByWithAggregationInput | usersOrderByWithAggregationInput[]
     by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
@@ -2075,7 +2049,7 @@ export namespace Prisma {
     _max?: UsersMaxAggregateInputType
   }
 
-  export type UsersGroupByOutputType = {
+  export interface UsersGroupByOutputType {
     id: number
     firstName: string
     lastName: string
@@ -2092,16 +2066,15 @@ export namespace Prisma {
   type GetUsersGroupByPayload<T extends usersGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<UsersGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UsersGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], UsersGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], UsersGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -2117,7 +2090,7 @@ export namespace Prisma {
     userWallets?: boolean | users$userWalletsArgs<ExtArgs>
     roles?: boolean | users$rolesArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["users"]>
+  }, ExtArgs['result']['users']>
 
   export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -2127,7 +2100,7 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     roles?: boolean | users$rolesArgs<ExtArgs>
-  }, ExtArgs["result"]["users"]>
+  }, ExtArgs['result']['users']>
 
   export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -2137,9 +2110,9 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     roles?: boolean | users$rolesArgs<ExtArgs>
-  }, ExtArgs["result"]["users"]>
+  }, ExtArgs['result']['users']>
 
-  export type usersSelectScalar = {
+  export interface usersSelectScalar {
     id?: boolean
     firstName?: boolean
     lastName?: boolean
@@ -2148,8 +2121,8 @@ export namespace Prisma {
     role?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "username" | "password" | "role", ExtArgs["result"]["users"]>
-  export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'firstName' | 'lastName' | 'username' | 'password' | 'role', ExtArgs['result']['users']>
+  export interface usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betEntries?: boolean | users$betEntriesArgs<ExtArgs>
     tradeOffers?: boolean | users$tradeOffersArgs<ExtArgs>
     trades_trades_customerIdTousers?: boolean | users$trades_trades_customerIdTousersArgs<ExtArgs>
@@ -2158,15 +2131,15 @@ export namespace Prisma {
     roles?: boolean | users$rolesArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     roles?: boolean | users$rolesArgs<ExtArgs>
   }
-  export type usersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     roles?: boolean | users$rolesArgs<ExtArgs>
   }
 
-  export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "users"
+  export interface $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'users'
     objects: {
       betEntries: Prisma.$betEntriesPayload<ExtArgs>[]
       tradeOffers: Prisma.$tradeOffersPayload<ExtArgs>[]
@@ -2182,7 +2155,7 @@ export namespace Prisma {
       username: string
       password: string
       role: number | null
-    }, ExtArgs["result"]["users"]>
+    }, ExtArgs['result']['users']>
     composites: {}
   }
 
@@ -2206,7 +2179,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends usersFindUniqueArgs>(args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends usersFindUniqueArgs>(args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Users that matches the filter or throw an error with `error.code='P2025'`
@@ -2220,7 +2193,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Users that matches the filter.
@@ -2235,7 +2208,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends usersFindFirstArgs>(args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends usersFindFirstArgs>(args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Users that matches the filter or
@@ -2251,7 +2224,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Users that matches the filter.
@@ -2261,15 +2234,15 @@ export namespace Prisma {
      * @example
      * // Get all Users
      * const users = await prisma.users.findMany()
-     * 
+     *
      * // Get first 10 Users
      * const users = await prisma.users.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const usersWithIdOnly = await prisma.users.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends usersFindManyArgs>(args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends usersFindManyArgs>(args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a Users.
@@ -2281,9 +2254,9 @@ export namespace Prisma {
      *     // ... data to create a Users
      *   }
      * })
-     * 
+     *
      */
-    create<T extends usersCreateArgs>(args: SelectSubset<T, usersCreateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends usersCreateArgs>(args: SelectSubset<T, usersCreateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Users.
@@ -2295,7 +2268,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends usersCreateManyArgs>(args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -2309,7 +2282,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many Users and only return the `id`
      * const usersWithIdOnly = await prisma.users.createManyAndReturn({
      *   select: { id: true },
@@ -2319,9 +2292,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends usersCreateManyAndReturnArgs>(args?: SelectSubset<T, usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends usersCreateManyAndReturnArgs>(args?: SelectSubset<T, usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a Users.
@@ -2333,9 +2306,9 @@ export namespace Prisma {
      *     // ... filter to delete one Users
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends usersDeleteArgs>(args: SelectSubset<T, usersDeleteArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends usersDeleteArgs>(args: SelectSubset<T, usersDeleteArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Users.
@@ -2350,9 +2323,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends usersUpdateArgs>(args: SelectSubset<T, usersUpdateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends usersUpdateArgs>(args: SelectSubset<T, usersUpdateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Users.
@@ -2364,7 +2337,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends usersDeleteManyArgs>(args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -2383,7 +2356,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends usersUpdateManyArgs>(args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -2400,7 +2373,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more Users and only return the `id`
      * const usersWithIdOnly = await prisma.users.updateManyAndReturn({
      *   select: { id: true },
@@ -2413,9 +2386,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends usersUpdateManyAndReturnArgs>(args: SelectSubset<T, usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends usersUpdateManyAndReturnArgs>(args: SelectSubset<T, usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one Users.
@@ -2434,8 +2407,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends usersUpsertArgs>(args: SelectSubset<T, usersUpsertArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends usersUpsertArgs>(args: SelectSubset<T, usersUpsertArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of Users.
@@ -2449,7 +2421,7 @@ export namespace Prisma {
      *     // ... the filter for the Users we want to count
      *   }
      * })
-    **/
+     */
     count<T extends usersCountArgs>(
       args?: Subset<T, usersCountArgs>,
     ): Prisma.PrismaPromise<
@@ -2483,7 +2455,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
 
     /**
@@ -2502,8 +2474,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends usersGroupByArgs,
       HasSelectOrTake extends Or<
@@ -2520,52 +2492,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the users model
-   */
-  readonly fields: usersFieldRefs;
+    /**
+     * Fields of the users model
+     */
+    readonly fields: usersFieldRefs
   }
 
   /**
@@ -2575,13 +2547,13 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    betEntries<T extends users$betEntriesArgs<ExtArgs> = {}>(args?: Subset<T, users$betEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    tradeOffers<T extends users$tradeOffersArgs<ExtArgs> = {}>(args?: Subset<T, users$tradeOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    trades_trades_customerIdTousers<T extends users$trades_trades_customerIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, users$trades_trades_customerIdTousersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    trades_trades_supplierIdTousers<T extends users$trades_trades_supplierIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, users$trades_trades_supplierIdTousersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    userWallets<T extends users$userWalletsArgs<ExtArgs> = {}>(args?: Subset<T, users$userWalletsArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    roles<T extends users$rolesArgs<ExtArgs> = {}>(args?: Subset<T, users$rolesArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    betEntries<T extends users$betEntriesArgs<ExtArgs> = {}>(args?: Subset<T, users$betEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
+    tradeOffers<T extends users$tradeOffersArgs<ExtArgs> = {}>(args?: Subset<T, users$tradeOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
+    trades_trades_customerIdTousers<T extends users$trades_trades_customerIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, users$trades_trades_customerIdTousersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
+    trades_trades_supplierIdTousers<T extends users$trades_trades_supplierIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, users$trades_trades_supplierIdTousersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
+    userWallets<T extends users$userWalletsArgs<ExtArgs> = {}>(args?: Subset<T, users$userWalletsArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    roles<T extends users$rolesArgs<ExtArgs> = {}>(args?: Subset<T, users$rolesArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2604,27 +2576,23 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the users model
    */
   interface usersFieldRefs {
-    readonly id: FieldRef<"users", 'Int'>
-    readonly firstName: FieldRef<"users", 'String'>
-    readonly lastName: FieldRef<"users", 'String'>
-    readonly username: FieldRef<"users", 'String'>
-    readonly password: FieldRef<"users", 'String'>
-    readonly role: FieldRef<"users", 'Int'>
+    readonly id: FieldRef<'users', 'Int'>
+    readonly firstName: FieldRef<'users', 'String'>
+    readonly lastName: FieldRef<'users', 'String'>
+    readonly username: FieldRef<'users', 'String'>
+    readonly password: FieldRef<'users', 'String'>
+    readonly role: FieldRef<'users', 'Int'>
   }
-    
 
   // Custom InputTypes
   /**
    * users findUnique
    */
-  export type usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2646,7 +2614,7 @@ export namespace Prisma {
   /**
    * users findUniqueOrThrow
    */
-  export type usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2668,7 +2636,7 @@ export namespace Prisma {
   /**
    * users findFirst
    */
-  export type usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2687,31 +2655,31 @@ export namespace Prisma {
     where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of users to fetch.
      */
     orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for users.
      */
     cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of users.
      */
     distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
@@ -2720,7 +2688,7 @@ export namespace Prisma {
   /**
    * users findFirstOrThrow
    */
-  export type usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2739,31 +2707,31 @@ export namespace Prisma {
     where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of users to fetch.
      */
     orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for users.
      */
     cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of users.
      */
     distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
@@ -2772,7 +2740,7 @@ export namespace Prisma {
   /**
    * users findMany
    */
-  export type usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2791,25 +2759,25 @@ export namespace Prisma {
     where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of users to fetch.
      */
     orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing users.
      */
     cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` users.
      */
     skip?: number
@@ -2819,7 +2787,7 @@ export namespace Prisma {
   /**
    * users create
    */
-  export type usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2841,7 +2809,7 @@ export namespace Prisma {
   /**
    * users createMany
    */
-  export type usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many users.
      */
@@ -2852,7 +2820,7 @@ export namespace Prisma {
   /**
    * users createManyAndReturn
    */
-  export type usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2875,7 +2843,7 @@ export namespace Prisma {
   /**
    * users update
    */
-  export type usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2901,7 +2869,7 @@ export namespace Prisma {
   /**
    * users updateMany
    */
-  export type usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update users.
      */
@@ -2919,7 +2887,7 @@ export namespace Prisma {
   /**
    * users updateManyAndReturn
    */
-  export type usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2949,7 +2917,7 @@ export namespace Prisma {
   /**
    * users upsert
    */
-  export type usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -2979,7 +2947,7 @@ export namespace Prisma {
   /**
    * users delete
    */
-  export type usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -3001,7 +2969,7 @@ export namespace Prisma {
   /**
    * users deleteMany
    */
-  export type usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which users to delete
      */
@@ -3015,7 +2983,7 @@ export namespace Prisma {
   /**
    * users.betEntries
    */
-  export type users$betEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface users$betEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -3039,7 +3007,7 @@ export namespace Prisma {
   /**
    * users.tradeOffers
    */
-  export type users$tradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface users$tradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -3063,7 +3031,7 @@ export namespace Prisma {
   /**
    * users.trades_trades_customerIdTousers
    */
-  export type users$trades_trades_customerIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface users$trades_trades_customerIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -3087,7 +3055,7 @@ export namespace Prisma {
   /**
    * users.trades_trades_supplierIdTousers
    */
-  export type users$trades_trades_supplierIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface users$trades_trades_supplierIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -3111,7 +3079,7 @@ export namespace Prisma {
   /**
    * users.userWallets
    */
-  export type users$userWalletsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface users$userWalletsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -3130,7 +3098,7 @@ export namespace Prisma {
   /**
    * users.roles
    */
-  export type users$rolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface users$rolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -3149,7 +3117,7 @@ export namespace Prisma {
   /**
    * users without action
    */
-  export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -3164,12 +3132,11 @@ export namespace Prisma {
     include?: usersInclude<ExtArgs> | null
   }
 
-
   /**
    * Model bets
    */
 
-  export type AggregateBets = {
+  export interface AggregateBets {
     _count: BetsCountAggregateOutputType | null
     _avg: BetsAvgAggregateOutputType | null
     _sum: BetsSumAggregateOutputType | null
@@ -3177,150 +3144,166 @@ export namespace Prisma {
     _max: BetsMaxAggregateOutputType | null
   }
 
-  export type BetsAvgAggregateOutputType = {
+  export interface BetsAvgAggregateOutputType {
     id: number | null
     status: number | null
+    participants: number | null
+    amount: number | null
   }
 
-  export type BetsSumAggregateOutputType = {
+  export interface BetsSumAggregateOutputType {
     id: number | null
     status: number | null
+    participants: number | null
+    amount: number | null
   }
 
-  export type BetsMinAggregateOutputType = {
-    id: number | null
-    description: string | null
-    createdAt: Date | null
-    deadlineAt: Date | null
-    status: number | null
-  }
-
-  export type BetsMaxAggregateOutputType = {
+  export interface BetsMinAggregateOutputType {
     id: number | null
     description: string | null
     createdAt: Date | null
     deadlineAt: Date | null
     status: number | null
+    participants: number | null
+    amount: number | null
   }
 
-  export type BetsCountAggregateOutputType = {
+  export interface BetsMaxAggregateOutputType {
+    id: number | null
+    description: string | null
+    createdAt: Date | null
+    deadlineAt: Date | null
+    status: number | null
+    participants: number | null
+    amount: number | null
+  }
+
+  export interface BetsCountAggregateOutputType {
     id: number
     description: number
     createdAt: number
     deadlineAt: number
     status: number
+    participants: number
+    amount: number
     _all: number
   }
 
-
-  export type BetsAvgAggregateInputType = {
+  export interface BetsAvgAggregateInputType {
     id?: true
     status?: true
+    participants?: true
+    amount?: true
   }
 
-  export type BetsSumAggregateInputType = {
+  export interface BetsSumAggregateInputType {
     id?: true
     status?: true
+    participants?: true
+    amount?: true
   }
 
-  export type BetsMinAggregateInputType = {
+  export interface BetsMinAggregateInputType {
     id?: true
     description?: true
     createdAt?: true
     deadlineAt?: true
     status?: true
+    participants?: true
+    amount?: true
   }
 
-  export type BetsMaxAggregateInputType = {
+  export interface BetsMaxAggregateInputType {
     id?: true
     description?: true
     createdAt?: true
     deadlineAt?: true
     status?: true
+    participants?: true
+    amount?: true
   }
 
-  export type BetsCountAggregateInputType = {
+  export interface BetsCountAggregateInputType {
     id?: true
     description?: true
     createdAt?: true
     deadlineAt?: true
     status?: true
+    participants?: true
+    amount?: true
     _all?: true
   }
 
-  export type BetsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which bets to aggregate.
      */
     where?: betsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of bets to fetch.
      */
     orderBy?: betsOrderByWithRelationInput | betsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: betsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` bets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` bets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned bets
-    **/
+     */
     _count?: true | BetsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: BetsAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: BetsSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: BetsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: BetsMaxAggregateInputType
   }
 
   export type GetBetsAggregateType<T extends BetsAggregateArgs> = {
-        [P in keyof T & keyof AggregateBets]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateBets]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateBets[P]>
       : GetScalarType<T[P], AggregateBets[P]>
   }
 
-
-
-
-  export type betsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: betsWhereInput
     orderBy?: betsOrderByWithAggregationInput | betsOrderByWithAggregationInput[]
     by: BetsScalarFieldEnum[] | BetsScalarFieldEnum
@@ -3334,12 +3317,14 @@ export namespace Prisma {
     _max?: BetsMaxAggregateInputType
   }
 
-  export type BetsGroupByOutputType = {
+  export interface BetsGroupByOutputType {
     id: number
     description: string
     createdAt: Date
     deadlineAt: Date
     status: number | null
+    participants: number
+    amount: number
     _count: BetsCountAggregateOutputType | null
     _avg: BetsAvgAggregateOutputType | null
     _sum: BetsSumAggregateOutputType | null
@@ -3350,16 +3335,15 @@ export namespace Prisma {
   type GetBetsGroupByPayload<T extends betsGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<BetsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BetsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BetsGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof BetsGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], BetsGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], BetsGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type betsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -3367,10 +3351,12 @@ export namespace Prisma {
     createdAt?: boolean
     deadlineAt?: boolean
     status?: boolean
+    participants?: boolean
+    amount?: boolean
     betOptions?: boolean | bets$betOptionsArgs<ExtArgs>
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
     _count?: boolean | BetsCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bets"]>
+  }, ExtArgs['result']['bets']>
 
   export type betsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -3378,8 +3364,10 @@ export namespace Prisma {
     createdAt?: boolean
     deadlineAt?: boolean
     status?: boolean
+    participants?: boolean
+    amount?: boolean
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
-  }, ExtArgs["result"]["bets"]>
+  }, ExtArgs['result']['bets']>
 
   export type betsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -3387,32 +3375,36 @@ export namespace Prisma {
     createdAt?: boolean
     deadlineAt?: boolean
     status?: boolean
+    participants?: boolean
+    amount?: boolean
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
-  }, ExtArgs["result"]["bets"]>
+  }, ExtArgs['result']['bets']>
 
-  export type betsSelectScalar = {
+  export interface betsSelectScalar {
     id?: boolean
     description?: boolean
     createdAt?: boolean
     deadlineAt?: boolean
     status?: boolean
+    participants?: boolean
+    amount?: boolean
   }
 
-  export type betsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "createdAt" | "deadlineAt" | "status", ExtArgs["result"]["bets"]>
-  export type betsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type betsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'description' | 'createdAt' | 'deadlineAt' | 'status' | 'participants' | 'amount', ExtArgs['result']['bets']>
+  export interface betsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betOptions?: boolean | bets$betOptionsArgs<ExtArgs>
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
     _count?: boolean | BetsCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type betsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
   }
-  export type betsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
   }
 
-  export type $betsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "bets"
+  export interface $betsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'bets'
     objects: {
       betOptions: Prisma.$betOptionsPayload<ExtArgs>[]
       status_bets_statusTostatus: Prisma.$statusPayload<ExtArgs> | null
@@ -3423,7 +3415,9 @@ export namespace Prisma {
       createdAt: Date
       deadlineAt: Date
       status: number | null
-    }, ExtArgs["result"]["bets"]>
+      participants: number
+      amount: number
+    }, ExtArgs['result']['bets']>
     composites: {}
   }
 
@@ -3447,7 +3441,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends betsFindUniqueArgs>(args: SelectSubset<T, betsFindUniqueArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends betsFindUniqueArgs>(args: SelectSubset<T, betsFindUniqueArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Bets that matches the filter or throw an error with `error.code='P2025'`
@@ -3461,7 +3455,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends betsFindUniqueOrThrowArgs>(args: SelectSubset<T, betsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends betsFindUniqueOrThrowArgs>(args: SelectSubset<T, betsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Bets that matches the filter.
@@ -3476,7 +3470,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends betsFindFirstArgs>(args?: SelectSubset<T, betsFindFirstArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends betsFindFirstArgs>(args?: SelectSubset<T, betsFindFirstArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Bets that matches the filter or
@@ -3492,7 +3486,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends betsFindFirstOrThrowArgs>(args?: SelectSubset<T, betsFindFirstOrThrowArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends betsFindFirstOrThrowArgs>(args?: SelectSubset<T, betsFindFirstOrThrowArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Bets that matches the filter.
@@ -3502,15 +3496,15 @@ export namespace Prisma {
      * @example
      * // Get all Bets
      * const bets = await prisma.bets.findMany()
-     * 
+     *
      * // Get first 10 Bets
      * const bets = await prisma.bets.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const betsWithIdOnly = await prisma.bets.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends betsFindManyArgs>(args?: SelectSubset<T, betsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends betsFindManyArgs>(args?: SelectSubset<T, betsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a Bets.
@@ -3522,9 +3516,9 @@ export namespace Prisma {
      *     // ... data to create a Bets
      *   }
      * })
-     * 
+     *
      */
-    create<T extends betsCreateArgs>(args: SelectSubset<T, betsCreateArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends betsCreateArgs>(args: SelectSubset<T, betsCreateArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Bets.
@@ -3536,7 +3530,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends betsCreateManyArgs>(args?: SelectSubset<T, betsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -3550,7 +3544,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many Bets and only return the `id`
      * const betsWithIdOnly = await prisma.bets.createManyAndReturn({
      *   select: { id: true },
@@ -3560,9 +3554,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends betsCreateManyAndReturnArgs>(args?: SelectSubset<T, betsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends betsCreateManyAndReturnArgs>(args?: SelectSubset<T, betsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a Bets.
@@ -3574,9 +3568,9 @@ export namespace Prisma {
      *     // ... filter to delete one Bets
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends betsDeleteArgs>(args: SelectSubset<T, betsDeleteArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends betsDeleteArgs>(args: SelectSubset<T, betsDeleteArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Bets.
@@ -3591,9 +3585,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends betsUpdateArgs>(args: SelectSubset<T, betsUpdateArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends betsUpdateArgs>(args: SelectSubset<T, betsUpdateArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Bets.
@@ -3605,7 +3599,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends betsDeleteManyArgs>(args?: SelectSubset<T, betsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -3624,7 +3618,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends betsUpdateManyArgs>(args: SelectSubset<T, betsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -3641,7 +3635,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more Bets and only return the `id`
      * const betsWithIdOnly = await prisma.bets.updateManyAndReturn({
      *   select: { id: true },
@@ -3654,9 +3648,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends betsUpdateManyAndReturnArgs>(args: SelectSubset<T, betsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends betsUpdateManyAndReturnArgs>(args: SelectSubset<T, betsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one Bets.
@@ -3675,8 +3669,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends betsUpsertArgs>(args: SelectSubset<T, betsUpsertArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends betsUpsertArgs>(args: SelectSubset<T, betsUpsertArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of Bets.
@@ -3690,7 +3683,7 @@ export namespace Prisma {
      *     // ... the filter for the Bets we want to count
      *   }
      * })
-    **/
+     */
     count<T extends betsCountArgs>(
       args?: Subset<T, betsCountArgs>,
     ): Prisma.PrismaPromise<
@@ -3724,7 +3717,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends BetsAggregateArgs>(args: Subset<T, BetsAggregateArgs>): Prisma.PrismaPromise<GetBetsAggregateType<T>>
 
     /**
@@ -3743,8 +3736,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends betsGroupByArgs,
       HasSelectOrTake extends Or<
@@ -3761,52 +3754,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, betsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBetsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the bets model
-   */
-  readonly fields: betsFieldRefs;
+    /**
+     * Fields of the bets model
+     */
+    readonly fields: betsFieldRefs
   }
 
   /**
@@ -3816,9 +3809,9 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__betsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    betOptions<T extends bets$betOptionsArgs<ExtArgs> = {}>(args?: Subset<T, bets$betOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    status_bets_statusTostatus<T extends bets$status_bets_statusTostatusArgs<ExtArgs> = {}>(args?: Subset<T, bets$status_bets_statusTostatusArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    betOptions<T extends bets$betOptionsArgs<ExtArgs> = {}>(args?: Subset<T, bets$betOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
+    status_bets_statusTostatus<T extends bets$status_bets_statusTostatusArgs<ExtArgs> = {}>(args?: Subset<T, bets$status_bets_statusTostatusArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3841,26 +3834,24 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the bets model
    */
   interface betsFieldRefs {
-    readonly id: FieldRef<"bets", 'Int'>
-    readonly description: FieldRef<"bets", 'String'>
-    readonly createdAt: FieldRef<"bets", 'DateTime'>
-    readonly deadlineAt: FieldRef<"bets", 'DateTime'>
-    readonly status: FieldRef<"bets", 'Int'>
+    readonly id: FieldRef<'bets', 'Int'>
+    readonly description: FieldRef<'bets', 'String'>
+    readonly createdAt: FieldRef<'bets', 'DateTime'>
+    readonly deadlineAt: FieldRef<'bets', 'DateTime'>
+    readonly status: FieldRef<'bets', 'Int'>
+    readonly participants: FieldRef<'bets', 'Int'>
+    readonly amount: FieldRef<'bets', 'Int'>
   }
-    
 
   // Custom InputTypes
   /**
    * bets findUnique
    */
-  export type betsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -3882,7 +3873,7 @@ export namespace Prisma {
   /**
    * bets findUniqueOrThrow
    */
-  export type betsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -3904,7 +3895,7 @@ export namespace Prisma {
   /**
    * bets findFirst
    */
-  export type betsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -3923,31 +3914,31 @@ export namespace Prisma {
     where?: betsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of bets to fetch.
      */
     orderBy?: betsOrderByWithRelationInput | betsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for bets.
      */
     cursor?: betsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` bets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` bets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of bets.
      */
     distinct?: BetsScalarFieldEnum | BetsScalarFieldEnum[]
@@ -3956,7 +3947,7 @@ export namespace Prisma {
   /**
    * bets findFirstOrThrow
    */
-  export type betsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -3975,31 +3966,31 @@ export namespace Prisma {
     where?: betsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of bets to fetch.
      */
     orderBy?: betsOrderByWithRelationInput | betsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for bets.
      */
     cursor?: betsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` bets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` bets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of bets.
      */
     distinct?: BetsScalarFieldEnum | BetsScalarFieldEnum[]
@@ -4008,7 +3999,7 @@ export namespace Prisma {
   /**
    * bets findMany
    */
-  export type betsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -4027,25 +4018,25 @@ export namespace Prisma {
     where?: betsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of bets to fetch.
      */
     orderBy?: betsOrderByWithRelationInput | betsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing bets.
      */
     cursor?: betsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` bets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` bets.
      */
     skip?: number
@@ -4055,7 +4046,7 @@ export namespace Prisma {
   /**
    * bets create
    */
-  export type betsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -4077,7 +4068,7 @@ export namespace Prisma {
   /**
    * bets createMany
    */
-  export type betsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many bets.
      */
@@ -4088,7 +4079,7 @@ export namespace Prisma {
   /**
    * bets createManyAndReturn
    */
-  export type betsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -4111,7 +4102,7 @@ export namespace Prisma {
   /**
    * bets update
    */
-  export type betsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -4137,7 +4128,7 @@ export namespace Prisma {
   /**
    * bets updateMany
    */
-  export type betsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update bets.
      */
@@ -4155,7 +4146,7 @@ export namespace Prisma {
   /**
    * bets updateManyAndReturn
    */
-  export type betsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -4185,7 +4176,7 @@ export namespace Prisma {
   /**
    * bets upsert
    */
-  export type betsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -4215,7 +4206,7 @@ export namespace Prisma {
   /**
    * bets delete
    */
-  export type betsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -4237,7 +4228,7 @@ export namespace Prisma {
   /**
    * bets deleteMany
    */
-  export type betsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which bets to delete
      */
@@ -4251,7 +4242,7 @@ export namespace Prisma {
   /**
    * bets.betOptions
    */
-  export type bets$betOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface bets$betOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -4275,7 +4266,7 @@ export namespace Prisma {
   /**
    * bets.status_bets_statusTostatus
    */
-  export type bets$status_bets_statusTostatusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface bets$status_bets_statusTostatusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -4294,7 +4285,7 @@ export namespace Prisma {
   /**
    * bets without action
    */
-  export type betsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -4309,12 +4300,11 @@ export namespace Prisma {
     include?: betsInclude<ExtArgs> | null
   }
 
-
   /**
    * Model roles
    */
 
-  export type AggregateRoles = {
+  export interface AggregateRoles {
     _count: RolesCountAggregateOutputType | null
     _avg: RolesAvgAggregateOutputType | null
     _sum: RolesSumAggregateOutputType | null
@@ -4322,128 +4312,124 @@ export namespace Prisma {
     _max: RolesMaxAggregateOutputType | null
   }
 
-  export type RolesAvgAggregateOutputType = {
+  export interface RolesAvgAggregateOutputType {
     id: number | null
   }
 
-  export type RolesSumAggregateOutputType = {
+  export interface RolesSumAggregateOutputType {
     id: number | null
   }
 
-  export type RolesMinAggregateOutputType = {
-    id: number | null
-    description: string | null
-  }
-
-  export type RolesMaxAggregateOutputType = {
+  export interface RolesMinAggregateOutputType {
     id: number | null
     description: string | null
   }
 
-  export type RolesCountAggregateOutputType = {
+  export interface RolesMaxAggregateOutputType {
+    id: number | null
+    description: string | null
+  }
+
+  export interface RolesCountAggregateOutputType {
     id: number
     description: number
     _all: number
   }
 
-
-  export type RolesAvgAggregateInputType = {
+  export interface RolesAvgAggregateInputType {
     id?: true
   }
 
-  export type RolesSumAggregateInputType = {
+  export interface RolesSumAggregateInputType {
     id?: true
   }
 
-  export type RolesMinAggregateInputType = {
-    id?: true
-    description?: true
-  }
-
-  export type RolesMaxAggregateInputType = {
+  export interface RolesMinAggregateInputType {
     id?: true
     description?: true
   }
 
-  export type RolesCountAggregateInputType = {
+  export interface RolesMaxAggregateInputType {
+    id?: true
+    description?: true
+  }
+
+  export interface RolesCountAggregateInputType {
     id?: true
     description?: true
     _all?: true
   }
 
-  export type RolesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface RolesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which roles to aggregate.
      */
     where?: rolesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of roles to fetch.
      */
     orderBy?: rolesOrderByWithRelationInput | rolesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: rolesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` roles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` roles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned roles
-    **/
+     */
     _count?: true | RolesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: RolesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: RolesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: RolesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: RolesMaxAggregateInputType
   }
 
   export type GetRolesAggregateType<T extends RolesAggregateArgs> = {
-        [P in keyof T & keyof AggregateRoles]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateRoles]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateRoles[P]>
       : GetScalarType<T[P], AggregateRoles[P]>
   }
 
-
-
-
-  export type rolesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: rolesWhereInput
     orderBy?: rolesOrderByWithAggregationInput | rolesOrderByWithAggregationInput[]
     by: RolesScalarFieldEnum[] | RolesScalarFieldEnum
@@ -4457,7 +4443,7 @@ export namespace Prisma {
     _max?: RolesMaxAggregateInputType
   }
 
-  export type RolesGroupByOutputType = {
+  export interface RolesGroupByOutputType {
     id: number
     description: string
     _count: RolesCountAggregateOutputType | null
@@ -4470,56 +4456,55 @@ export namespace Prisma {
   type GetRolesGroupByPayload<T extends rolesGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<RolesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof RolesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], RolesGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof RolesGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], RolesGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], RolesGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type rolesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
     users?: boolean | roles$usersArgs<ExtArgs>
     _count?: boolean | RolesCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["roles"]>
+  }, ExtArgs['result']['roles']>
 
   export type rolesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-  }, ExtArgs["result"]["roles"]>
+  }, ExtArgs['result']['roles']>
 
   export type rolesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-  }, ExtArgs["result"]["roles"]>
+  }, ExtArgs['result']['roles']>
 
-  export type rolesSelectScalar = {
+  export interface rolesSelectScalar {
     id?: boolean
     description?: boolean
   }
 
-  export type rolesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description", ExtArgs["result"]["roles"]>
-  export type rolesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type rolesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'description', ExtArgs['result']['roles']>
+  export interface rolesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     users?: boolean | roles$usersArgs<ExtArgs>
     _count?: boolean | RolesCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type rolesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type rolesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export interface rolesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {}
+  export interface rolesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {}
 
-  export type $rolesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "roles"
+  export interface $rolesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'roles'
     objects: {
       users: Prisma.$usersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       description: string
-    }, ExtArgs["result"]["roles"]>
+    }, ExtArgs['result']['roles']>
     composites: {}
   }
 
@@ -4543,7 +4528,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends rolesFindUniqueArgs>(args: SelectSubset<T, rolesFindUniqueArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends rolesFindUniqueArgs>(args: SelectSubset<T, rolesFindUniqueArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Roles that matches the filter or throw an error with `error.code='P2025'`
@@ -4557,7 +4542,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends rolesFindUniqueOrThrowArgs>(args: SelectSubset<T, rolesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends rolesFindUniqueOrThrowArgs>(args: SelectSubset<T, rolesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Roles that matches the filter.
@@ -4572,7 +4557,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends rolesFindFirstArgs>(args?: SelectSubset<T, rolesFindFirstArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends rolesFindFirstArgs>(args?: SelectSubset<T, rolesFindFirstArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Roles that matches the filter or
@@ -4588,7 +4573,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends rolesFindFirstOrThrowArgs>(args?: SelectSubset<T, rolesFindFirstOrThrowArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends rolesFindFirstOrThrowArgs>(args?: SelectSubset<T, rolesFindFirstOrThrowArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Roles that matches the filter.
@@ -4598,15 +4583,15 @@ export namespace Prisma {
      * @example
      * // Get all Roles
      * const roles = await prisma.roles.findMany()
-     * 
+     *
      * // Get first 10 Roles
      * const roles = await prisma.roles.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const rolesWithIdOnly = await prisma.roles.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends rolesFindManyArgs>(args?: SelectSubset<T, rolesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends rolesFindManyArgs>(args?: SelectSubset<T, rolesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a Roles.
@@ -4618,9 +4603,9 @@ export namespace Prisma {
      *     // ... data to create a Roles
      *   }
      * })
-     * 
+     *
      */
-    create<T extends rolesCreateArgs>(args: SelectSubset<T, rolesCreateArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends rolesCreateArgs>(args: SelectSubset<T, rolesCreateArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Roles.
@@ -4632,7 +4617,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends rolesCreateManyArgs>(args?: SelectSubset<T, rolesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -4646,7 +4631,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many Roles and only return the `id`
      * const rolesWithIdOnly = await prisma.roles.createManyAndReturn({
      *   select: { id: true },
@@ -4656,9 +4641,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends rolesCreateManyAndReturnArgs>(args?: SelectSubset<T, rolesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends rolesCreateManyAndReturnArgs>(args?: SelectSubset<T, rolesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a Roles.
@@ -4670,9 +4655,9 @@ export namespace Prisma {
      *     // ... filter to delete one Roles
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends rolesDeleteArgs>(args: SelectSubset<T, rolesDeleteArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends rolesDeleteArgs>(args: SelectSubset<T, rolesDeleteArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Roles.
@@ -4687,9 +4672,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends rolesUpdateArgs>(args: SelectSubset<T, rolesUpdateArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends rolesUpdateArgs>(args: SelectSubset<T, rolesUpdateArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Roles.
@@ -4701,7 +4686,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends rolesDeleteManyArgs>(args?: SelectSubset<T, rolesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -4720,7 +4705,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends rolesUpdateManyArgs>(args: SelectSubset<T, rolesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -4737,7 +4722,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more Roles and only return the `id`
      * const rolesWithIdOnly = await prisma.roles.updateManyAndReturn({
      *   select: { id: true },
@@ -4750,9 +4735,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends rolesUpdateManyAndReturnArgs>(args: SelectSubset<T, rolesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends rolesUpdateManyAndReturnArgs>(args: SelectSubset<T, rolesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one Roles.
@@ -4771,8 +4756,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends rolesUpsertArgs>(args: SelectSubset<T, rolesUpsertArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends rolesUpsertArgs>(args: SelectSubset<T, rolesUpsertArgs<ExtArgs>>): Prisma__rolesClient<$Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of Roles.
@@ -4786,7 +4770,7 @@ export namespace Prisma {
      *     // ... the filter for the Roles we want to count
      *   }
      * })
-    **/
+     */
     count<T extends rolesCountArgs>(
       args?: Subset<T, rolesCountArgs>,
     ): Prisma.PrismaPromise<
@@ -4820,7 +4804,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends RolesAggregateArgs>(args: Subset<T, RolesAggregateArgs>): Prisma.PrismaPromise<GetRolesAggregateType<T>>
 
     /**
@@ -4839,8 +4823,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends rolesGroupByArgs,
       HasSelectOrTake extends Or<
@@ -4857,52 +4841,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, rolesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRolesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the roles model
-   */
-  readonly fields: rolesFieldRefs;
+    /**
+     * Fields of the roles model
+     */
+    readonly fields: rolesFieldRefs
   }
 
   /**
@@ -4912,8 +4896,8 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__rolesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    users<T extends roles$usersArgs<ExtArgs> = {}>(args?: Subset<T, roles$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    users<T extends roles$usersArgs<ExtArgs> = {}>(args?: Subset<T, roles$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4936,23 +4920,19 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the roles model
    */
   interface rolesFieldRefs {
-    readonly id: FieldRef<"roles", 'Int'>
-    readonly description: FieldRef<"roles", 'String'>
+    readonly id: FieldRef<'roles', 'Int'>
+    readonly description: FieldRef<'roles', 'String'>
   }
-    
 
   // Custom InputTypes
   /**
    * roles findUnique
    */
-  export type rolesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -4974,7 +4954,7 @@ export namespace Prisma {
   /**
    * roles findUniqueOrThrow
    */
-  export type rolesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -4996,7 +4976,7 @@ export namespace Prisma {
   /**
    * roles findFirst
    */
-  export type rolesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5015,31 +4995,31 @@ export namespace Prisma {
     where?: rolesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of roles to fetch.
      */
     orderBy?: rolesOrderByWithRelationInput | rolesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for roles.
      */
     cursor?: rolesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` roles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` roles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of roles.
      */
     distinct?: RolesScalarFieldEnum | RolesScalarFieldEnum[]
@@ -5048,7 +5028,7 @@ export namespace Prisma {
   /**
    * roles findFirstOrThrow
    */
-  export type rolesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5067,31 +5047,31 @@ export namespace Prisma {
     where?: rolesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of roles to fetch.
      */
     orderBy?: rolesOrderByWithRelationInput | rolesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for roles.
      */
     cursor?: rolesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` roles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` roles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of roles.
      */
     distinct?: RolesScalarFieldEnum | RolesScalarFieldEnum[]
@@ -5100,7 +5080,7 @@ export namespace Prisma {
   /**
    * roles findMany
    */
-  export type rolesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5119,25 +5099,25 @@ export namespace Prisma {
     where?: rolesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of roles to fetch.
      */
     orderBy?: rolesOrderByWithRelationInput | rolesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing roles.
      */
     cursor?: rolesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` roles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` roles.
      */
     skip?: number
@@ -5147,7 +5127,7 @@ export namespace Prisma {
   /**
    * roles create
    */
-  export type rolesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5169,7 +5149,7 @@ export namespace Prisma {
   /**
    * roles createMany
    */
-  export type rolesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many roles.
      */
@@ -5180,7 +5160,7 @@ export namespace Prisma {
   /**
    * roles createManyAndReturn
    */
-  export type rolesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5199,7 +5179,7 @@ export namespace Prisma {
   /**
    * roles update
    */
-  export type rolesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5225,7 +5205,7 @@ export namespace Prisma {
   /**
    * roles updateMany
    */
-  export type rolesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update roles.
      */
@@ -5243,7 +5223,7 @@ export namespace Prisma {
   /**
    * roles updateManyAndReturn
    */
-  export type rolesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5269,7 +5249,7 @@ export namespace Prisma {
   /**
    * roles upsert
    */
-  export type rolesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5299,7 +5279,7 @@ export namespace Prisma {
   /**
    * roles delete
    */
-  export type rolesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5321,7 +5301,7 @@ export namespace Prisma {
   /**
    * roles deleteMany
    */
-  export type rolesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which roles to delete
      */
@@ -5335,7 +5315,7 @@ export namespace Prisma {
   /**
    * roles.users
    */
-  export type roles$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface roles$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -5359,7 +5339,7 @@ export namespace Prisma {
   /**
    * roles without action
    */
-  export type rolesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface rolesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the roles
      */
@@ -5374,12 +5354,11 @@ export namespace Prisma {
     include?: rolesInclude<ExtArgs> | null
   }
 
-
   /**
    * Model services
    */
 
-  export type AggregateServices = {
+  export interface AggregateServices {
     _count: ServicesCountAggregateOutputType | null
     _avg: ServicesAvgAggregateOutputType | null
     _sum: ServicesSumAggregateOutputType | null
@@ -5387,128 +5366,124 @@ export namespace Prisma {
     _max: ServicesMaxAggregateOutputType | null
   }
 
-  export type ServicesAvgAggregateOutputType = {
+  export interface ServicesAvgAggregateOutputType {
     id: number | null
   }
 
-  export type ServicesSumAggregateOutputType = {
+  export interface ServicesSumAggregateOutputType {
     id: number | null
   }
 
-  export type ServicesMinAggregateOutputType = {
-    id: number | null
-    description: string | null
-  }
-
-  export type ServicesMaxAggregateOutputType = {
+  export interface ServicesMinAggregateOutputType {
     id: number | null
     description: string | null
   }
 
-  export type ServicesCountAggregateOutputType = {
+  export interface ServicesMaxAggregateOutputType {
+    id: number | null
+    description: string | null
+  }
+
+  export interface ServicesCountAggregateOutputType {
     id: number
     description: number
     _all: number
   }
 
-
-  export type ServicesAvgAggregateInputType = {
+  export interface ServicesAvgAggregateInputType {
     id?: true
   }
 
-  export type ServicesSumAggregateInputType = {
+  export interface ServicesSumAggregateInputType {
     id?: true
   }
 
-  export type ServicesMinAggregateInputType = {
-    id?: true
-    description?: true
-  }
-
-  export type ServicesMaxAggregateInputType = {
+  export interface ServicesMinAggregateInputType {
     id?: true
     description?: true
   }
 
-  export type ServicesCountAggregateInputType = {
+  export interface ServicesMaxAggregateInputType {
+    id?: true
+    description?: true
+  }
+
+  export interface ServicesCountAggregateInputType {
     id?: true
     description?: true
     _all?: true
   }
 
-  export type ServicesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface ServicesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which services to aggregate.
      */
     where?: servicesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of services to fetch.
      */
     orderBy?: servicesOrderByWithRelationInput | servicesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: servicesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` services from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` services.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned services
-    **/
+     */
     _count?: true | ServicesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: ServicesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: ServicesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: ServicesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: ServicesMaxAggregateInputType
   }
 
   export type GetServicesAggregateType<T extends ServicesAggregateArgs> = {
-        [P in keyof T & keyof AggregateServices]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateServices]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateServices[P]>
       : GetScalarType<T[P], AggregateServices[P]>
   }
 
-
-
-
-  export type servicesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: servicesWhereInput
     orderBy?: servicesOrderByWithAggregationInput | servicesOrderByWithAggregationInput[]
     by: ServicesScalarFieldEnum[] | ServicesScalarFieldEnum
@@ -5522,7 +5497,7 @@ export namespace Prisma {
     _max?: ServicesMaxAggregateInputType
   }
 
-  export type ServicesGroupByOutputType = {
+  export interface ServicesGroupByOutputType {
     id: number
     description: string
     _count: ServicesCountAggregateOutputType | null
@@ -5535,46 +5510,45 @@ export namespace Prisma {
   type GetServicesGroupByPayload<T extends servicesGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ServicesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ServicesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ServicesGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof ServicesGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], ServicesGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], ServicesGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type servicesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-  }, ExtArgs["result"]["services"]>
+  }, ExtArgs['result']['services']>
 
   export type servicesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-  }, ExtArgs["result"]["services"]>
+  }, ExtArgs['result']['services']>
 
   export type servicesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-  }, ExtArgs["result"]["services"]>
+  }, ExtArgs['result']['services']>
 
-  export type servicesSelectScalar = {
+  export interface servicesSelectScalar {
     id?: boolean
     description?: boolean
   }
 
-  export type servicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description", ExtArgs["result"]["services"]>
+  export type servicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'description', ExtArgs['result']['services']>
 
-  export type $servicesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "services"
+  export interface $servicesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'services'
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
       description: string
-    }, ExtArgs["result"]["services"]>
+    }, ExtArgs['result']['services']>
     composites: {}
   }
 
@@ -5598,7 +5572,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends servicesFindUniqueArgs>(args: SelectSubset<T, servicesFindUniqueArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends servicesFindUniqueArgs>(args: SelectSubset<T, servicesFindUniqueArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Services that matches the filter or throw an error with `error.code='P2025'`
@@ -5612,7 +5586,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends servicesFindUniqueOrThrowArgs>(args: SelectSubset<T, servicesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends servicesFindUniqueOrThrowArgs>(args: SelectSubset<T, servicesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Services that matches the filter.
@@ -5627,7 +5601,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends servicesFindFirstArgs>(args?: SelectSubset<T, servicesFindFirstArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends servicesFindFirstArgs>(args?: SelectSubset<T, servicesFindFirstArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Services that matches the filter or
@@ -5643,7 +5617,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends servicesFindFirstOrThrowArgs>(args?: SelectSubset<T, servicesFindFirstOrThrowArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends servicesFindFirstOrThrowArgs>(args?: SelectSubset<T, servicesFindFirstOrThrowArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Services that matches the filter.
@@ -5653,15 +5627,15 @@ export namespace Prisma {
      * @example
      * // Get all Services
      * const services = await prisma.services.findMany()
-     * 
+     *
      * // Get first 10 Services
      * const services = await prisma.services.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const servicesWithIdOnly = await prisma.services.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends servicesFindManyArgs>(args?: SelectSubset<T, servicesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends servicesFindManyArgs>(args?: SelectSubset<T, servicesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a Services.
@@ -5673,9 +5647,9 @@ export namespace Prisma {
      *     // ... data to create a Services
      *   }
      * })
-     * 
+     *
      */
-    create<T extends servicesCreateArgs>(args: SelectSubset<T, servicesCreateArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends servicesCreateArgs>(args: SelectSubset<T, servicesCreateArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Services.
@@ -5687,7 +5661,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends servicesCreateManyArgs>(args?: SelectSubset<T, servicesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -5701,7 +5675,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many Services and only return the `id`
      * const servicesWithIdOnly = await prisma.services.createManyAndReturn({
      *   select: { id: true },
@@ -5711,9 +5685,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends servicesCreateManyAndReturnArgs>(args?: SelectSubset<T, servicesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends servicesCreateManyAndReturnArgs>(args?: SelectSubset<T, servicesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a Services.
@@ -5725,9 +5699,9 @@ export namespace Prisma {
      *     // ... filter to delete one Services
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends servicesDeleteArgs>(args: SelectSubset<T, servicesDeleteArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends servicesDeleteArgs>(args: SelectSubset<T, servicesDeleteArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Services.
@@ -5742,9 +5716,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends servicesUpdateArgs>(args: SelectSubset<T, servicesUpdateArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends servicesUpdateArgs>(args: SelectSubset<T, servicesUpdateArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Services.
@@ -5756,7 +5730,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends servicesDeleteManyArgs>(args?: SelectSubset<T, servicesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -5775,7 +5749,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends servicesUpdateManyArgs>(args: SelectSubset<T, servicesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -5792,7 +5766,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more Services and only return the `id`
      * const servicesWithIdOnly = await prisma.services.updateManyAndReturn({
      *   select: { id: true },
@@ -5805,9 +5779,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends servicesUpdateManyAndReturnArgs>(args: SelectSubset<T, servicesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends servicesUpdateManyAndReturnArgs>(args: SelectSubset<T, servicesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one Services.
@@ -5826,8 +5800,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends servicesUpsertArgs>(args: SelectSubset<T, servicesUpsertArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends servicesUpsertArgs>(args: SelectSubset<T, servicesUpsertArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of Services.
@@ -5841,7 +5814,7 @@ export namespace Prisma {
      *     // ... the filter for the Services we want to count
      *   }
      * })
-    **/
+     */
     count<T extends servicesCountArgs>(
       args?: Subset<T, servicesCountArgs>,
     ): Prisma.PrismaPromise<
@@ -5875,7 +5848,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends ServicesAggregateArgs>(args: Subset<T, ServicesAggregateArgs>): Prisma.PrismaPromise<GetServicesAggregateType<T>>
 
     /**
@@ -5894,8 +5867,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends servicesGroupByArgs,
       HasSelectOrTake extends Or<
@@ -5912,52 +5885,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, servicesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServicesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the services model
-   */
-  readonly fields: servicesFieldRefs;
+    /**
+     * Fields of the services model
+     */
+    readonly fields: servicesFieldRefs
   }
 
   /**
@@ -5967,7 +5940,7 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__servicesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5990,23 +5963,19 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the services model
    */
   interface servicesFieldRefs {
-    readonly id: FieldRef<"services", 'Int'>
-    readonly description: FieldRef<"services", 'String'>
+    readonly id: FieldRef<'services', 'Int'>
+    readonly description: FieldRef<'services', 'String'>
   }
-    
 
   // Custom InputTypes
   /**
    * services findUnique
    */
-  export type servicesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6024,7 +5993,7 @@ export namespace Prisma {
   /**
    * services findUniqueOrThrow
    */
-  export type servicesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6042,7 +6011,7 @@ export namespace Prisma {
   /**
    * services findFirst
    */
-  export type servicesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6057,31 +6026,31 @@ export namespace Prisma {
     where?: servicesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of services to fetch.
      */
     orderBy?: servicesOrderByWithRelationInput | servicesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for services.
      */
     cursor?: servicesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` services from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` services.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of services.
      */
     distinct?: ServicesScalarFieldEnum | ServicesScalarFieldEnum[]
@@ -6090,7 +6059,7 @@ export namespace Prisma {
   /**
    * services findFirstOrThrow
    */
-  export type servicesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6105,31 +6074,31 @@ export namespace Prisma {
     where?: servicesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of services to fetch.
      */
     orderBy?: servicesOrderByWithRelationInput | servicesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for services.
      */
     cursor?: servicesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` services from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` services.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of services.
      */
     distinct?: ServicesScalarFieldEnum | ServicesScalarFieldEnum[]
@@ -6138,7 +6107,7 @@ export namespace Prisma {
   /**
    * services findMany
    */
-  export type servicesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6153,25 +6122,25 @@ export namespace Prisma {
     where?: servicesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of services to fetch.
      */
     orderBy?: servicesOrderByWithRelationInput | servicesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing services.
      */
     cursor?: servicesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` services from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` services.
      */
     skip?: number
@@ -6181,7 +6150,7 @@ export namespace Prisma {
   /**
    * services create
    */
-  export type servicesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6199,7 +6168,7 @@ export namespace Prisma {
   /**
    * services createMany
    */
-  export type servicesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many services.
      */
@@ -6210,7 +6179,7 @@ export namespace Prisma {
   /**
    * services createManyAndReturn
    */
-  export type servicesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6229,7 +6198,7 @@ export namespace Prisma {
   /**
    * services update
    */
-  export type servicesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6251,7 +6220,7 @@ export namespace Prisma {
   /**
    * services updateMany
    */
-  export type servicesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update services.
      */
@@ -6269,7 +6238,7 @@ export namespace Prisma {
   /**
    * services updateManyAndReturn
    */
-  export type servicesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6295,7 +6264,7 @@ export namespace Prisma {
   /**
    * services upsert
    */
-  export type servicesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6321,7 +6290,7 @@ export namespace Prisma {
   /**
    * services delete
    */
-  export type servicesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6339,7 +6308,7 @@ export namespace Prisma {
   /**
    * services deleteMany
    */
-  export type servicesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which services to delete
      */
@@ -6353,7 +6322,7 @@ export namespace Prisma {
   /**
    * services without action
    */
-  export type servicesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface servicesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the services
      */
@@ -6364,12 +6333,11 @@ export namespace Prisma {
     omit?: servicesOmit<ExtArgs> | null
   }
 
-
   /**
    * Model status
    */
 
-  export type AggregateStatus = {
+  export interface AggregateStatus {
     _count: StatusCountAggregateOutputType | null
     _avg: StatusAvgAggregateOutputType | null
     _sum: StatusSumAggregateOutputType | null
@@ -6377,128 +6345,124 @@ export namespace Prisma {
     _max: StatusMaxAggregateOutputType | null
   }
 
-  export type StatusAvgAggregateOutputType = {
+  export interface StatusAvgAggregateOutputType {
     id: number | null
   }
 
-  export type StatusSumAggregateOutputType = {
+  export interface StatusSumAggregateOutputType {
     id: number | null
   }
 
-  export type StatusMinAggregateOutputType = {
-    id: number | null
-    description: string | null
-  }
-
-  export type StatusMaxAggregateOutputType = {
+  export interface StatusMinAggregateOutputType {
     id: number | null
     description: string | null
   }
 
-  export type StatusCountAggregateOutputType = {
+  export interface StatusMaxAggregateOutputType {
+    id: number | null
+    description: string | null
+  }
+
+  export interface StatusCountAggregateOutputType {
     id: number
     description: number
     _all: number
   }
 
-
-  export type StatusAvgAggregateInputType = {
+  export interface StatusAvgAggregateInputType {
     id?: true
   }
 
-  export type StatusSumAggregateInputType = {
+  export interface StatusSumAggregateInputType {
     id?: true
   }
 
-  export type StatusMinAggregateInputType = {
-    id?: true
-    description?: true
-  }
-
-  export type StatusMaxAggregateInputType = {
+  export interface StatusMinAggregateInputType {
     id?: true
     description?: true
   }
 
-  export type StatusCountAggregateInputType = {
+  export interface StatusMaxAggregateInputType {
+    id?: true
+    description?: true
+  }
+
+  export interface StatusCountAggregateInputType {
     id?: true
     description?: true
     _all?: true
   }
 
-  export type StatusAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface StatusAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which status to aggregate.
      */
     where?: statusWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of statuses to fetch.
      */
     orderBy?: statusOrderByWithRelationInput | statusOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: statusWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` statuses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` statuses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned statuses
-    **/
+     */
     _count?: true | StatusCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: StatusAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: StatusSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: StatusMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: StatusMaxAggregateInputType
   }
 
   export type GetStatusAggregateType<T extends StatusAggregateArgs> = {
-        [P in keyof T & keyof AggregateStatus]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateStatus]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateStatus[P]>
       : GetScalarType<T[P], AggregateStatus[P]>
   }
 
-
-
-
-  export type statusGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: statusWhereInput
     orderBy?: statusOrderByWithAggregationInput | statusOrderByWithAggregationInput[]
     by: StatusScalarFieldEnum[] | StatusScalarFieldEnum
@@ -6512,7 +6476,7 @@ export namespace Prisma {
     _max?: StatusMaxAggregateInputType
   }
 
-  export type StatusGroupByOutputType = {
+  export interface StatusGroupByOutputType {
     id: number
     description: string
     _count: StatusCountAggregateOutputType | null
@@ -6525,56 +6489,55 @@ export namespace Prisma {
   type GetStatusGroupByPayload<T extends statusGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<StatusGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof StatusGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], StatusGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof StatusGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], StatusGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], StatusGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type statusSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
     bets_bets_statusTostatus?: boolean | status$bets_bets_statusTostatusArgs<ExtArgs>
     _count?: boolean | StatusCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["status"]>
+  }, ExtArgs['result']['status']>
 
   export type statusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-  }, ExtArgs["result"]["status"]>
+  }, ExtArgs['result']['status']>
 
   export type statusSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-  }, ExtArgs["result"]["status"]>
+  }, ExtArgs['result']['status']>
 
-  export type statusSelectScalar = {
+  export interface statusSelectScalar {
     id?: boolean
     description?: boolean
   }
 
-  export type statusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description", ExtArgs["result"]["status"]>
-  export type statusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type statusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'description', ExtArgs['result']['status']>
+  export interface statusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     bets_bets_statusTostatus?: boolean | status$bets_bets_statusTostatusArgs<ExtArgs>
     _count?: boolean | StatusCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type statusIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type statusIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export interface statusIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {}
+  export interface statusIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {}
 
-  export type $statusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "status"
+  export interface $statusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'status'
     objects: {
       bets_bets_statusTostatus: Prisma.$betsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       description: string
-    }, ExtArgs["result"]["status"]>
+    }, ExtArgs['result']['status']>
     composites: {}
   }
 
@@ -6598,7 +6561,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends statusFindUniqueArgs>(args: SelectSubset<T, statusFindUniqueArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends statusFindUniqueArgs>(args: SelectSubset<T, statusFindUniqueArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Status that matches the filter or throw an error with `error.code='P2025'`
@@ -6612,7 +6575,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends statusFindUniqueOrThrowArgs>(args: SelectSubset<T, statusFindUniqueOrThrowArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends statusFindUniqueOrThrowArgs>(args: SelectSubset<T, statusFindUniqueOrThrowArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Status that matches the filter.
@@ -6627,7 +6590,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends statusFindFirstArgs>(args?: SelectSubset<T, statusFindFirstArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends statusFindFirstArgs>(args?: SelectSubset<T, statusFindFirstArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Status that matches the filter or
@@ -6643,7 +6606,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends statusFindFirstOrThrowArgs>(args?: SelectSubset<T, statusFindFirstOrThrowArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends statusFindFirstOrThrowArgs>(args?: SelectSubset<T, statusFindFirstOrThrowArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Statuses that matches the filter.
@@ -6653,15 +6616,15 @@ export namespace Prisma {
      * @example
      * // Get all Statuses
      * const statuses = await prisma.status.findMany()
-     * 
+     *
      * // Get first 10 Statuses
      * const statuses = await prisma.status.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const statusWithIdOnly = await prisma.status.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends statusFindManyArgs>(args?: SelectSubset<T, statusFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends statusFindManyArgs>(args?: SelectSubset<T, statusFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a Status.
@@ -6673,9 +6636,9 @@ export namespace Prisma {
      *     // ... data to create a Status
      *   }
      * })
-     * 
+     *
      */
-    create<T extends statusCreateArgs>(args: SelectSubset<T, statusCreateArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends statusCreateArgs>(args: SelectSubset<T, statusCreateArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Statuses.
@@ -6687,7 +6650,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends statusCreateManyArgs>(args?: SelectSubset<T, statusCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -6701,7 +6664,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many Statuses and only return the `id`
      * const statusWithIdOnly = await prisma.status.createManyAndReturn({
      *   select: { id: true },
@@ -6711,9 +6674,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends statusCreateManyAndReturnArgs>(args?: SelectSubset<T, statusCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends statusCreateManyAndReturnArgs>(args?: SelectSubset<T, statusCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a Status.
@@ -6725,9 +6688,9 @@ export namespace Prisma {
      *     // ... filter to delete one Status
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends statusDeleteArgs>(args: SelectSubset<T, statusDeleteArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends statusDeleteArgs>(args: SelectSubset<T, statusDeleteArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Status.
@@ -6742,9 +6705,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends statusUpdateArgs>(args: SelectSubset<T, statusUpdateArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends statusUpdateArgs>(args: SelectSubset<T, statusUpdateArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Statuses.
@@ -6756,7 +6719,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends statusDeleteManyArgs>(args?: SelectSubset<T, statusDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -6775,7 +6738,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends statusUpdateManyArgs>(args: SelectSubset<T, statusUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -6792,7 +6755,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more Statuses and only return the `id`
      * const statusWithIdOnly = await prisma.status.updateManyAndReturn({
      *   select: { id: true },
@@ -6805,9 +6768,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends statusUpdateManyAndReturnArgs>(args: SelectSubset<T, statusUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends statusUpdateManyAndReturnArgs>(args: SelectSubset<T, statusUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one Status.
@@ -6826,8 +6789,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends statusUpsertArgs>(args: SelectSubset<T, statusUpsertArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends statusUpsertArgs>(args: SelectSubset<T, statusUpsertArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of Statuses.
@@ -6841,7 +6803,7 @@ export namespace Prisma {
      *     // ... the filter for the Statuses we want to count
      *   }
      * })
-    **/
+     */
     count<T extends statusCountArgs>(
       args?: Subset<T, statusCountArgs>,
     ): Prisma.PrismaPromise<
@@ -6875,7 +6837,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends StatusAggregateArgs>(args: Subset<T, StatusAggregateArgs>): Prisma.PrismaPromise<GetStatusAggregateType<T>>
 
     /**
@@ -6894,8 +6856,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends statusGroupByArgs,
       HasSelectOrTake extends Or<
@@ -6912,52 +6874,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, statusGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStatusGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the status model
-   */
-  readonly fields: statusFieldRefs;
+    /**
+     * Fields of the status model
+     */
+    readonly fields: statusFieldRefs
   }
 
   /**
@@ -6967,8 +6929,8 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__statusClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    bets_bets_statusTostatus<T extends status$bets_bets_statusTostatusArgs<ExtArgs> = {}>(args?: Subset<T, status$bets_bets_statusTostatusArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    bets_bets_statusTostatus<T extends status$bets_bets_statusTostatusArgs<ExtArgs> = {}>(args?: Subset<T, status$bets_bets_statusTostatusArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6991,23 +6953,19 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the status model
    */
   interface statusFieldRefs {
-    readonly id: FieldRef<"status", 'Int'>
-    readonly description: FieldRef<"status", 'String'>
+    readonly id: FieldRef<'status', 'Int'>
+    readonly description: FieldRef<'status', 'String'>
   }
-    
 
   // Custom InputTypes
   /**
    * status findUnique
    */
-  export type statusFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7029,7 +6987,7 @@ export namespace Prisma {
   /**
    * status findUniqueOrThrow
    */
-  export type statusFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7051,7 +7009,7 @@ export namespace Prisma {
   /**
    * status findFirst
    */
-  export type statusFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7070,31 +7028,31 @@ export namespace Prisma {
     where?: statusWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of statuses to fetch.
      */
     orderBy?: statusOrderByWithRelationInput | statusOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for statuses.
      */
     cursor?: statusWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` statuses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` statuses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of statuses.
      */
     distinct?: StatusScalarFieldEnum | StatusScalarFieldEnum[]
@@ -7103,7 +7061,7 @@ export namespace Prisma {
   /**
    * status findFirstOrThrow
    */
-  export type statusFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7122,31 +7080,31 @@ export namespace Prisma {
     where?: statusWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of statuses to fetch.
      */
     orderBy?: statusOrderByWithRelationInput | statusOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for statuses.
      */
     cursor?: statusWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` statuses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` statuses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of statuses.
      */
     distinct?: StatusScalarFieldEnum | StatusScalarFieldEnum[]
@@ -7155,7 +7113,7 @@ export namespace Prisma {
   /**
    * status findMany
    */
-  export type statusFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7174,25 +7132,25 @@ export namespace Prisma {
     where?: statusWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of statuses to fetch.
      */
     orderBy?: statusOrderByWithRelationInput | statusOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing statuses.
      */
     cursor?: statusWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` statuses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` statuses.
      */
     skip?: number
@@ -7202,7 +7160,7 @@ export namespace Prisma {
   /**
    * status create
    */
-  export type statusCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7224,7 +7182,7 @@ export namespace Prisma {
   /**
    * status createMany
    */
-  export type statusCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many statuses.
      */
@@ -7235,7 +7193,7 @@ export namespace Prisma {
   /**
    * status createManyAndReturn
    */
-  export type statusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7254,7 +7212,7 @@ export namespace Prisma {
   /**
    * status update
    */
-  export type statusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7280,7 +7238,7 @@ export namespace Prisma {
   /**
    * status updateMany
    */
-  export type statusUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update statuses.
      */
@@ -7298,7 +7256,7 @@ export namespace Prisma {
   /**
    * status updateManyAndReturn
    */
-  export type statusUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7324,7 +7282,7 @@ export namespace Prisma {
   /**
    * status upsert
    */
-  export type statusUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7354,7 +7312,7 @@ export namespace Prisma {
   /**
    * status delete
    */
-  export type statusDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7376,7 +7334,7 @@ export namespace Prisma {
   /**
    * status deleteMany
    */
-  export type statusDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which statuses to delete
      */
@@ -7390,7 +7348,7 @@ export namespace Prisma {
   /**
    * status.bets_bets_statusTostatus
    */
-  export type status$bets_bets_statusTostatusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface status$bets_bets_statusTostatusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -7414,7 +7372,7 @@ export namespace Prisma {
   /**
    * status without action
    */
-  export type statusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface statusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the status
      */
@@ -7429,12 +7387,11 @@ export namespace Prisma {
     include?: statusInclude<ExtArgs> | null
   }
 
-
   /**
    * Model tradeOffers
    */
 
-  export type AggregateTradeOffers = {
+  export interface AggregateTradeOffers {
     _count: TradeOffersCountAggregateOutputType | null
     _avg: TradeOffersAvgAggregateOutputType | null
     _sum: TradeOffersSumAggregateOutputType | null
@@ -7442,30 +7399,21 @@ export namespace Prisma {
     _max: TradeOffersMaxAggregateOutputType | null
   }
 
-  export type TradeOffersAvgAggregateOutputType = {
+  export interface TradeOffersAvgAggregateOutputType {
     id: number | null
     tradeId: number | null
     userId: number | null
     value: number | null
   }
 
-  export type TradeOffersSumAggregateOutputType = {
+  export interface TradeOffersSumAggregateOutputType {
     id: bigint | null
     tradeId: number | null
     userId: number | null
     value: number | null
   }
 
-  export type TradeOffersMinAggregateOutputType = {
-    id: bigint | null
-    tradeId: number | null
-    userId: number | null
-    value: number | null
-    isAccepted: boolean | null
-    createdAt: Date | null
-  }
-
-  export type TradeOffersMaxAggregateOutputType = {
+  export interface TradeOffersMinAggregateOutputType {
     id: bigint | null
     tradeId: number | null
     userId: number | null
@@ -7474,7 +7422,16 @@ export namespace Prisma {
     createdAt: Date | null
   }
 
-  export type TradeOffersCountAggregateOutputType = {
+  export interface TradeOffersMaxAggregateOutputType {
+    id: bigint | null
+    tradeId: number | null
+    userId: number | null
+    value: number | null
+    isAccepted: boolean | null
+    createdAt: Date | null
+  }
+
+  export interface TradeOffersCountAggregateOutputType {
     id: number
     tradeId: number
     userId: number
@@ -7484,31 +7441,21 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type TradeOffersAvgAggregateInputType = {
+  export interface TradeOffersAvgAggregateInputType {
     id?: true
     tradeId?: true
     userId?: true
     value?: true
   }
 
-  export type TradeOffersSumAggregateInputType = {
+  export interface TradeOffersSumAggregateInputType {
     id?: true
     tradeId?: true
     userId?: true
     value?: true
   }
 
-  export type TradeOffersMinAggregateInputType = {
-    id?: true
-    tradeId?: true
-    userId?: true
-    value?: true
-    isAccepted?: true
-    createdAt?: true
-  }
-
-  export type TradeOffersMaxAggregateInputType = {
+  export interface TradeOffersMinAggregateInputType {
     id?: true
     tradeId?: true
     userId?: true
@@ -7517,7 +7464,16 @@ export namespace Prisma {
     createdAt?: true
   }
 
-  export type TradeOffersCountAggregateInputType = {
+  export interface TradeOffersMaxAggregateInputType {
+    id?: true
+    tradeId?: true
+    userId?: true
+    value?: true
+    isAccepted?: true
+    createdAt?: true
+  }
+
+  export interface TradeOffersCountAggregateInputType {
     id?: true
     tradeId?: true
     userId?: true
@@ -7527,79 +7483,76 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type TradeOffersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface TradeOffersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which tradeOffers to aggregate.
      */
     where?: tradeOffersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of tradeOffers to fetch.
      */
     orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: tradeOffersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` tradeOffers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` tradeOffers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned tradeOffers
-    **/
+     */
     _count?: true | TradeOffersCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: TradeOffersAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: TradeOffersSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: TradeOffersMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: TradeOffersMaxAggregateInputType
   }
 
   export type GetTradeOffersAggregateType<T extends TradeOffersAggregateArgs> = {
-        [P in keyof T & keyof AggregateTradeOffers]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateTradeOffers]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateTradeOffers[P]>
       : GetScalarType<T[P], AggregateTradeOffers[P]>
   }
 
-
-
-
-  export type tradeOffersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: tradeOffersWhereInput
     orderBy?: tradeOffersOrderByWithAggregationInput | tradeOffersOrderByWithAggregationInput[]
     by: TradeOffersScalarFieldEnum[] | TradeOffersScalarFieldEnum
@@ -7613,7 +7566,7 @@ export namespace Prisma {
     _max?: TradeOffersMaxAggregateInputType
   }
 
-  export type TradeOffersGroupByOutputType = {
+  export interface TradeOffersGroupByOutputType {
     id: bigint
     tradeId: number | null
     userId: number | null
@@ -7630,16 +7583,15 @@ export namespace Prisma {
   type GetTradeOffersGroupByPayload<T extends tradeOffersGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<TradeOffersGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof TradeOffersGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TradeOffersGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof TradeOffersGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], TradeOffersGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], TradeOffersGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type tradeOffersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -7650,7 +7602,7 @@ export namespace Prisma {
     createdAt?: boolean
     trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
     users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["tradeOffers"]>
+  }, ExtArgs['result']['tradeOffers']>
 
   export type tradeOffersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -7661,7 +7613,7 @@ export namespace Prisma {
     createdAt?: boolean
     trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
     users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["tradeOffers"]>
+  }, ExtArgs['result']['tradeOffers']>
 
   export type tradeOffersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -7672,9 +7624,9 @@ export namespace Prisma {
     createdAt?: boolean
     trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
     users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["tradeOffers"]>
+  }, ExtArgs['result']['tradeOffers']>
 
-  export type tradeOffersSelectScalar = {
+  export interface tradeOffersSelectScalar {
     id?: boolean
     tradeId?: boolean
     userId?: boolean
@@ -7683,22 +7635,22 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type tradeOffersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tradeId" | "userId" | "value" | "isAccepted" | "createdAt", ExtArgs["result"]["tradeOffers"]>
-  export type tradeOffersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type tradeOffersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'tradeId' | 'userId' | 'value' | 'isAccepted' | 'createdAt', ExtArgs['result']['tradeOffers']>
+  export interface tradeOffersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
     users?: boolean | tradeOffers$usersArgs<ExtArgs>
   }
-  export type tradeOffersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
     users?: boolean | tradeOffers$usersArgs<ExtArgs>
   }
-  export type tradeOffersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
     users?: boolean | tradeOffers$usersArgs<ExtArgs>
   }
 
-  export type $tradeOffersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "tradeOffers"
+  export interface $tradeOffersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'tradeOffers'
     objects: {
       trades: Prisma.$tradesPayload<ExtArgs> | null
       users: Prisma.$usersPayload<ExtArgs> | null
@@ -7710,7 +7662,7 @@ export namespace Prisma {
       value: number
       isAccepted: boolean | null
       createdAt: Date
-    }, ExtArgs["result"]["tradeOffers"]>
+    }, ExtArgs['result']['tradeOffers']>
     composites: {}
   }
 
@@ -7734,7 +7686,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends tradeOffersFindUniqueArgs>(args: SelectSubset<T, tradeOffersFindUniqueArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends tradeOffersFindUniqueArgs>(args: SelectSubset<T, tradeOffersFindUniqueArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one TradeOffers that matches the filter or throw an error with `error.code='P2025'`
@@ -7748,7 +7700,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends tradeOffersFindUniqueOrThrowArgs>(args: SelectSubset<T, tradeOffersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends tradeOffersFindUniqueOrThrowArgs>(args: SelectSubset<T, tradeOffersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first TradeOffers that matches the filter.
@@ -7763,7 +7715,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends tradeOffersFindFirstArgs>(args?: SelectSubset<T, tradeOffersFindFirstArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends tradeOffersFindFirstArgs>(args?: SelectSubset<T, tradeOffersFindFirstArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first TradeOffers that matches the filter or
@@ -7779,7 +7731,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends tradeOffersFindFirstOrThrowArgs>(args?: SelectSubset<T, tradeOffersFindFirstOrThrowArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends tradeOffersFindFirstOrThrowArgs>(args?: SelectSubset<T, tradeOffersFindFirstOrThrowArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more TradeOffers that matches the filter.
@@ -7789,15 +7741,15 @@ export namespace Prisma {
      * @example
      * // Get all TradeOffers
      * const tradeOffers = await prisma.tradeOffers.findMany()
-     * 
+     *
      * // Get first 10 TradeOffers
      * const tradeOffers = await prisma.tradeOffers.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const tradeOffersWithIdOnly = await prisma.tradeOffers.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends tradeOffersFindManyArgs>(args?: SelectSubset<T, tradeOffersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends tradeOffersFindManyArgs>(args?: SelectSubset<T, tradeOffersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a TradeOffers.
@@ -7809,9 +7761,9 @@ export namespace Prisma {
      *     // ... data to create a TradeOffers
      *   }
      * })
-     * 
+     *
      */
-    create<T extends tradeOffersCreateArgs>(args: SelectSubset<T, tradeOffersCreateArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends tradeOffersCreateArgs>(args: SelectSubset<T, tradeOffersCreateArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many TradeOffers.
@@ -7823,7 +7775,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends tradeOffersCreateManyArgs>(args?: SelectSubset<T, tradeOffersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -7837,7 +7789,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many TradeOffers and only return the `id`
      * const tradeOffersWithIdOnly = await prisma.tradeOffers.createManyAndReturn({
      *   select: { id: true },
@@ -7847,9 +7799,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends tradeOffersCreateManyAndReturnArgs>(args?: SelectSubset<T, tradeOffersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends tradeOffersCreateManyAndReturnArgs>(args?: SelectSubset<T, tradeOffersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a TradeOffers.
@@ -7861,9 +7813,9 @@ export namespace Prisma {
      *     // ... filter to delete one TradeOffers
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends tradeOffersDeleteArgs>(args: SelectSubset<T, tradeOffersDeleteArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends tradeOffersDeleteArgs>(args: SelectSubset<T, tradeOffersDeleteArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one TradeOffers.
@@ -7878,9 +7830,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends tradeOffersUpdateArgs>(args: SelectSubset<T, tradeOffersUpdateArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends tradeOffersUpdateArgs>(args: SelectSubset<T, tradeOffersUpdateArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more TradeOffers.
@@ -7892,7 +7844,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends tradeOffersDeleteManyArgs>(args?: SelectSubset<T, tradeOffersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -7911,7 +7863,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends tradeOffersUpdateManyArgs>(args: SelectSubset<T, tradeOffersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -7928,7 +7880,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more TradeOffers and only return the `id`
      * const tradeOffersWithIdOnly = await prisma.tradeOffers.updateManyAndReturn({
      *   select: { id: true },
@@ -7941,9 +7893,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends tradeOffersUpdateManyAndReturnArgs>(args: SelectSubset<T, tradeOffersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends tradeOffersUpdateManyAndReturnArgs>(args: SelectSubset<T, tradeOffersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one TradeOffers.
@@ -7962,8 +7914,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends tradeOffersUpsertArgs>(args: SelectSubset<T, tradeOffersUpsertArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends tradeOffersUpsertArgs>(args: SelectSubset<T, tradeOffersUpsertArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of TradeOffers.
@@ -7977,7 +7928,7 @@ export namespace Prisma {
      *     // ... the filter for the TradeOffers we want to count
      *   }
      * })
-    **/
+     */
     count<T extends tradeOffersCountArgs>(
       args?: Subset<T, tradeOffersCountArgs>,
     ): Prisma.PrismaPromise<
@@ -8011,7 +7962,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends TradeOffersAggregateArgs>(args: Subset<T, TradeOffersAggregateArgs>): Prisma.PrismaPromise<GetTradeOffersAggregateType<T>>
 
     /**
@@ -8030,8 +7981,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends tradeOffersGroupByArgs,
       HasSelectOrTake extends Or<
@@ -8048,52 +7999,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, tradeOffersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTradeOffersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the tradeOffers model
-   */
-  readonly fields: tradeOffersFieldRefs;
+    /**
+     * Fields of the tradeOffers model
+     */
+    readonly fields: tradeOffersFieldRefs
   }
 
   /**
@@ -8103,9 +8054,9 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__tradeOffersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    trades<T extends tradeOffers$tradesArgs<ExtArgs> = {}>(args?: Subset<T, tradeOffers$tradesArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    users<T extends tradeOffers$usersArgs<ExtArgs> = {}>(args?: Subset<T, tradeOffers$usersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    trades<T extends tradeOffers$tradesArgs<ExtArgs> = {}>(args?: Subset<T, tradeOffers$tradesArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    users<T extends tradeOffers$usersArgs<ExtArgs> = {}>(args?: Subset<T, tradeOffers$usersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8128,27 +8079,23 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the tradeOffers model
    */
   interface tradeOffersFieldRefs {
-    readonly id: FieldRef<"tradeOffers", 'BigInt'>
-    readonly tradeId: FieldRef<"tradeOffers", 'Int'>
-    readonly userId: FieldRef<"tradeOffers", 'Int'>
-    readonly value: FieldRef<"tradeOffers", 'Int'>
-    readonly isAccepted: FieldRef<"tradeOffers", 'Boolean'>
-    readonly createdAt: FieldRef<"tradeOffers", 'DateTime'>
+    readonly id: FieldRef<'tradeOffers', 'BigInt'>
+    readonly tradeId: FieldRef<'tradeOffers', 'Int'>
+    readonly userId: FieldRef<'tradeOffers', 'Int'>
+    readonly value: FieldRef<'tradeOffers', 'Int'>
+    readonly isAccepted: FieldRef<'tradeOffers', 'Boolean'>
+    readonly createdAt: FieldRef<'tradeOffers', 'DateTime'>
   }
-    
 
   // Custom InputTypes
   /**
    * tradeOffers findUnique
    */
-  export type tradeOffersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8170,7 +8117,7 @@ export namespace Prisma {
   /**
    * tradeOffers findUniqueOrThrow
    */
-  export type tradeOffersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8192,7 +8139,7 @@ export namespace Prisma {
   /**
    * tradeOffers findFirst
    */
-  export type tradeOffersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8211,31 +8158,31 @@ export namespace Prisma {
     where?: tradeOffersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of tradeOffers to fetch.
      */
     orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for tradeOffers.
      */
     cursor?: tradeOffersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` tradeOffers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` tradeOffers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of tradeOffers.
      */
     distinct?: TradeOffersScalarFieldEnum | TradeOffersScalarFieldEnum[]
@@ -8244,7 +8191,7 @@ export namespace Prisma {
   /**
    * tradeOffers findFirstOrThrow
    */
-  export type tradeOffersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8263,31 +8210,31 @@ export namespace Prisma {
     where?: tradeOffersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of tradeOffers to fetch.
      */
     orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for tradeOffers.
      */
     cursor?: tradeOffersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` tradeOffers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` tradeOffers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of tradeOffers.
      */
     distinct?: TradeOffersScalarFieldEnum | TradeOffersScalarFieldEnum[]
@@ -8296,7 +8243,7 @@ export namespace Prisma {
   /**
    * tradeOffers findMany
    */
-  export type tradeOffersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8315,25 +8262,25 @@ export namespace Prisma {
     where?: tradeOffersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of tradeOffers to fetch.
      */
     orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing tradeOffers.
      */
     cursor?: tradeOffersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` tradeOffers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` tradeOffers.
      */
     skip?: number
@@ -8343,7 +8290,7 @@ export namespace Prisma {
   /**
    * tradeOffers create
    */
-  export type tradeOffersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8365,7 +8312,7 @@ export namespace Prisma {
   /**
    * tradeOffers createMany
    */
-  export type tradeOffersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many tradeOffers.
      */
@@ -8376,7 +8323,7 @@ export namespace Prisma {
   /**
    * tradeOffers createManyAndReturn
    */
-  export type tradeOffersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8399,7 +8346,7 @@ export namespace Prisma {
   /**
    * tradeOffers update
    */
-  export type tradeOffersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8425,7 +8372,7 @@ export namespace Prisma {
   /**
    * tradeOffers updateMany
    */
-  export type tradeOffersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update tradeOffers.
      */
@@ -8443,7 +8390,7 @@ export namespace Prisma {
   /**
    * tradeOffers updateManyAndReturn
    */
-  export type tradeOffersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8473,7 +8420,7 @@ export namespace Prisma {
   /**
    * tradeOffers upsert
    */
-  export type tradeOffersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8503,7 +8450,7 @@ export namespace Prisma {
   /**
    * tradeOffers delete
    */
-  export type tradeOffersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8525,7 +8472,7 @@ export namespace Prisma {
   /**
    * tradeOffers deleteMany
    */
-  export type tradeOffersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which tradeOffers to delete
      */
@@ -8539,7 +8486,7 @@ export namespace Prisma {
   /**
    * tradeOffers.trades
    */
-  export type tradeOffers$tradesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffers$tradesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -8558,7 +8505,7 @@ export namespace Prisma {
   /**
    * tradeOffers.users
    */
-  export type tradeOffers$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffers$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -8577,7 +8524,7 @@ export namespace Prisma {
   /**
    * tradeOffers without action
    */
-  export type tradeOffersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradeOffersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -8592,12 +8539,11 @@ export namespace Prisma {
     include?: tradeOffersInclude<ExtArgs> | null
   }
 
-
   /**
    * Model trades
    */
 
-  export type AggregateTrades = {
+  export interface AggregateTrades {
     _count: TradesCountAggregateOutputType | null
     _avg: TradesAvgAggregateOutputType | null
     _sum: TradesSumAggregateOutputType | null
@@ -8605,29 +8551,19 @@ export namespace Prisma {
     _max: TradesMaxAggregateOutputType | null
   }
 
-  export type TradesAvgAggregateOutputType = {
+  export interface TradesAvgAggregateOutputType {
     id: number | null
     supplierId: number | null
     customerId: number | null
   }
 
-  export type TradesSumAggregateOutputType = {
+  export interface TradesSumAggregateOutputType {
     id: number | null
     supplierId: number | null
     customerId: number | null
   }
 
-  export type TradesMinAggregateOutputType = {
-    id: number | null
-    supplierId: number | null
-    customerId: number | null
-    service: string | null
-    createdAt: Date | null
-    deadlineAt: Date | null
-    tradedAt: Date | null
-  }
-
-  export type TradesMaxAggregateOutputType = {
+  export interface TradesMinAggregateOutputType {
     id: number | null
     supplierId: number | null
     customerId: number | null
@@ -8637,7 +8573,17 @@ export namespace Prisma {
     tradedAt: Date | null
   }
 
-  export type TradesCountAggregateOutputType = {
+  export interface TradesMaxAggregateOutputType {
+    id: number | null
+    supplierId: number | null
+    customerId: number | null
+    service: string | null
+    createdAt: Date | null
+    deadlineAt: Date | null
+    tradedAt: Date | null
+  }
+
+  export interface TradesCountAggregateOutputType {
     id: number
     supplierId: number
     customerId: number
@@ -8648,30 +8594,19 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type TradesAvgAggregateInputType = {
+  export interface TradesAvgAggregateInputType {
     id?: true
     supplierId?: true
     customerId?: true
   }
 
-  export type TradesSumAggregateInputType = {
+  export interface TradesSumAggregateInputType {
     id?: true
     supplierId?: true
     customerId?: true
   }
 
-  export type TradesMinAggregateInputType = {
-    id?: true
-    supplierId?: true
-    customerId?: true
-    service?: true
-    createdAt?: true
-    deadlineAt?: true
-    tradedAt?: true
-  }
-
-  export type TradesMaxAggregateInputType = {
+  export interface TradesMinAggregateInputType {
     id?: true
     supplierId?: true
     customerId?: true
@@ -8681,7 +8616,17 @@ export namespace Prisma {
     tradedAt?: true
   }
 
-  export type TradesCountAggregateInputType = {
+  export interface TradesMaxAggregateInputType {
+    id?: true
+    supplierId?: true
+    customerId?: true
+    service?: true
+    createdAt?: true
+    deadlineAt?: true
+    tradedAt?: true
+  }
+
+  export interface TradesCountAggregateInputType {
     id?: true
     supplierId?: true
     customerId?: true
@@ -8692,79 +8637,76 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type TradesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface TradesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which trades to aggregate.
      */
     where?: tradesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of trades to fetch.
      */
     orderBy?: tradesOrderByWithRelationInput | tradesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: tradesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` trades from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` trades.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned trades
-    **/
+     */
     _count?: true | TradesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: TradesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: TradesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: TradesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: TradesMaxAggregateInputType
   }
 
   export type GetTradesAggregateType<T extends TradesAggregateArgs> = {
-        [P in keyof T & keyof AggregateTrades]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateTrades]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateTrades[P]>
       : GetScalarType<T[P], AggregateTrades[P]>
   }
 
-
-
-
-  export type tradesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: tradesWhereInput
     orderBy?: tradesOrderByWithAggregationInput | tradesOrderByWithAggregationInput[]
     by: TradesScalarFieldEnum[] | TradesScalarFieldEnum
@@ -8778,7 +8720,7 @@ export namespace Prisma {
     _max?: TradesMaxAggregateInputType
   }
 
-  export type TradesGroupByOutputType = {
+  export interface TradesGroupByOutputType {
     id: number
     supplierId: number | null
     customerId: number | null
@@ -8796,16 +8738,15 @@ export namespace Prisma {
   type GetTradesGroupByPayload<T extends tradesGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<TradesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof TradesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TradesGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof TradesGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], TradesGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], TradesGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type tradesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -8819,7 +8760,7 @@ export namespace Prisma {
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
     _count?: boolean | TradesCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["trades"]>
+  }, ExtArgs['result']['trades']>
 
   export type tradesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -8831,7 +8772,7 @@ export namespace Prisma {
     tradedAt?: boolean
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
-  }, ExtArgs["result"]["trades"]>
+  }, ExtArgs['result']['trades']>
 
   export type tradesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -8843,9 +8784,9 @@ export namespace Prisma {
     tradedAt?: boolean
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
-  }, ExtArgs["result"]["trades"]>
+  }, ExtArgs['result']['trades']>
 
-  export type tradesSelectScalar = {
+  export interface tradesSelectScalar {
     id?: boolean
     supplierId?: boolean
     customerId?: boolean
@@ -8855,24 +8796,24 @@ export namespace Prisma {
     tradedAt?: boolean
   }
 
-  export type tradesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supplierId" | "customerId" | "service" | "createdAt" | "deadlineAt" | "tradedAt", ExtArgs["result"]["trades"]>
-  export type tradesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type tradesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'supplierId' | 'customerId' | 'service' | 'createdAt' | 'deadlineAt' | 'tradedAt', ExtArgs['result']['trades']>
+  export interface tradesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     tradeOffers?: boolean | trades$tradeOffersArgs<ExtArgs>
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
     _count?: boolean | TradesCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type tradesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
   }
-  export type tradesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
   }
 
-  export type $tradesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "trades"
+  export interface $tradesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'trades'
     objects: {
       tradeOffers: Prisma.$tradeOffersPayload<ExtArgs>[]
       users_trades_customerIdTousers: Prisma.$usersPayload<ExtArgs> | null
@@ -8886,7 +8827,7 @@ export namespace Prisma {
       createdAt: Date
       deadlineAt: Date | null
       tradedAt: Date | null
-    }, ExtArgs["result"]["trades"]>
+    }, ExtArgs['result']['trades']>
     composites: {}
   }
 
@@ -8910,7 +8851,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends tradesFindUniqueArgs>(args: SelectSubset<T, tradesFindUniqueArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends tradesFindUniqueArgs>(args: SelectSubset<T, tradesFindUniqueArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Trades that matches the filter or throw an error with `error.code='P2025'`
@@ -8924,7 +8865,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends tradesFindUniqueOrThrowArgs>(args: SelectSubset<T, tradesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends tradesFindUniqueOrThrowArgs>(args: SelectSubset<T, tradesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Trades that matches the filter.
@@ -8939,7 +8880,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends tradesFindFirstArgs>(args?: SelectSubset<T, tradesFindFirstArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends tradesFindFirstArgs>(args?: SelectSubset<T, tradesFindFirstArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Trades that matches the filter or
@@ -8955,7 +8896,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends tradesFindFirstOrThrowArgs>(args?: SelectSubset<T, tradesFindFirstOrThrowArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends tradesFindFirstOrThrowArgs>(args?: SelectSubset<T, tradesFindFirstOrThrowArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Trades that matches the filter.
@@ -8965,15 +8906,15 @@ export namespace Prisma {
      * @example
      * // Get all Trades
      * const trades = await prisma.trades.findMany()
-     * 
+     *
      * // Get first 10 Trades
      * const trades = await prisma.trades.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const tradesWithIdOnly = await prisma.trades.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends tradesFindManyArgs>(args?: SelectSubset<T, tradesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends tradesFindManyArgs>(args?: SelectSubset<T, tradesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a Trades.
@@ -8985,9 +8926,9 @@ export namespace Prisma {
      *     // ... data to create a Trades
      *   }
      * })
-     * 
+     *
      */
-    create<T extends tradesCreateArgs>(args: SelectSubset<T, tradesCreateArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends tradesCreateArgs>(args: SelectSubset<T, tradesCreateArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Trades.
@@ -8999,7 +8940,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends tradesCreateManyArgs>(args?: SelectSubset<T, tradesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -9013,7 +8954,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many Trades and only return the `id`
      * const tradesWithIdOnly = await prisma.trades.createManyAndReturn({
      *   select: { id: true },
@@ -9023,9 +8964,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends tradesCreateManyAndReturnArgs>(args?: SelectSubset<T, tradesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends tradesCreateManyAndReturnArgs>(args?: SelectSubset<T, tradesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a Trades.
@@ -9037,9 +8978,9 @@ export namespace Prisma {
      *     // ... filter to delete one Trades
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends tradesDeleteArgs>(args: SelectSubset<T, tradesDeleteArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends tradesDeleteArgs>(args: SelectSubset<T, tradesDeleteArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Trades.
@@ -9054,9 +8995,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends tradesUpdateArgs>(args: SelectSubset<T, tradesUpdateArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends tradesUpdateArgs>(args: SelectSubset<T, tradesUpdateArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Trades.
@@ -9068,7 +9009,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends tradesDeleteManyArgs>(args?: SelectSubset<T, tradesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -9087,7 +9028,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends tradesUpdateManyArgs>(args: SelectSubset<T, tradesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -9104,7 +9045,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more Trades and only return the `id`
      * const tradesWithIdOnly = await prisma.trades.updateManyAndReturn({
      *   select: { id: true },
@@ -9117,9 +9058,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends tradesUpdateManyAndReturnArgs>(args: SelectSubset<T, tradesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends tradesUpdateManyAndReturnArgs>(args: SelectSubset<T, tradesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one Trades.
@@ -9138,8 +9079,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends tradesUpsertArgs>(args: SelectSubset<T, tradesUpsertArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends tradesUpsertArgs>(args: SelectSubset<T, tradesUpsertArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of Trades.
@@ -9153,7 +9093,7 @@ export namespace Prisma {
      *     // ... the filter for the Trades we want to count
      *   }
      * })
-    **/
+     */
     count<T extends tradesCountArgs>(
       args?: Subset<T, tradesCountArgs>,
     ): Prisma.PrismaPromise<
@@ -9187,7 +9127,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends TradesAggregateArgs>(args: Subset<T, TradesAggregateArgs>): Prisma.PrismaPromise<GetTradesAggregateType<T>>
 
     /**
@@ -9206,8 +9146,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends tradesGroupByArgs,
       HasSelectOrTake extends Or<
@@ -9224,52 +9164,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, tradesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTradesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the trades model
-   */
-  readonly fields: tradesFieldRefs;
+    /**
+     * Fields of the trades model
+     */
+    readonly fields: tradesFieldRefs
   }
 
   /**
@@ -9279,10 +9219,10 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__tradesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    tradeOffers<T extends trades$tradeOffersArgs<ExtArgs> = {}>(args?: Subset<T, trades$tradeOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    users_trades_customerIdTousers<T extends trades$users_trades_customerIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, trades$users_trades_customerIdTousersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    users_trades_supplierIdTousers<T extends trades$users_trades_supplierIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, trades$users_trades_supplierIdTousersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    tradeOffers<T extends trades$tradeOffersArgs<ExtArgs> = {}>(args?: Subset<T, trades$tradeOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
+    users_trades_customerIdTousers<T extends trades$users_trades_customerIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, trades$users_trades_customerIdTousersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    users_trades_supplierIdTousers<T extends trades$users_trades_supplierIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, trades$users_trades_supplierIdTousersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9305,28 +9245,24 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the trades model
    */
   interface tradesFieldRefs {
-    readonly id: FieldRef<"trades", 'Int'>
-    readonly supplierId: FieldRef<"trades", 'Int'>
-    readonly customerId: FieldRef<"trades", 'Int'>
-    readonly service: FieldRef<"trades", 'String'>
-    readonly createdAt: FieldRef<"trades", 'DateTime'>
-    readonly deadlineAt: FieldRef<"trades", 'DateTime'>
-    readonly tradedAt: FieldRef<"trades", 'DateTime'>
+    readonly id: FieldRef<'trades', 'Int'>
+    readonly supplierId: FieldRef<'trades', 'Int'>
+    readonly customerId: FieldRef<'trades', 'Int'>
+    readonly service: FieldRef<'trades', 'String'>
+    readonly createdAt: FieldRef<'trades', 'DateTime'>
+    readonly deadlineAt: FieldRef<'trades', 'DateTime'>
+    readonly tradedAt: FieldRef<'trades', 'DateTime'>
   }
-    
 
   // Custom InputTypes
   /**
    * trades findUnique
    */
-  export type tradesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9348,7 +9284,7 @@ export namespace Prisma {
   /**
    * trades findUniqueOrThrow
    */
-  export type tradesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9370,7 +9306,7 @@ export namespace Prisma {
   /**
    * trades findFirst
    */
-  export type tradesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9389,31 +9325,31 @@ export namespace Prisma {
     where?: tradesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of trades to fetch.
      */
     orderBy?: tradesOrderByWithRelationInput | tradesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for trades.
      */
     cursor?: tradesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` trades from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` trades.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of trades.
      */
     distinct?: TradesScalarFieldEnum | TradesScalarFieldEnum[]
@@ -9422,7 +9358,7 @@ export namespace Prisma {
   /**
    * trades findFirstOrThrow
    */
-  export type tradesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9441,31 +9377,31 @@ export namespace Prisma {
     where?: tradesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of trades to fetch.
      */
     orderBy?: tradesOrderByWithRelationInput | tradesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for trades.
      */
     cursor?: tradesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` trades from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` trades.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of trades.
      */
     distinct?: TradesScalarFieldEnum | TradesScalarFieldEnum[]
@@ -9474,7 +9410,7 @@ export namespace Prisma {
   /**
    * trades findMany
    */
-  export type tradesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9493,25 +9429,25 @@ export namespace Prisma {
     where?: tradesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of trades to fetch.
      */
     orderBy?: tradesOrderByWithRelationInput | tradesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing trades.
      */
     cursor?: tradesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` trades from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` trades.
      */
     skip?: number
@@ -9521,7 +9457,7 @@ export namespace Prisma {
   /**
    * trades create
    */
-  export type tradesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9543,7 +9479,7 @@ export namespace Prisma {
   /**
    * trades createMany
    */
-  export type tradesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many trades.
      */
@@ -9554,7 +9490,7 @@ export namespace Prisma {
   /**
    * trades createManyAndReturn
    */
-  export type tradesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9577,7 +9513,7 @@ export namespace Prisma {
   /**
    * trades update
    */
-  export type tradesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9603,7 +9539,7 @@ export namespace Prisma {
   /**
    * trades updateMany
    */
-  export type tradesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update trades.
      */
@@ -9621,7 +9557,7 @@ export namespace Prisma {
   /**
    * trades updateManyAndReturn
    */
-  export type tradesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9651,7 +9587,7 @@ export namespace Prisma {
   /**
    * trades upsert
    */
-  export type tradesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9681,7 +9617,7 @@ export namespace Prisma {
   /**
    * trades delete
    */
-  export type tradesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9703,7 +9639,7 @@ export namespace Prisma {
   /**
    * trades deleteMany
    */
-  export type tradesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which trades to delete
      */
@@ -9717,7 +9653,7 @@ export namespace Prisma {
   /**
    * trades.tradeOffers
    */
-  export type trades$tradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface trades$tradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the tradeOffers
      */
@@ -9741,7 +9677,7 @@ export namespace Prisma {
   /**
    * trades.users_trades_customerIdTousers
    */
-  export type trades$users_trades_customerIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface trades$users_trades_customerIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -9760,7 +9696,7 @@ export namespace Prisma {
   /**
    * trades.users_trades_supplierIdTousers
    */
-  export type trades$users_trades_supplierIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface trades$users_trades_supplierIdTousersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -9779,7 +9715,7 @@ export namespace Prisma {
   /**
    * trades without action
    */
-  export type tradesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface tradesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the trades
      */
@@ -9794,12 +9730,11 @@ export namespace Prisma {
     include?: tradesInclude<ExtArgs> | null
   }
 
-
   /**
    * Model userWallets
    */
 
-  export type AggregateUserWallets = {
+  export interface AggregateUserWallets {
     _count: UserWalletsCountAggregateOutputType | null
     _avg: UserWalletsAvgAggregateOutputType | null
     _sum: UserWalletsSumAggregateOutputType | null
@@ -9807,132 +9742,128 @@ export namespace Prisma {
     _max: UserWalletsMaxAggregateOutputType | null
   }
 
-  export type UserWalletsAvgAggregateOutputType = {
+  export interface UserWalletsAvgAggregateOutputType {
     id: number | null
     balance: number | null
   }
 
-  export type UserWalletsSumAggregateOutputType = {
+  export interface UserWalletsSumAggregateOutputType {
     id: number | null
     balance: number | null
   }
 
-  export type UserWalletsMinAggregateOutputType = {
+  export interface UserWalletsMinAggregateOutputType {
     id: number | null
     balance: number | null
   }
 
-  export type UserWalletsMaxAggregateOutputType = {
+  export interface UserWalletsMaxAggregateOutputType {
     id: number | null
     balance: number | null
   }
 
-  export type UserWalletsCountAggregateOutputType = {
+  export interface UserWalletsCountAggregateOutputType {
     id: number
     balance: number
     _all: number
   }
 
-
-  export type UserWalletsAvgAggregateInputType = {
+  export interface UserWalletsAvgAggregateInputType {
     id?: true
     balance?: true
   }
 
-  export type UserWalletsSumAggregateInputType = {
+  export interface UserWalletsSumAggregateInputType {
     id?: true
     balance?: true
   }
 
-  export type UserWalletsMinAggregateInputType = {
+  export interface UserWalletsMinAggregateInputType {
     id?: true
     balance?: true
   }
 
-  export type UserWalletsMaxAggregateInputType = {
+  export interface UserWalletsMaxAggregateInputType {
     id?: true
     balance?: true
   }
 
-  export type UserWalletsCountAggregateInputType = {
+  export interface UserWalletsCountAggregateInputType {
     id?: true
     balance?: true
     _all?: true
   }
 
-  export type UserWalletsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface UserWalletsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which userWallets to aggregate.
      */
     where?: userWalletsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of userWallets to fetch.
      */
     orderBy?: userWalletsOrderByWithRelationInput | userWalletsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: userWalletsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` userWallets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` userWallets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned userWallets
-    **/
+     */
     _count?: true | UserWalletsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: UserWalletsAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: UserWalletsSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: UserWalletsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: UserWalletsMaxAggregateInputType
   }
 
   export type GetUserWalletsAggregateType<T extends UserWalletsAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserWallets]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateUserWallets]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateUserWallets[P]>
       : GetScalarType<T[P], AggregateUserWallets[P]>
   }
 
-
-
-
-  export type userWalletsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: userWalletsWhereInput
     orderBy?: userWalletsOrderByWithAggregationInput | userWalletsOrderByWithAggregationInput[]
     by: UserWalletsScalarFieldEnum[] | UserWalletsScalarFieldEnum
@@ -9946,7 +9877,7 @@ export namespace Prisma {
     _max?: UserWalletsMaxAggregateInputType
   }
 
-  export type UserWalletsGroupByOutputType = {
+  export interface UserWalletsGroupByOutputType {
     id: number
     balance: number
     _count: UserWalletsCountAggregateOutputType | null
@@ -9959,60 +9890,59 @@ export namespace Prisma {
   type GetUserWalletsGroupByPayload<T extends userWalletsGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<UserWalletsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UserWalletsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UserWalletsGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof UserWalletsGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], UserWalletsGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], UserWalletsGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type userWalletsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     balance?: boolean
     users?: boolean | usersDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userWallets"]>
+  }, ExtArgs['result']['userWallets']>
 
   export type userWalletsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     balance?: boolean
     users?: boolean | usersDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userWallets"]>
+  }, ExtArgs['result']['userWallets']>
 
   export type userWalletsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     balance?: boolean
     users?: boolean | usersDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userWallets"]>
+  }, ExtArgs['result']['userWallets']>
 
-  export type userWalletsSelectScalar = {
+  export interface userWalletsSelectScalar {
     id?: boolean
     balance?: boolean
   }
 
-  export type userWalletsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "balance", ExtArgs["result"]["userWallets"]>
-  export type userWalletsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type userWalletsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'balance', ExtArgs['result']['userWallets']>
+  export interface userWalletsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     users?: boolean | usersDefaultArgs<ExtArgs>
   }
-  export type userWalletsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     users?: boolean | usersDefaultArgs<ExtArgs>
   }
-  export type userWalletsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     users?: boolean | usersDefaultArgs<ExtArgs>
   }
 
-  export type $userWalletsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "userWallets"
+  export interface $userWalletsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'userWallets'
     objects: {
       users: Prisma.$usersPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       balance: number
-    }, ExtArgs["result"]["userWallets"]>
+    }, ExtArgs['result']['userWallets']>
     composites: {}
   }
 
@@ -10036,7 +9966,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends userWalletsFindUniqueArgs>(args: SelectSubset<T, userWalletsFindUniqueArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends userWalletsFindUniqueArgs>(args: SelectSubset<T, userWalletsFindUniqueArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one UserWallets that matches the filter or throw an error with `error.code='P2025'`
@@ -10050,7 +9980,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends userWalletsFindUniqueOrThrowArgs>(args: SelectSubset<T, userWalletsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends userWalletsFindUniqueOrThrowArgs>(args: SelectSubset<T, userWalletsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first UserWallets that matches the filter.
@@ -10065,7 +9995,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends userWalletsFindFirstArgs>(args?: SelectSubset<T, userWalletsFindFirstArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends userWalletsFindFirstArgs>(args?: SelectSubset<T, userWalletsFindFirstArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first UserWallets that matches the filter or
@@ -10081,7 +10011,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends userWalletsFindFirstOrThrowArgs>(args?: SelectSubset<T, userWalletsFindFirstOrThrowArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends userWalletsFindFirstOrThrowArgs>(args?: SelectSubset<T, userWalletsFindFirstOrThrowArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more UserWallets that matches the filter.
@@ -10091,15 +10021,15 @@ export namespace Prisma {
      * @example
      * // Get all UserWallets
      * const userWallets = await prisma.userWallets.findMany()
-     * 
+     *
      * // Get first 10 UserWallets
      * const userWallets = await prisma.userWallets.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const userWalletsWithIdOnly = await prisma.userWallets.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends userWalletsFindManyArgs>(args?: SelectSubset<T, userWalletsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends userWalletsFindManyArgs>(args?: SelectSubset<T, userWalletsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a UserWallets.
@@ -10111,9 +10041,9 @@ export namespace Prisma {
      *     // ... data to create a UserWallets
      *   }
      * })
-     * 
+     *
      */
-    create<T extends userWalletsCreateArgs>(args: SelectSubset<T, userWalletsCreateArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends userWalletsCreateArgs>(args: SelectSubset<T, userWalletsCreateArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many UserWallets.
@@ -10125,7 +10055,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends userWalletsCreateManyArgs>(args?: SelectSubset<T, userWalletsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -10139,7 +10069,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many UserWallets and only return the `id`
      * const userWalletsWithIdOnly = await prisma.userWallets.createManyAndReturn({
      *   select: { id: true },
@@ -10149,9 +10079,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends userWalletsCreateManyAndReturnArgs>(args?: SelectSubset<T, userWalletsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends userWalletsCreateManyAndReturnArgs>(args?: SelectSubset<T, userWalletsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a UserWallets.
@@ -10163,9 +10093,9 @@ export namespace Prisma {
      *     // ... filter to delete one UserWallets
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends userWalletsDeleteArgs>(args: SelectSubset<T, userWalletsDeleteArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends userWalletsDeleteArgs>(args: SelectSubset<T, userWalletsDeleteArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one UserWallets.
@@ -10180,9 +10110,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends userWalletsUpdateArgs>(args: SelectSubset<T, userWalletsUpdateArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends userWalletsUpdateArgs>(args: SelectSubset<T, userWalletsUpdateArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more UserWallets.
@@ -10194,7 +10124,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends userWalletsDeleteManyArgs>(args?: SelectSubset<T, userWalletsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -10213,7 +10143,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends userWalletsUpdateManyArgs>(args: SelectSubset<T, userWalletsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -10230,7 +10160,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more UserWallets and only return the `id`
      * const userWalletsWithIdOnly = await prisma.userWallets.updateManyAndReturn({
      *   select: { id: true },
@@ -10243,9 +10173,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends userWalletsUpdateManyAndReturnArgs>(args: SelectSubset<T, userWalletsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends userWalletsUpdateManyAndReturnArgs>(args: SelectSubset<T, userWalletsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one UserWallets.
@@ -10264,8 +10194,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends userWalletsUpsertArgs>(args: SelectSubset<T, userWalletsUpsertArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends userWalletsUpsertArgs>(args: SelectSubset<T, userWalletsUpsertArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of UserWallets.
@@ -10279,7 +10208,7 @@ export namespace Prisma {
      *     // ... the filter for the UserWallets we want to count
      *   }
      * })
-    **/
+     */
     count<T extends userWalletsCountArgs>(
       args?: Subset<T, userWalletsCountArgs>,
     ): Prisma.PrismaPromise<
@@ -10313,7 +10242,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends UserWalletsAggregateArgs>(args: Subset<T, UserWalletsAggregateArgs>): Prisma.PrismaPromise<GetUserWalletsAggregateType<T>>
 
     /**
@@ -10332,8 +10261,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends userWalletsGroupByArgs,
       HasSelectOrTake extends Or<
@@ -10350,52 +10279,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, userWalletsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserWalletsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the userWallets model
-   */
-  readonly fields: userWalletsFieldRefs;
+    /**
+     * Fields of the userWallets model
+     */
+    readonly fields: userWalletsFieldRefs
   }
 
   /**
@@ -10405,8 +10334,8 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__userWalletsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10429,23 +10358,19 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the userWallets model
    */
   interface userWalletsFieldRefs {
-    readonly id: FieldRef<"userWallets", 'Int'>
-    readonly balance: FieldRef<"userWallets", 'Int'>
+    readonly id: FieldRef<'userWallets', 'Int'>
+    readonly balance: FieldRef<'userWallets', 'Int'>
   }
-    
 
   // Custom InputTypes
   /**
    * userWallets findUnique
    */
-  export type userWalletsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10467,7 +10392,7 @@ export namespace Prisma {
   /**
    * userWallets findUniqueOrThrow
    */
-  export type userWalletsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10489,7 +10414,7 @@ export namespace Prisma {
   /**
    * userWallets findFirst
    */
-  export type userWalletsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10508,31 +10433,31 @@ export namespace Prisma {
     where?: userWalletsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of userWallets to fetch.
      */
     orderBy?: userWalletsOrderByWithRelationInput | userWalletsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for userWallets.
      */
     cursor?: userWalletsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` userWallets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` userWallets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of userWallets.
      */
     distinct?: UserWalletsScalarFieldEnum | UserWalletsScalarFieldEnum[]
@@ -10541,7 +10466,7 @@ export namespace Prisma {
   /**
    * userWallets findFirstOrThrow
    */
-  export type userWalletsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10560,31 +10485,31 @@ export namespace Prisma {
     where?: userWalletsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of userWallets to fetch.
      */
     orderBy?: userWalletsOrderByWithRelationInput | userWalletsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for userWallets.
      */
     cursor?: userWalletsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` userWallets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` userWallets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of userWallets.
      */
     distinct?: UserWalletsScalarFieldEnum | UserWalletsScalarFieldEnum[]
@@ -10593,7 +10518,7 @@ export namespace Prisma {
   /**
    * userWallets findMany
    */
-  export type userWalletsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10612,25 +10537,25 @@ export namespace Prisma {
     where?: userWalletsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of userWallets to fetch.
      */
     orderBy?: userWalletsOrderByWithRelationInput | userWalletsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing userWallets.
      */
     cursor?: userWalletsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` userWallets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` userWallets.
      */
     skip?: number
@@ -10640,7 +10565,7 @@ export namespace Prisma {
   /**
    * userWallets create
    */
-  export type userWalletsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10662,7 +10587,7 @@ export namespace Prisma {
   /**
    * userWallets createMany
    */
-  export type userWalletsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many userWallets.
      */
@@ -10673,7 +10598,7 @@ export namespace Prisma {
   /**
    * userWallets createManyAndReturn
    */
-  export type userWalletsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10696,7 +10621,7 @@ export namespace Prisma {
   /**
    * userWallets update
    */
-  export type userWalletsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10722,7 +10647,7 @@ export namespace Prisma {
   /**
    * userWallets updateMany
    */
-  export type userWalletsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update userWallets.
      */
@@ -10740,7 +10665,7 @@ export namespace Prisma {
   /**
    * userWallets updateManyAndReturn
    */
-  export type userWalletsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10770,7 +10695,7 @@ export namespace Prisma {
   /**
    * userWallets upsert
    */
-  export type userWalletsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10800,7 +10725,7 @@ export namespace Prisma {
   /**
    * userWallets delete
    */
-  export type userWalletsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10822,7 +10747,7 @@ export namespace Prisma {
   /**
    * userWallets deleteMany
    */
-  export type userWalletsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which userWallets to delete
      */
@@ -10836,7 +10761,7 @@ export namespace Prisma {
   /**
    * userWallets without action
    */
-  export type userWalletsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface userWalletsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the userWallets
      */
@@ -10851,12 +10776,11 @@ export namespace Prisma {
     include?: userWalletsInclude<ExtArgs> | null
   }
 
-
   /**
    * Model betEntries
    */
 
-  export type AggregateBetEntries = {
+  export interface AggregateBetEntries {
     _count: BetEntriesCountAggregateOutputType | null
     _avg: BetEntriesAvgAggregateOutputType | null
     _sum: BetEntriesSumAggregateOutputType | null
@@ -10864,35 +10788,35 @@ export namespace Prisma {
     _max: BetEntriesMaxAggregateOutputType | null
   }
 
-  export type BetEntriesAvgAggregateOutputType = {
+  export interface BetEntriesAvgAggregateOutputType {
     id: number | null
     optionId: number | null
     userId: number | null
     amount: number | null
   }
 
-  export type BetEntriesSumAggregateOutputType = {
+  export interface BetEntriesSumAggregateOutputType {
     id: number | null
     optionId: number | null
     userId: number | null
     amount: number | null
   }
 
-  export type BetEntriesMinAggregateOutputType = {
+  export interface BetEntriesMinAggregateOutputType {
     id: number | null
     optionId: number | null
     userId: number | null
     amount: number | null
   }
 
-  export type BetEntriesMaxAggregateOutputType = {
+  export interface BetEntriesMaxAggregateOutputType {
     id: number | null
     optionId: number | null
     userId: number | null
     amount: number | null
   }
 
-  export type BetEntriesCountAggregateOutputType = {
+  export interface BetEntriesCountAggregateOutputType {
     id: number
     optionId: number
     userId: number
@@ -10900,36 +10824,35 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type BetEntriesAvgAggregateInputType = {
+  export interface BetEntriesAvgAggregateInputType {
     id?: true
     optionId?: true
     userId?: true
     amount?: true
   }
 
-  export type BetEntriesSumAggregateInputType = {
+  export interface BetEntriesSumAggregateInputType {
     id?: true
     optionId?: true
     userId?: true
     amount?: true
   }
 
-  export type BetEntriesMinAggregateInputType = {
+  export interface BetEntriesMinAggregateInputType {
     id?: true
     optionId?: true
     userId?: true
     amount?: true
   }
 
-  export type BetEntriesMaxAggregateInputType = {
+  export interface BetEntriesMaxAggregateInputType {
     id?: true
     optionId?: true
     userId?: true
     amount?: true
   }
 
-  export type BetEntriesCountAggregateInputType = {
+  export interface BetEntriesCountAggregateInputType {
     id?: true
     optionId?: true
     userId?: true
@@ -10937,79 +10860,76 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type BetEntriesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetEntriesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which betEntries to aggregate.
      */
     where?: betEntriesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of betEntries to fetch.
      */
     orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: betEntriesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` betEntries from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` betEntries.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned betEntries
-    **/
+     */
     _count?: true | BetEntriesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: BetEntriesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: BetEntriesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: BetEntriesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: BetEntriesMaxAggregateInputType
   }
 
   export type GetBetEntriesAggregateType<T extends BetEntriesAggregateArgs> = {
-        [P in keyof T & keyof AggregateBetEntries]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateBetEntries]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateBetEntries[P]>
       : GetScalarType<T[P], AggregateBetEntries[P]>
   }
 
-
-
-
-  export type betEntriesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: betEntriesWhereInput
     orderBy?: betEntriesOrderByWithAggregationInput | betEntriesOrderByWithAggregationInput[]
     by: BetEntriesScalarFieldEnum[] | BetEntriesScalarFieldEnum
@@ -11023,7 +10943,7 @@ export namespace Prisma {
     _max?: BetEntriesMaxAggregateInputType
   }
 
-  export type BetEntriesGroupByOutputType = {
+  export interface BetEntriesGroupByOutputType {
     id: number
     optionId: number | null
     userId: number | null
@@ -11038,16 +10958,15 @@ export namespace Prisma {
   type GetBetEntriesGroupByPayload<T extends betEntriesGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<BetEntriesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BetEntriesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BetEntriesGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof BetEntriesGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], BetEntriesGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], BetEntriesGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type betEntriesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -11056,7 +10975,7 @@ export namespace Prisma {
     amount?: boolean
     betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
     users?: boolean | betEntries$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["betEntries"]>
+  }, ExtArgs['result']['betEntries']>
 
   export type betEntriesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -11065,7 +10984,7 @@ export namespace Prisma {
     amount?: boolean
     betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
     users?: boolean | betEntries$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["betEntries"]>
+  }, ExtArgs['result']['betEntries']>
 
   export type betEntriesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
@@ -11074,31 +10993,31 @@ export namespace Prisma {
     amount?: boolean
     betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
     users?: boolean | betEntries$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["betEntries"]>
+  }, ExtArgs['result']['betEntries']>
 
-  export type betEntriesSelectScalar = {
+  export interface betEntriesSelectScalar {
     id?: boolean
     optionId?: boolean
     userId?: boolean
     amount?: boolean
   }
 
-  export type betEntriesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "optionId" | "userId" | "amount", ExtArgs["result"]["betEntries"]>
-  export type betEntriesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type betEntriesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'optionId' | 'userId' | 'amount', ExtArgs['result']['betEntries']>
+  export interface betEntriesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
     users?: boolean | betEntries$usersArgs<ExtArgs>
   }
-  export type betEntriesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
     users?: boolean | betEntries$usersArgs<ExtArgs>
   }
-  export type betEntriesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
     users?: boolean | betEntries$usersArgs<ExtArgs>
   }
 
-  export type $betEntriesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "betEntries"
+  export interface $betEntriesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'betEntries'
     objects: {
       betOptions: Prisma.$betOptionsPayload<ExtArgs> | null
       users: Prisma.$usersPayload<ExtArgs> | null
@@ -11108,7 +11027,7 @@ export namespace Prisma {
       optionId: number | null
       userId: number | null
       amount: number
-    }, ExtArgs["result"]["betEntries"]>
+    }, ExtArgs['result']['betEntries']>
     composites: {}
   }
 
@@ -11132,7 +11051,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends betEntriesFindUniqueArgs>(args: SelectSubset<T, betEntriesFindUniqueArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends betEntriesFindUniqueArgs>(args: SelectSubset<T, betEntriesFindUniqueArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one BetEntries that matches the filter or throw an error with `error.code='P2025'`
@@ -11146,7 +11065,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends betEntriesFindUniqueOrThrowArgs>(args: SelectSubset<T, betEntriesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends betEntriesFindUniqueOrThrowArgs>(args: SelectSubset<T, betEntriesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first BetEntries that matches the filter.
@@ -11161,7 +11080,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends betEntriesFindFirstArgs>(args?: SelectSubset<T, betEntriesFindFirstArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends betEntriesFindFirstArgs>(args?: SelectSubset<T, betEntriesFindFirstArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first BetEntries that matches the filter or
@@ -11177,7 +11096,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends betEntriesFindFirstOrThrowArgs>(args?: SelectSubset<T, betEntriesFindFirstOrThrowArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends betEntriesFindFirstOrThrowArgs>(args?: SelectSubset<T, betEntriesFindFirstOrThrowArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more BetEntries that matches the filter.
@@ -11187,15 +11106,15 @@ export namespace Prisma {
      * @example
      * // Get all BetEntries
      * const betEntries = await prisma.betEntries.findMany()
-     * 
+     *
      * // Get first 10 BetEntries
      * const betEntries = await prisma.betEntries.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const betEntriesWithIdOnly = await prisma.betEntries.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends betEntriesFindManyArgs>(args?: SelectSubset<T, betEntriesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends betEntriesFindManyArgs>(args?: SelectSubset<T, betEntriesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a BetEntries.
@@ -11207,9 +11126,9 @@ export namespace Prisma {
      *     // ... data to create a BetEntries
      *   }
      * })
-     * 
+     *
      */
-    create<T extends betEntriesCreateArgs>(args: SelectSubset<T, betEntriesCreateArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends betEntriesCreateArgs>(args: SelectSubset<T, betEntriesCreateArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many BetEntries.
@@ -11221,7 +11140,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends betEntriesCreateManyArgs>(args?: SelectSubset<T, betEntriesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -11235,7 +11154,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many BetEntries and only return the `id`
      * const betEntriesWithIdOnly = await prisma.betEntries.createManyAndReturn({
      *   select: { id: true },
@@ -11245,9 +11164,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends betEntriesCreateManyAndReturnArgs>(args?: SelectSubset<T, betEntriesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends betEntriesCreateManyAndReturnArgs>(args?: SelectSubset<T, betEntriesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a BetEntries.
@@ -11259,9 +11178,9 @@ export namespace Prisma {
      *     // ... filter to delete one BetEntries
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends betEntriesDeleteArgs>(args: SelectSubset<T, betEntriesDeleteArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends betEntriesDeleteArgs>(args: SelectSubset<T, betEntriesDeleteArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one BetEntries.
@@ -11276,9 +11195,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends betEntriesUpdateArgs>(args: SelectSubset<T, betEntriesUpdateArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends betEntriesUpdateArgs>(args: SelectSubset<T, betEntriesUpdateArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more BetEntries.
@@ -11290,7 +11209,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends betEntriesDeleteManyArgs>(args?: SelectSubset<T, betEntriesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -11309,7 +11228,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends betEntriesUpdateManyArgs>(args: SelectSubset<T, betEntriesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -11326,7 +11245,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more BetEntries and only return the `id`
      * const betEntriesWithIdOnly = await prisma.betEntries.updateManyAndReturn({
      *   select: { id: true },
@@ -11339,9 +11258,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends betEntriesUpdateManyAndReturnArgs>(args: SelectSubset<T, betEntriesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends betEntriesUpdateManyAndReturnArgs>(args: SelectSubset<T, betEntriesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one BetEntries.
@@ -11360,8 +11279,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends betEntriesUpsertArgs>(args: SelectSubset<T, betEntriesUpsertArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends betEntriesUpsertArgs>(args: SelectSubset<T, betEntriesUpsertArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of BetEntries.
@@ -11375,7 +11293,7 @@ export namespace Prisma {
      *     // ... the filter for the BetEntries we want to count
      *   }
      * })
-    **/
+     */
     count<T extends betEntriesCountArgs>(
       args?: Subset<T, betEntriesCountArgs>,
     ): Prisma.PrismaPromise<
@@ -11409,7 +11327,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends BetEntriesAggregateArgs>(args: Subset<T, BetEntriesAggregateArgs>): Prisma.PrismaPromise<GetBetEntriesAggregateType<T>>
 
     /**
@@ -11428,8 +11346,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends betEntriesGroupByArgs,
       HasSelectOrTake extends Or<
@@ -11446,52 +11364,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, betEntriesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBetEntriesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the betEntries model
-   */
-  readonly fields: betEntriesFieldRefs;
+    /**
+     * Fields of the betEntries model
+     */
+    readonly fields: betEntriesFieldRefs
   }
 
   /**
@@ -11501,9 +11419,9 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__betEntriesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    betOptions<T extends betEntries$betOptionsArgs<ExtArgs> = {}>(args?: Subset<T, betEntries$betOptionsArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    users<T extends betEntries$usersArgs<ExtArgs> = {}>(args?: Subset<T, betEntries$usersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    betOptions<T extends betEntries$betOptionsArgs<ExtArgs> = {}>(args?: Subset<T, betEntries$betOptionsArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    users<T extends betEntries$usersArgs<ExtArgs> = {}>(args?: Subset<T, betEntries$usersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11526,25 +11444,21 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the betEntries model
    */
   interface betEntriesFieldRefs {
-    readonly id: FieldRef<"betEntries", 'Int'>
-    readonly optionId: FieldRef<"betEntries", 'Int'>
-    readonly userId: FieldRef<"betEntries", 'Int'>
-    readonly amount: FieldRef<"betEntries", 'Int'>
+    readonly id: FieldRef<'betEntries', 'Int'>
+    readonly optionId: FieldRef<'betEntries', 'Int'>
+    readonly userId: FieldRef<'betEntries', 'Int'>
+    readonly amount: FieldRef<'betEntries', 'Int'>
   }
-    
 
   // Custom InputTypes
   /**
    * betEntries findUnique
    */
-  export type betEntriesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11566,7 +11480,7 @@ export namespace Prisma {
   /**
    * betEntries findUniqueOrThrow
    */
-  export type betEntriesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11588,7 +11502,7 @@ export namespace Prisma {
   /**
    * betEntries findFirst
    */
-  export type betEntriesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11607,31 +11521,31 @@ export namespace Prisma {
     where?: betEntriesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of betEntries to fetch.
      */
     orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for betEntries.
      */
     cursor?: betEntriesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` betEntries from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` betEntries.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of betEntries.
      */
     distinct?: BetEntriesScalarFieldEnum | BetEntriesScalarFieldEnum[]
@@ -11640,7 +11554,7 @@ export namespace Prisma {
   /**
    * betEntries findFirstOrThrow
    */
-  export type betEntriesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11659,31 +11573,31 @@ export namespace Prisma {
     where?: betEntriesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of betEntries to fetch.
      */
     orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for betEntries.
      */
     cursor?: betEntriesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` betEntries from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` betEntries.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of betEntries.
      */
     distinct?: BetEntriesScalarFieldEnum | BetEntriesScalarFieldEnum[]
@@ -11692,7 +11606,7 @@ export namespace Prisma {
   /**
    * betEntries findMany
    */
-  export type betEntriesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11711,25 +11625,25 @@ export namespace Prisma {
     where?: betEntriesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of betEntries to fetch.
      */
     orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing betEntries.
      */
     cursor?: betEntriesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` betEntries from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` betEntries.
      */
     skip?: number
@@ -11739,7 +11653,7 @@ export namespace Prisma {
   /**
    * betEntries create
    */
-  export type betEntriesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11761,7 +11675,7 @@ export namespace Prisma {
   /**
    * betEntries createMany
    */
-  export type betEntriesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many betEntries.
      */
@@ -11772,7 +11686,7 @@ export namespace Prisma {
   /**
    * betEntries createManyAndReturn
    */
-  export type betEntriesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11795,7 +11709,7 @@ export namespace Prisma {
   /**
    * betEntries update
    */
-  export type betEntriesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11821,7 +11735,7 @@ export namespace Prisma {
   /**
    * betEntries updateMany
    */
-  export type betEntriesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update betEntries.
      */
@@ -11839,7 +11753,7 @@ export namespace Prisma {
   /**
    * betEntries updateManyAndReturn
    */
-  export type betEntriesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11869,7 +11783,7 @@ export namespace Prisma {
   /**
    * betEntries upsert
    */
-  export type betEntriesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11899,7 +11813,7 @@ export namespace Prisma {
   /**
    * betEntries delete
    */
-  export type betEntriesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11921,7 +11835,7 @@ export namespace Prisma {
   /**
    * betEntries deleteMany
    */
-  export type betEntriesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which betEntries to delete
      */
@@ -11935,7 +11849,7 @@ export namespace Prisma {
   /**
    * betEntries.betOptions
    */
-  export type betEntries$betOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntries$betOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -11954,7 +11868,7 @@ export namespace Prisma {
   /**
    * betEntries.users
    */
-  export type betEntries$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntries$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the users
      */
@@ -11973,7 +11887,7 @@ export namespace Prisma {
   /**
    * betEntries without action
    */
-  export type betEntriesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betEntriesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -11988,12 +11902,11 @@ export namespace Prisma {
     include?: betEntriesInclude<ExtArgs> | null
   }
 
-
   /**
    * Model betOptions
    */
 
-  export type AggregateBetOptions = {
+  export interface AggregateBetOptions {
     _count: BetOptionsCountAggregateOutputType | null
     _avg: BetOptionsAvgAggregateOutputType | null
     _sum: BetOptionsSumAggregateOutputType | null
@@ -12001,158 +11914,154 @@ export namespace Prisma {
     _max: BetOptionsMaxAggregateOutputType | null
   }
 
-  export type BetOptionsAvgAggregateOutputType = {
+  export interface BetOptionsAvgAggregateOutputType {
     id: number | null
     betId: number | null
-    weight: number | null
+    votes: number | null
     amount: number | null
   }
 
-  export type BetOptionsSumAggregateOutputType = {
+  export interface BetOptionsSumAggregateOutputType {
     id: number | null
     betId: number | null
-    weight: number | null
+    votes: number | null
     amount: number | null
   }
 
-  export type BetOptionsMinAggregateOutputType = {
-    id: number | null
-    betId: number | null
-    description: string | null
-    weight: number | null
-    amount: number | null
-  }
-
-  export type BetOptionsMaxAggregateOutputType = {
+  export interface BetOptionsMinAggregateOutputType {
     id: number | null
     betId: number | null
     description: string | null
-    weight: number | null
+    votes: number | null
     amount: number | null
   }
 
-  export type BetOptionsCountAggregateOutputType = {
+  export interface BetOptionsMaxAggregateOutputType {
+    id: number | null
+    betId: number | null
+    description: string | null
+    votes: number | null
+    amount: number | null
+  }
+
+  export interface BetOptionsCountAggregateOutputType {
     id: number
     betId: number
     description: number
-    weight: number
+    votes: number
     amount: number
     _all: number
   }
 
-
-  export type BetOptionsAvgAggregateInputType = {
+  export interface BetOptionsAvgAggregateInputType {
     id?: true
     betId?: true
-    weight?: true
+    votes?: true
     amount?: true
   }
 
-  export type BetOptionsSumAggregateInputType = {
+  export interface BetOptionsSumAggregateInputType {
     id?: true
     betId?: true
-    weight?: true
+    votes?: true
     amount?: true
   }
 
-  export type BetOptionsMinAggregateInputType = {
+  export interface BetOptionsMinAggregateInputType {
     id?: true
     betId?: true
     description?: true
-    weight?: true
+    votes?: true
     amount?: true
   }
 
-  export type BetOptionsMaxAggregateInputType = {
+  export interface BetOptionsMaxAggregateInputType {
     id?: true
     betId?: true
     description?: true
-    weight?: true
+    votes?: true
     amount?: true
   }
 
-  export type BetOptionsCountAggregateInputType = {
+  export interface BetOptionsCountAggregateInputType {
     id?: true
     betId?: true
     description?: true
-    weight?: true
+    votes?: true
     amount?: true
     _all?: true
   }
 
-  export type BetOptionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface BetOptionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which betOptions to aggregate.
      */
     where?: betOptionsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of betOptions to fetch.
      */
     orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: betOptionsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` betOptions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` betOptions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned betOptions
-    **/
+     */
     _count?: true | BetOptionsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     */
     _avg?: BetOptionsAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     */
     _sum?: BetOptionsSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     */
     _min?: BetOptionsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     */
     _max?: BetOptionsMaxAggregateInputType
   }
 
   export type GetBetOptionsAggregateType<T extends BetOptionsAggregateArgs> = {
-        [P in keyof T & keyof AggregateBetOptions]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateBetOptions]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateBetOptions[P]>
       : GetScalarType<T[P], AggregateBetOptions[P]>
   }
 
-
-
-
-  export type betOptionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     where?: betOptionsWhereInput
     orderBy?: betOptionsOrderByWithAggregationInput | betOptionsOrderByWithAggregationInput[]
     by: BetOptionsScalarFieldEnum[] | BetOptionsScalarFieldEnum
@@ -12166,11 +12075,11 @@ export namespace Prisma {
     _max?: BetOptionsMaxAggregateInputType
   }
 
-  export type BetOptionsGroupByOutputType = {
+  export interface BetOptionsGroupByOutputType {
     id: number
     betId: number | null
     description: string
-    weight: number
+    votes: number
     amount: number
     _count: BetOptionsCountAggregateOutputType | null
     _avg: BetOptionsAvgAggregateOutputType | null
@@ -12182,69 +12091,68 @@ export namespace Prisma {
   type GetBetOptionsGroupByPayload<T extends betOptionsGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<BetOptionsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BetOptionsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BetOptionsGroupByOutputType[P]>
+      {
+        [P in ((keyof T) & (keyof BetOptionsGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
             : GetScalarType<T[P], BetOptionsGroupByOutputType[P]>
-        }
-      >
+          : GetScalarType<T[P], BetOptionsGroupByOutputType[P]>
+      }
     >
-
+  >
 
   export type betOptionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     betId?: boolean
     description?: boolean
-    weight?: boolean
+    votes?: boolean
     amount?: boolean
     betEntries?: boolean | betOptions$betEntriesArgs<ExtArgs>
     bets?: boolean | betOptions$betsArgs<ExtArgs>
     _count?: boolean | BetOptionsCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["betOptions"]>
+  }, ExtArgs['result']['betOptions']>
 
   export type betOptionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     betId?: boolean
     description?: boolean
-    weight?: boolean
+    votes?: boolean
     amount?: boolean
     bets?: boolean | betOptions$betsArgs<ExtArgs>
-  }, ExtArgs["result"]["betOptions"]>
+  }, ExtArgs['result']['betOptions']>
 
   export type betOptionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     betId?: boolean
     description?: boolean
-    weight?: boolean
+    votes?: boolean
     amount?: boolean
     bets?: boolean | betOptions$betsArgs<ExtArgs>
-  }, ExtArgs["result"]["betOptions"]>
+  }, ExtArgs['result']['betOptions']>
 
-  export type betOptionsSelectScalar = {
+  export interface betOptionsSelectScalar {
     id?: boolean
     betId?: boolean
     description?: boolean
-    weight?: boolean
+    votes?: boolean
     amount?: boolean
   }
 
-  export type betOptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "betId" | "description" | "weight" | "amount", ExtArgs["result"]["betOptions"]>
-  export type betOptionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type betOptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<'id' | 'betId' | 'description' | 'votes' | 'amount', ExtArgs['result']['betOptions']>
+  export interface betOptionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     betEntries?: boolean | betOptions$betEntriesArgs<ExtArgs>
     bets?: boolean | betOptions$betsArgs<ExtArgs>
     _count?: boolean | BetOptionsCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type betOptionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     bets?: boolean | betOptions$betsArgs<ExtArgs>
   }
-  export type betOptionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     bets?: boolean | betOptions$betsArgs<ExtArgs>
   }
 
-  export type $betOptionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "betOptions"
+  export interface $betOptionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    name: 'betOptions'
     objects: {
       betEntries: Prisma.$betEntriesPayload<ExtArgs>[]
       bets: Prisma.$betsPayload<ExtArgs> | null
@@ -12253,9 +12161,9 @@ export namespace Prisma {
       id: number
       betId: number | null
       description: string
-      weight: number
+      votes: number
       amount: number
-    }, ExtArgs["result"]["betOptions"]>
+    }, ExtArgs['result']['betOptions']>
     composites: {}
   }
 
@@ -12279,7 +12187,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends betOptionsFindUniqueArgs>(args: SelectSubset<T, betOptionsFindUniqueArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends betOptionsFindUniqueArgs>(args: SelectSubset<T, betOptionsFindUniqueArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'findUnique', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one BetOptions that matches the filter or throw an error with `error.code='P2025'`
@@ -12293,7 +12201,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends betOptionsFindUniqueOrThrowArgs>(args: SelectSubset<T, betOptionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends betOptionsFindUniqueOrThrowArgs>(args: SelectSubset<T, betOptionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first BetOptions that matches the filter.
@@ -12308,7 +12216,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends betOptionsFindFirstArgs>(args?: SelectSubset<T, betOptionsFindFirstArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends betOptionsFindFirstArgs>(args?: SelectSubset<T, betOptionsFindFirstArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'findFirst', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first BetOptions that matches the filter or
@@ -12324,7 +12232,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends betOptionsFindFirstOrThrowArgs>(args?: SelectSubset<T, betOptionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends betOptionsFindFirstOrThrowArgs>(args?: SelectSubset<T, betOptionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'findFirstOrThrow', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more BetOptions that matches the filter.
@@ -12334,15 +12242,15 @@ export namespace Prisma {
      * @example
      * // Get all BetOptions
      * const betOptions = await prisma.betOptions.findMany()
-     * 
+     *
      * // Get first 10 BetOptions
      * const betOptions = await prisma.betOptions.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const betOptionsWithIdOnly = await prisma.betOptions.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends betOptionsFindManyArgs>(args?: SelectSubset<T, betOptionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends betOptionsFindManyArgs>(args?: SelectSubset<T, betOptionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions>>
 
     /**
      * Create a BetOptions.
@@ -12354,9 +12262,9 @@ export namespace Prisma {
      *     // ... data to create a BetOptions
      *   }
      * })
-     * 
+     *
      */
-    create<T extends betOptionsCreateArgs>(args: SelectSubset<T, betOptionsCreateArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends betOptionsCreateArgs>(args: SelectSubset<T, betOptionsCreateArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'create', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many BetOptions.
@@ -12368,7 +12276,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
     createMany<T extends betOptionsCreateManyArgs>(args?: SelectSubset<T, betOptionsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -12382,7 +12290,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Create many BetOptions and only return the `id`
      * const betOptionsWithIdOnly = await prisma.betOptions.createManyAndReturn({
      *   select: { id: true },
@@ -12392,9 +12300,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    createManyAndReturn<T extends betOptionsCreateManyAndReturnArgs>(args?: SelectSubset<T, betOptionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends betOptionsCreateManyAndReturnArgs>(args?: SelectSubset<T, betOptionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'createManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Delete a BetOptions.
@@ -12406,9 +12314,9 @@ export namespace Prisma {
      *     // ... filter to delete one BetOptions
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends betOptionsDeleteArgs>(args: SelectSubset<T, betOptionsDeleteArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends betOptionsDeleteArgs>(args: SelectSubset<T, betOptionsDeleteArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'delete', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one BetOptions.
@@ -12423,9 +12331,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends betOptionsUpdateArgs>(args: SelectSubset<T, betOptionsUpdateArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends betOptionsUpdateArgs>(args: SelectSubset<T, betOptionsUpdateArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'update', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more BetOptions.
@@ -12437,7 +12345,7 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
     deleteMany<T extends betOptionsDeleteManyArgs>(args?: SelectSubset<T, betOptionsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -12456,7 +12364,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
     updateMany<T extends betOptionsUpdateManyArgs>(args: SelectSubset<T, betOptionsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
@@ -12473,7 +12381,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     * 
+     *
      * // Update zero or more BetOptions and only return the `id`
      * const betOptionsWithIdOnly = await prisma.betOptions.updateManyAndReturn({
      *   select: { id: true },
@@ -12486,9 +12394,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * 
+     *
      */
-    updateManyAndReturn<T extends betOptionsUpdateManyAndReturnArgs>(args: SelectSubset<T, betOptionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends betOptionsUpdateManyAndReturnArgs>(args: SelectSubset<T, betOptionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'updateManyAndReturn', GlobalOmitOptions>>
 
     /**
      * Create or update one BetOptions.
@@ -12507,8 +12415,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends betOptionsUpsertArgs>(args: SelectSubset<T, betOptionsUpsertArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends betOptionsUpsertArgs>(args: SelectSubset<T, betOptionsUpsertArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, 'upsert', GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Count the number of BetOptions.
@@ -12522,7 +12429,7 @@ export namespace Prisma {
      *     // ... the filter for the BetOptions we want to count
      *   }
      * })
-    **/
+     */
     count<T extends betOptionsCountArgs>(
       args?: Subset<T, betOptionsCountArgs>,
     ): Prisma.PrismaPromise<
@@ -12556,7 +12463,7 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
+     */
     aggregate<T extends BetOptionsAggregateArgs>(args: Subset<T, BetOptionsAggregateArgs>): Prisma.PrismaPromise<GetBetOptionsAggregateType<T>>
 
     /**
@@ -12575,8 +12482,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     */
     groupBy<
       T extends betOptionsGroupByArgs,
       HasSelectOrTake extends Or<
@@ -12593,52 +12500,52 @@ export namespace Prisma {
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
     >(args: SubsetIntersection<T, betOptionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBetOptionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the betOptions model
-   */
-  readonly fields: betOptionsFieldRefs;
+    /**
+     * Fields of the betOptions model
+     */
+    readonly fields: betOptionsFieldRefs
   }
 
   /**
@@ -12648,9 +12555,9 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__betOptionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    betEntries<T extends betOptions$betEntriesArgs<ExtArgs> = {}>(args?: Subset<T, betOptions$betEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    bets<T extends betOptions$betsArgs<ExtArgs> = {}>(args?: Subset<T, betOptions$betsArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    betEntries<T extends betOptions$betEntriesArgs<ExtArgs> = {}>(args?: Subset<T, betOptions$betEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, 'findMany', GlobalOmitOptions> | Null>
+    bets<T extends betOptions$betsArgs<ExtArgs> = {}>(args?: Subset<T, betOptions$betsArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, 'findUniqueOrThrow', GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12673,26 +12580,22 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the betOptions model
    */
   interface betOptionsFieldRefs {
-    readonly id: FieldRef<"betOptions", 'Int'>
-    readonly betId: FieldRef<"betOptions", 'Int'>
-    readonly description: FieldRef<"betOptions", 'String'>
-    readonly weight: FieldRef<"betOptions", 'Float'>
-    readonly amount: FieldRef<"betOptions", 'Int'>
+    readonly id: FieldRef<'betOptions', 'Int'>
+    readonly betId: FieldRef<'betOptions', 'Int'>
+    readonly description: FieldRef<'betOptions', 'String'>
+    readonly votes: FieldRef<'betOptions', 'Int'>
+    readonly amount: FieldRef<'betOptions', 'Int'>
   }
-    
 
   // Custom InputTypes
   /**
    * betOptions findUnique
    */
-  export type betOptionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -12714,7 +12617,7 @@ export namespace Prisma {
   /**
    * betOptions findUniqueOrThrow
    */
-  export type betOptionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -12736,7 +12639,7 @@ export namespace Prisma {
   /**
    * betOptions findFirst
    */
-  export type betOptionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -12755,31 +12658,31 @@ export namespace Prisma {
     where?: betOptionsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of betOptions to fetch.
      */
     orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for betOptions.
      */
     cursor?: betOptionsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` betOptions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` betOptions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of betOptions.
      */
     distinct?: BetOptionsScalarFieldEnum | BetOptionsScalarFieldEnum[]
@@ -12788,7 +12691,7 @@ export namespace Prisma {
   /**
    * betOptions findFirstOrThrow
    */
-  export type betOptionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -12807,31 +12710,31 @@ export namespace Prisma {
     where?: betOptionsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of betOptions to fetch.
      */
     orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for betOptions.
      */
     cursor?: betOptionsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` betOptions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` betOptions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of betOptions.
      */
     distinct?: BetOptionsScalarFieldEnum | BetOptionsScalarFieldEnum[]
@@ -12840,7 +12743,7 @@ export namespace Prisma {
   /**
    * betOptions findMany
    */
-  export type betOptionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -12859,25 +12762,25 @@ export namespace Prisma {
     where?: betOptionsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of betOptions to fetch.
      */
     orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing betOptions.
      */
     cursor?: betOptionsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` betOptions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` betOptions.
      */
     skip?: number
@@ -12887,7 +12790,7 @@ export namespace Prisma {
   /**
    * betOptions create
    */
-  export type betOptionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -12909,7 +12812,7 @@ export namespace Prisma {
   /**
    * betOptions createMany
    */
-  export type betOptionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to create many betOptions.
      */
@@ -12920,7 +12823,7 @@ export namespace Prisma {
   /**
    * betOptions createManyAndReturn
    */
-  export type betOptionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -12943,7 +12846,7 @@ export namespace Prisma {
   /**
    * betOptions update
    */
-  export type betOptionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -12969,7 +12872,7 @@ export namespace Prisma {
   /**
    * betOptions updateMany
    */
-  export type betOptionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * The data used to update betOptions.
      */
@@ -12987,7 +12890,7 @@ export namespace Prisma {
   /**
    * betOptions updateManyAndReturn
    */
-  export type betOptionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -13017,7 +12920,7 @@ export namespace Prisma {
   /**
    * betOptions upsert
    */
-  export type betOptionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -13047,7 +12950,7 @@ export namespace Prisma {
   /**
    * betOptions delete
    */
-  export type betOptionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -13069,7 +12972,7 @@ export namespace Prisma {
   /**
    * betOptions deleteMany
    */
-  export type betOptionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Filter which betOptions to delete
      */
@@ -13083,7 +12986,7 @@ export namespace Prisma {
   /**
    * betOptions.betEntries
    */
-  export type betOptions$betEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptions$betEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betEntries
      */
@@ -13107,7 +13010,7 @@ export namespace Prisma {
   /**
    * betOptions.bets
    */
-  export type betOptions$betsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptions$betsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the bets
      */
@@ -13126,7 +13029,7 @@ export namespace Prisma {
   /**
    * betOptions without action
    */
-  export type betOptionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface betOptionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     /**
      * Select specific fields to fetch from the betOptions
      */
@@ -13141,241 +13044,206 @@ export namespace Prisma {
     include?: betOptionsInclude<ExtArgs> | null
   }
 
-
   /**
    * Enums
    */
 
   export const TransactionIsolationLevel: {
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
+    ReadUncommitted: 'ReadUncommitted'
+    ReadCommitted: 'ReadCommitted'
+    RepeatableRead: 'RepeatableRead'
     Serializable: 'Serializable'
-  };
+  }
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
-
   export const UsersScalarFieldEnum: {
-    id: 'id',
-    firstName: 'firstName',
-    lastName: 'lastName',
-    username: 'username',
-    password: 'password',
+    id: 'id'
+    firstName: 'firstName'
+    lastName: 'lastName'
+    username: 'username'
+    password: 'password'
     role: 'role'
-  };
+  }
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
-
   export const BetsScalarFieldEnum: {
-    id: 'id',
-    description: 'description',
-    createdAt: 'createdAt',
-    deadlineAt: 'deadlineAt',
+    id: 'id'
+    description: 'description'
+    createdAt: 'createdAt'
+    deadlineAt: 'deadlineAt'
     status: 'status'
-  };
+    participants: 'participants'
+    amount: 'amount'
+  }
 
   export type BetsScalarFieldEnum = (typeof BetsScalarFieldEnum)[keyof typeof BetsScalarFieldEnum]
 
-
   export const RolesScalarFieldEnum: {
-    id: 'id',
+    id: 'id'
     description: 'description'
-  };
+  }
 
   export type RolesScalarFieldEnum = (typeof RolesScalarFieldEnum)[keyof typeof RolesScalarFieldEnum]
 
-
   export const ServicesScalarFieldEnum: {
-    id: 'id',
+    id: 'id'
     description: 'description'
-  };
+  }
 
   export type ServicesScalarFieldEnum = (typeof ServicesScalarFieldEnum)[keyof typeof ServicesScalarFieldEnum]
 
-
   export const StatusScalarFieldEnum: {
-    id: 'id',
+    id: 'id'
     description: 'description'
-  };
+  }
 
   export type StatusScalarFieldEnum = (typeof StatusScalarFieldEnum)[keyof typeof StatusScalarFieldEnum]
 
-
   export const TradeOffersScalarFieldEnum: {
-    id: 'id',
-    tradeId: 'tradeId',
-    userId: 'userId',
-    value: 'value',
-    isAccepted: 'isAccepted',
+    id: 'id'
+    tradeId: 'tradeId'
+    userId: 'userId'
+    value: 'value'
+    isAccepted: 'isAccepted'
     createdAt: 'createdAt'
-  };
+  }
 
   export type TradeOffersScalarFieldEnum = (typeof TradeOffersScalarFieldEnum)[keyof typeof TradeOffersScalarFieldEnum]
 
-
   export const TradesScalarFieldEnum: {
-    id: 'id',
-    supplierId: 'supplierId',
-    customerId: 'customerId',
-    service: 'service',
-    createdAt: 'createdAt',
-    deadlineAt: 'deadlineAt',
+    id: 'id'
+    supplierId: 'supplierId'
+    customerId: 'customerId'
+    service: 'service'
+    createdAt: 'createdAt'
+    deadlineAt: 'deadlineAt'
     tradedAt: 'tradedAt'
-  };
+  }
 
   export type TradesScalarFieldEnum = (typeof TradesScalarFieldEnum)[keyof typeof TradesScalarFieldEnum]
 
-
   export const UserWalletsScalarFieldEnum: {
-    id: 'id',
+    id: 'id'
     balance: 'balance'
-  };
+  }
 
   export type UserWalletsScalarFieldEnum = (typeof UserWalletsScalarFieldEnum)[keyof typeof UserWalletsScalarFieldEnum]
 
-
   export const BetEntriesScalarFieldEnum: {
-    id: 'id',
-    optionId: 'optionId',
-    userId: 'userId',
+    id: 'id'
+    optionId: 'optionId'
+    userId: 'userId'
     amount: 'amount'
-  };
+  }
 
   export type BetEntriesScalarFieldEnum = (typeof BetEntriesScalarFieldEnum)[keyof typeof BetEntriesScalarFieldEnum]
 
-
   export const BetOptionsScalarFieldEnum: {
-    id: 'id',
-    betId: 'betId',
-    description: 'description',
-    weight: 'weight',
+    id: 'id'
+    betId: 'betId'
+    description: 'description'
+    votes: 'votes'
     amount: 'amount'
-  };
+  }
 
   export type BetOptionsScalarFieldEnum = (typeof BetOptionsScalarFieldEnum)[keyof typeof BetOptionsScalarFieldEnum]
 
-
   export const SortOrder: {
-    asc: 'asc',
+    asc: 'asc'
     desc: 'desc'
-  };
+  }
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
-
   export const QueryMode: {
-    default: 'default',
+    default: 'default'
     insensitive: 'insensitive'
-  };
+  }
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
-
   export const NullsOrder: {
-    first: 'first',
+    first: 'first'
     last: 'last'
-  };
+  }
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
 
   /**
    * Field references
    */
 
-
   /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
 
   /**
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
 
   /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
 
   /**
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
 
   /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
 
   /**
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
 
   /**
    * Reference to a field of type 'BigInt'
    */
   export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
-    
-
 
   /**
    * Reference to a field of type 'BigInt[]'
    */
   export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
-    
-
 
   /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
 
   /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
 
   /**
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
+
   /**
    * Deep Input Types
    */
 
-
-  export type usersWhereInput = {
+  export interface usersWhereInput {
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
-    id?: IntFilter<"users"> | number
-    firstName?: StringFilter<"users"> | string
-    lastName?: StringFilter<"users"> | string
-    username?: StringFilter<"users"> | string
-    password?: StringFilter<"users"> | string
-    role?: IntNullableFilter<"users"> | number | null
+    id?: IntFilter<'users'> | number
+    firstName?: StringFilter<'users'> | string
+    lastName?: StringFilter<'users'> | string
+    username?: StringFilter<'users'> | string
+    password?: StringFilter<'users'> | string
+    role?: IntNullableFilter<'users'> | number | null
     betEntries?: BetEntriesListRelationFilter
     tradeOffers?: TradeOffersListRelationFilter
     trades_trades_customerIdTousers?: TradesListRelationFilter
@@ -13384,7 +13252,7 @@ export namespace Prisma {
     roles?: XOR<RolesNullableScalarRelationFilter, rolesWhereInput> | null
   }
 
-  export type usersOrderByWithRelationInput = {
+  export interface usersOrderByWithRelationInput {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -13404,20 +13272,20 @@ export namespace Prisma {
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
-    firstName?: StringFilter<"users"> | string
-    lastName?: StringFilter<"users"> | string
-    username?: StringFilter<"users"> | string
-    password?: StringFilter<"users"> | string
-    role?: IntNullableFilter<"users"> | number | null
+    firstName?: StringFilter<'users'> | string
+    lastName?: StringFilter<'users'> | string
+    username?: StringFilter<'users'> | string
+    password?: StringFilter<'users'> | string
+    role?: IntNullableFilter<'users'> | number | null
     betEntries?: BetEntriesListRelationFilter
     tradeOffers?: TradeOffersListRelationFilter
     trades_trades_customerIdTousers?: TradesListRelationFilter
     trades_trades_supplierIdTousers?: TradesListRelationFilter
     userWallets?: XOR<UserWalletsNullableScalarRelationFilter, userWalletsWhereInput> | null
     roles?: XOR<RolesNullableScalarRelationFilter, rolesWhereInput> | null
-  }, "id">
+  }, 'id'>
 
-  export type usersOrderByWithAggregationInput = {
+  export interface usersOrderByWithAggregationInput {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -13431,37 +13299,41 @@ export namespace Prisma {
     _sum?: usersSumOrderByAggregateInput
   }
 
-  export type usersScalarWhereWithAggregatesInput = {
+  export interface usersScalarWhereWithAggregatesInput {
     AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
     OR?: usersScalarWhereWithAggregatesInput[]
     NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"users"> | number
-    firstName?: StringWithAggregatesFilter<"users"> | string
-    lastName?: StringWithAggregatesFilter<"users"> | string
-    username?: StringWithAggregatesFilter<"users"> | string
-    password?: StringWithAggregatesFilter<"users"> | string
-    role?: IntNullableWithAggregatesFilter<"users"> | number | null
+    id?: IntWithAggregatesFilter<'users'> | number
+    firstName?: StringWithAggregatesFilter<'users'> | string
+    lastName?: StringWithAggregatesFilter<'users'> | string
+    username?: StringWithAggregatesFilter<'users'> | string
+    password?: StringWithAggregatesFilter<'users'> | string
+    role?: IntNullableWithAggregatesFilter<'users'> | number | null
   }
 
-  export type betsWhereInput = {
+  export interface betsWhereInput {
     AND?: betsWhereInput | betsWhereInput[]
     OR?: betsWhereInput[]
     NOT?: betsWhereInput | betsWhereInput[]
-    id?: IntFilter<"bets"> | number
-    description?: StringFilter<"bets"> | string
-    createdAt?: DateTimeFilter<"bets"> | Date | string
-    deadlineAt?: DateTimeFilter<"bets"> | Date | string
-    status?: IntNullableFilter<"bets"> | number | null
+    id?: IntFilter<'bets'> | number
+    description?: StringFilter<'bets'> | string
+    createdAt?: DateTimeFilter<'bets'> | Date | string
+    deadlineAt?: DateTimeFilter<'bets'> | Date | string
+    status?: IntNullableFilter<'bets'> | number | null
+    participants?: IntFilter<'bets'> | number
+    amount?: IntFilter<'bets'> | number
     betOptions?: BetOptionsListRelationFilter
     status_bets_statusTostatus?: XOR<StatusNullableScalarRelationFilter, statusWhereInput> | null
   }
 
-  export type betsOrderByWithRelationInput = {
+  export interface betsOrderByWithRelationInput {
     id?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
     deadlineAt?: SortOrder
     status?: SortOrderInput | SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
     betOptions?: betOptionsOrderByRelationAggregateInput
     status_bets_statusTostatus?: statusOrderByWithRelationInput
   }
@@ -13471,20 +13343,24 @@ export namespace Prisma {
     AND?: betsWhereInput | betsWhereInput[]
     OR?: betsWhereInput[]
     NOT?: betsWhereInput | betsWhereInput[]
-    description?: StringFilter<"bets"> | string
-    createdAt?: DateTimeFilter<"bets"> | Date | string
-    deadlineAt?: DateTimeFilter<"bets"> | Date | string
-    status?: IntNullableFilter<"bets"> | number | null
+    description?: StringFilter<'bets'> | string
+    createdAt?: DateTimeFilter<'bets'> | Date | string
+    deadlineAt?: DateTimeFilter<'bets'> | Date | string
+    status?: IntNullableFilter<'bets'> | number | null
+    participants?: IntFilter<'bets'> | number
+    amount?: IntFilter<'bets'> | number
     betOptions?: BetOptionsListRelationFilter
     status_bets_statusTostatus?: XOR<StatusNullableScalarRelationFilter, statusWhereInput> | null
-  }, "id">
+  }, 'id'>
 
-  export type betsOrderByWithAggregationInput = {
+  export interface betsOrderByWithAggregationInput {
     id?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
     deadlineAt?: SortOrder
     status?: SortOrderInput | SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
     _count?: betsCountOrderByAggregateInput
     _avg?: betsAvgOrderByAggregateInput
     _max?: betsMaxOrderByAggregateInput
@@ -13492,27 +13368,29 @@ export namespace Prisma {
     _sum?: betsSumOrderByAggregateInput
   }
 
-  export type betsScalarWhereWithAggregatesInput = {
+  export interface betsScalarWhereWithAggregatesInput {
     AND?: betsScalarWhereWithAggregatesInput | betsScalarWhereWithAggregatesInput[]
     OR?: betsScalarWhereWithAggregatesInput[]
     NOT?: betsScalarWhereWithAggregatesInput | betsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"bets"> | number
-    description?: StringWithAggregatesFilter<"bets"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"bets"> | Date | string
-    deadlineAt?: DateTimeWithAggregatesFilter<"bets"> | Date | string
-    status?: IntNullableWithAggregatesFilter<"bets"> | number | null
+    id?: IntWithAggregatesFilter<'bets'> | number
+    description?: StringWithAggregatesFilter<'bets'> | string
+    createdAt?: DateTimeWithAggregatesFilter<'bets'> | Date | string
+    deadlineAt?: DateTimeWithAggregatesFilter<'bets'> | Date | string
+    status?: IntNullableWithAggregatesFilter<'bets'> | number | null
+    participants?: IntWithAggregatesFilter<'bets'> | number
+    amount?: IntWithAggregatesFilter<'bets'> | number
   }
 
-  export type rolesWhereInput = {
+  export interface rolesWhereInput {
     AND?: rolesWhereInput | rolesWhereInput[]
     OR?: rolesWhereInput[]
     NOT?: rolesWhereInput | rolesWhereInput[]
-    id?: IntFilter<"roles"> | number
-    description?: StringFilter<"roles"> | string
+    id?: IntFilter<'roles'> | number
+    description?: StringFilter<'roles'> | string
     users?: UsersListRelationFilter
   }
 
-  export type rolesOrderByWithRelationInput = {
+  export interface rolesOrderByWithRelationInput {
     id?: SortOrder
     description?: SortOrder
     users?: usersOrderByRelationAggregateInput
@@ -13523,11 +13401,11 @@ export namespace Prisma {
     AND?: rolesWhereInput | rolesWhereInput[]
     OR?: rolesWhereInput[]
     NOT?: rolesWhereInput | rolesWhereInput[]
-    description?: StringFilter<"roles"> | string
+    description?: StringFilter<'roles'> | string
     users?: UsersListRelationFilter
-  }, "id">
+  }, 'id'>
 
-  export type rolesOrderByWithAggregationInput = {
+  export interface rolesOrderByWithAggregationInput {
     id?: SortOrder
     description?: SortOrder
     _count?: rolesCountOrderByAggregateInput
@@ -13537,23 +13415,23 @@ export namespace Prisma {
     _sum?: rolesSumOrderByAggregateInput
   }
 
-  export type rolesScalarWhereWithAggregatesInput = {
+  export interface rolesScalarWhereWithAggregatesInput {
     AND?: rolesScalarWhereWithAggregatesInput | rolesScalarWhereWithAggregatesInput[]
     OR?: rolesScalarWhereWithAggregatesInput[]
     NOT?: rolesScalarWhereWithAggregatesInput | rolesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"roles"> | number
-    description?: StringWithAggregatesFilter<"roles"> | string
+    id?: IntWithAggregatesFilter<'roles'> | number
+    description?: StringWithAggregatesFilter<'roles'> | string
   }
 
-  export type servicesWhereInput = {
+  export interface servicesWhereInput {
     AND?: servicesWhereInput | servicesWhereInput[]
     OR?: servicesWhereInput[]
     NOT?: servicesWhereInput | servicesWhereInput[]
-    id?: IntFilter<"services"> | number
-    description?: StringFilter<"services"> | string
+    id?: IntFilter<'services'> | number
+    description?: StringFilter<'services'> | string
   }
 
-  export type servicesOrderByWithRelationInput = {
+  export interface servicesOrderByWithRelationInput {
     id?: SortOrder
     description?: SortOrder
   }
@@ -13563,10 +13441,10 @@ export namespace Prisma {
     AND?: servicesWhereInput | servicesWhereInput[]
     OR?: servicesWhereInput[]
     NOT?: servicesWhereInput | servicesWhereInput[]
-    description?: StringFilter<"services"> | string
-  }, "id">
+    description?: StringFilter<'services'> | string
+  }, 'id'>
 
-  export type servicesOrderByWithAggregationInput = {
+  export interface servicesOrderByWithAggregationInput {
     id?: SortOrder
     description?: SortOrder
     _count?: servicesCountOrderByAggregateInput
@@ -13576,24 +13454,24 @@ export namespace Prisma {
     _sum?: servicesSumOrderByAggregateInput
   }
 
-  export type servicesScalarWhereWithAggregatesInput = {
+  export interface servicesScalarWhereWithAggregatesInput {
     AND?: servicesScalarWhereWithAggregatesInput | servicesScalarWhereWithAggregatesInput[]
     OR?: servicesScalarWhereWithAggregatesInput[]
     NOT?: servicesScalarWhereWithAggregatesInput | servicesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"services"> | number
-    description?: StringWithAggregatesFilter<"services"> | string
+    id?: IntWithAggregatesFilter<'services'> | number
+    description?: StringWithAggregatesFilter<'services'> | string
   }
 
-  export type statusWhereInput = {
+  export interface statusWhereInput {
     AND?: statusWhereInput | statusWhereInput[]
     OR?: statusWhereInput[]
     NOT?: statusWhereInput | statusWhereInput[]
-    id?: IntFilter<"status"> | number
-    description?: StringFilter<"status"> | string
+    id?: IntFilter<'status'> | number
+    description?: StringFilter<'status'> | string
     bets_bets_statusTostatus?: BetsListRelationFilter
   }
 
-  export type statusOrderByWithRelationInput = {
+  export interface statusOrderByWithRelationInput {
     id?: SortOrder
     description?: SortOrder
     bets_bets_statusTostatus?: betsOrderByRelationAggregateInput
@@ -13604,11 +13482,11 @@ export namespace Prisma {
     AND?: statusWhereInput | statusWhereInput[]
     OR?: statusWhereInput[]
     NOT?: statusWhereInput | statusWhereInput[]
-    description?: StringFilter<"status"> | string
+    description?: StringFilter<'status'> | string
     bets_bets_statusTostatus?: BetsListRelationFilter
-  }, "id">
+  }, 'id'>
 
-  export type statusOrderByWithAggregationInput = {
+  export interface statusOrderByWithAggregationInput {
     id?: SortOrder
     description?: SortOrder
     _count?: statusCountOrderByAggregateInput
@@ -13618,29 +13496,29 @@ export namespace Prisma {
     _sum?: statusSumOrderByAggregateInput
   }
 
-  export type statusScalarWhereWithAggregatesInput = {
+  export interface statusScalarWhereWithAggregatesInput {
     AND?: statusScalarWhereWithAggregatesInput | statusScalarWhereWithAggregatesInput[]
     OR?: statusScalarWhereWithAggregatesInput[]
     NOT?: statusScalarWhereWithAggregatesInput | statusScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"status"> | number
-    description?: StringWithAggregatesFilter<"status"> | string
+    id?: IntWithAggregatesFilter<'status'> | number
+    description?: StringWithAggregatesFilter<'status'> | string
   }
 
-  export type tradeOffersWhereInput = {
+  export interface tradeOffersWhereInput {
     AND?: tradeOffersWhereInput | tradeOffersWhereInput[]
     OR?: tradeOffersWhereInput[]
     NOT?: tradeOffersWhereInput | tradeOffersWhereInput[]
-    id?: BigIntFilter<"tradeOffers"> | bigint | number
-    tradeId?: IntNullableFilter<"tradeOffers"> | number | null
-    userId?: IntNullableFilter<"tradeOffers"> | number | null
-    value?: IntFilter<"tradeOffers"> | number
-    isAccepted?: BoolNullableFilter<"tradeOffers"> | boolean | null
-    createdAt?: DateTimeFilter<"tradeOffers"> | Date | string
+    id?: BigIntFilter<'tradeOffers'> | bigint | number
+    tradeId?: IntNullableFilter<'tradeOffers'> | number | null
+    userId?: IntNullableFilter<'tradeOffers'> | number | null
+    value?: IntFilter<'tradeOffers'> | number
+    isAccepted?: BoolNullableFilter<'tradeOffers'> | boolean | null
+    createdAt?: DateTimeFilter<'tradeOffers'> | Date | string
     trades?: XOR<TradesNullableScalarRelationFilter, tradesWhereInput> | null
     users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
   }
 
-  export type tradeOffersOrderByWithRelationInput = {
+  export interface tradeOffersOrderByWithRelationInput {
     id?: SortOrder
     tradeId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
@@ -13656,16 +13534,16 @@ export namespace Prisma {
     AND?: tradeOffersWhereInput | tradeOffersWhereInput[]
     OR?: tradeOffersWhereInput[]
     NOT?: tradeOffersWhereInput | tradeOffersWhereInput[]
-    tradeId?: IntNullableFilter<"tradeOffers"> | number | null
-    userId?: IntNullableFilter<"tradeOffers"> | number | null
-    value?: IntFilter<"tradeOffers"> | number
-    isAccepted?: BoolNullableFilter<"tradeOffers"> | boolean | null
-    createdAt?: DateTimeFilter<"tradeOffers"> | Date | string
+    tradeId?: IntNullableFilter<'tradeOffers'> | number | null
+    userId?: IntNullableFilter<'tradeOffers'> | number | null
+    value?: IntFilter<'tradeOffers'> | number
+    isAccepted?: BoolNullableFilter<'tradeOffers'> | boolean | null
+    createdAt?: DateTimeFilter<'tradeOffers'> | Date | string
     trades?: XOR<TradesNullableScalarRelationFilter, tradesWhereInput> | null
     users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
-  }, "id">
+  }, 'id'>
 
-  export type tradeOffersOrderByWithAggregationInput = {
+  export interface tradeOffersOrderByWithAggregationInput {
     id?: SortOrder
     tradeId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
@@ -13679,35 +13557,35 @@ export namespace Prisma {
     _sum?: tradeOffersSumOrderByAggregateInput
   }
 
-  export type tradeOffersScalarWhereWithAggregatesInput = {
+  export interface tradeOffersScalarWhereWithAggregatesInput {
     AND?: tradeOffersScalarWhereWithAggregatesInput | tradeOffersScalarWhereWithAggregatesInput[]
     OR?: tradeOffersScalarWhereWithAggregatesInput[]
     NOT?: tradeOffersScalarWhereWithAggregatesInput | tradeOffersScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"tradeOffers"> | bigint | number
-    tradeId?: IntNullableWithAggregatesFilter<"tradeOffers"> | number | null
-    userId?: IntNullableWithAggregatesFilter<"tradeOffers"> | number | null
-    value?: IntWithAggregatesFilter<"tradeOffers"> | number
-    isAccepted?: BoolNullableWithAggregatesFilter<"tradeOffers"> | boolean | null
-    createdAt?: DateTimeWithAggregatesFilter<"tradeOffers"> | Date | string
+    id?: BigIntWithAggregatesFilter<'tradeOffers'> | bigint | number
+    tradeId?: IntNullableWithAggregatesFilter<'tradeOffers'> | number | null
+    userId?: IntNullableWithAggregatesFilter<'tradeOffers'> | number | null
+    value?: IntWithAggregatesFilter<'tradeOffers'> | number
+    isAccepted?: BoolNullableWithAggregatesFilter<'tradeOffers'> | boolean | null
+    createdAt?: DateTimeWithAggregatesFilter<'tradeOffers'> | Date | string
   }
 
-  export type tradesWhereInput = {
+  export interface tradesWhereInput {
     AND?: tradesWhereInput | tradesWhereInput[]
     OR?: tradesWhereInput[]
     NOT?: tradesWhereInput | tradesWhereInput[]
-    id?: IntFilter<"trades"> | number
-    supplierId?: IntNullableFilter<"trades"> | number | null
-    customerId?: IntNullableFilter<"trades"> | number | null
-    service?: StringNullableFilter<"trades"> | string | null
-    createdAt?: DateTimeFilter<"trades"> | Date | string
-    deadlineAt?: DateTimeNullableFilter<"trades"> | Date | string | null
-    tradedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
+    id?: IntFilter<'trades'> | number
+    supplierId?: IntNullableFilter<'trades'> | number | null
+    customerId?: IntNullableFilter<'trades'> | number | null
+    service?: StringNullableFilter<'trades'> | string | null
+    createdAt?: DateTimeFilter<'trades'> | Date | string
+    deadlineAt?: DateTimeNullableFilter<'trades'> | Date | string | null
+    tradedAt?: DateTimeNullableFilter<'trades'> | Date | string | null
     tradeOffers?: TradeOffersListRelationFilter
     users_trades_customerIdTousers?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
     users_trades_supplierIdTousers?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
   }
 
-  export type tradesOrderByWithRelationInput = {
+  export interface tradesOrderByWithRelationInput {
     id?: SortOrder
     supplierId?: SortOrderInput | SortOrder
     customerId?: SortOrderInput | SortOrder
@@ -13725,18 +13603,18 @@ export namespace Prisma {
     AND?: tradesWhereInput | tradesWhereInput[]
     OR?: tradesWhereInput[]
     NOT?: tradesWhereInput | tradesWhereInput[]
-    supplierId?: IntNullableFilter<"trades"> | number | null
-    customerId?: IntNullableFilter<"trades"> | number | null
-    service?: StringNullableFilter<"trades"> | string | null
-    createdAt?: DateTimeFilter<"trades"> | Date | string
-    deadlineAt?: DateTimeNullableFilter<"trades"> | Date | string | null
-    tradedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
+    supplierId?: IntNullableFilter<'trades'> | number | null
+    customerId?: IntNullableFilter<'trades'> | number | null
+    service?: StringNullableFilter<'trades'> | string | null
+    createdAt?: DateTimeFilter<'trades'> | Date | string
+    deadlineAt?: DateTimeNullableFilter<'trades'> | Date | string | null
+    tradedAt?: DateTimeNullableFilter<'trades'> | Date | string | null
     tradeOffers?: TradeOffersListRelationFilter
     users_trades_customerIdTousers?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
     users_trades_supplierIdTousers?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
-  }, "id">
+  }, 'id'>
 
-  export type tradesOrderByWithAggregationInput = {
+  export interface tradesOrderByWithAggregationInput {
     id?: SortOrder
     supplierId?: SortOrderInput | SortOrder
     customerId?: SortOrderInput | SortOrder
@@ -13751,29 +13629,29 @@ export namespace Prisma {
     _sum?: tradesSumOrderByAggregateInput
   }
 
-  export type tradesScalarWhereWithAggregatesInput = {
+  export interface tradesScalarWhereWithAggregatesInput {
     AND?: tradesScalarWhereWithAggregatesInput | tradesScalarWhereWithAggregatesInput[]
     OR?: tradesScalarWhereWithAggregatesInput[]
     NOT?: tradesScalarWhereWithAggregatesInput | tradesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"trades"> | number
-    supplierId?: IntNullableWithAggregatesFilter<"trades"> | number | null
-    customerId?: IntNullableWithAggregatesFilter<"trades"> | number | null
-    service?: StringNullableWithAggregatesFilter<"trades"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"trades"> | Date | string
-    deadlineAt?: DateTimeNullableWithAggregatesFilter<"trades"> | Date | string | null
-    tradedAt?: DateTimeNullableWithAggregatesFilter<"trades"> | Date | string | null
+    id?: IntWithAggregatesFilter<'trades'> | number
+    supplierId?: IntNullableWithAggregatesFilter<'trades'> | number | null
+    customerId?: IntNullableWithAggregatesFilter<'trades'> | number | null
+    service?: StringNullableWithAggregatesFilter<'trades'> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<'trades'> | Date | string
+    deadlineAt?: DateTimeNullableWithAggregatesFilter<'trades'> | Date | string | null
+    tradedAt?: DateTimeNullableWithAggregatesFilter<'trades'> | Date | string | null
   }
 
-  export type userWalletsWhereInput = {
+  export interface userWalletsWhereInput {
     AND?: userWalletsWhereInput | userWalletsWhereInput[]
     OR?: userWalletsWhereInput[]
     NOT?: userWalletsWhereInput | userWalletsWhereInput[]
-    id?: IntFilter<"userWallets"> | number
-    balance?: IntFilter<"userWallets"> | number
+    id?: IntFilter<'userWallets'> | number
+    balance?: IntFilter<'userWallets'> | number
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }
 
-  export type userWalletsOrderByWithRelationInput = {
+  export interface userWalletsOrderByWithRelationInput {
     id?: SortOrder
     balance?: SortOrder
     users?: usersOrderByWithRelationInput
@@ -13784,11 +13662,11 @@ export namespace Prisma {
     AND?: userWalletsWhereInput | userWalletsWhereInput[]
     OR?: userWalletsWhereInput[]
     NOT?: userWalletsWhereInput | userWalletsWhereInput[]
-    balance?: IntFilter<"userWallets"> | number
+    balance?: IntFilter<'userWallets'> | number
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-  }, "id">
+  }, 'id'>
 
-  export type userWalletsOrderByWithAggregationInput = {
+  export interface userWalletsOrderByWithAggregationInput {
     id?: SortOrder
     balance?: SortOrder
     _count?: userWalletsCountOrderByAggregateInput
@@ -13798,27 +13676,27 @@ export namespace Prisma {
     _sum?: userWalletsSumOrderByAggregateInput
   }
 
-  export type userWalletsScalarWhereWithAggregatesInput = {
+  export interface userWalletsScalarWhereWithAggregatesInput {
     AND?: userWalletsScalarWhereWithAggregatesInput | userWalletsScalarWhereWithAggregatesInput[]
     OR?: userWalletsScalarWhereWithAggregatesInput[]
     NOT?: userWalletsScalarWhereWithAggregatesInput | userWalletsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"userWallets"> | number
-    balance?: IntWithAggregatesFilter<"userWallets"> | number
+    id?: IntWithAggregatesFilter<'userWallets'> | number
+    balance?: IntWithAggregatesFilter<'userWallets'> | number
   }
 
-  export type betEntriesWhereInput = {
+  export interface betEntriesWhereInput {
     AND?: betEntriesWhereInput | betEntriesWhereInput[]
     OR?: betEntriesWhereInput[]
     NOT?: betEntriesWhereInput | betEntriesWhereInput[]
-    id?: IntFilter<"betEntries"> | number
-    optionId?: IntNullableFilter<"betEntries"> | number | null
-    userId?: IntNullableFilter<"betEntries"> | number | null
-    amount?: IntFilter<"betEntries"> | number
+    id?: IntFilter<'betEntries'> | number
+    optionId?: IntNullableFilter<'betEntries'> | number | null
+    userId?: IntNullableFilter<'betEntries'> | number | null
+    amount?: IntFilter<'betEntries'> | number
     betOptions?: XOR<BetOptionsNullableScalarRelationFilter, betOptionsWhereInput> | null
     users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
   }
 
-  export type betEntriesOrderByWithRelationInput = {
+  export interface betEntriesOrderByWithRelationInput {
     id?: SortOrder
     optionId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
@@ -13832,14 +13710,14 @@ export namespace Prisma {
     AND?: betEntriesWhereInput | betEntriesWhereInput[]
     OR?: betEntriesWhereInput[]
     NOT?: betEntriesWhereInput | betEntriesWhereInput[]
-    optionId?: IntNullableFilter<"betEntries"> | number | null
-    userId?: IntNullableFilter<"betEntries"> | number | null
-    amount?: IntFilter<"betEntries"> | number
+    optionId?: IntNullableFilter<'betEntries'> | number | null
+    userId?: IntNullableFilter<'betEntries'> | number | null
+    amount?: IntFilter<'betEntries'> | number
     betOptions?: XOR<BetOptionsNullableScalarRelationFilter, betOptionsWhereInput> | null
     users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
-  }, "id">
+  }, 'id'>
 
-  export type betEntriesOrderByWithAggregationInput = {
+  export interface betEntriesOrderByWithAggregationInput {
     id?: SortOrder
     optionId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
@@ -13851,34 +13729,34 @@ export namespace Prisma {
     _sum?: betEntriesSumOrderByAggregateInput
   }
 
-  export type betEntriesScalarWhereWithAggregatesInput = {
+  export interface betEntriesScalarWhereWithAggregatesInput {
     AND?: betEntriesScalarWhereWithAggregatesInput | betEntriesScalarWhereWithAggregatesInput[]
     OR?: betEntriesScalarWhereWithAggregatesInput[]
     NOT?: betEntriesScalarWhereWithAggregatesInput | betEntriesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"betEntries"> | number
-    optionId?: IntNullableWithAggregatesFilter<"betEntries"> | number | null
-    userId?: IntNullableWithAggregatesFilter<"betEntries"> | number | null
-    amount?: IntWithAggregatesFilter<"betEntries"> | number
+    id?: IntWithAggregatesFilter<'betEntries'> | number
+    optionId?: IntNullableWithAggregatesFilter<'betEntries'> | number | null
+    userId?: IntNullableWithAggregatesFilter<'betEntries'> | number | null
+    amount?: IntWithAggregatesFilter<'betEntries'> | number
   }
 
-  export type betOptionsWhereInput = {
+  export interface betOptionsWhereInput {
     AND?: betOptionsWhereInput | betOptionsWhereInput[]
     OR?: betOptionsWhereInput[]
     NOT?: betOptionsWhereInput | betOptionsWhereInput[]
-    id?: IntFilter<"betOptions"> | number
-    betId?: IntNullableFilter<"betOptions"> | number | null
-    description?: StringFilter<"betOptions"> | string
-    weight?: FloatFilter<"betOptions"> | number
-    amount?: IntFilter<"betOptions"> | number
+    id?: IntFilter<'betOptions'> | number
+    betId?: IntNullableFilter<'betOptions'> | number | null
+    description?: StringFilter<'betOptions'> | string
+    votes?: IntFilter<'betOptions'> | number
+    amount?: IntFilter<'betOptions'> | number
     betEntries?: BetEntriesListRelationFilter
     bets?: XOR<BetsNullableScalarRelationFilter, betsWhereInput> | null
   }
 
-  export type betOptionsOrderByWithRelationInput = {
+  export interface betOptionsOrderByWithRelationInput {
     id?: SortOrder
     betId?: SortOrderInput | SortOrder
     description?: SortOrder
-    weight?: SortOrder
+    votes?: SortOrder
     amount?: SortOrder
     betEntries?: betEntriesOrderByRelationAggregateInput
     bets?: betsOrderByWithRelationInput
@@ -13889,19 +13767,19 @@ export namespace Prisma {
     AND?: betOptionsWhereInput | betOptionsWhereInput[]
     OR?: betOptionsWhereInput[]
     NOT?: betOptionsWhereInput | betOptionsWhereInput[]
-    betId?: IntNullableFilter<"betOptions"> | number | null
-    description?: StringFilter<"betOptions"> | string
-    weight?: FloatFilter<"betOptions"> | number
-    amount?: IntFilter<"betOptions"> | number
+    betId?: IntNullableFilter<'betOptions'> | number | null
+    description?: StringFilter<'betOptions'> | string
+    votes?: IntFilter<'betOptions'> | number
+    amount?: IntFilter<'betOptions'> | number
     betEntries?: BetEntriesListRelationFilter
     bets?: XOR<BetsNullableScalarRelationFilter, betsWhereInput> | null
-  }, "id">
+  }, 'id'>
 
-  export type betOptionsOrderByWithAggregationInput = {
+  export interface betOptionsOrderByWithAggregationInput {
     id?: SortOrder
     betId?: SortOrderInput | SortOrder
     description?: SortOrder
-    weight?: SortOrder
+    votes?: SortOrder
     amount?: SortOrder
     _count?: betOptionsCountOrderByAggregateInput
     _avg?: betOptionsAvgOrderByAggregateInput
@@ -13910,18 +13788,18 @@ export namespace Prisma {
     _sum?: betOptionsSumOrderByAggregateInput
   }
 
-  export type betOptionsScalarWhereWithAggregatesInput = {
+  export interface betOptionsScalarWhereWithAggregatesInput {
     AND?: betOptionsScalarWhereWithAggregatesInput | betOptionsScalarWhereWithAggregatesInput[]
     OR?: betOptionsScalarWhereWithAggregatesInput[]
     NOT?: betOptionsScalarWhereWithAggregatesInput | betOptionsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"betOptions"> | number
-    betId?: IntNullableWithAggregatesFilter<"betOptions"> | number | null
-    description?: StringWithAggregatesFilter<"betOptions"> | string
-    weight?: FloatWithAggregatesFilter<"betOptions"> | number
-    amount?: IntWithAggregatesFilter<"betOptions"> | number
+    id?: IntWithAggregatesFilter<'betOptions'> | number
+    betId?: IntNullableWithAggregatesFilter<'betOptions'> | number | null
+    description?: StringWithAggregatesFilter<'betOptions'> | string
+    votes?: IntWithAggregatesFilter<'betOptions'> | number
+    amount?: IntWithAggregatesFilter<'betOptions'> | number
   }
 
-  export type usersCreateInput = {
+  export interface usersCreateInput {
     firstName: string
     lastName: string
     username: string
@@ -13934,7 +13812,7 @@ export namespace Prisma {
     roles?: rolesCreateNestedOneWithoutUsersInput
   }
 
-  export type usersUncheckedCreateInput = {
+  export interface usersUncheckedCreateInput {
     id?: number
     firstName: string
     lastName: string
@@ -13948,7 +13826,7 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
   }
 
-  export type usersUpdateInput = {
+  export interface usersUpdateInput {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
@@ -13961,7 +13839,7 @@ export namespace Prisma {
     roles?: rolesUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUncheckedUpdateInput = {
+  export interface usersUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -13975,7 +13853,7 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersCreateManyInput = {
+  export interface usersCreateManyInput {
     id?: number
     firstName: string
     lastName: string
@@ -13984,14 +13862,14 @@ export namespace Prisma {
     role?: number | null
   }
 
-  export type usersUpdateManyMutationInput = {
+  export interface usersUpdateManyMutationInput {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type usersUncheckedUpdateManyInput = {
+  export interface usersUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -14000,167 +13878,181 @@ export namespace Prisma {
     role?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type betsCreateInput = {
+  export interface betsCreateInput {
     description: string
     createdAt?: Date | string
     deadlineAt: Date | string
+    participants?: number
+    amount?: number
     betOptions?: betOptionsCreateNestedManyWithoutBetsInput
     status_bets_statusTostatus?: statusCreateNestedOneWithoutBets_bets_statusTostatusInput
   }
 
-  export type betsUncheckedCreateInput = {
+  export interface betsUncheckedCreateInput {
     id?: number
     description: string
     createdAt?: Date | string
     deadlineAt: Date | string
     status?: number | null
+    participants?: number
+    amount?: number
     betOptions?: betOptionsUncheckedCreateNestedManyWithoutBetsInput
   }
 
-  export type betsUpdateInput = {
+  export interface betsUpdateInput {
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     betOptions?: betOptionsUpdateManyWithoutBetsNestedInput
     status_bets_statusTostatus?: statusUpdateOneWithoutBets_bets_statusTostatusNestedInput
   }
 
-  export type betsUncheckedUpdateInput = {
+  export interface betsUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: NullableIntFieldUpdateOperationsInput | number | null
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     betOptions?: betOptionsUncheckedUpdateManyWithoutBetsNestedInput
   }
 
-  export type betsCreateManyInput = {
+  export interface betsCreateManyInput {
     id?: number
     description: string
     createdAt?: Date | string
     deadlineAt: Date | string
     status?: number | null
+    participants?: number
+    amount?: number
   }
 
-  export type betsUpdateManyMutationInput = {
+  export interface betsUpdateManyMutationInput {
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betsUncheckedUpdateManyInput = {
+  export interface betsUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: NullableIntFieldUpdateOperationsInput | number | null
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type rolesCreateInput = {
+  export interface rolesCreateInput {
     description: string
     users?: usersCreateNestedManyWithoutRolesInput
   }
 
-  export type rolesUncheckedCreateInput = {
+  export interface rolesUncheckedCreateInput {
     id?: number
     description: string
     users?: usersUncheckedCreateNestedManyWithoutRolesInput
   }
 
-  export type rolesUpdateInput = {
+  export interface rolesUpdateInput {
     description?: StringFieldUpdateOperationsInput | string
     users?: usersUpdateManyWithoutRolesNestedInput
   }
 
-  export type rolesUncheckedUpdateInput = {
+  export interface rolesUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     users?: usersUncheckedUpdateManyWithoutRolesNestedInput
   }
 
-  export type rolesCreateManyInput = {
+  export interface rolesCreateManyInput {
     id?: number
     description: string
   }
 
-  export type rolesUpdateManyMutationInput = {
+  export interface rolesUpdateManyMutationInput {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type rolesUncheckedUpdateManyInput = {
+  export interface rolesUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type servicesCreateInput = {
+  export interface servicesCreateInput {
     description: string
   }
 
-  export type servicesUncheckedCreateInput = {
+  export interface servicesUncheckedCreateInput {
     id?: number
     description: string
   }
 
-  export type servicesUpdateInput = {
+  export interface servicesUpdateInput {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type servicesUncheckedUpdateInput = {
+  export interface servicesUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type servicesCreateManyInput = {
+  export interface servicesCreateManyInput {
     id?: number
     description: string
   }
 
-  export type servicesUpdateManyMutationInput = {
+  export interface servicesUpdateManyMutationInput {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type servicesUncheckedUpdateManyInput = {
+  export interface servicesUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type statusCreateInput = {
+  export interface statusCreateInput {
     description: string
     bets_bets_statusTostatus?: betsCreateNestedManyWithoutStatus_bets_statusTostatusInput
   }
 
-  export type statusUncheckedCreateInput = {
+  export interface statusUncheckedCreateInput {
     id?: number
     description: string
     bets_bets_statusTostatus?: betsUncheckedCreateNestedManyWithoutStatus_bets_statusTostatusInput
   }
 
-  export type statusUpdateInput = {
+  export interface statusUpdateInput {
     description?: StringFieldUpdateOperationsInput | string
     bets_bets_statusTostatus?: betsUpdateManyWithoutStatus_bets_statusTostatusNestedInput
   }
 
-  export type statusUncheckedUpdateInput = {
+  export interface statusUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     bets_bets_statusTostatus?: betsUncheckedUpdateManyWithoutStatus_bets_statusTostatusNestedInput
   }
 
-  export type statusCreateManyInput = {
+  export interface statusCreateManyInput {
     id?: number
     description: string
   }
 
-  export type statusUpdateManyMutationInput = {
+  export interface statusUpdateManyMutationInput {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type statusUncheckedUpdateManyInput = {
+  export interface statusUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type tradeOffersCreateInput = {
+  export interface tradeOffersCreateInput {
     id?: bigint | number
     value: number
     isAccepted?: boolean | null
@@ -14169,7 +14061,7 @@ export namespace Prisma {
     users?: usersCreateNestedOneWithoutTradeOffersInput
   }
 
-  export type tradeOffersUncheckedCreateInput = {
+  export interface tradeOffersUncheckedCreateInput {
     id?: bigint | number
     tradeId?: number | null
     userId?: number | null
@@ -14178,7 +14070,7 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type tradeOffersUpdateInput = {
+  export interface tradeOffersUpdateInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     value?: IntFieldUpdateOperationsInput | number
     isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -14187,7 +14079,7 @@ export namespace Prisma {
     users?: usersUpdateOneWithoutTradeOffersNestedInput
   }
 
-  export type tradeOffersUncheckedUpdateInput = {
+  export interface tradeOffersUncheckedUpdateInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     tradeId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14196,7 +14088,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type tradeOffersCreateManyInput = {
+  export interface tradeOffersCreateManyInput {
     id?: bigint | number
     tradeId?: number | null
     userId?: number | null
@@ -14205,14 +14097,14 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type tradeOffersUpdateManyMutationInput = {
+  export interface tradeOffersUpdateManyMutationInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     value?: IntFieldUpdateOperationsInput | number
     isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type tradeOffersUncheckedUpdateManyInput = {
+  export interface tradeOffersUncheckedUpdateManyInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     tradeId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14221,7 +14113,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type tradesCreateInput = {
+  export interface tradesCreateInput {
     service?: string | null
     createdAt?: Date | string
     deadlineAt?: Date | string | null
@@ -14231,7 +14123,7 @@ export namespace Prisma {
     users_trades_supplierIdTousers?: usersCreateNestedOneWithoutTrades_trades_supplierIdTousersInput
   }
 
-  export type tradesUncheckedCreateInput = {
+  export interface tradesUncheckedCreateInput {
     id?: number
     supplierId?: number | null
     customerId?: number | null
@@ -14242,7 +14134,7 @@ export namespace Prisma {
     tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutTradesInput
   }
 
-  export type tradesUpdateInput = {
+  export interface tradesUpdateInput {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14252,7 +14144,7 @@ export namespace Prisma {
     users_trades_supplierIdTousers?: usersUpdateOneWithoutTrades_trades_supplierIdTousersNestedInput
   }
 
-  export type tradesUncheckedUpdateInput = {
+  export interface tradesUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14263,7 +14155,7 @@ export namespace Prisma {
     tradeOffers?: tradeOffersUncheckedUpdateManyWithoutTradesNestedInput
   }
 
-  export type tradesCreateManyInput = {
+  export interface tradesCreateManyInput {
     id?: number
     supplierId?: number | null
     customerId?: number | null
@@ -14273,14 +14165,14 @@ export namespace Prisma {
     tradedAt?: Date | string | null
   }
 
-  export type tradesUpdateManyMutationInput = {
+  export interface tradesUpdateManyMutationInput {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type tradesUncheckedUpdateManyInput = {
+  export interface tradesUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14290,141 +14182,141 @@ export namespace Prisma {
     tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type userWalletsCreateInput = {
+  export interface userWalletsCreateInput {
     balance?: number
     users?: usersCreateNestedOneWithoutUserWalletsInput
   }
 
-  export type userWalletsUncheckedCreateInput = {
+  export interface userWalletsUncheckedCreateInput {
     id?: number
     balance?: number
   }
 
-  export type userWalletsUpdateInput = {
+  export interface userWalletsUpdateInput {
     balance?: IntFieldUpdateOperationsInput | number
     users?: usersUpdateOneRequiredWithoutUserWalletsNestedInput
   }
 
-  export type userWalletsUncheckedUpdateInput = {
+  export interface userWalletsUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     balance?: IntFieldUpdateOperationsInput | number
   }
 
-  export type userWalletsCreateManyInput = {
+  export interface userWalletsCreateManyInput {
     id?: number
     balance?: number
   }
 
-  export type userWalletsUpdateManyMutationInput = {
+  export interface userWalletsUpdateManyMutationInput {
     balance?: IntFieldUpdateOperationsInput | number
   }
 
-  export type userWalletsUncheckedUpdateManyInput = {
+  export interface userWalletsUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     balance?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betEntriesCreateInput = {
+  export interface betEntriesCreateInput {
     amount: number
     betOptions?: betOptionsCreateNestedOneWithoutBetEntriesInput
     users?: usersCreateNestedOneWithoutBetEntriesInput
   }
 
-  export type betEntriesUncheckedCreateInput = {
+  export interface betEntriesUncheckedCreateInput {
     id?: number
     optionId?: number | null
     userId?: number | null
     amount: number
   }
 
-  export type betEntriesUpdateInput = {
+  export interface betEntriesUpdateInput {
     amount?: IntFieldUpdateOperationsInput | number
     betOptions?: betOptionsUpdateOneWithoutBetEntriesNestedInput
     users?: usersUpdateOneWithoutBetEntriesNestedInput
   }
 
-  export type betEntriesUncheckedUpdateInput = {
+  export interface betEntriesUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     optionId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betEntriesCreateManyInput = {
+  export interface betEntriesCreateManyInput {
     id?: number
     optionId?: number | null
     userId?: number | null
     amount: number
   }
 
-  export type betEntriesUpdateManyMutationInput = {
+  export interface betEntriesUpdateManyMutationInput {
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betEntriesUncheckedUpdateManyInput = {
+  export interface betEntriesUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     optionId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betOptionsCreateInput = {
+  export interface betOptionsCreateInput {
     description: string
-    weight: number
+    votes: number
     amount: number
     betEntries?: betEntriesCreateNestedManyWithoutBetOptionsInput
     bets?: betsCreateNestedOneWithoutBetOptionsInput
   }
 
-  export type betOptionsUncheckedCreateInput = {
+  export interface betOptionsUncheckedCreateInput {
     id?: number
     betId?: number | null
     description: string
-    weight: number
+    votes: number
     amount: number
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput
   }
 
-  export type betOptionsUpdateInput = {
+  export interface betOptionsUpdateInput {
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     betEntries?: betEntriesUpdateManyWithoutBetOptionsNestedInput
     bets?: betsUpdateOneWithoutBetOptionsNestedInput
   }
 
-  export type betOptionsUncheckedUpdateInput = {
+  export interface betOptionsUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput | number
     betId?: NullableIntFieldUpdateOperationsInput | number | null
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     betEntries?: betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput
   }
 
-  export type betOptionsCreateManyInput = {
+  export interface betOptionsCreateManyInput {
     id?: number
     betId?: number | null
     description: string
-    weight: number
+    votes: number
     amount: number
   }
 
-  export type betOptionsUpdateManyMutationInput = {
+  export interface betOptionsUpdateManyMutationInput {
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betOptionsUncheckedUpdateManyInput = {
+  export interface betOptionsUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput | number
     betId?: NullableIntFieldUpdateOperationsInput | number | null
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type IntFilter<$PrismaModel = never> = {
+  export interface IntFilter<$PrismaModel = never> {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -14435,7 +14327,7 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringFilter<$PrismaModel = never> = {
+  export interface StringFilter<$PrismaModel = never> {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14450,7 +14342,7 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
+  export interface IntNullableFilter<$PrismaModel = never> {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -14461,52 +14353,52 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type BetEntriesListRelationFilter = {
+  export interface BetEntriesListRelationFilter {
     every?: betEntriesWhereInput
     some?: betEntriesWhereInput
     none?: betEntriesWhereInput
   }
 
-  export type TradeOffersListRelationFilter = {
+  export interface TradeOffersListRelationFilter {
     every?: tradeOffersWhereInput
     some?: tradeOffersWhereInput
     none?: tradeOffersWhereInput
   }
 
-  export type TradesListRelationFilter = {
+  export interface TradesListRelationFilter {
     every?: tradesWhereInput
     some?: tradesWhereInput
     none?: tradesWhereInput
   }
 
-  export type UserWalletsNullableScalarRelationFilter = {
+  export interface UserWalletsNullableScalarRelationFilter {
     is?: userWalletsWhereInput | null
     isNot?: userWalletsWhereInput | null
   }
 
-  export type RolesNullableScalarRelationFilter = {
+  export interface RolesNullableScalarRelationFilter {
     is?: rolesWhereInput | null
     isNot?: rolesWhereInput | null
   }
 
-  export type SortOrderInput = {
+  export interface SortOrderInput {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
-  export type betEntriesOrderByRelationAggregateInput = {
+  export interface betEntriesOrderByRelationAggregateInput {
     _count?: SortOrder
   }
 
-  export type tradeOffersOrderByRelationAggregateInput = {
+  export interface tradeOffersOrderByRelationAggregateInput {
     _count?: SortOrder
   }
 
-  export type tradesOrderByRelationAggregateInput = {
+  export interface tradesOrderByRelationAggregateInput {
     _count?: SortOrder
   }
 
-  export type usersCountOrderByAggregateInput = {
+  export interface usersCountOrderByAggregateInput {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -14515,21 +14407,12 @@ export namespace Prisma {
     role?: SortOrder
   }
 
-  export type usersAvgOrderByAggregateInput = {
+  export interface usersAvgOrderByAggregateInput {
     id?: SortOrder
     role?: SortOrder
   }
 
-  export type usersMaxOrderByAggregateInput = {
-    id?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    role?: SortOrder
-  }
-
-  export type usersMinOrderByAggregateInput = {
+  export interface usersMaxOrderByAggregateInput {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -14538,12 +14421,21 @@ export namespace Prisma {
     role?: SortOrder
   }
 
-  export type usersSumOrderByAggregateInput = {
+  export interface usersMinOrderByAggregateInput {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+  }
+
+  export interface usersSumOrderByAggregateInput {
     id?: SortOrder
     role?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+  export interface IntWithAggregatesFilter<$PrismaModel = never> {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -14559,7 +14451,7 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+  export interface StringWithAggregatesFilter<$PrismaModel = never> {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14577,7 +14469,7 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export interface IntNullableWithAggregatesFilter<$PrismaModel = never> {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -14593,7 +14485,7 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
+  export interface DateTimeFilter<$PrismaModel = never> {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -14604,56 +14496,66 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type BetOptionsListRelationFilter = {
+  export interface BetOptionsListRelationFilter {
     every?: betOptionsWhereInput
     some?: betOptionsWhereInput
     none?: betOptionsWhereInput
   }
 
-  export type StatusNullableScalarRelationFilter = {
+  export interface StatusNullableScalarRelationFilter {
     is?: statusWhereInput | null
     isNot?: statusWhereInput | null
   }
 
-  export type betOptionsOrderByRelationAggregateInput = {
+  export interface betOptionsOrderByRelationAggregateInput {
     _count?: SortOrder
   }
 
-  export type betsCountOrderByAggregateInput = {
+  export interface betsCountOrderByAggregateInput {
     id?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
     deadlineAt?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
-  export type betsAvgOrderByAggregateInput = {
+  export interface betsAvgOrderByAggregateInput {
     id?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
-  export type betsMaxOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-    createdAt?: SortOrder
-    deadlineAt?: SortOrder
-    status?: SortOrder
-  }
-
-  export type betsMinOrderByAggregateInput = {
+  export interface betsMaxOrderByAggregateInput {
     id?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
     deadlineAt?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
-  export type betsSumOrderByAggregateInput = {
+  export interface betsMinOrderByAggregateInput {
+    id?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    deadlineAt?: SortOrder
+    status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
+  }
+
+  export interface betsSumOrderByAggregateInput {
     id?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+  export interface DateTimeWithAggregatesFilter<$PrismaModel = never> {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -14667,96 +14569,96 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type UsersListRelationFilter = {
+  export interface UsersListRelationFilter {
     every?: usersWhereInput
     some?: usersWhereInput
     none?: usersWhereInput
   }
 
-  export type usersOrderByRelationAggregateInput = {
+  export interface usersOrderByRelationAggregateInput {
     _count?: SortOrder
   }
 
-  export type rolesCountOrderByAggregateInput = {
+  export interface rolesCountOrderByAggregateInput {
     id?: SortOrder
     description?: SortOrder
   }
 
-  export type rolesAvgOrderByAggregateInput = {
+  export interface rolesAvgOrderByAggregateInput {
     id?: SortOrder
   }
 
-  export type rolesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-  }
-
-  export type rolesMinOrderByAggregateInput = {
+  export interface rolesMaxOrderByAggregateInput {
     id?: SortOrder
     description?: SortOrder
   }
 
-  export type rolesSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type servicesCountOrderByAggregateInput = {
+  export interface rolesMinOrderByAggregateInput {
     id?: SortOrder
     description?: SortOrder
   }
 
-  export type servicesAvgOrderByAggregateInput = {
+  export interface rolesSumOrderByAggregateInput {
     id?: SortOrder
   }
 
-  export type servicesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-  }
-
-  export type servicesMinOrderByAggregateInput = {
+  export interface servicesCountOrderByAggregateInput {
     id?: SortOrder
     description?: SortOrder
   }
 
-  export type servicesSumOrderByAggregateInput = {
+  export interface servicesAvgOrderByAggregateInput {
     id?: SortOrder
   }
 
-  export type BetsListRelationFilter = {
+  export interface servicesMaxOrderByAggregateInput {
+    id?: SortOrder
+    description?: SortOrder
+  }
+
+  export interface servicesMinOrderByAggregateInput {
+    id?: SortOrder
+    description?: SortOrder
+  }
+
+  export interface servicesSumOrderByAggregateInput {
+    id?: SortOrder
+  }
+
+  export interface BetsListRelationFilter {
     every?: betsWhereInput
     some?: betsWhereInput
     none?: betsWhereInput
   }
 
-  export type betsOrderByRelationAggregateInput = {
+  export interface betsOrderByRelationAggregateInput {
     _count?: SortOrder
   }
 
-  export type statusCountOrderByAggregateInput = {
+  export interface statusCountOrderByAggregateInput {
     id?: SortOrder
     description?: SortOrder
   }
 
-  export type statusAvgOrderByAggregateInput = {
+  export interface statusAvgOrderByAggregateInput {
     id?: SortOrder
   }
 
-  export type statusMaxOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-  }
-
-  export type statusMinOrderByAggregateInput = {
+  export interface statusMaxOrderByAggregateInput {
     id?: SortOrder
     description?: SortOrder
   }
 
-  export type statusSumOrderByAggregateInput = {
+  export interface statusMinOrderByAggregateInput {
+    id?: SortOrder
+    description?: SortOrder
+  }
+
+  export interface statusSumOrderByAggregateInput {
     id?: SortOrder
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
+  export interface BigIntFilter<$PrismaModel = never> {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
     notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -14767,22 +14669,22 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
+  export interface BoolNullableFilter<$PrismaModel = never> {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type TradesNullableScalarRelationFilter = {
+  export interface TradesNullableScalarRelationFilter {
     is?: tradesWhereInput | null
     isNot?: tradesWhereInput | null
   }
 
-  export type UsersNullableScalarRelationFilter = {
+  export interface UsersNullableScalarRelationFilter {
     is?: usersWhereInput | null
     isNot?: usersWhereInput | null
   }
 
-  export type tradeOffersCountOrderByAggregateInput = {
+  export interface tradeOffersCountOrderByAggregateInput {
     id?: SortOrder
     tradeId?: SortOrder
     userId?: SortOrder
@@ -14791,23 +14693,14 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
-  export type tradeOffersAvgOrderByAggregateInput = {
+  export interface tradeOffersAvgOrderByAggregateInput {
     id?: SortOrder
     tradeId?: SortOrder
     userId?: SortOrder
     value?: SortOrder
   }
 
-  export type tradeOffersMaxOrderByAggregateInput = {
-    id?: SortOrder
-    tradeId?: SortOrder
-    userId?: SortOrder
-    value?: SortOrder
-    isAccepted?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type tradeOffersMinOrderByAggregateInput = {
+  export interface tradeOffersMaxOrderByAggregateInput {
     id?: SortOrder
     tradeId?: SortOrder
     userId?: SortOrder
@@ -14816,14 +14709,23 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
-  export type tradeOffersSumOrderByAggregateInput = {
+  export interface tradeOffersMinOrderByAggregateInput {
+    id?: SortOrder
+    tradeId?: SortOrder
+    userId?: SortOrder
+    value?: SortOrder
+    isAccepted?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export interface tradeOffersSumOrderByAggregateInput {
     id?: SortOrder
     tradeId?: SortOrder
     userId?: SortOrder
     value?: SortOrder
   }
 
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+  export interface BigIntWithAggregatesFilter<$PrismaModel = never> {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
     notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -14839,7 +14741,7 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export interface BoolNullableWithAggregatesFilter<$PrismaModel = never> {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
     _count?: NestedIntNullableFilter<$PrismaModel>
@@ -14847,7 +14749,7 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
+  export interface StringNullableFilter<$PrismaModel = never> {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -14862,7 +14764,7 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
+  export interface DateTimeNullableFilter<$PrismaModel = never> {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -14873,7 +14775,7 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type tradesCountOrderByAggregateInput = {
+  export interface tradesCountOrderByAggregateInput {
     id?: SortOrder
     supplierId?: SortOrder
     customerId?: SortOrder
@@ -14883,23 +14785,13 @@ export namespace Prisma {
     tradedAt?: SortOrder
   }
 
-  export type tradesAvgOrderByAggregateInput = {
+  export interface tradesAvgOrderByAggregateInput {
     id?: SortOrder
     supplierId?: SortOrder
     customerId?: SortOrder
   }
 
-  export type tradesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    supplierId?: SortOrder
-    customerId?: SortOrder
-    service?: SortOrder
-    createdAt?: SortOrder
-    deadlineAt?: SortOrder
-    tradedAt?: SortOrder
-  }
-
-  export type tradesMinOrderByAggregateInput = {
+  export interface tradesMaxOrderByAggregateInput {
     id?: SortOrder
     supplierId?: SortOrder
     customerId?: SortOrder
@@ -14909,13 +14801,23 @@ export namespace Prisma {
     tradedAt?: SortOrder
   }
 
-  export type tradesSumOrderByAggregateInput = {
+  export interface tradesMinOrderByAggregateInput {
+    id?: SortOrder
+    supplierId?: SortOrder
+    customerId?: SortOrder
+    service?: SortOrder
+    createdAt?: SortOrder
+    deadlineAt?: SortOrder
+    tradedAt?: SortOrder
+  }
+
+  export interface tradesSumOrderByAggregateInput {
     id?: SortOrder
     supplierId?: SortOrder
     customerId?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export interface StringNullableWithAggregatesFilter<$PrismaModel = never> {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -14933,7 +14835,7 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export interface DateTimeNullableWithAggregatesFilter<$PrismaModel = never> {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -14947,225 +14849,198 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type UsersScalarRelationFilter = {
+  export interface UsersScalarRelationFilter {
     is?: usersWhereInput
     isNot?: usersWhereInput
   }
 
-  export type userWalletsCountOrderByAggregateInput = {
+  export interface userWalletsCountOrderByAggregateInput {
     id?: SortOrder
     balance?: SortOrder
   }
 
-  export type userWalletsAvgOrderByAggregateInput = {
+  export interface userWalletsAvgOrderByAggregateInput {
     id?: SortOrder
     balance?: SortOrder
   }
 
-  export type userWalletsMaxOrderByAggregateInput = {
+  export interface userWalletsMaxOrderByAggregateInput {
     id?: SortOrder
     balance?: SortOrder
   }
 
-  export type userWalletsMinOrderByAggregateInput = {
+  export interface userWalletsMinOrderByAggregateInput {
     id?: SortOrder
     balance?: SortOrder
   }
 
-  export type userWalletsSumOrderByAggregateInput = {
+  export interface userWalletsSumOrderByAggregateInput {
     id?: SortOrder
     balance?: SortOrder
   }
 
-  export type BetOptionsNullableScalarRelationFilter = {
+  export interface BetOptionsNullableScalarRelationFilter {
     is?: betOptionsWhereInput | null
     isNot?: betOptionsWhereInput | null
   }
 
-  export type betEntriesCountOrderByAggregateInput = {
+  export interface betEntriesCountOrderByAggregateInput {
     id?: SortOrder
     optionId?: SortOrder
     userId?: SortOrder
     amount?: SortOrder
   }
 
-  export type betEntriesAvgOrderByAggregateInput = {
+  export interface betEntriesAvgOrderByAggregateInput {
     id?: SortOrder
     optionId?: SortOrder
     userId?: SortOrder
     amount?: SortOrder
   }
 
-  export type betEntriesMaxOrderByAggregateInput = {
+  export interface betEntriesMaxOrderByAggregateInput {
     id?: SortOrder
     optionId?: SortOrder
     userId?: SortOrder
     amount?: SortOrder
   }
 
-  export type betEntriesMinOrderByAggregateInput = {
+  export interface betEntriesMinOrderByAggregateInput {
     id?: SortOrder
     optionId?: SortOrder
     userId?: SortOrder
     amount?: SortOrder
   }
 
-  export type betEntriesSumOrderByAggregateInput = {
+  export interface betEntriesSumOrderByAggregateInput {
     id?: SortOrder
     optionId?: SortOrder
     userId?: SortOrder
     amount?: SortOrder
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type BetsNullableScalarRelationFilter = {
+  export interface BetsNullableScalarRelationFilter {
     is?: betsWhereInput | null
     isNot?: betsWhereInput | null
   }
 
-  export type betOptionsCountOrderByAggregateInput = {
+  export interface betOptionsCountOrderByAggregateInput {
     id?: SortOrder
     betId?: SortOrder
     description?: SortOrder
-    weight?: SortOrder
+    votes?: SortOrder
     amount?: SortOrder
   }
 
-  export type betOptionsAvgOrderByAggregateInput = {
+  export interface betOptionsAvgOrderByAggregateInput {
     id?: SortOrder
     betId?: SortOrder
-    weight?: SortOrder
+    votes?: SortOrder
     amount?: SortOrder
   }
 
-  export type betOptionsMaxOrderByAggregateInput = {
-    id?: SortOrder
-    betId?: SortOrder
-    description?: SortOrder
-    weight?: SortOrder
-    amount?: SortOrder
-  }
-
-  export type betOptionsMinOrderByAggregateInput = {
+  export interface betOptionsMaxOrderByAggregateInput {
     id?: SortOrder
     betId?: SortOrder
     description?: SortOrder
-    weight?: SortOrder
+    votes?: SortOrder
     amount?: SortOrder
   }
 
-  export type betOptionsSumOrderByAggregateInput = {
+  export interface betOptionsMinOrderByAggregateInput {
     id?: SortOrder
     betId?: SortOrder
-    weight?: SortOrder
+    description?: SortOrder
+    votes?: SortOrder
     amount?: SortOrder
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+  export interface betOptionsSumOrderByAggregateInput {
+    id?: SortOrder
+    betId?: SortOrder
+    votes?: SortOrder
+    amount?: SortOrder
   }
 
-  export type betEntriesCreateNestedManyWithoutUsersInput = {
+  export interface betEntriesCreateNestedManyWithoutUsersInput {
     create?: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput> | betEntriesCreateWithoutUsersInput[] | betEntriesUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
     createMany?: betEntriesCreateManyUsersInputEnvelope
     connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
   }
 
-  export type tradeOffersCreateNestedManyWithoutUsersInput = {
+  export interface tradeOffersCreateNestedManyWithoutUsersInput {
     create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
     createMany?: tradeOffersCreateManyUsersInputEnvelope
     connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
   }
 
-  export type tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput {
     create?: XOR<tradesCreateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput> | tradesCreateWithoutUsers_trades_customerIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput[]
     createMany?: tradesCreateManyUsers_trades_customerIdTousersInputEnvelope
     connect?: tradesWhereUniqueInput | tradesWhereUniqueInput[]
   }
 
-  export type tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput {
     create?: XOR<tradesCreateWithoutUsers_trades_supplierIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput> | tradesCreateWithoutUsers_trades_supplierIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput[]
     createMany?: tradesCreateManyUsers_trades_supplierIdTousersInputEnvelope
     connect?: tradesWhereUniqueInput | tradesWhereUniqueInput[]
   }
 
-  export type userWalletsCreateNestedOneWithoutUsersInput = {
+  export interface userWalletsCreateNestedOneWithoutUsersInput {
     create?: XOR<userWalletsCreateWithoutUsersInput, userWalletsUncheckedCreateWithoutUsersInput>
     connectOrCreate?: userWalletsCreateOrConnectWithoutUsersInput
     connect?: userWalletsWhereUniqueInput
   }
 
-  export type rolesCreateNestedOneWithoutUsersInput = {
+  export interface rolesCreateNestedOneWithoutUsersInput {
     create?: XOR<rolesCreateWithoutUsersInput, rolesUncheckedCreateWithoutUsersInput>
     connectOrCreate?: rolesCreateOrConnectWithoutUsersInput
     connect?: rolesWhereUniqueInput
   }
 
-  export type betEntriesUncheckedCreateNestedManyWithoutUsersInput = {
+  export interface betEntriesUncheckedCreateNestedManyWithoutUsersInput {
     create?: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput> | betEntriesCreateWithoutUsersInput[] | betEntriesUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
     createMany?: betEntriesCreateManyUsersInputEnvelope
     connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
   }
 
-  export type tradeOffersUncheckedCreateNestedManyWithoutUsersInput = {
+  export interface tradeOffersUncheckedCreateNestedManyWithoutUsersInput {
     create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
     createMany?: tradeOffersCreateManyUsersInputEnvelope
     connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
   }
 
-  export type tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput {
     create?: XOR<tradesCreateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput> | tradesCreateWithoutUsers_trades_customerIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput[]
     createMany?: tradesCreateManyUsers_trades_customerIdTousersInputEnvelope
     connect?: tradesWhereUniqueInput | tradesWhereUniqueInput[]
   }
 
-  export type tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput {
     create?: XOR<tradesCreateWithoutUsers_trades_supplierIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput> | tradesCreateWithoutUsers_trades_supplierIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput[]
     createMany?: tradesCreateManyUsers_trades_supplierIdTousersInputEnvelope
     connect?: tradesWhereUniqueInput | tradesWhereUniqueInput[]
   }
 
-  export type userWalletsUncheckedCreateNestedOneWithoutUsersInput = {
+  export interface userWalletsUncheckedCreateNestedOneWithoutUsersInput {
     create?: XOR<userWalletsCreateWithoutUsersInput, userWalletsUncheckedCreateWithoutUsersInput>
     connectOrCreate?: userWalletsCreateOrConnectWithoutUsersInput
     connect?: userWalletsWhereUniqueInput
   }
 
-  export type StringFieldUpdateOperationsInput = {
+  export interface StringFieldUpdateOperationsInput {
     set?: string
   }
 
-  export type betEntriesUpdateManyWithoutUsersNestedInput = {
+  export interface betEntriesUpdateManyWithoutUsersNestedInput {
     create?: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput> | betEntriesCreateWithoutUsersInput[] | betEntriesUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
     upsert?: betEntriesUpsertWithWhereUniqueWithoutUsersInput | betEntriesUpsertWithWhereUniqueWithoutUsersInput[]
@@ -15179,7 +15054,7 @@ export namespace Prisma {
     deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
   }
 
-  export type tradeOffersUpdateManyWithoutUsersNestedInput = {
+  export interface tradeOffersUpdateManyWithoutUsersNestedInput {
     create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
     upsert?: tradeOffersUpsertWithWhereUniqueWithoutUsersInput | tradeOffersUpsertWithWhereUniqueWithoutUsersInput[]
@@ -15193,7 +15068,7 @@ export namespace Prisma {
     deleteMany?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
   }
 
-  export type tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput = {
+  export interface tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput {
     create?: XOR<tradesCreateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput> | tradesCreateWithoutUsers_trades_customerIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput[]
     upsert?: tradesUpsertWithWhereUniqueWithoutUsers_trades_customerIdTousersInput | tradesUpsertWithWhereUniqueWithoutUsers_trades_customerIdTousersInput[]
@@ -15207,7 +15082,7 @@ export namespace Prisma {
     deleteMany?: tradesScalarWhereInput | tradesScalarWhereInput[]
   }
 
-  export type tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput = {
+  export interface tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput {
     create?: XOR<tradesCreateWithoutUsers_trades_supplierIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput> | tradesCreateWithoutUsers_trades_supplierIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput[]
     upsert?: tradesUpsertWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput | tradesUpsertWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput[]
@@ -15221,7 +15096,7 @@ export namespace Prisma {
     deleteMany?: tradesScalarWhereInput | tradesScalarWhereInput[]
   }
 
-  export type userWalletsUpdateOneWithoutUsersNestedInput = {
+  export interface userWalletsUpdateOneWithoutUsersNestedInput {
     create?: XOR<userWalletsCreateWithoutUsersInput, userWalletsUncheckedCreateWithoutUsersInput>
     connectOrCreate?: userWalletsCreateOrConnectWithoutUsersInput
     upsert?: userWalletsUpsertWithoutUsersInput
@@ -15231,7 +15106,7 @@ export namespace Prisma {
     update?: XOR<XOR<userWalletsUpdateToOneWithWhereWithoutUsersInput, userWalletsUpdateWithoutUsersInput>, userWalletsUncheckedUpdateWithoutUsersInput>
   }
 
-  export type rolesUpdateOneWithoutUsersNestedInput = {
+  export interface rolesUpdateOneWithoutUsersNestedInput {
     create?: XOR<rolesCreateWithoutUsersInput, rolesUncheckedCreateWithoutUsersInput>
     connectOrCreate?: rolesCreateOrConnectWithoutUsersInput
     upsert?: rolesUpsertWithoutUsersInput
@@ -15241,7 +15116,7 @@ export namespace Prisma {
     update?: XOR<XOR<rolesUpdateToOneWithWhereWithoutUsersInput, rolesUpdateWithoutUsersInput>, rolesUncheckedUpdateWithoutUsersInput>
   }
 
-  export type IntFieldUpdateOperationsInput = {
+  export interface IntFieldUpdateOperationsInput {
     set?: number
     increment?: number
     decrement?: number
@@ -15249,7 +15124,7 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
+  export interface NullableIntFieldUpdateOperationsInput {
     set?: number | null
     increment?: number
     decrement?: number
@@ -15257,7 +15132,7 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type betEntriesUncheckedUpdateManyWithoutUsersNestedInput = {
+  export interface betEntriesUncheckedUpdateManyWithoutUsersNestedInput {
     create?: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput> | betEntriesCreateWithoutUsersInput[] | betEntriesUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
     upsert?: betEntriesUpsertWithWhereUniqueWithoutUsersInput | betEntriesUpsertWithWhereUniqueWithoutUsersInput[]
@@ -15271,7 +15146,7 @@ export namespace Prisma {
     deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
   }
 
-  export type tradeOffersUncheckedUpdateManyWithoutUsersNestedInput = {
+  export interface tradeOffersUncheckedUpdateManyWithoutUsersNestedInput {
     create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
     upsert?: tradeOffersUpsertWithWhereUniqueWithoutUsersInput | tradeOffersUpsertWithWhereUniqueWithoutUsersInput[]
@@ -15285,7 +15160,7 @@ export namespace Prisma {
     deleteMany?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
   }
 
-  export type tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput = {
+  export interface tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput {
     create?: XOR<tradesCreateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput> | tradesCreateWithoutUsers_trades_customerIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput[]
     upsert?: tradesUpsertWithWhereUniqueWithoutUsers_trades_customerIdTousersInput | tradesUpsertWithWhereUniqueWithoutUsers_trades_customerIdTousersInput[]
@@ -15299,7 +15174,7 @@ export namespace Prisma {
     deleteMany?: tradesScalarWhereInput | tradesScalarWhereInput[]
   }
 
-  export type tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput = {
+  export interface tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput {
     create?: XOR<tradesCreateWithoutUsers_trades_supplierIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput> | tradesCreateWithoutUsers_trades_supplierIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput[]
     upsert?: tradesUpsertWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput | tradesUpsertWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput[]
@@ -15313,7 +15188,7 @@ export namespace Prisma {
     deleteMany?: tradesScalarWhereInput | tradesScalarWhereInput[]
   }
 
-  export type userWalletsUncheckedUpdateOneWithoutUsersNestedInput = {
+  export interface userWalletsUncheckedUpdateOneWithoutUsersNestedInput {
     create?: XOR<userWalletsCreateWithoutUsersInput, userWalletsUncheckedCreateWithoutUsersInput>
     connectOrCreate?: userWalletsCreateOrConnectWithoutUsersInput
     upsert?: userWalletsUpsertWithoutUsersInput
@@ -15323,31 +15198,31 @@ export namespace Prisma {
     update?: XOR<XOR<userWalletsUpdateToOneWithWhereWithoutUsersInput, userWalletsUpdateWithoutUsersInput>, userWalletsUncheckedUpdateWithoutUsersInput>
   }
 
-  export type betOptionsCreateNestedManyWithoutBetsInput = {
+  export interface betOptionsCreateNestedManyWithoutBetsInput {
     create?: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput> | betOptionsCreateWithoutBetsInput[] | betOptionsUncheckedCreateWithoutBetsInput[]
     connectOrCreate?: betOptionsCreateOrConnectWithoutBetsInput | betOptionsCreateOrConnectWithoutBetsInput[]
     createMany?: betOptionsCreateManyBetsInputEnvelope
     connect?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
   }
 
-  export type statusCreateNestedOneWithoutBets_bets_statusTostatusInput = {
+  export interface statusCreateNestedOneWithoutBets_bets_statusTostatusInput {
     create?: XOR<statusCreateWithoutBets_bets_statusTostatusInput, statusUncheckedCreateWithoutBets_bets_statusTostatusInput>
     connectOrCreate?: statusCreateOrConnectWithoutBets_bets_statusTostatusInput
     connect?: statusWhereUniqueInput
   }
 
-  export type betOptionsUncheckedCreateNestedManyWithoutBetsInput = {
+  export interface betOptionsUncheckedCreateNestedManyWithoutBetsInput {
     create?: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput> | betOptionsCreateWithoutBetsInput[] | betOptionsUncheckedCreateWithoutBetsInput[]
     connectOrCreate?: betOptionsCreateOrConnectWithoutBetsInput | betOptionsCreateOrConnectWithoutBetsInput[]
     createMany?: betOptionsCreateManyBetsInputEnvelope
     connect?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
+  export interface DateTimeFieldUpdateOperationsInput {
     set?: Date | string
   }
 
-  export type betOptionsUpdateManyWithoutBetsNestedInput = {
+  export interface betOptionsUpdateManyWithoutBetsNestedInput {
     create?: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput> | betOptionsCreateWithoutBetsInput[] | betOptionsUncheckedCreateWithoutBetsInput[]
     connectOrCreate?: betOptionsCreateOrConnectWithoutBetsInput | betOptionsCreateOrConnectWithoutBetsInput[]
     upsert?: betOptionsUpsertWithWhereUniqueWithoutBetsInput | betOptionsUpsertWithWhereUniqueWithoutBetsInput[]
@@ -15361,7 +15236,7 @@ export namespace Prisma {
     deleteMany?: betOptionsScalarWhereInput | betOptionsScalarWhereInput[]
   }
 
-  export type statusUpdateOneWithoutBets_bets_statusTostatusNestedInput = {
+  export interface statusUpdateOneWithoutBets_bets_statusTostatusNestedInput {
     create?: XOR<statusCreateWithoutBets_bets_statusTostatusInput, statusUncheckedCreateWithoutBets_bets_statusTostatusInput>
     connectOrCreate?: statusCreateOrConnectWithoutBets_bets_statusTostatusInput
     upsert?: statusUpsertWithoutBets_bets_statusTostatusInput
@@ -15371,7 +15246,7 @@ export namespace Prisma {
     update?: XOR<XOR<statusUpdateToOneWithWhereWithoutBets_bets_statusTostatusInput, statusUpdateWithoutBets_bets_statusTostatusInput>, statusUncheckedUpdateWithoutBets_bets_statusTostatusInput>
   }
 
-  export type betOptionsUncheckedUpdateManyWithoutBetsNestedInput = {
+  export interface betOptionsUncheckedUpdateManyWithoutBetsNestedInput {
     create?: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput> | betOptionsCreateWithoutBetsInput[] | betOptionsUncheckedCreateWithoutBetsInput[]
     connectOrCreate?: betOptionsCreateOrConnectWithoutBetsInput | betOptionsCreateOrConnectWithoutBetsInput[]
     upsert?: betOptionsUpsertWithWhereUniqueWithoutBetsInput | betOptionsUpsertWithWhereUniqueWithoutBetsInput[]
@@ -15385,35 +15260,21 @@ export namespace Prisma {
     deleteMany?: betOptionsScalarWhereInput | betOptionsScalarWhereInput[]
   }
 
-  export type usersCreateNestedManyWithoutRolesInput = {
+  export interface usersCreateNestedManyWithoutRolesInput {
     create?: XOR<usersCreateWithoutRolesInput, usersUncheckedCreateWithoutRolesInput> | usersCreateWithoutRolesInput[] | usersUncheckedCreateWithoutRolesInput[]
     connectOrCreate?: usersCreateOrConnectWithoutRolesInput | usersCreateOrConnectWithoutRolesInput[]
     createMany?: usersCreateManyRolesInputEnvelope
     connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
   }
 
-  export type usersUncheckedCreateNestedManyWithoutRolesInput = {
+  export interface usersUncheckedCreateNestedManyWithoutRolesInput {
     create?: XOR<usersCreateWithoutRolesInput, usersUncheckedCreateWithoutRolesInput> | usersCreateWithoutRolesInput[] | usersUncheckedCreateWithoutRolesInput[]
     connectOrCreate?: usersCreateOrConnectWithoutRolesInput | usersCreateOrConnectWithoutRolesInput[]
     createMany?: usersCreateManyRolesInputEnvelope
     connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
   }
 
-  export type usersUpdateManyWithoutRolesNestedInput = {
-    create?: XOR<usersCreateWithoutRolesInput, usersUncheckedCreateWithoutRolesInput> | usersCreateWithoutRolesInput[] | usersUncheckedCreateWithoutRolesInput[]
-    connectOrCreate?: usersCreateOrConnectWithoutRolesInput | usersCreateOrConnectWithoutRolesInput[]
-    upsert?: usersUpsertWithWhereUniqueWithoutRolesInput | usersUpsertWithWhereUniqueWithoutRolesInput[]
-    createMany?: usersCreateManyRolesInputEnvelope
-    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
-    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
-    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
-    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
-    update?: usersUpdateWithWhereUniqueWithoutRolesInput | usersUpdateWithWhereUniqueWithoutRolesInput[]
-    updateMany?: usersUpdateManyWithWhereWithoutRolesInput | usersUpdateManyWithWhereWithoutRolesInput[]
-    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
-  }
-
-  export type usersUncheckedUpdateManyWithoutRolesNestedInput = {
+  export interface usersUpdateManyWithoutRolesNestedInput {
     create?: XOR<usersCreateWithoutRolesInput, usersUncheckedCreateWithoutRolesInput> | usersCreateWithoutRolesInput[] | usersUncheckedCreateWithoutRolesInput[]
     connectOrCreate?: usersCreateOrConnectWithoutRolesInput | usersCreateOrConnectWithoutRolesInput[]
     upsert?: usersUpsertWithWhereUniqueWithoutRolesInput | usersUpsertWithWhereUniqueWithoutRolesInput[]
@@ -15427,21 +15288,35 @@ export namespace Prisma {
     deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
   }
 
-  export type betsCreateNestedManyWithoutStatus_bets_statusTostatusInput = {
+  export interface usersUncheckedUpdateManyWithoutRolesNestedInput {
+    create?: XOR<usersCreateWithoutRolesInput, usersUncheckedCreateWithoutRolesInput> | usersCreateWithoutRolesInput[] | usersUncheckedCreateWithoutRolesInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutRolesInput | usersCreateOrConnectWithoutRolesInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutRolesInput | usersUpsertWithWhereUniqueWithoutRolesInput[]
+    createMany?: usersCreateManyRolesInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutRolesInput | usersUpdateWithWhereUniqueWithoutRolesInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutRolesInput | usersUpdateManyWithWhereWithoutRolesInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export interface betsCreateNestedManyWithoutStatus_bets_statusTostatusInput {
     create?: XOR<betsCreateWithoutStatus_bets_statusTostatusInput, betsUncheckedCreateWithoutStatus_bets_statusTostatusInput> | betsCreateWithoutStatus_bets_statusTostatusInput[] | betsUncheckedCreateWithoutStatus_bets_statusTostatusInput[]
     connectOrCreate?: betsCreateOrConnectWithoutStatus_bets_statusTostatusInput | betsCreateOrConnectWithoutStatus_bets_statusTostatusInput[]
     createMany?: betsCreateManyStatus_bets_statusTostatusInputEnvelope
     connect?: betsWhereUniqueInput | betsWhereUniqueInput[]
   }
 
-  export type betsUncheckedCreateNestedManyWithoutStatus_bets_statusTostatusInput = {
+  export interface betsUncheckedCreateNestedManyWithoutStatus_bets_statusTostatusInput {
     create?: XOR<betsCreateWithoutStatus_bets_statusTostatusInput, betsUncheckedCreateWithoutStatus_bets_statusTostatusInput> | betsCreateWithoutStatus_bets_statusTostatusInput[] | betsUncheckedCreateWithoutStatus_bets_statusTostatusInput[]
     connectOrCreate?: betsCreateOrConnectWithoutStatus_bets_statusTostatusInput | betsCreateOrConnectWithoutStatus_bets_statusTostatusInput[]
     createMany?: betsCreateManyStatus_bets_statusTostatusInputEnvelope
     connect?: betsWhereUniqueInput | betsWhereUniqueInput[]
   }
 
-  export type betsUpdateManyWithoutStatus_bets_statusTostatusNestedInput = {
+  export interface betsUpdateManyWithoutStatus_bets_statusTostatusNestedInput {
     create?: XOR<betsCreateWithoutStatus_bets_statusTostatusInput, betsUncheckedCreateWithoutStatus_bets_statusTostatusInput> | betsCreateWithoutStatus_bets_statusTostatusInput[] | betsUncheckedCreateWithoutStatus_bets_statusTostatusInput[]
     connectOrCreate?: betsCreateOrConnectWithoutStatus_bets_statusTostatusInput | betsCreateOrConnectWithoutStatus_bets_statusTostatusInput[]
     upsert?: betsUpsertWithWhereUniqueWithoutStatus_bets_statusTostatusInput | betsUpsertWithWhereUniqueWithoutStatus_bets_statusTostatusInput[]
@@ -15455,7 +15330,7 @@ export namespace Prisma {
     deleteMany?: betsScalarWhereInput | betsScalarWhereInput[]
   }
 
-  export type betsUncheckedUpdateManyWithoutStatus_bets_statusTostatusNestedInput = {
+  export interface betsUncheckedUpdateManyWithoutStatus_bets_statusTostatusNestedInput {
     create?: XOR<betsCreateWithoutStatus_bets_statusTostatusInput, betsUncheckedCreateWithoutStatus_bets_statusTostatusInput> | betsCreateWithoutStatus_bets_statusTostatusInput[] | betsUncheckedCreateWithoutStatus_bets_statusTostatusInput[]
     connectOrCreate?: betsCreateOrConnectWithoutStatus_bets_statusTostatusInput | betsCreateOrConnectWithoutStatus_bets_statusTostatusInput[]
     upsert?: betsUpsertWithWhereUniqueWithoutStatus_bets_statusTostatusInput | betsUpsertWithWhereUniqueWithoutStatus_bets_statusTostatusInput[]
@@ -15469,19 +15344,19 @@ export namespace Prisma {
     deleteMany?: betsScalarWhereInput | betsScalarWhereInput[]
   }
 
-  export type tradesCreateNestedOneWithoutTradeOffersInput = {
+  export interface tradesCreateNestedOneWithoutTradeOffersInput {
     create?: XOR<tradesCreateWithoutTradeOffersInput, tradesUncheckedCreateWithoutTradeOffersInput>
     connectOrCreate?: tradesCreateOrConnectWithoutTradeOffersInput
     connect?: tradesWhereUniqueInput
   }
 
-  export type usersCreateNestedOneWithoutTradeOffersInput = {
+  export interface usersCreateNestedOneWithoutTradeOffersInput {
     create?: XOR<usersCreateWithoutTradeOffersInput, usersUncheckedCreateWithoutTradeOffersInput>
     connectOrCreate?: usersCreateOrConnectWithoutTradeOffersInput
     connect?: usersWhereUniqueInput
   }
 
-  export type BigIntFieldUpdateOperationsInput = {
+  export interface BigIntFieldUpdateOperationsInput {
     set?: bigint | number
     increment?: bigint | number
     decrement?: bigint | number
@@ -15489,11 +15364,11 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
+  export interface NullableBoolFieldUpdateOperationsInput {
     set?: boolean | null
   }
 
-  export type tradesUpdateOneWithoutTradeOffersNestedInput = {
+  export interface tradesUpdateOneWithoutTradeOffersNestedInput {
     create?: XOR<tradesCreateWithoutTradeOffersInput, tradesUncheckedCreateWithoutTradeOffersInput>
     connectOrCreate?: tradesCreateOrConnectWithoutTradeOffersInput
     upsert?: tradesUpsertWithoutTradeOffersInput
@@ -15503,7 +15378,7 @@ export namespace Prisma {
     update?: XOR<XOR<tradesUpdateToOneWithWhereWithoutTradeOffersInput, tradesUpdateWithoutTradeOffersInput>, tradesUncheckedUpdateWithoutTradeOffersInput>
   }
 
-  export type usersUpdateOneWithoutTradeOffersNestedInput = {
+  export interface usersUpdateOneWithoutTradeOffersNestedInput {
     create?: XOR<usersCreateWithoutTradeOffersInput, usersUncheckedCreateWithoutTradeOffersInput>
     connectOrCreate?: usersCreateOrConnectWithoutTradeOffersInput
     upsert?: usersUpsertWithoutTradeOffersInput
@@ -15513,41 +15388,41 @@ export namespace Prisma {
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutTradeOffersInput, usersUpdateWithoutTradeOffersInput>, usersUncheckedUpdateWithoutTradeOffersInput>
   }
 
-  export type tradeOffersCreateNestedManyWithoutTradesInput = {
+  export interface tradeOffersCreateNestedManyWithoutTradesInput {
     create?: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput> | tradeOffersCreateWithoutTradesInput[] | tradeOffersUncheckedCreateWithoutTradesInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutTradesInput | tradeOffersCreateOrConnectWithoutTradesInput[]
     createMany?: tradeOffersCreateManyTradesInputEnvelope
     connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
   }
 
-  export type usersCreateNestedOneWithoutTrades_trades_customerIdTousersInput = {
+  export interface usersCreateNestedOneWithoutTrades_trades_customerIdTousersInput {
     create?: XOR<usersCreateWithoutTrades_trades_customerIdTousersInput, usersUncheckedCreateWithoutTrades_trades_customerIdTousersInput>
     connectOrCreate?: usersCreateOrConnectWithoutTrades_trades_customerIdTousersInput
     connect?: usersWhereUniqueInput
   }
 
-  export type usersCreateNestedOneWithoutTrades_trades_supplierIdTousersInput = {
+  export interface usersCreateNestedOneWithoutTrades_trades_supplierIdTousersInput {
     create?: XOR<usersCreateWithoutTrades_trades_supplierIdTousersInput, usersUncheckedCreateWithoutTrades_trades_supplierIdTousersInput>
     connectOrCreate?: usersCreateOrConnectWithoutTrades_trades_supplierIdTousersInput
     connect?: usersWhereUniqueInput
   }
 
-  export type tradeOffersUncheckedCreateNestedManyWithoutTradesInput = {
+  export interface tradeOffersUncheckedCreateNestedManyWithoutTradesInput {
     create?: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput> | tradeOffersCreateWithoutTradesInput[] | tradeOffersUncheckedCreateWithoutTradesInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutTradesInput | tradeOffersCreateOrConnectWithoutTradesInput[]
     createMany?: tradeOffersCreateManyTradesInputEnvelope
     connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
+  export interface NullableStringFieldUpdateOperationsInput {
     set?: string | null
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
+  export interface NullableDateTimeFieldUpdateOperationsInput {
     set?: Date | string | null
   }
 
-  export type tradeOffersUpdateManyWithoutTradesNestedInput = {
+  export interface tradeOffersUpdateManyWithoutTradesNestedInput {
     create?: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput> | tradeOffersCreateWithoutTradesInput[] | tradeOffersUncheckedCreateWithoutTradesInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutTradesInput | tradeOffersCreateOrConnectWithoutTradesInput[]
     upsert?: tradeOffersUpsertWithWhereUniqueWithoutTradesInput | tradeOffersUpsertWithWhereUniqueWithoutTradesInput[]
@@ -15561,7 +15436,7 @@ export namespace Prisma {
     deleteMany?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
   }
 
-  export type usersUpdateOneWithoutTrades_trades_customerIdTousersNestedInput = {
+  export interface usersUpdateOneWithoutTrades_trades_customerIdTousersNestedInput {
     create?: XOR<usersCreateWithoutTrades_trades_customerIdTousersInput, usersUncheckedCreateWithoutTrades_trades_customerIdTousersInput>
     connectOrCreate?: usersCreateOrConnectWithoutTrades_trades_customerIdTousersInput
     upsert?: usersUpsertWithoutTrades_trades_customerIdTousersInput
@@ -15571,7 +15446,7 @@ export namespace Prisma {
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutTrades_trades_customerIdTousersInput, usersUpdateWithoutTrades_trades_customerIdTousersInput>, usersUncheckedUpdateWithoutTrades_trades_customerIdTousersInput>
   }
 
-  export type usersUpdateOneWithoutTrades_trades_supplierIdTousersNestedInput = {
+  export interface usersUpdateOneWithoutTrades_trades_supplierIdTousersNestedInput {
     create?: XOR<usersCreateWithoutTrades_trades_supplierIdTousersInput, usersUncheckedCreateWithoutTrades_trades_supplierIdTousersInput>
     connectOrCreate?: usersCreateOrConnectWithoutTrades_trades_supplierIdTousersInput
     upsert?: usersUpsertWithoutTrades_trades_supplierIdTousersInput
@@ -15581,7 +15456,7 @@ export namespace Prisma {
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutTrades_trades_supplierIdTousersInput, usersUpdateWithoutTrades_trades_supplierIdTousersInput>, usersUncheckedUpdateWithoutTrades_trades_supplierIdTousersInput>
   }
 
-  export type tradeOffersUncheckedUpdateManyWithoutTradesNestedInput = {
+  export interface tradeOffersUncheckedUpdateManyWithoutTradesNestedInput {
     create?: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput> | tradeOffersCreateWithoutTradesInput[] | tradeOffersUncheckedCreateWithoutTradesInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutTradesInput | tradeOffersCreateOrConnectWithoutTradesInput[]
     upsert?: tradeOffersUpsertWithWhereUniqueWithoutTradesInput | tradeOffersUpsertWithWhereUniqueWithoutTradesInput[]
@@ -15595,13 +15470,13 @@ export namespace Prisma {
     deleteMany?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
   }
 
-  export type usersCreateNestedOneWithoutUserWalletsInput = {
+  export interface usersCreateNestedOneWithoutUserWalletsInput {
     create?: XOR<usersCreateWithoutUserWalletsInput, usersUncheckedCreateWithoutUserWalletsInput>
     connectOrCreate?: usersCreateOrConnectWithoutUserWalletsInput
     connect?: usersWhereUniqueInput
   }
 
-  export type usersUpdateOneRequiredWithoutUserWalletsNestedInput = {
+  export interface usersUpdateOneRequiredWithoutUserWalletsNestedInput {
     create?: XOR<usersCreateWithoutUserWalletsInput, usersUncheckedCreateWithoutUserWalletsInput>
     connectOrCreate?: usersCreateOrConnectWithoutUserWalletsInput
     upsert?: usersUpsertWithoutUserWalletsInput
@@ -15609,19 +15484,19 @@ export namespace Prisma {
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutUserWalletsInput, usersUpdateWithoutUserWalletsInput>, usersUncheckedUpdateWithoutUserWalletsInput>
   }
 
-  export type betOptionsCreateNestedOneWithoutBetEntriesInput = {
+  export interface betOptionsCreateNestedOneWithoutBetEntriesInput {
     create?: XOR<betOptionsCreateWithoutBetEntriesInput, betOptionsUncheckedCreateWithoutBetEntriesInput>
     connectOrCreate?: betOptionsCreateOrConnectWithoutBetEntriesInput
     connect?: betOptionsWhereUniqueInput
   }
 
-  export type usersCreateNestedOneWithoutBetEntriesInput = {
+  export interface usersCreateNestedOneWithoutBetEntriesInput {
     create?: XOR<usersCreateWithoutBetEntriesInput, usersUncheckedCreateWithoutBetEntriesInput>
     connectOrCreate?: usersCreateOrConnectWithoutBetEntriesInput
     connect?: usersWhereUniqueInput
   }
 
-  export type betOptionsUpdateOneWithoutBetEntriesNestedInput = {
+  export interface betOptionsUpdateOneWithoutBetEntriesNestedInput {
     create?: XOR<betOptionsCreateWithoutBetEntriesInput, betOptionsUncheckedCreateWithoutBetEntriesInput>
     connectOrCreate?: betOptionsCreateOrConnectWithoutBetEntriesInput
     upsert?: betOptionsUpsertWithoutBetEntriesInput
@@ -15631,7 +15506,7 @@ export namespace Prisma {
     update?: XOR<XOR<betOptionsUpdateToOneWithWhereWithoutBetEntriesInput, betOptionsUpdateWithoutBetEntriesInput>, betOptionsUncheckedUpdateWithoutBetEntriesInput>
   }
 
-  export type usersUpdateOneWithoutBetEntriesNestedInput = {
+  export interface usersUpdateOneWithoutBetEntriesNestedInput {
     create?: XOR<usersCreateWithoutBetEntriesInput, usersUncheckedCreateWithoutBetEntriesInput>
     connectOrCreate?: usersCreateOrConnectWithoutBetEntriesInput
     upsert?: usersUpsertWithoutBetEntriesInput
@@ -15641,35 +15516,27 @@ export namespace Prisma {
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutBetEntriesInput, usersUpdateWithoutBetEntriesInput>, usersUncheckedUpdateWithoutBetEntriesInput>
   }
 
-  export type betEntriesCreateNestedManyWithoutBetOptionsInput = {
+  export interface betEntriesCreateNestedManyWithoutBetOptionsInput {
     create?: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput> | betEntriesCreateWithoutBetOptionsInput[] | betEntriesUncheckedCreateWithoutBetOptionsInput[]
     connectOrCreate?: betEntriesCreateOrConnectWithoutBetOptionsInput | betEntriesCreateOrConnectWithoutBetOptionsInput[]
     createMany?: betEntriesCreateManyBetOptionsInputEnvelope
     connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
   }
 
-  export type betsCreateNestedOneWithoutBetOptionsInput = {
+  export interface betsCreateNestedOneWithoutBetOptionsInput {
     create?: XOR<betsCreateWithoutBetOptionsInput, betsUncheckedCreateWithoutBetOptionsInput>
     connectOrCreate?: betsCreateOrConnectWithoutBetOptionsInput
     connect?: betsWhereUniqueInput
   }
 
-  export type betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput = {
+  export interface betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput {
     create?: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput> | betEntriesCreateWithoutBetOptionsInput[] | betEntriesUncheckedCreateWithoutBetOptionsInput[]
     connectOrCreate?: betEntriesCreateOrConnectWithoutBetOptionsInput | betEntriesCreateOrConnectWithoutBetOptionsInput[]
     createMany?: betEntriesCreateManyBetOptionsInputEnvelope
     connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type betEntriesUpdateManyWithoutBetOptionsNestedInput = {
+  export interface betEntriesUpdateManyWithoutBetOptionsNestedInput {
     create?: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput> | betEntriesCreateWithoutBetOptionsInput[] | betEntriesUncheckedCreateWithoutBetOptionsInput[]
     connectOrCreate?: betEntriesCreateOrConnectWithoutBetOptionsInput | betEntriesCreateOrConnectWithoutBetOptionsInput[]
     upsert?: betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput | betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput[]
@@ -15683,7 +15550,7 @@ export namespace Prisma {
     deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
   }
 
-  export type betsUpdateOneWithoutBetOptionsNestedInput = {
+  export interface betsUpdateOneWithoutBetOptionsNestedInput {
     create?: XOR<betsCreateWithoutBetOptionsInput, betsUncheckedCreateWithoutBetOptionsInput>
     connectOrCreate?: betsCreateOrConnectWithoutBetOptionsInput
     upsert?: betsUpsertWithoutBetOptionsInput
@@ -15693,7 +15560,7 @@ export namespace Prisma {
     update?: XOR<XOR<betsUpdateToOneWithWhereWithoutBetOptionsInput, betsUpdateWithoutBetOptionsInput>, betsUncheckedUpdateWithoutBetOptionsInput>
   }
 
-  export type betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput = {
+  export interface betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput {
     create?: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput> | betEntriesCreateWithoutBetOptionsInput[] | betEntriesUncheckedCreateWithoutBetOptionsInput[]
     connectOrCreate?: betEntriesCreateOrConnectWithoutBetOptionsInput | betEntriesCreateOrConnectWithoutBetOptionsInput[]
     upsert?: betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput | betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput[]
@@ -15707,7 +15574,7 @@ export namespace Prisma {
     deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
+  export interface NestedIntFilter<$PrismaModel = never> {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -15718,7 +15585,7 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
+  export interface NestedStringFilter<$PrismaModel = never> {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -15732,7 +15599,7 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
+  export interface NestedIntNullableFilter<$PrismaModel = never> {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -15743,7 +15610,7 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+  export interface NestedIntWithAggregatesFilter<$PrismaModel = never> {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -15759,7 +15626,7 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
+  export interface NestedFloatFilter<$PrismaModel = never> {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -15770,7 +15637,7 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+  export interface NestedStringWithAggregatesFilter<$PrismaModel = never> {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -15787,7 +15654,7 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export interface NestedIntNullableWithAggregatesFilter<$PrismaModel = never> {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -15803,7 +15670,7 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+  export interface NestedFloatNullableFilter<$PrismaModel = never> {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -15814,7 +15681,7 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
+  export interface NestedDateTimeFilter<$PrismaModel = never> {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -15825,7 +15692,7 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+  export interface NestedDateTimeWithAggregatesFilter<$PrismaModel = never> {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -15839,7 +15706,7 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
+  export interface NestedBigIntFilter<$PrismaModel = never> {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
     notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -15850,12 +15717,12 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+  export interface NestedBoolNullableFilter<$PrismaModel = never> {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+  export interface NestedBigIntWithAggregatesFilter<$PrismaModel = never> {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
     notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -15871,7 +15738,7 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export interface NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
     _count?: NestedIntNullableFilter<$PrismaModel>
@@ -15879,7 +15746,7 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
+  export interface NestedStringNullableFilter<$PrismaModel = never> {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -15893,7 +15760,7 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+  export interface NestedDateTimeNullableFilter<$PrismaModel = never> {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -15904,7 +15771,7 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export interface NestedStringNullableWithAggregatesFilter<$PrismaModel = never> {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -15921,7 +15788,7 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export interface NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -15935,44 +15802,28 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type betEntriesCreateWithoutUsersInput = {
+  export interface betEntriesCreateWithoutUsersInput {
     amount: number
     betOptions?: betOptionsCreateNestedOneWithoutBetEntriesInput
   }
 
-  export type betEntriesUncheckedCreateWithoutUsersInput = {
+  export interface betEntriesUncheckedCreateWithoutUsersInput {
     id?: number
     optionId?: number | null
     amount: number
   }
 
-  export type betEntriesCreateOrConnectWithoutUsersInput = {
+  export interface betEntriesCreateOrConnectWithoutUsersInput {
     where: betEntriesWhereUniqueInput
     create: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput>
   }
 
-  export type betEntriesCreateManyUsersInputEnvelope = {
+  export interface betEntriesCreateManyUsersInputEnvelope {
     data: betEntriesCreateManyUsersInput | betEntriesCreateManyUsersInput[]
     skipDuplicates?: boolean
   }
 
-  export type tradeOffersCreateWithoutUsersInput = {
+  export interface tradeOffersCreateWithoutUsersInput {
     id?: bigint | number
     value: number
     isAccepted?: boolean | null
@@ -15980,7 +15831,7 @@ export namespace Prisma {
     trades?: tradesCreateNestedOneWithoutTradeOffersInput
   }
 
-  export type tradeOffersUncheckedCreateWithoutUsersInput = {
+  export interface tradeOffersUncheckedCreateWithoutUsersInput {
     id?: bigint | number
     tradeId?: number | null
     value: number
@@ -15988,17 +15839,17 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type tradeOffersCreateOrConnectWithoutUsersInput = {
+  export interface tradeOffersCreateOrConnectWithoutUsersInput {
     where: tradeOffersWhereUniqueInput
     create: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput>
   }
 
-  export type tradeOffersCreateManyUsersInputEnvelope = {
+  export interface tradeOffersCreateManyUsersInputEnvelope {
     data: tradeOffersCreateManyUsersInput | tradeOffersCreateManyUsersInput[]
     skipDuplicates?: boolean
   }
 
-  export type tradesCreateWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesCreateWithoutUsers_trades_customerIdTousersInput {
     service?: string | null
     createdAt?: Date | string
     deadlineAt?: Date | string | null
@@ -16007,7 +15858,7 @@ export namespace Prisma {
     users_trades_supplierIdTousers?: usersCreateNestedOneWithoutTrades_trades_supplierIdTousersInput
   }
 
-  export type tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput {
     id?: number
     supplierId?: number | null
     service?: string | null
@@ -16017,17 +15868,17 @@ export namespace Prisma {
     tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutTradesInput
   }
 
-  export type tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput {
     where: tradesWhereUniqueInput
     create: XOR<tradesCreateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput>
   }
 
-  export type tradesCreateManyUsers_trades_customerIdTousersInputEnvelope = {
+  export interface tradesCreateManyUsers_trades_customerIdTousersInputEnvelope {
     data: tradesCreateManyUsers_trades_customerIdTousersInput | tradesCreateManyUsers_trades_customerIdTousersInput[]
     skipDuplicates?: boolean
   }
 
-  export type tradesCreateWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesCreateWithoutUsers_trades_supplierIdTousersInput {
     service?: string | null
     createdAt?: Date | string
     deadlineAt?: Date | string | null
@@ -16036,7 +15887,7 @@ export namespace Prisma {
     users_trades_customerIdTousers?: usersCreateNestedOneWithoutTrades_trades_customerIdTousersInput
   }
 
-  export type tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput {
     id?: number
     customerId?: number | null
     service?: string | null
@@ -16046,268 +15897,268 @@ export namespace Prisma {
     tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutTradesInput
   }
 
-  export type tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput {
     where: tradesWhereUniqueInput
     create: XOR<tradesCreateWithoutUsers_trades_supplierIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput>
   }
 
-  export type tradesCreateManyUsers_trades_supplierIdTousersInputEnvelope = {
+  export interface tradesCreateManyUsers_trades_supplierIdTousersInputEnvelope {
     data: tradesCreateManyUsers_trades_supplierIdTousersInput | tradesCreateManyUsers_trades_supplierIdTousersInput[]
     skipDuplicates?: boolean
   }
 
-  export type userWalletsCreateWithoutUsersInput = {
+  export interface userWalletsCreateWithoutUsersInput {
     balance?: number
   }
 
-  export type userWalletsUncheckedCreateWithoutUsersInput = {
+  export interface userWalletsUncheckedCreateWithoutUsersInput {
     balance?: number
   }
 
-  export type userWalletsCreateOrConnectWithoutUsersInput = {
+  export interface userWalletsCreateOrConnectWithoutUsersInput {
     where: userWalletsWhereUniqueInput
     create: XOR<userWalletsCreateWithoutUsersInput, userWalletsUncheckedCreateWithoutUsersInput>
   }
 
-  export type rolesCreateWithoutUsersInput = {
+  export interface rolesCreateWithoutUsersInput {
     description: string
   }
 
-  export type rolesUncheckedCreateWithoutUsersInput = {
+  export interface rolesUncheckedCreateWithoutUsersInput {
     id?: number
     description: string
   }
 
-  export type rolesCreateOrConnectWithoutUsersInput = {
+  export interface rolesCreateOrConnectWithoutUsersInput {
     where: rolesWhereUniqueInput
     create: XOR<rolesCreateWithoutUsersInput, rolesUncheckedCreateWithoutUsersInput>
   }
 
-  export type betEntriesUpsertWithWhereUniqueWithoutUsersInput = {
+  export interface betEntriesUpsertWithWhereUniqueWithoutUsersInput {
     where: betEntriesWhereUniqueInput
     update: XOR<betEntriesUpdateWithoutUsersInput, betEntriesUncheckedUpdateWithoutUsersInput>
     create: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput>
   }
 
-  export type betEntriesUpdateWithWhereUniqueWithoutUsersInput = {
+  export interface betEntriesUpdateWithWhereUniqueWithoutUsersInput {
     where: betEntriesWhereUniqueInput
     data: XOR<betEntriesUpdateWithoutUsersInput, betEntriesUncheckedUpdateWithoutUsersInput>
   }
 
-  export type betEntriesUpdateManyWithWhereWithoutUsersInput = {
+  export interface betEntriesUpdateManyWithWhereWithoutUsersInput {
     where: betEntriesScalarWhereInput
     data: XOR<betEntriesUpdateManyMutationInput, betEntriesUncheckedUpdateManyWithoutUsersInput>
   }
 
-  export type betEntriesScalarWhereInput = {
+  export interface betEntriesScalarWhereInput {
     AND?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
     OR?: betEntriesScalarWhereInput[]
     NOT?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
-    id?: IntFilter<"betEntries"> | number
-    optionId?: IntNullableFilter<"betEntries"> | number | null
-    userId?: IntNullableFilter<"betEntries"> | number | null
-    amount?: IntFilter<"betEntries"> | number
+    id?: IntFilter<'betEntries'> | number
+    optionId?: IntNullableFilter<'betEntries'> | number | null
+    userId?: IntNullableFilter<'betEntries'> | number | null
+    amount?: IntFilter<'betEntries'> | number
   }
 
-  export type tradeOffersUpsertWithWhereUniqueWithoutUsersInput = {
+  export interface tradeOffersUpsertWithWhereUniqueWithoutUsersInput {
     where: tradeOffersWhereUniqueInput
     update: XOR<tradeOffersUpdateWithoutUsersInput, tradeOffersUncheckedUpdateWithoutUsersInput>
     create: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput>
   }
 
-  export type tradeOffersUpdateWithWhereUniqueWithoutUsersInput = {
+  export interface tradeOffersUpdateWithWhereUniqueWithoutUsersInput {
     where: tradeOffersWhereUniqueInput
     data: XOR<tradeOffersUpdateWithoutUsersInput, tradeOffersUncheckedUpdateWithoutUsersInput>
   }
 
-  export type tradeOffersUpdateManyWithWhereWithoutUsersInput = {
+  export interface tradeOffersUpdateManyWithWhereWithoutUsersInput {
     where: tradeOffersScalarWhereInput
     data: XOR<tradeOffersUpdateManyMutationInput, tradeOffersUncheckedUpdateManyWithoutUsersInput>
   }
 
-  export type tradeOffersScalarWhereInput = {
+  export interface tradeOffersScalarWhereInput {
     AND?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
     OR?: tradeOffersScalarWhereInput[]
     NOT?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
-    id?: BigIntFilter<"tradeOffers"> | bigint | number
-    tradeId?: IntNullableFilter<"tradeOffers"> | number | null
-    userId?: IntNullableFilter<"tradeOffers"> | number | null
-    value?: IntFilter<"tradeOffers"> | number
-    isAccepted?: BoolNullableFilter<"tradeOffers"> | boolean | null
-    createdAt?: DateTimeFilter<"tradeOffers"> | Date | string
+    id?: BigIntFilter<'tradeOffers'> | bigint | number
+    tradeId?: IntNullableFilter<'tradeOffers'> | number | null
+    userId?: IntNullableFilter<'tradeOffers'> | number | null
+    value?: IntFilter<'tradeOffers'> | number
+    isAccepted?: BoolNullableFilter<'tradeOffers'> | boolean | null
+    createdAt?: DateTimeFilter<'tradeOffers'> | Date | string
   }
 
-  export type tradesUpsertWithWhereUniqueWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesUpsertWithWhereUniqueWithoutUsers_trades_customerIdTousersInput {
     where: tradesWhereUniqueInput
     update: XOR<tradesUpdateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedUpdateWithoutUsers_trades_customerIdTousersInput>
     create: XOR<tradesCreateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput>
   }
 
-  export type tradesUpdateWithWhereUniqueWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesUpdateWithWhereUniqueWithoutUsers_trades_customerIdTousersInput {
     where: tradesWhereUniqueInput
     data: XOR<tradesUpdateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedUpdateWithoutUsers_trades_customerIdTousersInput>
   }
 
-  export type tradesUpdateManyWithWhereWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesUpdateManyWithWhereWithoutUsers_trades_customerIdTousersInput {
     where: tradesScalarWhereInput
     data: XOR<tradesUpdateManyMutationInput, tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersInput>
   }
 
-  export type tradesScalarWhereInput = {
+  export interface tradesScalarWhereInput {
     AND?: tradesScalarWhereInput | tradesScalarWhereInput[]
     OR?: tradesScalarWhereInput[]
     NOT?: tradesScalarWhereInput | tradesScalarWhereInput[]
-    id?: IntFilter<"trades"> | number
-    supplierId?: IntNullableFilter<"trades"> | number | null
-    customerId?: IntNullableFilter<"trades"> | number | null
-    service?: StringNullableFilter<"trades"> | string | null
-    createdAt?: DateTimeFilter<"trades"> | Date | string
-    deadlineAt?: DateTimeNullableFilter<"trades"> | Date | string | null
-    tradedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
+    id?: IntFilter<'trades'> | number
+    supplierId?: IntNullableFilter<'trades'> | number | null
+    customerId?: IntNullableFilter<'trades'> | number | null
+    service?: StringNullableFilter<'trades'> | string | null
+    createdAt?: DateTimeFilter<'trades'> | Date | string
+    deadlineAt?: DateTimeNullableFilter<'trades'> | Date | string | null
+    tradedAt?: DateTimeNullableFilter<'trades'> | Date | string | null
   }
 
-  export type tradesUpsertWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesUpsertWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput {
     where: tradesWhereUniqueInput
     update: XOR<tradesUpdateWithoutUsers_trades_supplierIdTousersInput, tradesUncheckedUpdateWithoutUsers_trades_supplierIdTousersInput>
     create: XOR<tradesCreateWithoutUsers_trades_supplierIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput>
   }
 
-  export type tradesUpdateWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesUpdateWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput {
     where: tradesWhereUniqueInput
     data: XOR<tradesUpdateWithoutUsers_trades_supplierIdTousersInput, tradesUncheckedUpdateWithoutUsers_trades_supplierIdTousersInput>
   }
 
-  export type tradesUpdateManyWithWhereWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesUpdateManyWithWhereWithoutUsers_trades_supplierIdTousersInput {
     where: tradesScalarWhereInput
     data: XOR<tradesUpdateManyMutationInput, tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersInput>
   }
 
-  export type userWalletsUpsertWithoutUsersInput = {
+  export interface userWalletsUpsertWithoutUsersInput {
     update: XOR<userWalletsUpdateWithoutUsersInput, userWalletsUncheckedUpdateWithoutUsersInput>
     create: XOR<userWalletsCreateWithoutUsersInput, userWalletsUncheckedCreateWithoutUsersInput>
     where?: userWalletsWhereInput
   }
 
-  export type userWalletsUpdateToOneWithWhereWithoutUsersInput = {
+  export interface userWalletsUpdateToOneWithWhereWithoutUsersInput {
     where?: userWalletsWhereInput
     data: XOR<userWalletsUpdateWithoutUsersInput, userWalletsUncheckedUpdateWithoutUsersInput>
   }
 
-  export type userWalletsUpdateWithoutUsersInput = {
+  export interface userWalletsUpdateWithoutUsersInput {
     balance?: IntFieldUpdateOperationsInput | number
   }
 
-  export type userWalletsUncheckedUpdateWithoutUsersInput = {
+  export interface userWalletsUncheckedUpdateWithoutUsersInput {
     balance?: IntFieldUpdateOperationsInput | number
   }
 
-  export type rolesUpsertWithoutUsersInput = {
+  export interface rolesUpsertWithoutUsersInput {
     update: XOR<rolesUpdateWithoutUsersInput, rolesUncheckedUpdateWithoutUsersInput>
     create: XOR<rolesCreateWithoutUsersInput, rolesUncheckedCreateWithoutUsersInput>
     where?: rolesWhereInput
   }
 
-  export type rolesUpdateToOneWithWhereWithoutUsersInput = {
+  export interface rolesUpdateToOneWithWhereWithoutUsersInput {
     where?: rolesWhereInput
     data: XOR<rolesUpdateWithoutUsersInput, rolesUncheckedUpdateWithoutUsersInput>
   }
 
-  export type rolesUpdateWithoutUsersInput = {
+  export interface rolesUpdateWithoutUsersInput {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type rolesUncheckedUpdateWithoutUsersInput = {
+  export interface rolesUncheckedUpdateWithoutUsersInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type betOptionsCreateWithoutBetsInput = {
+  export interface betOptionsCreateWithoutBetsInput {
     description: string
-    weight: number
+    votes: number
     amount: number
     betEntries?: betEntriesCreateNestedManyWithoutBetOptionsInput
   }
 
-  export type betOptionsUncheckedCreateWithoutBetsInput = {
+  export interface betOptionsUncheckedCreateWithoutBetsInput {
     id?: number
     description: string
-    weight: number
+    votes: number
     amount: number
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput
   }
 
-  export type betOptionsCreateOrConnectWithoutBetsInput = {
+  export interface betOptionsCreateOrConnectWithoutBetsInput {
     where: betOptionsWhereUniqueInput
     create: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput>
   }
 
-  export type betOptionsCreateManyBetsInputEnvelope = {
+  export interface betOptionsCreateManyBetsInputEnvelope {
     data: betOptionsCreateManyBetsInput | betOptionsCreateManyBetsInput[]
     skipDuplicates?: boolean
   }
 
-  export type statusCreateWithoutBets_bets_statusTostatusInput = {
+  export interface statusCreateWithoutBets_bets_statusTostatusInput {
     description: string
   }
 
-  export type statusUncheckedCreateWithoutBets_bets_statusTostatusInput = {
+  export interface statusUncheckedCreateWithoutBets_bets_statusTostatusInput {
     id?: number
     description: string
   }
 
-  export type statusCreateOrConnectWithoutBets_bets_statusTostatusInput = {
+  export interface statusCreateOrConnectWithoutBets_bets_statusTostatusInput {
     where: statusWhereUniqueInput
     create: XOR<statusCreateWithoutBets_bets_statusTostatusInput, statusUncheckedCreateWithoutBets_bets_statusTostatusInput>
   }
 
-  export type betOptionsUpsertWithWhereUniqueWithoutBetsInput = {
+  export interface betOptionsUpsertWithWhereUniqueWithoutBetsInput {
     where: betOptionsWhereUniqueInput
     update: XOR<betOptionsUpdateWithoutBetsInput, betOptionsUncheckedUpdateWithoutBetsInput>
     create: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput>
   }
 
-  export type betOptionsUpdateWithWhereUniqueWithoutBetsInput = {
+  export interface betOptionsUpdateWithWhereUniqueWithoutBetsInput {
     where: betOptionsWhereUniqueInput
     data: XOR<betOptionsUpdateWithoutBetsInput, betOptionsUncheckedUpdateWithoutBetsInput>
   }
 
-  export type betOptionsUpdateManyWithWhereWithoutBetsInput = {
+  export interface betOptionsUpdateManyWithWhereWithoutBetsInput {
     where: betOptionsScalarWhereInput
     data: XOR<betOptionsUpdateManyMutationInput, betOptionsUncheckedUpdateManyWithoutBetsInput>
   }
 
-  export type betOptionsScalarWhereInput = {
+  export interface betOptionsScalarWhereInput {
     AND?: betOptionsScalarWhereInput | betOptionsScalarWhereInput[]
     OR?: betOptionsScalarWhereInput[]
     NOT?: betOptionsScalarWhereInput | betOptionsScalarWhereInput[]
-    id?: IntFilter<"betOptions"> | number
-    betId?: IntNullableFilter<"betOptions"> | number | null
-    description?: StringFilter<"betOptions"> | string
-    weight?: FloatFilter<"betOptions"> | number
-    amount?: IntFilter<"betOptions"> | number
+    id?: IntFilter<'betOptions'> | number
+    betId?: IntNullableFilter<'betOptions'> | number | null
+    description?: StringFilter<'betOptions'> | string
+    votes?: IntFilter<'betOptions'> | number
+    amount?: IntFilter<'betOptions'> | number
   }
 
-  export type statusUpsertWithoutBets_bets_statusTostatusInput = {
+  export interface statusUpsertWithoutBets_bets_statusTostatusInput {
     update: XOR<statusUpdateWithoutBets_bets_statusTostatusInput, statusUncheckedUpdateWithoutBets_bets_statusTostatusInput>
     create: XOR<statusCreateWithoutBets_bets_statusTostatusInput, statusUncheckedCreateWithoutBets_bets_statusTostatusInput>
     where?: statusWhereInput
   }
 
-  export type statusUpdateToOneWithWhereWithoutBets_bets_statusTostatusInput = {
+  export interface statusUpdateToOneWithWhereWithoutBets_bets_statusTostatusInput {
     where?: statusWhereInput
     data: XOR<statusUpdateWithoutBets_bets_statusTostatusInput, statusUncheckedUpdateWithoutBets_bets_statusTostatusInput>
   }
 
-  export type statusUpdateWithoutBets_bets_statusTostatusInput = {
+  export interface statusUpdateWithoutBets_bets_statusTostatusInput {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type statusUncheckedUpdateWithoutBets_bets_statusTostatusInput = {
+  export interface statusUncheckedUpdateWithoutBets_bets_statusTostatusInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type usersCreateWithoutRolesInput = {
+  export interface usersCreateWithoutRolesInput {
     firstName: string
     lastName: string
     username: string
@@ -16319,7 +16170,7 @@ export namespace Prisma {
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
   }
 
-  export type usersUncheckedCreateWithoutRolesInput = {
+  export interface usersUncheckedCreateWithoutRolesInput {
     id?: number
     firstName: string
     lastName: string
@@ -16332,97 +16183,103 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
   }
 
-  export type usersCreateOrConnectWithoutRolesInput = {
+  export interface usersCreateOrConnectWithoutRolesInput {
     where: usersWhereUniqueInput
     create: XOR<usersCreateWithoutRolesInput, usersUncheckedCreateWithoutRolesInput>
   }
 
-  export type usersCreateManyRolesInputEnvelope = {
+  export interface usersCreateManyRolesInputEnvelope {
     data: usersCreateManyRolesInput | usersCreateManyRolesInput[]
     skipDuplicates?: boolean
   }
 
-  export type usersUpsertWithWhereUniqueWithoutRolesInput = {
+  export interface usersUpsertWithWhereUniqueWithoutRolesInput {
     where: usersWhereUniqueInput
     update: XOR<usersUpdateWithoutRolesInput, usersUncheckedUpdateWithoutRolesInput>
     create: XOR<usersCreateWithoutRolesInput, usersUncheckedCreateWithoutRolesInput>
   }
 
-  export type usersUpdateWithWhereUniqueWithoutRolesInput = {
+  export interface usersUpdateWithWhereUniqueWithoutRolesInput {
     where: usersWhereUniqueInput
     data: XOR<usersUpdateWithoutRolesInput, usersUncheckedUpdateWithoutRolesInput>
   }
 
-  export type usersUpdateManyWithWhereWithoutRolesInput = {
+  export interface usersUpdateManyWithWhereWithoutRolesInput {
     where: usersScalarWhereInput
     data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyWithoutRolesInput>
   }
 
-  export type usersScalarWhereInput = {
+  export interface usersScalarWhereInput {
     AND?: usersScalarWhereInput | usersScalarWhereInput[]
     OR?: usersScalarWhereInput[]
     NOT?: usersScalarWhereInput | usersScalarWhereInput[]
-    id?: IntFilter<"users"> | number
-    firstName?: StringFilter<"users"> | string
-    lastName?: StringFilter<"users"> | string
-    username?: StringFilter<"users"> | string
-    password?: StringFilter<"users"> | string
-    role?: IntNullableFilter<"users"> | number | null
+    id?: IntFilter<'users'> | number
+    firstName?: StringFilter<'users'> | string
+    lastName?: StringFilter<'users'> | string
+    username?: StringFilter<'users'> | string
+    password?: StringFilter<'users'> | string
+    role?: IntNullableFilter<'users'> | number | null
   }
 
-  export type betsCreateWithoutStatus_bets_statusTostatusInput = {
+  export interface betsCreateWithoutStatus_bets_statusTostatusInput {
     description: string
     createdAt?: Date | string
     deadlineAt: Date | string
+    participants?: number
+    amount?: number
     betOptions?: betOptionsCreateNestedManyWithoutBetsInput
   }
 
-  export type betsUncheckedCreateWithoutStatus_bets_statusTostatusInput = {
+  export interface betsUncheckedCreateWithoutStatus_bets_statusTostatusInput {
     id?: number
     description: string
     createdAt?: Date | string
     deadlineAt: Date | string
+    participants?: number
+    amount?: number
     betOptions?: betOptionsUncheckedCreateNestedManyWithoutBetsInput
   }
 
-  export type betsCreateOrConnectWithoutStatus_bets_statusTostatusInput = {
+  export interface betsCreateOrConnectWithoutStatus_bets_statusTostatusInput {
     where: betsWhereUniqueInput
     create: XOR<betsCreateWithoutStatus_bets_statusTostatusInput, betsUncheckedCreateWithoutStatus_bets_statusTostatusInput>
   }
 
-  export type betsCreateManyStatus_bets_statusTostatusInputEnvelope = {
+  export interface betsCreateManyStatus_bets_statusTostatusInputEnvelope {
     data: betsCreateManyStatus_bets_statusTostatusInput | betsCreateManyStatus_bets_statusTostatusInput[]
     skipDuplicates?: boolean
   }
 
-  export type betsUpsertWithWhereUniqueWithoutStatus_bets_statusTostatusInput = {
+  export interface betsUpsertWithWhereUniqueWithoutStatus_bets_statusTostatusInput {
     where: betsWhereUniqueInput
     update: XOR<betsUpdateWithoutStatus_bets_statusTostatusInput, betsUncheckedUpdateWithoutStatus_bets_statusTostatusInput>
     create: XOR<betsCreateWithoutStatus_bets_statusTostatusInput, betsUncheckedCreateWithoutStatus_bets_statusTostatusInput>
   }
 
-  export type betsUpdateWithWhereUniqueWithoutStatus_bets_statusTostatusInput = {
+  export interface betsUpdateWithWhereUniqueWithoutStatus_bets_statusTostatusInput {
     where: betsWhereUniqueInput
     data: XOR<betsUpdateWithoutStatus_bets_statusTostatusInput, betsUncheckedUpdateWithoutStatus_bets_statusTostatusInput>
   }
 
-  export type betsUpdateManyWithWhereWithoutStatus_bets_statusTostatusInput = {
+  export interface betsUpdateManyWithWhereWithoutStatus_bets_statusTostatusInput {
     where: betsScalarWhereInput
     data: XOR<betsUpdateManyMutationInput, betsUncheckedUpdateManyWithoutStatus_bets_statusTostatusInput>
   }
 
-  export type betsScalarWhereInput = {
+  export interface betsScalarWhereInput {
     AND?: betsScalarWhereInput | betsScalarWhereInput[]
     OR?: betsScalarWhereInput[]
     NOT?: betsScalarWhereInput | betsScalarWhereInput[]
-    id?: IntFilter<"bets"> | number
-    description?: StringFilter<"bets"> | string
-    createdAt?: DateTimeFilter<"bets"> | Date | string
-    deadlineAt?: DateTimeFilter<"bets"> | Date | string
-    status?: IntNullableFilter<"bets"> | number | null
+    id?: IntFilter<'bets'> | number
+    description?: StringFilter<'bets'> | string
+    createdAt?: DateTimeFilter<'bets'> | Date | string
+    deadlineAt?: DateTimeFilter<'bets'> | Date | string
+    status?: IntNullableFilter<'bets'> | number | null
+    participants?: IntFilter<'bets'> | number
+    amount?: IntFilter<'bets'> | number
   }
 
-  export type tradesCreateWithoutTradeOffersInput = {
+  export interface tradesCreateWithoutTradeOffersInput {
     service?: string | null
     createdAt?: Date | string
     deadlineAt?: Date | string | null
@@ -16431,7 +16288,7 @@ export namespace Prisma {
     users_trades_supplierIdTousers?: usersCreateNestedOneWithoutTrades_trades_supplierIdTousersInput
   }
 
-  export type tradesUncheckedCreateWithoutTradeOffersInput = {
+  export interface tradesUncheckedCreateWithoutTradeOffersInput {
     id?: number
     supplierId?: number | null
     customerId?: number | null
@@ -16441,12 +16298,12 @@ export namespace Prisma {
     tradedAt?: Date | string | null
   }
 
-  export type tradesCreateOrConnectWithoutTradeOffersInput = {
+  export interface tradesCreateOrConnectWithoutTradeOffersInput {
     where: tradesWhereUniqueInput
     create: XOR<tradesCreateWithoutTradeOffersInput, tradesUncheckedCreateWithoutTradeOffersInput>
   }
 
-  export type usersCreateWithoutTradeOffersInput = {
+  export interface usersCreateWithoutTradeOffersInput {
     firstName: string
     lastName: string
     username: string
@@ -16458,7 +16315,7 @@ export namespace Prisma {
     roles?: rolesCreateNestedOneWithoutUsersInput
   }
 
-  export type usersUncheckedCreateWithoutTradeOffersInput = {
+  export interface usersUncheckedCreateWithoutTradeOffersInput {
     id?: number
     firstName: string
     lastName: string
@@ -16471,23 +16328,23 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
   }
 
-  export type usersCreateOrConnectWithoutTradeOffersInput = {
+  export interface usersCreateOrConnectWithoutTradeOffersInput {
     where: usersWhereUniqueInput
     create: XOR<usersCreateWithoutTradeOffersInput, usersUncheckedCreateWithoutTradeOffersInput>
   }
 
-  export type tradesUpsertWithoutTradeOffersInput = {
+  export interface tradesUpsertWithoutTradeOffersInput {
     update: XOR<tradesUpdateWithoutTradeOffersInput, tradesUncheckedUpdateWithoutTradeOffersInput>
     create: XOR<tradesCreateWithoutTradeOffersInput, tradesUncheckedCreateWithoutTradeOffersInput>
     where?: tradesWhereInput
   }
 
-  export type tradesUpdateToOneWithWhereWithoutTradeOffersInput = {
+  export interface tradesUpdateToOneWithWhereWithoutTradeOffersInput {
     where?: tradesWhereInput
     data: XOR<tradesUpdateWithoutTradeOffersInput, tradesUncheckedUpdateWithoutTradeOffersInput>
   }
 
-  export type tradesUpdateWithoutTradeOffersInput = {
+  export interface tradesUpdateWithoutTradeOffersInput {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16496,7 +16353,7 @@ export namespace Prisma {
     users_trades_supplierIdTousers?: usersUpdateOneWithoutTrades_trades_supplierIdTousersNestedInput
   }
 
-  export type tradesUncheckedUpdateWithoutTradeOffersInput = {
+  export interface tradesUncheckedUpdateWithoutTradeOffersInput {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -16506,18 +16363,18 @@ export namespace Prisma {
     tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type usersUpsertWithoutTradeOffersInput = {
+  export interface usersUpsertWithoutTradeOffersInput {
     update: XOR<usersUpdateWithoutTradeOffersInput, usersUncheckedUpdateWithoutTradeOffersInput>
     create: XOR<usersCreateWithoutTradeOffersInput, usersUncheckedCreateWithoutTradeOffersInput>
     where?: usersWhereInput
   }
 
-  export type usersUpdateToOneWithWhereWithoutTradeOffersInput = {
+  export interface usersUpdateToOneWithWhereWithoutTradeOffersInput {
     where?: usersWhereInput
     data: XOR<usersUpdateWithoutTradeOffersInput, usersUncheckedUpdateWithoutTradeOffersInput>
   }
 
-  export type usersUpdateWithoutTradeOffersInput = {
+  export interface usersUpdateWithoutTradeOffersInput {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
@@ -16529,7 +16386,7 @@ export namespace Prisma {
     roles?: rolesUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUncheckedUpdateWithoutTradeOffersInput = {
+  export interface usersUncheckedUpdateWithoutTradeOffersInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -16542,7 +16399,7 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
 
-  export type tradeOffersCreateWithoutTradesInput = {
+  export interface tradeOffersCreateWithoutTradesInput {
     id?: bigint | number
     value: number
     isAccepted?: boolean | null
@@ -16550,7 +16407,7 @@ export namespace Prisma {
     users?: usersCreateNestedOneWithoutTradeOffersInput
   }
 
-  export type tradeOffersUncheckedCreateWithoutTradesInput = {
+  export interface tradeOffersUncheckedCreateWithoutTradesInput {
     id?: bigint | number
     userId?: number | null
     value: number
@@ -16558,17 +16415,17 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type tradeOffersCreateOrConnectWithoutTradesInput = {
+  export interface tradeOffersCreateOrConnectWithoutTradesInput {
     where: tradeOffersWhereUniqueInput
     create: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput>
   }
 
-  export type tradeOffersCreateManyTradesInputEnvelope = {
+  export interface tradeOffersCreateManyTradesInputEnvelope {
     data: tradeOffersCreateManyTradesInput | tradeOffersCreateManyTradesInput[]
     skipDuplicates?: boolean
   }
 
-  export type usersCreateWithoutTrades_trades_customerIdTousersInput = {
+  export interface usersCreateWithoutTrades_trades_customerIdTousersInput {
     firstName: string
     lastName: string
     username: string
@@ -16580,7 +16437,7 @@ export namespace Prisma {
     roles?: rolesCreateNestedOneWithoutUsersInput
   }
 
-  export type usersUncheckedCreateWithoutTrades_trades_customerIdTousersInput = {
+  export interface usersUncheckedCreateWithoutTrades_trades_customerIdTousersInput {
     id?: number
     firstName: string
     lastName: string
@@ -16593,12 +16450,12 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
   }
 
-  export type usersCreateOrConnectWithoutTrades_trades_customerIdTousersInput = {
+  export interface usersCreateOrConnectWithoutTrades_trades_customerIdTousersInput {
     where: usersWhereUniqueInput
     create: XOR<usersCreateWithoutTrades_trades_customerIdTousersInput, usersUncheckedCreateWithoutTrades_trades_customerIdTousersInput>
   }
 
-  export type usersCreateWithoutTrades_trades_supplierIdTousersInput = {
+  export interface usersCreateWithoutTrades_trades_supplierIdTousersInput {
     firstName: string
     lastName: string
     username: string
@@ -16610,7 +16467,7 @@ export namespace Prisma {
     roles?: rolesCreateNestedOneWithoutUsersInput
   }
 
-  export type usersUncheckedCreateWithoutTrades_trades_supplierIdTousersInput = {
+  export interface usersUncheckedCreateWithoutTrades_trades_supplierIdTousersInput {
     id?: number
     firstName: string
     lastName: string
@@ -16623,39 +16480,39 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
   }
 
-  export type usersCreateOrConnectWithoutTrades_trades_supplierIdTousersInput = {
+  export interface usersCreateOrConnectWithoutTrades_trades_supplierIdTousersInput {
     where: usersWhereUniqueInput
     create: XOR<usersCreateWithoutTrades_trades_supplierIdTousersInput, usersUncheckedCreateWithoutTrades_trades_supplierIdTousersInput>
   }
 
-  export type tradeOffersUpsertWithWhereUniqueWithoutTradesInput = {
+  export interface tradeOffersUpsertWithWhereUniqueWithoutTradesInput {
     where: tradeOffersWhereUniqueInput
     update: XOR<tradeOffersUpdateWithoutTradesInput, tradeOffersUncheckedUpdateWithoutTradesInput>
     create: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput>
   }
 
-  export type tradeOffersUpdateWithWhereUniqueWithoutTradesInput = {
+  export interface tradeOffersUpdateWithWhereUniqueWithoutTradesInput {
     where: tradeOffersWhereUniqueInput
     data: XOR<tradeOffersUpdateWithoutTradesInput, tradeOffersUncheckedUpdateWithoutTradesInput>
   }
 
-  export type tradeOffersUpdateManyWithWhereWithoutTradesInput = {
+  export interface tradeOffersUpdateManyWithWhereWithoutTradesInput {
     where: tradeOffersScalarWhereInput
     data: XOR<tradeOffersUpdateManyMutationInput, tradeOffersUncheckedUpdateManyWithoutTradesInput>
   }
 
-  export type usersUpsertWithoutTrades_trades_customerIdTousersInput = {
+  export interface usersUpsertWithoutTrades_trades_customerIdTousersInput {
     update: XOR<usersUpdateWithoutTrades_trades_customerIdTousersInput, usersUncheckedUpdateWithoutTrades_trades_customerIdTousersInput>
     create: XOR<usersCreateWithoutTrades_trades_customerIdTousersInput, usersUncheckedCreateWithoutTrades_trades_customerIdTousersInput>
     where?: usersWhereInput
   }
 
-  export type usersUpdateToOneWithWhereWithoutTrades_trades_customerIdTousersInput = {
+  export interface usersUpdateToOneWithWhereWithoutTrades_trades_customerIdTousersInput {
     where?: usersWhereInput
     data: XOR<usersUpdateWithoutTrades_trades_customerIdTousersInput, usersUncheckedUpdateWithoutTrades_trades_customerIdTousersInput>
   }
 
-  export type usersUpdateWithoutTrades_trades_customerIdTousersInput = {
+  export interface usersUpdateWithoutTrades_trades_customerIdTousersInput {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
@@ -16667,7 +16524,7 @@ export namespace Prisma {
     roles?: rolesUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUncheckedUpdateWithoutTrades_trades_customerIdTousersInput = {
+  export interface usersUncheckedUpdateWithoutTrades_trades_customerIdTousersInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -16680,18 +16537,18 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUpsertWithoutTrades_trades_supplierIdTousersInput = {
+  export interface usersUpsertWithoutTrades_trades_supplierIdTousersInput {
     update: XOR<usersUpdateWithoutTrades_trades_supplierIdTousersInput, usersUncheckedUpdateWithoutTrades_trades_supplierIdTousersInput>
     create: XOR<usersCreateWithoutTrades_trades_supplierIdTousersInput, usersUncheckedCreateWithoutTrades_trades_supplierIdTousersInput>
     where?: usersWhereInput
   }
 
-  export type usersUpdateToOneWithWhereWithoutTrades_trades_supplierIdTousersInput = {
+  export interface usersUpdateToOneWithWhereWithoutTrades_trades_supplierIdTousersInput {
     where?: usersWhereInput
     data: XOR<usersUpdateWithoutTrades_trades_supplierIdTousersInput, usersUncheckedUpdateWithoutTrades_trades_supplierIdTousersInput>
   }
 
-  export type usersUpdateWithoutTrades_trades_supplierIdTousersInput = {
+  export interface usersUpdateWithoutTrades_trades_supplierIdTousersInput {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
@@ -16703,7 +16560,7 @@ export namespace Prisma {
     roles?: rolesUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUncheckedUpdateWithoutTrades_trades_supplierIdTousersInput = {
+  export interface usersUncheckedUpdateWithoutTrades_trades_supplierIdTousersInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -16716,7 +16573,7 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersCreateWithoutUserWalletsInput = {
+  export interface usersCreateWithoutUserWalletsInput {
     firstName: string
     lastName: string
     username: string
@@ -16728,7 +16585,7 @@ export namespace Prisma {
     roles?: rolesCreateNestedOneWithoutUsersInput
   }
 
-  export type usersUncheckedCreateWithoutUserWalletsInput = {
+  export interface usersUncheckedCreateWithoutUserWalletsInput {
     id?: number
     firstName: string
     lastName: string
@@ -16741,23 +16598,23 @@ export namespace Prisma {
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
   }
 
-  export type usersCreateOrConnectWithoutUserWalletsInput = {
+  export interface usersCreateOrConnectWithoutUserWalletsInput {
     where: usersWhereUniqueInput
     create: XOR<usersCreateWithoutUserWalletsInput, usersUncheckedCreateWithoutUserWalletsInput>
   }
 
-  export type usersUpsertWithoutUserWalletsInput = {
+  export interface usersUpsertWithoutUserWalletsInput {
     update: XOR<usersUpdateWithoutUserWalletsInput, usersUncheckedUpdateWithoutUserWalletsInput>
     create: XOR<usersCreateWithoutUserWalletsInput, usersUncheckedCreateWithoutUserWalletsInput>
     where?: usersWhereInput
   }
 
-  export type usersUpdateToOneWithWhereWithoutUserWalletsInput = {
+  export interface usersUpdateToOneWithWhereWithoutUserWalletsInput {
     where?: usersWhereInput
     data: XOR<usersUpdateWithoutUserWalletsInput, usersUncheckedUpdateWithoutUserWalletsInput>
   }
 
-  export type usersUpdateWithoutUserWalletsInput = {
+  export interface usersUpdateWithoutUserWalletsInput {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
@@ -16769,7 +16626,7 @@ export namespace Prisma {
     roles?: rolesUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUncheckedUpdateWithoutUserWalletsInput = {
+  export interface usersUncheckedUpdateWithoutUserWalletsInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -16782,27 +16639,27 @@ export namespace Prisma {
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
   }
 
-  export type betOptionsCreateWithoutBetEntriesInput = {
+  export interface betOptionsCreateWithoutBetEntriesInput {
     description: string
-    weight: number
+    votes: number
     amount: number
     bets?: betsCreateNestedOneWithoutBetOptionsInput
   }
 
-  export type betOptionsUncheckedCreateWithoutBetEntriesInput = {
+  export interface betOptionsUncheckedCreateWithoutBetEntriesInput {
     id?: number
     betId?: number | null
     description: string
-    weight: number
+    votes: number
     amount: number
   }
 
-  export type betOptionsCreateOrConnectWithoutBetEntriesInput = {
+  export interface betOptionsCreateOrConnectWithoutBetEntriesInput {
     where: betOptionsWhereUniqueInput
     create: XOR<betOptionsCreateWithoutBetEntriesInput, betOptionsUncheckedCreateWithoutBetEntriesInput>
   }
 
-  export type usersCreateWithoutBetEntriesInput = {
+  export interface usersCreateWithoutBetEntriesInput {
     firstName: string
     lastName: string
     username: string
@@ -16814,7 +16671,7 @@ export namespace Prisma {
     roles?: rolesCreateNestedOneWithoutUsersInput
   }
 
-  export type usersUncheckedCreateWithoutBetEntriesInput = {
+  export interface usersUncheckedCreateWithoutBetEntriesInput {
     id?: number
     firstName: string
     lastName: string
@@ -16827,49 +16684,49 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
   }
 
-  export type usersCreateOrConnectWithoutBetEntriesInput = {
+  export interface usersCreateOrConnectWithoutBetEntriesInput {
     where: usersWhereUniqueInput
     create: XOR<usersCreateWithoutBetEntriesInput, usersUncheckedCreateWithoutBetEntriesInput>
   }
 
-  export type betOptionsUpsertWithoutBetEntriesInput = {
+  export interface betOptionsUpsertWithoutBetEntriesInput {
     update: XOR<betOptionsUpdateWithoutBetEntriesInput, betOptionsUncheckedUpdateWithoutBetEntriesInput>
     create: XOR<betOptionsCreateWithoutBetEntriesInput, betOptionsUncheckedCreateWithoutBetEntriesInput>
     where?: betOptionsWhereInput
   }
 
-  export type betOptionsUpdateToOneWithWhereWithoutBetEntriesInput = {
+  export interface betOptionsUpdateToOneWithWhereWithoutBetEntriesInput {
     where?: betOptionsWhereInput
     data: XOR<betOptionsUpdateWithoutBetEntriesInput, betOptionsUncheckedUpdateWithoutBetEntriesInput>
   }
 
-  export type betOptionsUpdateWithoutBetEntriesInput = {
+  export interface betOptionsUpdateWithoutBetEntriesInput {
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     bets?: betsUpdateOneWithoutBetOptionsNestedInput
   }
 
-  export type betOptionsUncheckedUpdateWithoutBetEntriesInput = {
+  export interface betOptionsUncheckedUpdateWithoutBetEntriesInput {
     id?: IntFieldUpdateOperationsInput | number
     betId?: NullableIntFieldUpdateOperationsInput | number | null
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type usersUpsertWithoutBetEntriesInput = {
+  export interface usersUpsertWithoutBetEntriesInput {
     update: XOR<usersUpdateWithoutBetEntriesInput, usersUncheckedUpdateWithoutBetEntriesInput>
     create: XOR<usersCreateWithoutBetEntriesInput, usersUncheckedCreateWithoutBetEntriesInput>
     where?: usersWhereInput
   }
 
-  export type usersUpdateToOneWithWhereWithoutBetEntriesInput = {
+  export interface usersUpdateToOneWithWhereWithoutBetEntriesInput {
     where?: usersWhereInput
     data: XOR<usersUpdateWithoutBetEntriesInput, usersUncheckedUpdateWithoutBetEntriesInput>
   }
 
-  export type usersUpdateWithoutBetEntriesInput = {
+  export interface usersUpdateWithoutBetEntriesInput {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
@@ -16881,7 +16738,7 @@ export namespace Prisma {
     roles?: rolesUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUncheckedUpdateWithoutBetEntriesInput = {
+  export interface usersUncheckedUpdateWithoutBetEntriesInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -16894,96 +16751,104 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
 
-  export type betEntriesCreateWithoutBetOptionsInput = {
+  export interface betEntriesCreateWithoutBetOptionsInput {
     amount: number
     users?: usersCreateNestedOneWithoutBetEntriesInput
   }
 
-  export type betEntriesUncheckedCreateWithoutBetOptionsInput = {
+  export interface betEntriesUncheckedCreateWithoutBetOptionsInput {
     id?: number
     userId?: number | null
     amount: number
   }
 
-  export type betEntriesCreateOrConnectWithoutBetOptionsInput = {
+  export interface betEntriesCreateOrConnectWithoutBetOptionsInput {
     where: betEntriesWhereUniqueInput
     create: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput>
   }
 
-  export type betEntriesCreateManyBetOptionsInputEnvelope = {
+  export interface betEntriesCreateManyBetOptionsInputEnvelope {
     data: betEntriesCreateManyBetOptionsInput | betEntriesCreateManyBetOptionsInput[]
     skipDuplicates?: boolean
   }
 
-  export type betsCreateWithoutBetOptionsInput = {
+  export interface betsCreateWithoutBetOptionsInput {
     description: string
     createdAt?: Date | string
     deadlineAt: Date | string
+    participants?: number
+    amount?: number
     status_bets_statusTostatus?: statusCreateNestedOneWithoutBets_bets_statusTostatusInput
   }
 
-  export type betsUncheckedCreateWithoutBetOptionsInput = {
+  export interface betsUncheckedCreateWithoutBetOptionsInput {
     id?: number
     description: string
     createdAt?: Date | string
     deadlineAt: Date | string
     status?: number | null
+    participants?: number
+    amount?: number
   }
 
-  export type betsCreateOrConnectWithoutBetOptionsInput = {
+  export interface betsCreateOrConnectWithoutBetOptionsInput {
     where: betsWhereUniqueInput
     create: XOR<betsCreateWithoutBetOptionsInput, betsUncheckedCreateWithoutBetOptionsInput>
   }
 
-  export type betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput = {
+  export interface betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput {
     where: betEntriesWhereUniqueInput
     update: XOR<betEntriesUpdateWithoutBetOptionsInput, betEntriesUncheckedUpdateWithoutBetOptionsInput>
     create: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput>
   }
 
-  export type betEntriesUpdateWithWhereUniqueWithoutBetOptionsInput = {
+  export interface betEntriesUpdateWithWhereUniqueWithoutBetOptionsInput {
     where: betEntriesWhereUniqueInput
     data: XOR<betEntriesUpdateWithoutBetOptionsInput, betEntriesUncheckedUpdateWithoutBetOptionsInput>
   }
 
-  export type betEntriesUpdateManyWithWhereWithoutBetOptionsInput = {
+  export interface betEntriesUpdateManyWithWhereWithoutBetOptionsInput {
     where: betEntriesScalarWhereInput
     data: XOR<betEntriesUpdateManyMutationInput, betEntriesUncheckedUpdateManyWithoutBetOptionsInput>
   }
 
-  export type betsUpsertWithoutBetOptionsInput = {
+  export interface betsUpsertWithoutBetOptionsInput {
     update: XOR<betsUpdateWithoutBetOptionsInput, betsUncheckedUpdateWithoutBetOptionsInput>
     create: XOR<betsCreateWithoutBetOptionsInput, betsUncheckedCreateWithoutBetOptionsInput>
     where?: betsWhereInput
   }
 
-  export type betsUpdateToOneWithWhereWithoutBetOptionsInput = {
+  export interface betsUpdateToOneWithWhereWithoutBetOptionsInput {
     where?: betsWhereInput
     data: XOR<betsUpdateWithoutBetOptionsInput, betsUncheckedUpdateWithoutBetOptionsInput>
   }
 
-  export type betsUpdateWithoutBetOptionsInput = {
+  export interface betsUpdateWithoutBetOptionsInput {
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     status_bets_statusTostatus?: statusUpdateOneWithoutBets_bets_statusTostatusNestedInput
   }
 
-  export type betsUncheckedUpdateWithoutBetOptionsInput = {
+  export interface betsUncheckedUpdateWithoutBetOptionsInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: NullableIntFieldUpdateOperationsInput | number | null
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betEntriesCreateManyUsersInput = {
+  export interface betEntriesCreateManyUsersInput {
     id?: number
     optionId?: number | null
     amount: number
   }
 
-  export type tradeOffersCreateManyUsersInput = {
+  export interface tradeOffersCreateManyUsersInput {
     id?: bigint | number
     tradeId?: number | null
     value: number
@@ -16991,7 +16856,7 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type tradesCreateManyUsers_trades_customerIdTousersInput = {
+  export interface tradesCreateManyUsers_trades_customerIdTousersInput {
     id?: number
     supplierId?: number | null
     service?: string | null
@@ -17000,7 +16865,7 @@ export namespace Prisma {
     tradedAt?: Date | string | null
   }
 
-  export type tradesCreateManyUsers_trades_supplierIdTousersInput = {
+  export interface tradesCreateManyUsers_trades_supplierIdTousersInput {
     id?: number
     customerId?: number | null
     service?: string | null
@@ -17009,24 +16874,24 @@ export namespace Prisma {
     tradedAt?: Date | string | null
   }
 
-  export type betEntriesUpdateWithoutUsersInput = {
+  export interface betEntriesUpdateWithoutUsersInput {
     amount?: IntFieldUpdateOperationsInput | number
     betOptions?: betOptionsUpdateOneWithoutBetEntriesNestedInput
   }
 
-  export type betEntriesUncheckedUpdateWithoutUsersInput = {
+  export interface betEntriesUncheckedUpdateWithoutUsersInput {
     id?: IntFieldUpdateOperationsInput | number
     optionId?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betEntriesUncheckedUpdateManyWithoutUsersInput = {
+  export interface betEntriesUncheckedUpdateManyWithoutUsersInput {
     id?: IntFieldUpdateOperationsInput | number
     optionId?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type tradeOffersUpdateWithoutUsersInput = {
+  export interface tradeOffersUpdateWithoutUsersInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     value?: IntFieldUpdateOperationsInput | number
     isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -17034,7 +16899,7 @@ export namespace Prisma {
     trades?: tradesUpdateOneWithoutTradeOffersNestedInput
   }
 
-  export type tradeOffersUncheckedUpdateWithoutUsersInput = {
+  export interface tradeOffersUncheckedUpdateWithoutUsersInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     tradeId?: NullableIntFieldUpdateOperationsInput | number | null
     value?: IntFieldUpdateOperationsInput | number
@@ -17042,7 +16907,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type tradeOffersUncheckedUpdateManyWithoutUsersInput = {
+  export interface tradeOffersUncheckedUpdateManyWithoutUsersInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     tradeId?: NullableIntFieldUpdateOperationsInput | number | null
     value?: IntFieldUpdateOperationsInput | number
@@ -17050,7 +16915,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type tradesUpdateWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesUpdateWithoutUsers_trades_customerIdTousersInput {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17059,7 +16924,7 @@ export namespace Prisma {
     users_trades_supplierIdTousers?: usersUpdateOneWithoutTrades_trades_supplierIdTousersNestedInput
   }
 
-  export type tradesUncheckedUpdateWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesUncheckedUpdateWithoutUsers_trades_customerIdTousersInput {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
     service?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17069,7 +16934,7 @@ export namespace Prisma {
     tradeOffers?: tradeOffersUncheckedUpdateManyWithoutTradesNestedInput
   }
 
-  export type tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersInput = {
+  export interface tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersInput {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
     service?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17078,7 +16943,7 @@ export namespace Prisma {
     tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type tradesUpdateWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesUpdateWithoutUsers_trades_supplierIdTousersInput {
     service?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17087,7 +16952,7 @@ export namespace Prisma {
     users_trades_customerIdTousers?: usersUpdateOneWithoutTrades_trades_customerIdTousersNestedInput
   }
 
-  export type tradesUncheckedUpdateWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesUncheckedUpdateWithoutUsers_trades_supplierIdTousersInput {
     id?: IntFieldUpdateOperationsInput | number
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
     service?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17097,7 +16962,7 @@ export namespace Prisma {
     tradeOffers?: tradeOffersUncheckedUpdateManyWithoutTradesNestedInput
   }
 
-  export type tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersInput = {
+  export interface tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersInput {
     id?: IntFieldUpdateOperationsInput | number
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
     service?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17106,36 +16971,36 @@ export namespace Prisma {
     tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type betOptionsCreateManyBetsInput = {
+  export interface betOptionsCreateManyBetsInput {
     id?: number
     description: string
-    weight: number
+    votes: number
     amount: number
   }
 
-  export type betOptionsUpdateWithoutBetsInput = {
+  export interface betOptionsUpdateWithoutBetsInput {
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     betEntries?: betEntriesUpdateManyWithoutBetOptionsNestedInput
   }
 
-  export type betOptionsUncheckedUpdateWithoutBetsInput = {
+  export interface betOptionsUncheckedUpdateWithoutBetsInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     betEntries?: betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput
   }
 
-  export type betOptionsUncheckedUpdateManyWithoutBetsInput = {
+  export interface betOptionsUncheckedUpdateManyWithoutBetsInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
+    votes?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type usersCreateManyRolesInput = {
+  export interface usersCreateManyRolesInput {
     id?: number
     firstName: string
     lastName: string
@@ -17143,7 +17008,7 @@ export namespace Prisma {
     password: string
   }
 
-  export type usersUpdateWithoutRolesInput = {
+  export interface usersUpdateWithoutRolesInput {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
@@ -17155,7 +17020,7 @@ export namespace Prisma {
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUncheckedUpdateWithoutRolesInput = {
+  export interface usersUncheckedUpdateWithoutRolesInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -17168,7 +17033,7 @@ export namespace Prisma {
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
 
-  export type usersUncheckedUpdateManyWithoutRolesInput = {
+  export interface usersUncheckedUpdateManyWithoutRolesInput {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -17176,36 +17041,44 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type betsCreateManyStatus_bets_statusTostatusInput = {
+  export interface betsCreateManyStatus_bets_statusTostatusInput {
     id?: number
     description: string
     createdAt?: Date | string
     deadlineAt: Date | string
+    participants?: number
+    amount?: number
   }
 
-  export type betsUpdateWithoutStatus_bets_statusTostatusInput = {
+  export interface betsUpdateWithoutStatus_bets_statusTostatusInput {
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     betOptions?: betOptionsUpdateManyWithoutBetsNestedInput
   }
 
-  export type betsUncheckedUpdateWithoutStatus_bets_statusTostatusInput = {
+  export interface betsUncheckedUpdateWithoutStatus_bets_statusTostatusInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
     betOptions?: betOptionsUncheckedUpdateManyWithoutBetsNestedInput
   }
 
-  export type betsUncheckedUpdateManyWithoutStatus_bets_statusTostatusInput = {
+  export interface betsUncheckedUpdateManyWithoutStatus_bets_statusTostatusInput {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type tradeOffersCreateManyTradesInput = {
+  export interface tradeOffersCreateManyTradesInput {
     id?: bigint | number
     userId?: number | null
     value: number
@@ -17213,7 +17086,7 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type tradeOffersUpdateWithoutTradesInput = {
+  export interface tradeOffersUpdateWithoutTradesInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     value?: IntFieldUpdateOperationsInput | number
     isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -17221,7 +17094,7 @@ export namespace Prisma {
     users?: usersUpdateOneWithoutTradeOffersNestedInput
   }
 
-  export type tradeOffersUncheckedUpdateWithoutTradesInput = {
+  export interface tradeOffersUncheckedUpdateWithoutTradesInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     value?: IntFieldUpdateOperationsInput | number
@@ -17229,7 +17102,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type tradeOffersUncheckedUpdateManyWithoutTradesInput = {
+  export interface tradeOffersUncheckedUpdateManyWithoutTradesInput {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     value?: IntFieldUpdateOperationsInput | number
@@ -17237,36 +17110,34 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type betEntriesCreateManyBetOptionsInput = {
+  export interface betEntriesCreateManyBetOptionsInput {
     id?: number
     userId?: number | null
     amount: number
   }
 
-  export type betEntriesUpdateWithoutBetOptionsInput = {
+  export interface betEntriesUpdateWithoutBetOptionsInput {
     amount?: IntFieldUpdateOperationsInput | number
     users?: usersUpdateOneWithoutBetEntriesNestedInput
   }
 
-  export type betEntriesUncheckedUpdateWithoutBetOptionsInput = {
+  export interface betEntriesUncheckedUpdateWithoutBetOptionsInput {
     id?: IntFieldUpdateOperationsInput | number
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: IntFieldUpdateOperationsInput | number
   }
 
-  export type betEntriesUncheckedUpdateManyWithoutBetOptionsInput = {
+  export interface betEntriesUncheckedUpdateManyWithoutBetOptionsInput {
     id?: IntFieldUpdateOperationsInput | number
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: IntFieldUpdateOperationsInput | number
   }
-
-
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
    */
 
-  export type BatchPayload = {
+  export interface BatchPayload {
     count: number
   }
 

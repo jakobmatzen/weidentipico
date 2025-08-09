@@ -7,10 +7,10 @@ let prisma: PrismaClient
  * @link https://trpc.io/docs/context
  */
 export function createContext() {
-    if (!prisma) {
-        prisma = new PrismaClient()
-    }
-    return { prisma }
+  if (!prisma) {
+    prisma = new PrismaClient()
+  }
+  return { prisma }
 }
 
 export type Context = Awaited<ReturnType<typeof createContext>>

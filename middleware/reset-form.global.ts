@@ -1,3 +1,3 @@
 export default defineNuxtRouteMiddleware(() => {
-    useFormStore().$reset()
+  useFormStore().$reset()
 })
