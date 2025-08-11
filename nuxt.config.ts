@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt'
   ],
+  piniaPersistedstate: {
+    storage: 'localStorage'
+  },
   imports: {
     dirs: ['stores']
   },

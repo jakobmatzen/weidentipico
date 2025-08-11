@@ -19,11 +19,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 /**
- * Model betDetails
- * 
- */
-export type betDetails = $Result.DefaultSelection<Prisma.$betDetailsPayload>
-/**
  * Model bets
  * 
  */
@@ -58,6 +53,16 @@ export type trades = $Result.DefaultSelection<Prisma.$tradesPayload>
  * 
  */
 export type userWallets = $Result.DefaultSelection<Prisma.$userWalletsPayload>
+/**
+ * Model betEntries
+ * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ */
+export type betEntries = $Result.DefaultSelection<Prisma.$betEntriesPayload>
+/**
+ * Model betOptions
+ * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ */
+export type betOptions = $Result.DefaultSelection<Prisma.$betOptionsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -195,16 +200,6 @@ export class PrismaClient<
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.betDetails`: Exposes CRUD operations for the **betDetails** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more BetDetails
-    * const betDetails = await prisma.betDetails.findMany()
-    * ```
-    */
-  get betDetails(): Prisma.betDetailsDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.bets`: Exposes CRUD operations for the **bets** model.
     * Example usage:
     * ```ts
@@ -273,6 +268,26 @@ export class PrismaClient<
     * ```
     */
   get userWallets(): Prisma.userWalletsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.betEntries`: Exposes CRUD operations for the **betEntries** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BetEntries
+    * const betEntries = await prisma.betEntries.findMany()
+    * ```
+    */
+  get betEntries(): Prisma.betEntriesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.betOptions`: Exposes CRUD operations for the **betOptions** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BetOptions
+    * const betOptions = await prisma.betOptions.findMany()
+    * ```
+    */
+  get betOptions(): Prisma.betOptionsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -714,14 +729,15 @@ export namespace Prisma {
 
   export const ModelName: {
     users: 'users',
-    betDetails: 'betDetails',
     bets: 'bets',
     roles: 'roles',
     services: 'services',
     status: 'status',
     tradeOffers: 'tradeOffers',
     trades: 'trades',
-    userWallets: 'userWallets'
+    userWallets: 'userWallets',
+    betEntries: 'betEntries',
+    betOptions: 'betOptions'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -740,7 +756,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "betDetails" | "bets" | "roles" | "services" | "status" | "tradeOffers" | "trades" | "userWallets"
+      modelProps: "users" | "bets" | "roles" | "services" | "status" | "tradeOffers" | "trades" | "userWallets" | "betEntries" | "betOptions"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -815,80 +831,6 @@ export namespace Prisma {
           count: {
             args: Prisma.usersCountArgs<ExtArgs>
             result: $Utils.Optional<UsersCountAggregateOutputType> | number
-          }
-        }
-      }
-      betDetails: {
-        payload: Prisma.$betDetailsPayload<ExtArgs>
-        fields: Prisma.betDetailsFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.betDetailsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.betDetailsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>
-          }
-          findFirst: {
-            args: Prisma.betDetailsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.betDetailsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>
-          }
-          findMany: {
-            args: Prisma.betDetailsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>[]
-          }
-          create: {
-            args: Prisma.betDetailsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>
-          }
-          createMany: {
-            args: Prisma.betDetailsCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.betDetailsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>[]
-          }
-          delete: {
-            args: Prisma.betDetailsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>
-          }
-          update: {
-            args: Prisma.betDetailsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>
-          }
-          deleteMany: {
-            args: Prisma.betDetailsDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.betDetailsUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.betDetailsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>[]
-          }
-          upsert: {
-            args: Prisma.betDetailsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$betDetailsPayload>
-          }
-          aggregate: {
-            args: Prisma.BetDetailsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBetDetails>
-          }
-          groupBy: {
-            args: Prisma.betDetailsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BetDetailsGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.betDetailsCountArgs<ExtArgs>
-            result: $Utils.Optional<BetDetailsCountAggregateOutputType> | number
           }
         }
       }
@@ -1410,6 +1352,154 @@ export namespace Prisma {
           }
         }
       }
+      betEntries: {
+        payload: Prisma.$betEntriesPayload<ExtArgs>
+        fields: Prisma.betEntriesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.betEntriesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.betEntriesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>
+          }
+          findFirst: {
+            args: Prisma.betEntriesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.betEntriesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>
+          }
+          findMany: {
+            args: Prisma.betEntriesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>[]
+          }
+          create: {
+            args: Prisma.betEntriesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>
+          }
+          createMany: {
+            args: Prisma.betEntriesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.betEntriesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>[]
+          }
+          delete: {
+            args: Prisma.betEntriesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>
+          }
+          update: {
+            args: Prisma.betEntriesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>
+          }
+          deleteMany: {
+            args: Prisma.betEntriesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.betEntriesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.betEntriesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>[]
+          }
+          upsert: {
+            args: Prisma.betEntriesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betEntriesPayload>
+          }
+          aggregate: {
+            args: Prisma.BetEntriesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBetEntries>
+          }
+          groupBy: {
+            args: Prisma.betEntriesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BetEntriesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.betEntriesCountArgs<ExtArgs>
+            result: $Utils.Optional<BetEntriesCountAggregateOutputType> | number
+          }
+        }
+      }
+      betOptions: {
+        payload: Prisma.$betOptionsPayload<ExtArgs>
+        fields: Prisma.betOptionsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.betOptionsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.betOptionsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>
+          }
+          findFirst: {
+            args: Prisma.betOptionsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.betOptionsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>
+          }
+          findMany: {
+            args: Prisma.betOptionsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>[]
+          }
+          create: {
+            args: Prisma.betOptionsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>
+          }
+          createMany: {
+            args: Prisma.betOptionsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.betOptionsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>[]
+          }
+          delete: {
+            args: Prisma.betOptionsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>
+          }
+          update: {
+            args: Prisma.betOptionsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>
+          }
+          deleteMany: {
+            args: Prisma.betOptionsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.betOptionsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.betOptionsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>[]
+          }
+          upsert: {
+            args: Prisma.betOptionsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$betOptionsPayload>
+          }
+          aggregate: {
+            args: Prisma.BetOptionsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBetOptions>
+          }
+          groupBy: {
+            args: Prisma.betOptionsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BetOptionsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.betOptionsCountArgs<ExtArgs>
+            result: $Utils.Optional<BetOptionsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1495,7 +1585,6 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     users?: usersOmit
-    betDetails?: betDetailsOmit
     bets?: betsOmit
     roles?: rolesOmit
     services?: servicesOmit
@@ -1503,6 +1592,8 @@ export namespace Prisma {
     tradeOffers?: tradeOffersOmit
     trades?: tradesOmit
     userWallets?: userWalletsOmit
+    betEntries?: betEntriesOmit
+    betOptions?: betOptionsOmit
   }
 
   /* Types for Logging */
@@ -1597,12 +1688,14 @@ export namespace Prisma {
    */
 
   export type UsersCountOutputType = {
+    betEntries: number
     tradeOffers: number
     trades_trades_customerIdTousers: number
     trades_trades_supplierIdTousers: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    betEntries?: boolean | UsersCountOutputTypeCountBetEntriesArgs
     tradeOffers?: boolean | UsersCountOutputTypeCountTradeOffersArgs
     trades_trades_customerIdTousers?: boolean | UsersCountOutputTypeCountTrades_trades_customerIdTousersArgs
     trades_trades_supplierIdTousers?: boolean | UsersCountOutputTypeCountTrades_trades_supplierIdTousersArgs
@@ -1617,6 +1710,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the UsersCountOutputType
      */
     select?: UsersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountBetEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: betEntriesWhereInput
   }
 
   /**
@@ -1646,11 +1746,11 @@ export namespace Prisma {
    */
 
   export type BetsCountOutputType = {
-    betDetails: number
+    betOptions: number
   }
 
   export type BetsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    betDetails?: boolean | BetsCountOutputTypeCountBetDetailsArgs
+    betOptions?: boolean | BetsCountOutputTypeCountBetOptionsArgs
   }
 
   // Custom InputTypes
@@ -1667,8 +1767,8 @@ export namespace Prisma {
   /**
    * BetsCountOutputType without action
    */
-  export type BetsCountOutputTypeCountBetDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: betDetailsWhereInput
+  export type BetsCountOutputTypeCountBetOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: betOptionsWhereInput
   }
 
 
@@ -1766,6 +1866,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type BetOptionsCountOutputType
+   */
+
+  export type BetOptionsCountOutputType = {
+    betEntries: number
+  }
+
+  export type BetOptionsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    betEntries?: boolean | BetOptionsCountOutputTypeCountBetEntriesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BetOptionsCountOutputType without action
+   */
+  export type BetOptionsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BetOptionsCountOutputType
+     */
+    select?: BetOptionsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BetOptionsCountOutputType without action
+   */
+  export type BetOptionsCountOutputTypeCountBetEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: betEntriesWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1793,8 +1924,7 @@ export namespace Prisma {
 
   export type UsersMinAggregateOutputType = {
     id: number | null
-    firstName: string | null
-    lastName: string | null
+    name: string | null
     username: string | null
     password: string | null
     role: number | null
@@ -1802,8 +1932,7 @@ export namespace Prisma {
 
   export type UsersMaxAggregateOutputType = {
     id: number | null
-    firstName: string | null
-    lastName: string | null
+    name: string | null
     username: string | null
     password: string | null
     role: number | null
@@ -1811,8 +1940,7 @@ export namespace Prisma {
 
   export type UsersCountAggregateOutputType = {
     id: number
-    firstName: number
-    lastName: number
+    name: number
     username: number
     password: number
     role: number
@@ -1832,8 +1960,7 @@ export namespace Prisma {
 
   export type UsersMinAggregateInputType = {
     id?: true
-    firstName?: true
-    lastName?: true
+    name?: true
     username?: true
     password?: true
     role?: true
@@ -1841,8 +1968,7 @@ export namespace Prisma {
 
   export type UsersMaxAggregateInputType = {
     id?: true
-    firstName?: true
-    lastName?: true
+    name?: true
     username?: true
     password?: true
     role?: true
@@ -1850,8 +1976,7 @@ export namespace Prisma {
 
   export type UsersCountAggregateInputType = {
     id?: true
-    firstName?: true
-    lastName?: true
+    name?: true
     username?: true
     password?: true
     role?: true
@@ -1946,8 +2071,7 @@ export namespace Prisma {
 
   export type UsersGroupByOutputType = {
     id: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
     role: number | null
@@ -1974,11 +2098,11 @@ export namespace Prisma {
 
   export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    firstName?: boolean
-    lastName?: boolean
+    name?: boolean
     username?: boolean
     password?: boolean
     role?: boolean
+    betEntries?: boolean | users$betEntriesArgs<ExtArgs>
     tradeOffers?: boolean | users$tradeOffersArgs<ExtArgs>
     trades_trades_customerIdTousers?: boolean | users$trades_trades_customerIdTousersArgs<ExtArgs>
     trades_trades_supplierIdTousers?: boolean | users$trades_trades_supplierIdTousersArgs<ExtArgs>
@@ -1989,8 +2113,7 @@ export namespace Prisma {
 
   export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    firstName?: boolean
-    lastName?: boolean
+    name?: boolean
     username?: boolean
     password?: boolean
     role?: boolean
@@ -1999,8 +2122,7 @@ export namespace Prisma {
 
   export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    firstName?: boolean
-    lastName?: boolean
+    name?: boolean
     username?: boolean
     password?: boolean
     role?: boolean
@@ -2009,15 +2131,15 @@ export namespace Prisma {
 
   export type usersSelectScalar = {
     id?: boolean
-    firstName?: boolean
-    lastName?: boolean
+    name?: boolean
     username?: boolean
     password?: boolean
     role?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "username" | "password" | "role", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "username" | "password" | "role", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    betEntries?: boolean | users$betEntriesArgs<ExtArgs>
     tradeOffers?: boolean | users$tradeOffersArgs<ExtArgs>
     trades_trades_customerIdTousers?: boolean | users$trades_trades_customerIdTousersArgs<ExtArgs>
     trades_trades_supplierIdTousers?: boolean | users$trades_trades_supplierIdTousersArgs<ExtArgs>
@@ -2035,6 +2157,7 @@ export namespace Prisma {
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
     objects: {
+      betEntries: Prisma.$betEntriesPayload<ExtArgs>[]
       tradeOffers: Prisma.$tradeOffersPayload<ExtArgs>[]
       trades_trades_customerIdTousers: Prisma.$tradesPayload<ExtArgs>[]
       trades_trades_supplierIdTousers: Prisma.$tradesPayload<ExtArgs>[]
@@ -2043,8 +2166,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      firstName: string
-      lastName: string
+      name: string
       username: string
       password: string
       role: number | null
@@ -2442,6 +2564,7 @@ export namespace Prisma {
    */
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    betEntries<T extends users$betEntriesArgs<ExtArgs> = {}>(args?: Subset<T, users$betEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tradeOffers<T extends users$tradeOffersArgs<ExtArgs> = {}>(args?: Subset<T, users$tradeOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     trades_trades_customerIdTousers<T extends users$trades_trades_customerIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, users$trades_trades_customerIdTousersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     trades_trades_supplierIdTousers<T extends users$trades_trades_supplierIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, users$trades_trades_supplierIdTousersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2477,8 +2600,7 @@ export namespace Prisma {
    */
   interface usersFieldRefs {
     readonly id: FieldRef<"users", 'Int'>
-    readonly firstName: FieldRef<"users", 'String'>
-    readonly lastName: FieldRef<"users", 'String'>
+    readonly name: FieldRef<"users", 'String'>
     readonly username: FieldRef<"users", 'String'>
     readonly password: FieldRef<"users", 'String'>
     readonly role: FieldRef<"users", 'Int'>
@@ -2878,6 +3000,30 @@ export namespace Prisma {
   }
 
   /**
+   * users.betEntries
+   */
+  export type users$betEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    where?: betEntriesWhereInput
+    orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
+    cursor?: betEntriesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BetEntriesScalarFieldEnum | BetEntriesScalarFieldEnum[]
+  }
+
+  /**
    * users.tradeOffers
    */
   export type users$tradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3007,1129 +3153,6 @@ export namespace Prisma {
 
 
   /**
-   * Model betDetails
-   */
-
-  export type AggregateBetDetails = {
-    _count: BetDetailsCountAggregateOutputType | null
-    _avg: BetDetailsAvgAggregateOutputType | null
-    _sum: BetDetailsSumAggregateOutputType | null
-    _min: BetDetailsMinAggregateOutputType | null
-    _max: BetDetailsMaxAggregateOutputType | null
-  }
-
-  export type BetDetailsAvgAggregateOutputType = {
-    id: number | null
-    betId: number | null
-    quote: number | null
-    value: number | null
-  }
-
-  export type BetDetailsSumAggregateOutputType = {
-    id: number | null
-    betId: number | null
-    quote: number | null
-    value: number | null
-  }
-
-  export type BetDetailsMinAggregateOutputType = {
-    id: number | null
-    betId: number | null
-    description: string | null
-    quote: number | null
-    value: number | null
-  }
-
-  export type BetDetailsMaxAggregateOutputType = {
-    id: number | null
-    betId: number | null
-    description: string | null
-    quote: number | null
-    value: number | null
-  }
-
-  export type BetDetailsCountAggregateOutputType = {
-    id: number
-    betId: number
-    description: number
-    quote: number
-    value: number
-    _all: number
-  }
-
-
-  export type BetDetailsAvgAggregateInputType = {
-    id?: true
-    betId?: true
-    quote?: true
-    value?: true
-  }
-
-  export type BetDetailsSumAggregateInputType = {
-    id?: true
-    betId?: true
-    quote?: true
-    value?: true
-  }
-
-  export type BetDetailsMinAggregateInputType = {
-    id?: true
-    betId?: true
-    description?: true
-    quote?: true
-    value?: true
-  }
-
-  export type BetDetailsMaxAggregateInputType = {
-    id?: true
-    betId?: true
-    description?: true
-    quote?: true
-    value?: true
-  }
-
-  export type BetDetailsCountAggregateInputType = {
-    id?: true
-    betId?: true
-    description?: true
-    quote?: true
-    value?: true
-    _all?: true
-  }
-
-  export type BetDetailsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which betDetails to aggregate.
-     */
-    where?: betDetailsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of betDetails to fetch.
-     */
-    orderBy?: betDetailsOrderByWithRelationInput | betDetailsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: betDetailsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` betDetails from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` betDetails.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned betDetails
-    **/
-    _count?: true | BetDetailsCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: BetDetailsAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: BetDetailsSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BetDetailsMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BetDetailsMaxAggregateInputType
-  }
-
-  export type GetBetDetailsAggregateType<T extends BetDetailsAggregateArgs> = {
-        [P in keyof T & keyof AggregateBetDetails]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBetDetails[P]>
-      : GetScalarType<T[P], AggregateBetDetails[P]>
-  }
-
-
-
-
-  export type betDetailsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: betDetailsWhereInput
-    orderBy?: betDetailsOrderByWithAggregationInput | betDetailsOrderByWithAggregationInput[]
-    by: BetDetailsScalarFieldEnum[] | BetDetailsScalarFieldEnum
-    having?: betDetailsScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BetDetailsCountAggregateInputType | true
-    _avg?: BetDetailsAvgAggregateInputType
-    _sum?: BetDetailsSumAggregateInputType
-    _min?: BetDetailsMinAggregateInputType
-    _max?: BetDetailsMaxAggregateInputType
-  }
-
-  export type BetDetailsGroupByOutputType = {
-    id: number
-    betId: number | null
-    description: string
-    quote: number
-    value: number
-    _count: BetDetailsCountAggregateOutputType | null
-    _avg: BetDetailsAvgAggregateOutputType | null
-    _sum: BetDetailsSumAggregateOutputType | null
-    _min: BetDetailsMinAggregateOutputType | null
-    _max: BetDetailsMaxAggregateOutputType | null
-  }
-
-  type GetBetDetailsGroupByPayload<T extends betDetailsGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BetDetailsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BetDetailsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BetDetailsGroupByOutputType[P]>
-            : GetScalarType<T[P], BetDetailsGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type betDetailsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    betId?: boolean
-    description?: boolean
-    quote?: boolean
-    value?: boolean
-    bets?: boolean | betDetails$betsArgs<ExtArgs>
-  }, ExtArgs["result"]["betDetails"]>
-
-  export type betDetailsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    betId?: boolean
-    description?: boolean
-    quote?: boolean
-    value?: boolean
-    bets?: boolean | betDetails$betsArgs<ExtArgs>
-  }, ExtArgs["result"]["betDetails"]>
-
-  export type betDetailsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    betId?: boolean
-    description?: boolean
-    quote?: boolean
-    value?: boolean
-    bets?: boolean | betDetails$betsArgs<ExtArgs>
-  }, ExtArgs["result"]["betDetails"]>
-
-  export type betDetailsSelectScalar = {
-    id?: boolean
-    betId?: boolean
-    description?: boolean
-    quote?: boolean
-    value?: boolean
-  }
-
-  export type betDetailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "betId" | "description" | "quote" | "value", ExtArgs["result"]["betDetails"]>
-  export type betDetailsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bets?: boolean | betDetails$betsArgs<ExtArgs>
-  }
-  export type betDetailsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bets?: boolean | betDetails$betsArgs<ExtArgs>
-  }
-  export type betDetailsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bets?: boolean | betDetails$betsArgs<ExtArgs>
-  }
-
-  export type $betDetailsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "betDetails"
-    objects: {
-      bets: Prisma.$betsPayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      betId: number | null
-      description: string
-      quote: number
-      value: number
-    }, ExtArgs["result"]["betDetails"]>
-    composites: {}
-  }
-
-  type betDetailsGetPayload<S extends boolean | null | undefined | betDetailsDefaultArgs> = $Result.GetResult<Prisma.$betDetailsPayload, S>
-
-  type betDetailsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<betDetailsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BetDetailsCountAggregateInputType | true
-    }
-
-  export interface betDetailsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['betDetails'], meta: { name: 'betDetails' } }
-    /**
-     * Find zero or one BetDetails that matches the filter.
-     * @param {betDetailsFindUniqueArgs} args - Arguments to find a BetDetails
-     * @example
-     * // Get one BetDetails
-     * const betDetails = await prisma.betDetails.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends betDetailsFindUniqueArgs>(args: SelectSubset<T, betDetailsFindUniqueArgs<ExtArgs>>): Prisma__betDetailsClient<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one BetDetails that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {betDetailsFindUniqueOrThrowArgs} args - Arguments to find a BetDetails
-     * @example
-     * // Get one BetDetails
-     * const betDetails = await prisma.betDetails.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends betDetailsFindUniqueOrThrowArgs>(args: SelectSubset<T, betDetailsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betDetailsClient<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first BetDetails that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {betDetailsFindFirstArgs} args - Arguments to find a BetDetails
-     * @example
-     * // Get one BetDetails
-     * const betDetails = await prisma.betDetails.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends betDetailsFindFirstArgs>(args?: SelectSubset<T, betDetailsFindFirstArgs<ExtArgs>>): Prisma__betDetailsClient<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first BetDetails that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {betDetailsFindFirstOrThrowArgs} args - Arguments to find a BetDetails
-     * @example
-     * // Get one BetDetails
-     * const betDetails = await prisma.betDetails.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends betDetailsFindFirstOrThrowArgs>(args?: SelectSubset<T, betDetailsFindFirstOrThrowArgs<ExtArgs>>): Prisma__betDetailsClient<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more BetDetails that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {betDetailsFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all BetDetails
-     * const betDetails = await prisma.betDetails.findMany()
-     * 
-     * // Get first 10 BetDetails
-     * const betDetails = await prisma.betDetails.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const betDetailsWithIdOnly = await prisma.betDetails.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends betDetailsFindManyArgs>(args?: SelectSubset<T, betDetailsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a BetDetails.
-     * @param {betDetailsCreateArgs} args - Arguments to create a BetDetails.
-     * @example
-     * // Create one BetDetails
-     * const BetDetails = await prisma.betDetails.create({
-     *   data: {
-     *     // ... data to create a BetDetails
-     *   }
-     * })
-     * 
-     */
-    create<T extends betDetailsCreateArgs>(args: SelectSubset<T, betDetailsCreateArgs<ExtArgs>>): Prisma__betDetailsClient<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many BetDetails.
-     * @param {betDetailsCreateManyArgs} args - Arguments to create many BetDetails.
-     * @example
-     * // Create many BetDetails
-     * const betDetails = await prisma.betDetails.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends betDetailsCreateManyArgs>(args?: SelectSubset<T, betDetailsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many BetDetails and returns the data saved in the database.
-     * @param {betDetailsCreateManyAndReturnArgs} args - Arguments to create many BetDetails.
-     * @example
-     * // Create many BetDetails
-     * const betDetails = await prisma.betDetails.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many BetDetails and only return the `id`
-     * const betDetailsWithIdOnly = await prisma.betDetails.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends betDetailsCreateManyAndReturnArgs>(args?: SelectSubset<T, betDetailsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a BetDetails.
-     * @param {betDetailsDeleteArgs} args - Arguments to delete one BetDetails.
-     * @example
-     * // Delete one BetDetails
-     * const BetDetails = await prisma.betDetails.delete({
-     *   where: {
-     *     // ... filter to delete one BetDetails
-     *   }
-     * })
-     * 
-     */
-    delete<T extends betDetailsDeleteArgs>(args: SelectSubset<T, betDetailsDeleteArgs<ExtArgs>>): Prisma__betDetailsClient<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one BetDetails.
-     * @param {betDetailsUpdateArgs} args - Arguments to update one BetDetails.
-     * @example
-     * // Update one BetDetails
-     * const betDetails = await prisma.betDetails.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends betDetailsUpdateArgs>(args: SelectSubset<T, betDetailsUpdateArgs<ExtArgs>>): Prisma__betDetailsClient<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more BetDetails.
-     * @param {betDetailsDeleteManyArgs} args - Arguments to filter BetDetails to delete.
-     * @example
-     * // Delete a few BetDetails
-     * const { count } = await prisma.betDetails.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends betDetailsDeleteManyArgs>(args?: SelectSubset<T, betDetailsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BetDetails.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {betDetailsUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many BetDetails
-     * const betDetails = await prisma.betDetails.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends betDetailsUpdateManyArgs>(args: SelectSubset<T, betDetailsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BetDetails and returns the data updated in the database.
-     * @param {betDetailsUpdateManyAndReturnArgs} args - Arguments to update many BetDetails.
-     * @example
-     * // Update many BetDetails
-     * const betDetails = await prisma.betDetails.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more BetDetails and only return the `id`
-     * const betDetailsWithIdOnly = await prisma.betDetails.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends betDetailsUpdateManyAndReturnArgs>(args: SelectSubset<T, betDetailsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one BetDetails.
-     * @param {betDetailsUpsertArgs} args - Arguments to update or create a BetDetails.
-     * @example
-     * // Update or create a BetDetails
-     * const betDetails = await prisma.betDetails.upsert({
-     *   create: {
-     *     // ... data to create a BetDetails
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the BetDetails we want to update
-     *   }
-     * })
-     */
-    upsert<T extends betDetailsUpsertArgs>(args: SelectSubset<T, betDetailsUpsertArgs<ExtArgs>>): Prisma__betDetailsClient<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of BetDetails.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {betDetailsCountArgs} args - Arguments to filter BetDetails to count.
-     * @example
-     * // Count the number of BetDetails
-     * const count = await prisma.betDetails.count({
-     *   where: {
-     *     // ... the filter for the BetDetails we want to count
-     *   }
-     * })
-    **/
-    count<T extends betDetailsCountArgs>(
-      args?: Subset<T, betDetailsCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BetDetailsCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a BetDetails.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BetDetailsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BetDetailsAggregateArgs>(args: Subset<T, BetDetailsAggregateArgs>): Prisma.PrismaPromise<GetBetDetailsAggregateType<T>>
-
-    /**
-     * Group by BetDetails.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {betDetailsGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends betDetailsGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: betDetailsGroupByArgs['orderBy'] }
-        : { orderBy?: betDetailsGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, betDetailsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBetDetailsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the betDetails model
-   */
-  readonly fields: betDetailsFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for betDetails.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__betDetailsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    bets<T extends betDetails$betsArgs<ExtArgs> = {}>(args?: Subset<T, betDetails$betsArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the betDetails model
-   */
-  interface betDetailsFieldRefs {
-    readonly id: FieldRef<"betDetails", 'Int'>
-    readonly betId: FieldRef<"betDetails", 'Int'>
-    readonly description: FieldRef<"betDetails", 'String'>
-    readonly quote: FieldRef<"betDetails", 'Float'>
-    readonly value: FieldRef<"betDetails", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * betDetails findUnique
-   */
-  export type betDetailsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * Filter, which betDetails to fetch.
-     */
-    where: betDetailsWhereUniqueInput
-  }
-
-  /**
-   * betDetails findUniqueOrThrow
-   */
-  export type betDetailsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * Filter, which betDetails to fetch.
-     */
-    where: betDetailsWhereUniqueInput
-  }
-
-  /**
-   * betDetails findFirst
-   */
-  export type betDetailsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * Filter, which betDetails to fetch.
-     */
-    where?: betDetailsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of betDetails to fetch.
-     */
-    orderBy?: betDetailsOrderByWithRelationInput | betDetailsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for betDetails.
-     */
-    cursor?: betDetailsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` betDetails from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` betDetails.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of betDetails.
-     */
-    distinct?: BetDetailsScalarFieldEnum | BetDetailsScalarFieldEnum[]
-  }
-
-  /**
-   * betDetails findFirstOrThrow
-   */
-  export type betDetailsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * Filter, which betDetails to fetch.
-     */
-    where?: betDetailsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of betDetails to fetch.
-     */
-    orderBy?: betDetailsOrderByWithRelationInput | betDetailsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for betDetails.
-     */
-    cursor?: betDetailsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` betDetails from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` betDetails.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of betDetails.
-     */
-    distinct?: BetDetailsScalarFieldEnum | BetDetailsScalarFieldEnum[]
-  }
-
-  /**
-   * betDetails findMany
-   */
-  export type betDetailsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * Filter, which betDetails to fetch.
-     */
-    where?: betDetailsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of betDetails to fetch.
-     */
-    orderBy?: betDetailsOrderByWithRelationInput | betDetailsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing betDetails.
-     */
-    cursor?: betDetailsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` betDetails from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` betDetails.
-     */
-    skip?: number
-    distinct?: BetDetailsScalarFieldEnum | BetDetailsScalarFieldEnum[]
-  }
-
-  /**
-   * betDetails create
-   */
-  export type betDetailsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * The data needed to create a betDetails.
-     */
-    data: XOR<betDetailsCreateInput, betDetailsUncheckedCreateInput>
-  }
-
-  /**
-   * betDetails createMany
-   */
-  export type betDetailsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many betDetails.
-     */
-    data: betDetailsCreateManyInput | betDetailsCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * betDetails createManyAndReturn
-   */
-  export type betDetailsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * The data used to create many betDetails.
-     */
-    data: betDetailsCreateManyInput | betDetailsCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * betDetails update
-   */
-  export type betDetailsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * The data needed to update a betDetails.
-     */
-    data: XOR<betDetailsUpdateInput, betDetailsUncheckedUpdateInput>
-    /**
-     * Choose, which betDetails to update.
-     */
-    where: betDetailsWhereUniqueInput
-  }
-
-  /**
-   * betDetails updateMany
-   */
-  export type betDetailsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update betDetails.
-     */
-    data: XOR<betDetailsUpdateManyMutationInput, betDetailsUncheckedUpdateManyInput>
-    /**
-     * Filter which betDetails to update
-     */
-    where?: betDetailsWhereInput
-    /**
-     * Limit how many betDetails to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * betDetails updateManyAndReturn
-   */
-  export type betDetailsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * The data used to update betDetails.
-     */
-    data: XOR<betDetailsUpdateManyMutationInput, betDetailsUncheckedUpdateManyInput>
-    /**
-     * Filter which betDetails to update
-     */
-    where?: betDetailsWhereInput
-    /**
-     * Limit how many betDetails to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * betDetails upsert
-   */
-  export type betDetailsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * The filter to search for the betDetails to update in case it exists.
-     */
-    where: betDetailsWhereUniqueInput
-    /**
-     * In case the betDetails found by the `where` argument doesn't exist, create a new betDetails with this data.
-     */
-    create: XOR<betDetailsCreateInput, betDetailsUncheckedCreateInput>
-    /**
-     * In case the betDetails was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<betDetailsUpdateInput, betDetailsUncheckedUpdateInput>
-  }
-
-  /**
-   * betDetails delete
-   */
-  export type betDetailsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-    /**
-     * Filter which betDetails to delete.
-     */
-    where: betDetailsWhereUniqueInput
-  }
-
-  /**
-   * betDetails deleteMany
-   */
-  export type betDetailsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which betDetails to delete
-     */
-    where?: betDetailsWhereInput
-    /**
-     * Limit how many betDetails to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * betDetails.bets
-   */
-  export type betDetails$betsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the bets
-     */
-    select?: betsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the bets
-     */
-    omit?: betsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betsInclude<ExtArgs> | null
-    where?: betsWhereInput
-  }
-
-  /**
-   * betDetails without action
-   */
-  export type betDetailsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the betDetails
-     */
-    select?: betDetailsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the betDetails
-     */
-    omit?: betDetailsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: betDetailsInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model bets
    */
 
@@ -4144,35 +3167,45 @@ export namespace Prisma {
   export type BetsAvgAggregateOutputType = {
     id: number | null
     status: number | null
+    participants: number | null
+    amount: number | null
   }
 
   export type BetsSumAggregateOutputType = {
     id: number | null
     status: number | null
+    participants: number | null
+    amount: number | null
   }
 
   export type BetsMinAggregateOutputType = {
     id: number | null
     description: string | null
-    created_at: Date | null
-    deadline_at: Date | null
+    createdAt: Date | null
+    deadlineAt: Date | null
     status: number | null
+    participants: number | null
+    amount: number | null
   }
 
   export type BetsMaxAggregateOutputType = {
     id: number | null
     description: string | null
-    created_at: Date | null
-    deadline_at: Date | null
+    createdAt: Date | null
+    deadlineAt: Date | null
     status: number | null
+    participants: number | null
+    amount: number | null
   }
 
   export type BetsCountAggregateOutputType = {
     id: number
     description: number
-    created_at: number
-    deadline_at: number
+    createdAt: number
+    deadlineAt: number
     status: number
+    participants: number
+    amount: number
     _all: number
   }
 
@@ -4180,35 +3213,45 @@ export namespace Prisma {
   export type BetsAvgAggregateInputType = {
     id?: true
     status?: true
+    participants?: true
+    amount?: true
   }
 
   export type BetsSumAggregateInputType = {
     id?: true
     status?: true
+    participants?: true
+    amount?: true
   }
 
   export type BetsMinAggregateInputType = {
     id?: true
     description?: true
-    created_at?: true
-    deadline_at?: true
+    createdAt?: true
+    deadlineAt?: true
     status?: true
+    participants?: true
+    amount?: true
   }
 
   export type BetsMaxAggregateInputType = {
     id?: true
     description?: true
-    created_at?: true
-    deadline_at?: true
+    createdAt?: true
+    deadlineAt?: true
     status?: true
+    participants?: true
+    amount?: true
   }
 
   export type BetsCountAggregateInputType = {
     id?: true
     description?: true
-    created_at?: true
-    deadline_at?: true
+    createdAt?: true
+    deadlineAt?: true
     status?: true
+    participants?: true
+    amount?: true
     _all?: true
   }
 
@@ -4301,9 +3344,11 @@ export namespace Prisma {
   export type BetsGroupByOutputType = {
     id: number
     description: string
-    created_at: Date
-    deadline_at: Date
+    createdAt: Date
+    deadlineAt: Date
     status: number | null
+    participants: number
+    amount: number
     _count: BetsCountAggregateOutputType | null
     _avg: BetsAvgAggregateOutputType | null
     _sum: BetsSumAggregateOutputType | null
@@ -4328,10 +3373,12 @@ export namespace Prisma {
   export type betsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-    created_at?: boolean
-    deadline_at?: boolean
+    createdAt?: boolean
+    deadlineAt?: boolean
     status?: boolean
-    betDetails?: boolean | bets$betDetailsArgs<ExtArgs>
+    participants?: boolean
+    amount?: boolean
+    betOptions?: boolean | bets$betOptionsArgs<ExtArgs>
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
     _count?: boolean | BetsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bets"]>
@@ -4339,32 +3386,38 @@ export namespace Prisma {
   export type betsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-    created_at?: boolean
-    deadline_at?: boolean
+    createdAt?: boolean
+    deadlineAt?: boolean
     status?: boolean
+    participants?: boolean
+    amount?: boolean
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
   }, ExtArgs["result"]["bets"]>
 
   export type betsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     description?: boolean
-    created_at?: boolean
-    deadline_at?: boolean
+    createdAt?: boolean
+    deadlineAt?: boolean
     status?: boolean
+    participants?: boolean
+    amount?: boolean
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
   }, ExtArgs["result"]["bets"]>
 
   export type betsSelectScalar = {
     id?: boolean
     description?: boolean
-    created_at?: boolean
-    deadline_at?: boolean
+    createdAt?: boolean
+    deadlineAt?: boolean
     status?: boolean
+    participants?: boolean
+    amount?: boolean
   }
 
-  export type betsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "created_at" | "deadline_at" | "status", ExtArgs["result"]["bets"]>
+  export type betsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "createdAt" | "deadlineAt" | "status" | "participants" | "amount", ExtArgs["result"]["bets"]>
   export type betsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    betDetails?: boolean | bets$betDetailsArgs<ExtArgs>
+    betOptions?: boolean | bets$betOptionsArgs<ExtArgs>
     status_bets_statusTostatus?: boolean | bets$status_bets_statusTostatusArgs<ExtArgs>
     _count?: boolean | BetsCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -4378,15 +3431,17 @@ export namespace Prisma {
   export type $betsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "bets"
     objects: {
-      betDetails: Prisma.$betDetailsPayload<ExtArgs>[]
+      betOptions: Prisma.$betOptionsPayload<ExtArgs>[]
       status_bets_statusTostatus: Prisma.$statusPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       description: string
-      created_at: Date
-      deadline_at: Date
+      createdAt: Date
+      deadlineAt: Date
       status: number | null
+      participants: number
+      amount: number
     }, ExtArgs["result"]["bets"]>
     composites: {}
   }
@@ -4781,7 +3836,7 @@ export namespace Prisma {
    */
   export interface Prisma__betsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    betDetails<T extends bets$betDetailsArgs<ExtArgs> = {}>(args?: Subset<T, bets$betDetailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betDetailsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    betOptions<T extends bets$betOptionsArgs<ExtArgs> = {}>(args?: Subset<T, bets$betOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     status_bets_statusTostatus<T extends bets$status_bets_statusTostatusArgs<ExtArgs> = {}>(args?: Subset<T, bets$status_bets_statusTostatusArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4814,9 +3869,11 @@ export namespace Prisma {
   interface betsFieldRefs {
     readonly id: FieldRef<"bets", 'Int'>
     readonly description: FieldRef<"bets", 'String'>
-    readonly created_at: FieldRef<"bets", 'DateTime'>
-    readonly deadline_at: FieldRef<"bets", 'DateTime'>
+    readonly createdAt: FieldRef<"bets", 'DateTime'>
+    readonly deadlineAt: FieldRef<"bets", 'DateTime'>
     readonly status: FieldRef<"bets", 'Int'>
+    readonly participants: FieldRef<"bets", 'Int'>
+    readonly amount: FieldRef<"bets", 'Int'>
   }
     
 
@@ -5213,27 +4270,27 @@ export namespace Prisma {
   }
 
   /**
-   * bets.betDetails
+   * bets.betOptions
    */
-  export type bets$betDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bets$betOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the betDetails
+     * Select specific fields to fetch from the betOptions
      */
-    select?: betDetailsSelect<ExtArgs> | null
+    select?: betOptionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the betDetails
+     * Omit specific fields from the betOptions
      */
-    omit?: betDetailsOmit<ExtArgs> | null
+    omit?: betOptionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: betDetailsInclude<ExtArgs> | null
-    where?: betDetailsWhereInput
-    orderBy?: betDetailsOrderByWithRelationInput | betDetailsOrderByWithRelationInput[]
-    cursor?: betDetailsWhereUniqueInput
+    include?: betOptionsInclude<ExtArgs> | null
+    where?: betOptionsWhereInput
+    orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
+    cursor?: betOptionsWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BetDetailsScalarFieldEnum | BetDetailsScalarFieldEnum[]
+    distinct?: BetOptionsScalarFieldEnum | BetOptionsScalarFieldEnum[]
   }
 
   /**
@@ -11817,6 +10874,2322 @@ export namespace Prisma {
 
 
   /**
+   * Model betEntries
+   */
+
+  export type AggregateBetEntries = {
+    _count: BetEntriesCountAggregateOutputType | null
+    _avg: BetEntriesAvgAggregateOutputType | null
+    _sum: BetEntriesSumAggregateOutputType | null
+    _min: BetEntriesMinAggregateOutputType | null
+    _max: BetEntriesMaxAggregateOutputType | null
+  }
+
+  export type BetEntriesAvgAggregateOutputType = {
+    id: number | null
+    optionId: number | null
+    userId: number | null
+    amount: number | null
+  }
+
+  export type BetEntriesSumAggregateOutputType = {
+    id: number | null
+    optionId: number | null
+    userId: number | null
+    amount: number | null
+  }
+
+  export type BetEntriesMinAggregateOutputType = {
+    id: number | null
+    optionId: number | null
+    userId: number | null
+    amount: number | null
+    isWinner: boolean | null
+  }
+
+  export type BetEntriesMaxAggregateOutputType = {
+    id: number | null
+    optionId: number | null
+    userId: number | null
+    amount: number | null
+    isWinner: boolean | null
+  }
+
+  export type BetEntriesCountAggregateOutputType = {
+    id: number
+    optionId: number
+    userId: number
+    amount: number
+    isWinner: number
+    _all: number
+  }
+
+
+  export type BetEntriesAvgAggregateInputType = {
+    id?: true
+    optionId?: true
+    userId?: true
+    amount?: true
+  }
+
+  export type BetEntriesSumAggregateInputType = {
+    id?: true
+    optionId?: true
+    userId?: true
+    amount?: true
+  }
+
+  export type BetEntriesMinAggregateInputType = {
+    id?: true
+    optionId?: true
+    userId?: true
+    amount?: true
+    isWinner?: true
+  }
+
+  export type BetEntriesMaxAggregateInputType = {
+    id?: true
+    optionId?: true
+    userId?: true
+    amount?: true
+    isWinner?: true
+  }
+
+  export type BetEntriesCountAggregateInputType = {
+    id?: true
+    optionId?: true
+    userId?: true
+    amount?: true
+    isWinner?: true
+    _all?: true
+  }
+
+  export type BetEntriesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which betEntries to aggregate.
+     */
+    where?: betEntriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of betEntries to fetch.
+     */
+    orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: betEntriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` betEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` betEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned betEntries
+    **/
+    _count?: true | BetEntriesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BetEntriesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BetEntriesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BetEntriesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BetEntriesMaxAggregateInputType
+  }
+
+  export type GetBetEntriesAggregateType<T extends BetEntriesAggregateArgs> = {
+        [P in keyof T & keyof AggregateBetEntries]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBetEntries[P]>
+      : GetScalarType<T[P], AggregateBetEntries[P]>
+  }
+
+
+
+
+  export type betEntriesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: betEntriesWhereInput
+    orderBy?: betEntriesOrderByWithAggregationInput | betEntriesOrderByWithAggregationInput[]
+    by: BetEntriesScalarFieldEnum[] | BetEntriesScalarFieldEnum
+    having?: betEntriesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BetEntriesCountAggregateInputType | true
+    _avg?: BetEntriesAvgAggregateInputType
+    _sum?: BetEntriesSumAggregateInputType
+    _min?: BetEntriesMinAggregateInputType
+    _max?: BetEntriesMaxAggregateInputType
+  }
+
+  export type BetEntriesGroupByOutputType = {
+    id: number
+    optionId: number | null
+    userId: number | null
+    amount: number
+    isWinner: boolean
+    _count: BetEntriesCountAggregateOutputType | null
+    _avg: BetEntriesAvgAggregateOutputType | null
+    _sum: BetEntriesSumAggregateOutputType | null
+    _min: BetEntriesMinAggregateOutputType | null
+    _max: BetEntriesMaxAggregateOutputType | null
+  }
+
+  type GetBetEntriesGroupByPayload<T extends betEntriesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BetEntriesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BetEntriesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BetEntriesGroupByOutputType[P]>
+            : GetScalarType<T[P], BetEntriesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type betEntriesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    optionId?: boolean
+    userId?: boolean
+    amount?: boolean
+    isWinner?: boolean
+    betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
+    users?: boolean | betEntries$usersArgs<ExtArgs>
+  }, ExtArgs["result"]["betEntries"]>
+
+  export type betEntriesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    optionId?: boolean
+    userId?: boolean
+    amount?: boolean
+    isWinner?: boolean
+    betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
+    users?: boolean | betEntries$usersArgs<ExtArgs>
+  }, ExtArgs["result"]["betEntries"]>
+
+  export type betEntriesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    optionId?: boolean
+    userId?: boolean
+    amount?: boolean
+    isWinner?: boolean
+    betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
+    users?: boolean | betEntries$usersArgs<ExtArgs>
+  }, ExtArgs["result"]["betEntries"]>
+
+  export type betEntriesSelectScalar = {
+    id?: boolean
+    optionId?: boolean
+    userId?: boolean
+    amount?: boolean
+    isWinner?: boolean
+  }
+
+  export type betEntriesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "optionId" | "userId" | "amount" | "isWinner", ExtArgs["result"]["betEntries"]>
+  export type betEntriesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
+    users?: boolean | betEntries$usersArgs<ExtArgs>
+  }
+  export type betEntriesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
+    users?: boolean | betEntries$usersArgs<ExtArgs>
+  }
+  export type betEntriesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    betOptions?: boolean | betEntries$betOptionsArgs<ExtArgs>
+    users?: boolean | betEntries$usersArgs<ExtArgs>
+  }
+
+  export type $betEntriesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "betEntries"
+    objects: {
+      betOptions: Prisma.$betOptionsPayload<ExtArgs> | null
+      users: Prisma.$usersPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      optionId: number | null
+      userId: number | null
+      amount: number
+      isWinner: boolean
+    }, ExtArgs["result"]["betEntries"]>
+    composites: {}
+  }
+
+  type betEntriesGetPayload<S extends boolean | null | undefined | betEntriesDefaultArgs> = $Result.GetResult<Prisma.$betEntriesPayload, S>
+
+  type betEntriesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<betEntriesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BetEntriesCountAggregateInputType | true
+    }
+
+  export interface betEntriesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['betEntries'], meta: { name: 'betEntries' } }
+    /**
+     * Find zero or one BetEntries that matches the filter.
+     * @param {betEntriesFindUniqueArgs} args - Arguments to find a BetEntries
+     * @example
+     * // Get one BetEntries
+     * const betEntries = await prisma.betEntries.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends betEntriesFindUniqueArgs>(args: SelectSubset<T, betEntriesFindUniqueArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BetEntries that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {betEntriesFindUniqueOrThrowArgs} args - Arguments to find a BetEntries
+     * @example
+     * // Get one BetEntries
+     * const betEntries = await prisma.betEntries.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends betEntriesFindUniqueOrThrowArgs>(args: SelectSubset<T, betEntriesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BetEntries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betEntriesFindFirstArgs} args - Arguments to find a BetEntries
+     * @example
+     * // Get one BetEntries
+     * const betEntries = await prisma.betEntries.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends betEntriesFindFirstArgs>(args?: SelectSubset<T, betEntriesFindFirstArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BetEntries that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betEntriesFindFirstOrThrowArgs} args - Arguments to find a BetEntries
+     * @example
+     * // Get one BetEntries
+     * const betEntries = await prisma.betEntries.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends betEntriesFindFirstOrThrowArgs>(args?: SelectSubset<T, betEntriesFindFirstOrThrowArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BetEntries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betEntriesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BetEntries
+     * const betEntries = await prisma.betEntries.findMany()
+     * 
+     * // Get first 10 BetEntries
+     * const betEntries = await prisma.betEntries.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const betEntriesWithIdOnly = await prisma.betEntries.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends betEntriesFindManyArgs>(args?: SelectSubset<T, betEntriesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BetEntries.
+     * @param {betEntriesCreateArgs} args - Arguments to create a BetEntries.
+     * @example
+     * // Create one BetEntries
+     * const BetEntries = await prisma.betEntries.create({
+     *   data: {
+     *     // ... data to create a BetEntries
+     *   }
+     * })
+     * 
+     */
+    create<T extends betEntriesCreateArgs>(args: SelectSubset<T, betEntriesCreateArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BetEntries.
+     * @param {betEntriesCreateManyArgs} args - Arguments to create many BetEntries.
+     * @example
+     * // Create many BetEntries
+     * const betEntries = await prisma.betEntries.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends betEntriesCreateManyArgs>(args?: SelectSubset<T, betEntriesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BetEntries and returns the data saved in the database.
+     * @param {betEntriesCreateManyAndReturnArgs} args - Arguments to create many BetEntries.
+     * @example
+     * // Create many BetEntries
+     * const betEntries = await prisma.betEntries.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BetEntries and only return the `id`
+     * const betEntriesWithIdOnly = await prisma.betEntries.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends betEntriesCreateManyAndReturnArgs>(args?: SelectSubset<T, betEntriesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BetEntries.
+     * @param {betEntriesDeleteArgs} args - Arguments to delete one BetEntries.
+     * @example
+     * // Delete one BetEntries
+     * const BetEntries = await prisma.betEntries.delete({
+     *   where: {
+     *     // ... filter to delete one BetEntries
+     *   }
+     * })
+     * 
+     */
+    delete<T extends betEntriesDeleteArgs>(args: SelectSubset<T, betEntriesDeleteArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BetEntries.
+     * @param {betEntriesUpdateArgs} args - Arguments to update one BetEntries.
+     * @example
+     * // Update one BetEntries
+     * const betEntries = await prisma.betEntries.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends betEntriesUpdateArgs>(args: SelectSubset<T, betEntriesUpdateArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BetEntries.
+     * @param {betEntriesDeleteManyArgs} args - Arguments to filter BetEntries to delete.
+     * @example
+     * // Delete a few BetEntries
+     * const { count } = await prisma.betEntries.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends betEntriesDeleteManyArgs>(args?: SelectSubset<T, betEntriesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BetEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betEntriesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BetEntries
+     * const betEntries = await prisma.betEntries.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends betEntriesUpdateManyArgs>(args: SelectSubset<T, betEntriesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BetEntries and returns the data updated in the database.
+     * @param {betEntriesUpdateManyAndReturnArgs} args - Arguments to update many BetEntries.
+     * @example
+     * // Update many BetEntries
+     * const betEntries = await prisma.betEntries.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BetEntries and only return the `id`
+     * const betEntriesWithIdOnly = await prisma.betEntries.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends betEntriesUpdateManyAndReturnArgs>(args: SelectSubset<T, betEntriesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BetEntries.
+     * @param {betEntriesUpsertArgs} args - Arguments to update or create a BetEntries.
+     * @example
+     * // Update or create a BetEntries
+     * const betEntries = await prisma.betEntries.upsert({
+     *   create: {
+     *     // ... data to create a BetEntries
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BetEntries we want to update
+     *   }
+     * })
+     */
+    upsert<T extends betEntriesUpsertArgs>(args: SelectSubset<T, betEntriesUpsertArgs<ExtArgs>>): Prisma__betEntriesClient<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BetEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betEntriesCountArgs} args - Arguments to filter BetEntries to count.
+     * @example
+     * // Count the number of BetEntries
+     * const count = await prisma.betEntries.count({
+     *   where: {
+     *     // ... the filter for the BetEntries we want to count
+     *   }
+     * })
+    **/
+    count<T extends betEntriesCountArgs>(
+      args?: Subset<T, betEntriesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BetEntriesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BetEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BetEntriesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BetEntriesAggregateArgs>(args: Subset<T, BetEntriesAggregateArgs>): Prisma.PrismaPromise<GetBetEntriesAggregateType<T>>
+
+    /**
+     * Group by BetEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betEntriesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends betEntriesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: betEntriesGroupByArgs['orderBy'] }
+        : { orderBy?: betEntriesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, betEntriesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBetEntriesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the betEntries model
+   */
+  readonly fields: betEntriesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for betEntries.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__betEntriesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    betOptions<T extends betEntries$betOptionsArgs<ExtArgs> = {}>(args?: Subset<T, betEntries$betOptionsArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    users<T extends betEntries$usersArgs<ExtArgs> = {}>(args?: Subset<T, betEntries$usersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the betEntries model
+   */
+  interface betEntriesFieldRefs {
+    readonly id: FieldRef<"betEntries", 'Int'>
+    readonly optionId: FieldRef<"betEntries", 'Int'>
+    readonly userId: FieldRef<"betEntries", 'Int'>
+    readonly amount: FieldRef<"betEntries", 'Int'>
+    readonly isWinner: FieldRef<"betEntries", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * betEntries findUnique
+   */
+  export type betEntriesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * Filter, which betEntries to fetch.
+     */
+    where: betEntriesWhereUniqueInput
+  }
+
+  /**
+   * betEntries findUniqueOrThrow
+   */
+  export type betEntriesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * Filter, which betEntries to fetch.
+     */
+    where: betEntriesWhereUniqueInput
+  }
+
+  /**
+   * betEntries findFirst
+   */
+  export type betEntriesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * Filter, which betEntries to fetch.
+     */
+    where?: betEntriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of betEntries to fetch.
+     */
+    orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for betEntries.
+     */
+    cursor?: betEntriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` betEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` betEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of betEntries.
+     */
+    distinct?: BetEntriesScalarFieldEnum | BetEntriesScalarFieldEnum[]
+  }
+
+  /**
+   * betEntries findFirstOrThrow
+   */
+  export type betEntriesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * Filter, which betEntries to fetch.
+     */
+    where?: betEntriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of betEntries to fetch.
+     */
+    orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for betEntries.
+     */
+    cursor?: betEntriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` betEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` betEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of betEntries.
+     */
+    distinct?: BetEntriesScalarFieldEnum | BetEntriesScalarFieldEnum[]
+  }
+
+  /**
+   * betEntries findMany
+   */
+  export type betEntriesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * Filter, which betEntries to fetch.
+     */
+    where?: betEntriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of betEntries to fetch.
+     */
+    orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing betEntries.
+     */
+    cursor?: betEntriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` betEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` betEntries.
+     */
+    skip?: number
+    distinct?: BetEntriesScalarFieldEnum | BetEntriesScalarFieldEnum[]
+  }
+
+  /**
+   * betEntries create
+   */
+  export type betEntriesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a betEntries.
+     */
+    data: XOR<betEntriesCreateInput, betEntriesUncheckedCreateInput>
+  }
+
+  /**
+   * betEntries createMany
+   */
+  export type betEntriesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many betEntries.
+     */
+    data: betEntriesCreateManyInput | betEntriesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * betEntries createManyAndReturn
+   */
+  export type betEntriesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * The data used to create many betEntries.
+     */
+    data: betEntriesCreateManyInput | betEntriesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * betEntries update
+   */
+  export type betEntriesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a betEntries.
+     */
+    data: XOR<betEntriesUpdateInput, betEntriesUncheckedUpdateInput>
+    /**
+     * Choose, which betEntries to update.
+     */
+    where: betEntriesWhereUniqueInput
+  }
+
+  /**
+   * betEntries updateMany
+   */
+  export type betEntriesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update betEntries.
+     */
+    data: XOR<betEntriesUpdateManyMutationInput, betEntriesUncheckedUpdateManyInput>
+    /**
+     * Filter which betEntries to update
+     */
+    where?: betEntriesWhereInput
+    /**
+     * Limit how many betEntries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * betEntries updateManyAndReturn
+   */
+  export type betEntriesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * The data used to update betEntries.
+     */
+    data: XOR<betEntriesUpdateManyMutationInput, betEntriesUncheckedUpdateManyInput>
+    /**
+     * Filter which betEntries to update
+     */
+    where?: betEntriesWhereInput
+    /**
+     * Limit how many betEntries to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * betEntries upsert
+   */
+  export type betEntriesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the betEntries to update in case it exists.
+     */
+    where: betEntriesWhereUniqueInput
+    /**
+     * In case the betEntries found by the `where` argument doesn't exist, create a new betEntries with this data.
+     */
+    create: XOR<betEntriesCreateInput, betEntriesUncheckedCreateInput>
+    /**
+     * In case the betEntries was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<betEntriesUpdateInput, betEntriesUncheckedUpdateInput>
+  }
+
+  /**
+   * betEntries delete
+   */
+  export type betEntriesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    /**
+     * Filter which betEntries to delete.
+     */
+    where: betEntriesWhereUniqueInput
+  }
+
+  /**
+   * betEntries deleteMany
+   */
+  export type betEntriesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which betEntries to delete
+     */
+    where?: betEntriesWhereInput
+    /**
+     * Limit how many betEntries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * betEntries.betOptions
+   */
+  export type betEntries$betOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    where?: betOptionsWhereInput
+  }
+
+  /**
+   * betEntries.users
+   */
+  export type betEntries$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+  }
+
+  /**
+   * betEntries without action
+   */
+  export type betEntriesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model betOptions
+   */
+
+  export type AggregateBetOptions = {
+    _count: BetOptionsCountAggregateOutputType | null
+    _avg: BetOptionsAvgAggregateOutputType | null
+    _sum: BetOptionsSumAggregateOutputType | null
+    _min: BetOptionsMinAggregateOutputType | null
+    _max: BetOptionsMaxAggregateOutputType | null
+  }
+
+  export type BetOptionsAvgAggregateOutputType = {
+    id: number | null
+    betId: number | null
+    amount: number | null
+    quote: number | null
+  }
+
+  export type BetOptionsSumAggregateOutputType = {
+    id: number | null
+    betId: number | null
+    amount: number | null
+    quote: number | null
+  }
+
+  export type BetOptionsMinAggregateOutputType = {
+    id: number | null
+    betId: number | null
+    description: string | null
+    amount: number | null
+    isWinner: boolean | null
+    quote: number | null
+  }
+
+  export type BetOptionsMaxAggregateOutputType = {
+    id: number | null
+    betId: number | null
+    description: string | null
+    amount: number | null
+    isWinner: boolean | null
+    quote: number | null
+  }
+
+  export type BetOptionsCountAggregateOutputType = {
+    id: number
+    betId: number
+    description: number
+    amount: number
+    isWinner: number
+    quote: number
+    _all: number
+  }
+
+
+  export type BetOptionsAvgAggregateInputType = {
+    id?: true
+    betId?: true
+    amount?: true
+    quote?: true
+  }
+
+  export type BetOptionsSumAggregateInputType = {
+    id?: true
+    betId?: true
+    amount?: true
+    quote?: true
+  }
+
+  export type BetOptionsMinAggregateInputType = {
+    id?: true
+    betId?: true
+    description?: true
+    amount?: true
+    isWinner?: true
+    quote?: true
+  }
+
+  export type BetOptionsMaxAggregateInputType = {
+    id?: true
+    betId?: true
+    description?: true
+    amount?: true
+    isWinner?: true
+    quote?: true
+  }
+
+  export type BetOptionsCountAggregateInputType = {
+    id?: true
+    betId?: true
+    description?: true
+    amount?: true
+    isWinner?: true
+    quote?: true
+    _all?: true
+  }
+
+  export type BetOptionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which betOptions to aggregate.
+     */
+    where?: betOptionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of betOptions to fetch.
+     */
+    orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: betOptionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` betOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` betOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned betOptions
+    **/
+    _count?: true | BetOptionsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BetOptionsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BetOptionsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BetOptionsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BetOptionsMaxAggregateInputType
+  }
+
+  export type GetBetOptionsAggregateType<T extends BetOptionsAggregateArgs> = {
+        [P in keyof T & keyof AggregateBetOptions]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBetOptions[P]>
+      : GetScalarType<T[P], AggregateBetOptions[P]>
+  }
+
+
+
+
+  export type betOptionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: betOptionsWhereInput
+    orderBy?: betOptionsOrderByWithAggregationInput | betOptionsOrderByWithAggregationInput[]
+    by: BetOptionsScalarFieldEnum[] | BetOptionsScalarFieldEnum
+    having?: betOptionsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BetOptionsCountAggregateInputType | true
+    _avg?: BetOptionsAvgAggregateInputType
+    _sum?: BetOptionsSumAggregateInputType
+    _min?: BetOptionsMinAggregateInputType
+    _max?: BetOptionsMaxAggregateInputType
+  }
+
+  export type BetOptionsGroupByOutputType = {
+    id: number
+    betId: number | null
+    description: string
+    amount: number
+    isWinner: boolean
+    quote: number
+    _count: BetOptionsCountAggregateOutputType | null
+    _avg: BetOptionsAvgAggregateOutputType | null
+    _sum: BetOptionsSumAggregateOutputType | null
+    _min: BetOptionsMinAggregateOutputType | null
+    _max: BetOptionsMaxAggregateOutputType | null
+  }
+
+  type GetBetOptionsGroupByPayload<T extends betOptionsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BetOptionsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BetOptionsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BetOptionsGroupByOutputType[P]>
+            : GetScalarType<T[P], BetOptionsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type betOptionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    betId?: boolean
+    description?: boolean
+    amount?: boolean
+    isWinner?: boolean
+    quote?: boolean
+    betEntries?: boolean | betOptions$betEntriesArgs<ExtArgs>
+    bets?: boolean | betOptions$betsArgs<ExtArgs>
+    _count?: boolean | BetOptionsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["betOptions"]>
+
+  export type betOptionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    betId?: boolean
+    description?: boolean
+    amount?: boolean
+    isWinner?: boolean
+    quote?: boolean
+    bets?: boolean | betOptions$betsArgs<ExtArgs>
+  }, ExtArgs["result"]["betOptions"]>
+
+  export type betOptionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    betId?: boolean
+    description?: boolean
+    amount?: boolean
+    isWinner?: boolean
+    quote?: boolean
+    bets?: boolean | betOptions$betsArgs<ExtArgs>
+  }, ExtArgs["result"]["betOptions"]>
+
+  export type betOptionsSelectScalar = {
+    id?: boolean
+    betId?: boolean
+    description?: boolean
+    amount?: boolean
+    isWinner?: boolean
+    quote?: boolean
+  }
+
+  export type betOptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "betId" | "description" | "amount" | "isWinner" | "quote", ExtArgs["result"]["betOptions"]>
+  export type betOptionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    betEntries?: boolean | betOptions$betEntriesArgs<ExtArgs>
+    bets?: boolean | betOptions$betsArgs<ExtArgs>
+    _count?: boolean | BetOptionsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type betOptionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bets?: boolean | betOptions$betsArgs<ExtArgs>
+  }
+  export type betOptionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bets?: boolean | betOptions$betsArgs<ExtArgs>
+  }
+
+  export type $betOptionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "betOptions"
+    objects: {
+      betEntries: Prisma.$betEntriesPayload<ExtArgs>[]
+      bets: Prisma.$betsPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      betId: number | null
+      description: string
+      amount: number
+      isWinner: boolean
+      quote: number
+    }, ExtArgs["result"]["betOptions"]>
+    composites: {}
+  }
+
+  type betOptionsGetPayload<S extends boolean | null | undefined | betOptionsDefaultArgs> = $Result.GetResult<Prisma.$betOptionsPayload, S>
+
+  type betOptionsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<betOptionsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BetOptionsCountAggregateInputType | true
+    }
+
+  export interface betOptionsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['betOptions'], meta: { name: 'betOptions' } }
+    /**
+     * Find zero or one BetOptions that matches the filter.
+     * @param {betOptionsFindUniqueArgs} args - Arguments to find a BetOptions
+     * @example
+     * // Get one BetOptions
+     * const betOptions = await prisma.betOptions.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends betOptionsFindUniqueArgs>(args: SelectSubset<T, betOptionsFindUniqueArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BetOptions that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {betOptionsFindUniqueOrThrowArgs} args - Arguments to find a BetOptions
+     * @example
+     * // Get one BetOptions
+     * const betOptions = await prisma.betOptions.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends betOptionsFindUniqueOrThrowArgs>(args: SelectSubset<T, betOptionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BetOptions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betOptionsFindFirstArgs} args - Arguments to find a BetOptions
+     * @example
+     * // Get one BetOptions
+     * const betOptions = await prisma.betOptions.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends betOptionsFindFirstArgs>(args?: SelectSubset<T, betOptionsFindFirstArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BetOptions that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betOptionsFindFirstOrThrowArgs} args - Arguments to find a BetOptions
+     * @example
+     * // Get one BetOptions
+     * const betOptions = await prisma.betOptions.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends betOptionsFindFirstOrThrowArgs>(args?: SelectSubset<T, betOptionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BetOptions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betOptionsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BetOptions
+     * const betOptions = await prisma.betOptions.findMany()
+     * 
+     * // Get first 10 BetOptions
+     * const betOptions = await prisma.betOptions.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const betOptionsWithIdOnly = await prisma.betOptions.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends betOptionsFindManyArgs>(args?: SelectSubset<T, betOptionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BetOptions.
+     * @param {betOptionsCreateArgs} args - Arguments to create a BetOptions.
+     * @example
+     * // Create one BetOptions
+     * const BetOptions = await prisma.betOptions.create({
+     *   data: {
+     *     // ... data to create a BetOptions
+     *   }
+     * })
+     * 
+     */
+    create<T extends betOptionsCreateArgs>(args: SelectSubset<T, betOptionsCreateArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BetOptions.
+     * @param {betOptionsCreateManyArgs} args - Arguments to create many BetOptions.
+     * @example
+     * // Create many BetOptions
+     * const betOptions = await prisma.betOptions.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends betOptionsCreateManyArgs>(args?: SelectSubset<T, betOptionsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BetOptions and returns the data saved in the database.
+     * @param {betOptionsCreateManyAndReturnArgs} args - Arguments to create many BetOptions.
+     * @example
+     * // Create many BetOptions
+     * const betOptions = await prisma.betOptions.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BetOptions and only return the `id`
+     * const betOptionsWithIdOnly = await prisma.betOptions.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends betOptionsCreateManyAndReturnArgs>(args?: SelectSubset<T, betOptionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BetOptions.
+     * @param {betOptionsDeleteArgs} args - Arguments to delete one BetOptions.
+     * @example
+     * // Delete one BetOptions
+     * const BetOptions = await prisma.betOptions.delete({
+     *   where: {
+     *     // ... filter to delete one BetOptions
+     *   }
+     * })
+     * 
+     */
+    delete<T extends betOptionsDeleteArgs>(args: SelectSubset<T, betOptionsDeleteArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BetOptions.
+     * @param {betOptionsUpdateArgs} args - Arguments to update one BetOptions.
+     * @example
+     * // Update one BetOptions
+     * const betOptions = await prisma.betOptions.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends betOptionsUpdateArgs>(args: SelectSubset<T, betOptionsUpdateArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BetOptions.
+     * @param {betOptionsDeleteManyArgs} args - Arguments to filter BetOptions to delete.
+     * @example
+     * // Delete a few BetOptions
+     * const { count } = await prisma.betOptions.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends betOptionsDeleteManyArgs>(args?: SelectSubset<T, betOptionsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BetOptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betOptionsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BetOptions
+     * const betOptions = await prisma.betOptions.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends betOptionsUpdateManyArgs>(args: SelectSubset<T, betOptionsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BetOptions and returns the data updated in the database.
+     * @param {betOptionsUpdateManyAndReturnArgs} args - Arguments to update many BetOptions.
+     * @example
+     * // Update many BetOptions
+     * const betOptions = await prisma.betOptions.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BetOptions and only return the `id`
+     * const betOptionsWithIdOnly = await prisma.betOptions.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends betOptionsUpdateManyAndReturnArgs>(args: SelectSubset<T, betOptionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BetOptions.
+     * @param {betOptionsUpsertArgs} args - Arguments to update or create a BetOptions.
+     * @example
+     * // Update or create a BetOptions
+     * const betOptions = await prisma.betOptions.upsert({
+     *   create: {
+     *     // ... data to create a BetOptions
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BetOptions we want to update
+     *   }
+     * })
+     */
+    upsert<T extends betOptionsUpsertArgs>(args: SelectSubset<T, betOptionsUpsertArgs<ExtArgs>>): Prisma__betOptionsClient<$Result.GetResult<Prisma.$betOptionsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BetOptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betOptionsCountArgs} args - Arguments to filter BetOptions to count.
+     * @example
+     * // Count the number of BetOptions
+     * const count = await prisma.betOptions.count({
+     *   where: {
+     *     // ... the filter for the BetOptions we want to count
+     *   }
+     * })
+    **/
+    count<T extends betOptionsCountArgs>(
+      args?: Subset<T, betOptionsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BetOptionsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BetOptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BetOptionsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BetOptionsAggregateArgs>(args: Subset<T, BetOptionsAggregateArgs>): Prisma.PrismaPromise<GetBetOptionsAggregateType<T>>
+
+    /**
+     * Group by BetOptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {betOptionsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends betOptionsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: betOptionsGroupByArgs['orderBy'] }
+        : { orderBy?: betOptionsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, betOptionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBetOptionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the betOptions model
+   */
+  readonly fields: betOptionsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for betOptions.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__betOptionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    betEntries<T extends betOptions$betEntriesArgs<ExtArgs> = {}>(args?: Subset<T, betOptions$betEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bets<T extends betOptions$betsArgs<ExtArgs> = {}>(args?: Subset<T, betOptions$betsArgs<ExtArgs>>): Prisma__betsClient<$Result.GetResult<Prisma.$betsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the betOptions model
+   */
+  interface betOptionsFieldRefs {
+    readonly id: FieldRef<"betOptions", 'Int'>
+    readonly betId: FieldRef<"betOptions", 'Int'>
+    readonly description: FieldRef<"betOptions", 'String'>
+    readonly amount: FieldRef<"betOptions", 'Int'>
+    readonly isWinner: FieldRef<"betOptions", 'Boolean'>
+    readonly quote: FieldRef<"betOptions", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * betOptions findUnique
+   */
+  export type betOptionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * Filter, which betOptions to fetch.
+     */
+    where: betOptionsWhereUniqueInput
+  }
+
+  /**
+   * betOptions findUniqueOrThrow
+   */
+  export type betOptionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * Filter, which betOptions to fetch.
+     */
+    where: betOptionsWhereUniqueInput
+  }
+
+  /**
+   * betOptions findFirst
+   */
+  export type betOptionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * Filter, which betOptions to fetch.
+     */
+    where?: betOptionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of betOptions to fetch.
+     */
+    orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for betOptions.
+     */
+    cursor?: betOptionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` betOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` betOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of betOptions.
+     */
+    distinct?: BetOptionsScalarFieldEnum | BetOptionsScalarFieldEnum[]
+  }
+
+  /**
+   * betOptions findFirstOrThrow
+   */
+  export type betOptionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * Filter, which betOptions to fetch.
+     */
+    where?: betOptionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of betOptions to fetch.
+     */
+    orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for betOptions.
+     */
+    cursor?: betOptionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` betOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` betOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of betOptions.
+     */
+    distinct?: BetOptionsScalarFieldEnum | BetOptionsScalarFieldEnum[]
+  }
+
+  /**
+   * betOptions findMany
+   */
+  export type betOptionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * Filter, which betOptions to fetch.
+     */
+    where?: betOptionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of betOptions to fetch.
+     */
+    orderBy?: betOptionsOrderByWithRelationInput | betOptionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing betOptions.
+     */
+    cursor?: betOptionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` betOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` betOptions.
+     */
+    skip?: number
+    distinct?: BetOptionsScalarFieldEnum | BetOptionsScalarFieldEnum[]
+  }
+
+  /**
+   * betOptions create
+   */
+  export type betOptionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a betOptions.
+     */
+    data: XOR<betOptionsCreateInput, betOptionsUncheckedCreateInput>
+  }
+
+  /**
+   * betOptions createMany
+   */
+  export type betOptionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many betOptions.
+     */
+    data: betOptionsCreateManyInput | betOptionsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * betOptions createManyAndReturn
+   */
+  export type betOptionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * The data used to create many betOptions.
+     */
+    data: betOptionsCreateManyInput | betOptionsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * betOptions update
+   */
+  export type betOptionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a betOptions.
+     */
+    data: XOR<betOptionsUpdateInput, betOptionsUncheckedUpdateInput>
+    /**
+     * Choose, which betOptions to update.
+     */
+    where: betOptionsWhereUniqueInput
+  }
+
+  /**
+   * betOptions updateMany
+   */
+  export type betOptionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update betOptions.
+     */
+    data: XOR<betOptionsUpdateManyMutationInput, betOptionsUncheckedUpdateManyInput>
+    /**
+     * Filter which betOptions to update
+     */
+    where?: betOptionsWhereInput
+    /**
+     * Limit how many betOptions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * betOptions updateManyAndReturn
+   */
+  export type betOptionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * The data used to update betOptions.
+     */
+    data: XOR<betOptionsUpdateManyMutationInput, betOptionsUncheckedUpdateManyInput>
+    /**
+     * Filter which betOptions to update
+     */
+    where?: betOptionsWhereInput
+    /**
+     * Limit how many betOptions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * betOptions upsert
+   */
+  export type betOptionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the betOptions to update in case it exists.
+     */
+    where: betOptionsWhereUniqueInput
+    /**
+     * In case the betOptions found by the `where` argument doesn't exist, create a new betOptions with this data.
+     */
+    create: XOR<betOptionsCreateInput, betOptionsUncheckedCreateInput>
+    /**
+     * In case the betOptions was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<betOptionsUpdateInput, betOptionsUncheckedUpdateInput>
+  }
+
+  /**
+   * betOptions delete
+   */
+  export type betOptionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+    /**
+     * Filter which betOptions to delete.
+     */
+    where: betOptionsWhereUniqueInput
+  }
+
+  /**
+   * betOptions deleteMany
+   */
+  export type betOptionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which betOptions to delete
+     */
+    where?: betOptionsWhereInput
+    /**
+     * Limit how many betOptions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * betOptions.betEntries
+   */
+  export type betOptions$betEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betEntries
+     */
+    select?: betEntriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betEntries
+     */
+    omit?: betEntriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betEntriesInclude<ExtArgs> | null
+    where?: betEntriesWhereInput
+    orderBy?: betEntriesOrderByWithRelationInput | betEntriesOrderByWithRelationInput[]
+    cursor?: betEntriesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BetEntriesScalarFieldEnum | BetEntriesScalarFieldEnum[]
+  }
+
+  /**
+   * betOptions.bets
+   */
+  export type betOptions$betsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bets
+     */
+    select?: betsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the bets
+     */
+    omit?: betsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betsInclude<ExtArgs> | null
+    where?: betsWhereInput
+  }
+
+  /**
+   * betOptions without action
+   */
+  export type betOptionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the betOptions
+     */
+    select?: betOptionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the betOptions
+     */
+    omit?: betOptionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: betOptionsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -11832,8 +13205,7 @@ export namespace Prisma {
 
   export const UsersScalarFieldEnum: {
     id: 'id',
-    firstName: 'firstName',
-    lastName: 'lastName',
+    name: 'name',
     username: 'username',
     password: 'password',
     role: 'role'
@@ -11842,23 +13214,14 @@ export namespace Prisma {
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
-  export const BetDetailsScalarFieldEnum: {
-    id: 'id',
-    betId: 'betId',
-    description: 'description',
-    quote: 'quote',
-    value: 'value'
-  };
-
-  export type BetDetailsScalarFieldEnum = (typeof BetDetailsScalarFieldEnum)[keyof typeof BetDetailsScalarFieldEnum]
-
-
   export const BetsScalarFieldEnum: {
     id: 'id',
     description: 'description',
-    created_at: 'created_at',
-    deadline_at: 'deadline_at',
-    status: 'status'
+    createdAt: 'createdAt',
+    deadlineAt: 'deadlineAt',
+    status: 'status',
+    participants: 'participants',
+    amount: 'amount'
   };
 
   export type BetsScalarFieldEnum = (typeof BetsScalarFieldEnum)[keyof typeof BetsScalarFieldEnum]
@@ -11921,6 +13284,29 @@ export namespace Prisma {
   export type UserWalletsScalarFieldEnum = (typeof UserWalletsScalarFieldEnum)[keyof typeof UserWalletsScalarFieldEnum]
 
 
+  export const BetEntriesScalarFieldEnum: {
+    id: 'id',
+    optionId: 'optionId',
+    userId: 'userId',
+    amount: 'amount',
+    isWinner: 'isWinner'
+  };
+
+  export type BetEntriesScalarFieldEnum = (typeof BetEntriesScalarFieldEnum)[keyof typeof BetEntriesScalarFieldEnum]
+
+
+  export const BetOptionsScalarFieldEnum: {
+    id: 'id',
+    betId: 'betId',
+    description: 'description',
+    amount: 'amount',
+    isWinner: 'isWinner',
+    quote: 'quote'
+  };
+
+  export type BetOptionsScalarFieldEnum = (typeof BetOptionsScalarFieldEnum)[keyof typeof BetOptionsScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -11979,20 +13365,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -12025,6 +13397,20 @@ export namespace Prisma {
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -12035,11 +13421,11 @@ export namespace Prisma {
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
     id?: IntFilter<"users"> | number
-    firstName?: StringFilter<"users"> | string
-    lastName?: StringFilter<"users"> | string
+    name?: StringFilter<"users"> | string
     username?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     role?: IntNullableFilter<"users"> | number | null
+    betEntries?: BetEntriesListRelationFilter
     tradeOffers?: TradeOffersListRelationFilter
     trades_trades_customerIdTousers?: TradesListRelationFilter
     trades_trades_supplierIdTousers?: TradesListRelationFilter
@@ -12049,11 +13435,11 @@ export namespace Prisma {
 
   export type usersOrderByWithRelationInput = {
     id?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    name?: SortOrder
     username?: SortOrder
     password?: SortOrder
     role?: SortOrderInput | SortOrder
+    betEntries?: betEntriesOrderByRelationAggregateInput
     tradeOffers?: tradeOffersOrderByRelationAggregateInput
     trades_trades_customerIdTousers?: tradesOrderByRelationAggregateInput
     trades_trades_supplierIdTousers?: tradesOrderByRelationAggregateInput
@@ -12066,11 +13452,11 @@ export namespace Prisma {
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
-    firstName?: StringFilter<"users"> | string
-    lastName?: StringFilter<"users"> | string
+    name?: StringFilter<"users"> | string
     username?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     role?: IntNullableFilter<"users"> | number | null
+    betEntries?: BetEntriesListRelationFilter
     tradeOffers?: TradeOffersListRelationFilter
     trades_trades_customerIdTousers?: TradesListRelationFilter
     trades_trades_supplierIdTousers?: TradesListRelationFilter
@@ -12080,8 +13466,7 @@ export namespace Prisma {
 
   export type usersOrderByWithAggregationInput = {
     id?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    name?: SortOrder
     username?: SortOrder
     password?: SortOrder
     role?: SortOrderInput | SortOrder
@@ -12097,68 +13482,10 @@ export namespace Prisma {
     OR?: usersScalarWhereWithAggregatesInput[]
     NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"users"> | number
-    firstName?: StringWithAggregatesFilter<"users"> | string
-    lastName?: StringWithAggregatesFilter<"users"> | string
+    name?: StringWithAggregatesFilter<"users"> | string
     username?: StringWithAggregatesFilter<"users"> | string
     password?: StringWithAggregatesFilter<"users"> | string
     role?: IntNullableWithAggregatesFilter<"users"> | number | null
-  }
-
-  export type betDetailsWhereInput = {
-    AND?: betDetailsWhereInput | betDetailsWhereInput[]
-    OR?: betDetailsWhereInput[]
-    NOT?: betDetailsWhereInput | betDetailsWhereInput[]
-    id?: IntFilter<"betDetails"> | number
-    betId?: IntNullableFilter<"betDetails"> | number | null
-    description?: StringFilter<"betDetails"> | string
-    quote?: FloatFilter<"betDetails"> | number
-    value?: IntFilter<"betDetails"> | number
-    bets?: XOR<BetsNullableScalarRelationFilter, betsWhereInput> | null
-  }
-
-  export type betDetailsOrderByWithRelationInput = {
-    id?: SortOrder
-    betId?: SortOrderInput | SortOrder
-    description?: SortOrder
-    quote?: SortOrder
-    value?: SortOrder
-    bets?: betsOrderByWithRelationInput
-  }
-
-  export type betDetailsWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: betDetailsWhereInput | betDetailsWhereInput[]
-    OR?: betDetailsWhereInput[]
-    NOT?: betDetailsWhereInput | betDetailsWhereInput[]
-    betId?: IntNullableFilter<"betDetails"> | number | null
-    description?: StringFilter<"betDetails"> | string
-    quote?: FloatFilter<"betDetails"> | number
-    value?: IntFilter<"betDetails"> | number
-    bets?: XOR<BetsNullableScalarRelationFilter, betsWhereInput> | null
-  }, "id">
-
-  export type betDetailsOrderByWithAggregationInput = {
-    id?: SortOrder
-    betId?: SortOrderInput | SortOrder
-    description?: SortOrder
-    quote?: SortOrder
-    value?: SortOrder
-    _count?: betDetailsCountOrderByAggregateInput
-    _avg?: betDetailsAvgOrderByAggregateInput
-    _max?: betDetailsMaxOrderByAggregateInput
-    _min?: betDetailsMinOrderByAggregateInput
-    _sum?: betDetailsSumOrderByAggregateInput
-  }
-
-  export type betDetailsScalarWhereWithAggregatesInput = {
-    AND?: betDetailsScalarWhereWithAggregatesInput | betDetailsScalarWhereWithAggregatesInput[]
-    OR?: betDetailsScalarWhereWithAggregatesInput[]
-    NOT?: betDetailsScalarWhereWithAggregatesInput | betDetailsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"betDetails"> | number
-    betId?: IntNullableWithAggregatesFilter<"betDetails"> | number | null
-    description?: StringWithAggregatesFilter<"betDetails"> | string
-    quote?: FloatWithAggregatesFilter<"betDetails"> | number
-    value?: IntWithAggregatesFilter<"betDetails"> | number
   }
 
   export type betsWhereInput = {
@@ -12167,20 +13494,24 @@ export namespace Prisma {
     NOT?: betsWhereInput | betsWhereInput[]
     id?: IntFilter<"bets"> | number
     description?: StringFilter<"bets"> | string
-    created_at?: DateTimeFilter<"bets"> | Date | string
-    deadline_at?: DateTimeFilter<"bets"> | Date | string
+    createdAt?: DateTimeFilter<"bets"> | Date | string
+    deadlineAt?: DateTimeFilter<"bets"> | Date | string
     status?: IntNullableFilter<"bets"> | number | null
-    betDetails?: BetDetailsListRelationFilter
+    participants?: IntFilter<"bets"> | number
+    amount?: IntFilter<"bets"> | number
+    betOptions?: BetOptionsListRelationFilter
     status_bets_statusTostatus?: XOR<StatusNullableScalarRelationFilter, statusWhereInput> | null
   }
 
   export type betsOrderByWithRelationInput = {
     id?: SortOrder
     description?: SortOrder
-    created_at?: SortOrder
-    deadline_at?: SortOrder
+    createdAt?: SortOrder
+    deadlineAt?: SortOrder
     status?: SortOrderInput | SortOrder
-    betDetails?: betDetailsOrderByRelationAggregateInput
+    participants?: SortOrder
+    amount?: SortOrder
+    betOptions?: betOptionsOrderByRelationAggregateInput
     status_bets_statusTostatus?: statusOrderByWithRelationInput
   }
 
@@ -12190,19 +13521,23 @@ export namespace Prisma {
     OR?: betsWhereInput[]
     NOT?: betsWhereInput | betsWhereInput[]
     description?: StringFilter<"bets"> | string
-    created_at?: DateTimeFilter<"bets"> | Date | string
-    deadline_at?: DateTimeFilter<"bets"> | Date | string
+    createdAt?: DateTimeFilter<"bets"> | Date | string
+    deadlineAt?: DateTimeFilter<"bets"> | Date | string
     status?: IntNullableFilter<"bets"> | number | null
-    betDetails?: BetDetailsListRelationFilter
+    participants?: IntFilter<"bets"> | number
+    amount?: IntFilter<"bets"> | number
+    betOptions?: BetOptionsListRelationFilter
     status_bets_statusTostatus?: XOR<StatusNullableScalarRelationFilter, statusWhereInput> | null
   }, "id">
 
   export type betsOrderByWithAggregationInput = {
     id?: SortOrder
     description?: SortOrder
-    created_at?: SortOrder
-    deadline_at?: SortOrder
+    createdAt?: SortOrder
+    deadlineAt?: SortOrder
     status?: SortOrderInput | SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
     _count?: betsCountOrderByAggregateInput
     _avg?: betsAvgOrderByAggregateInput
     _max?: betsMaxOrderByAggregateInput
@@ -12216,9 +13551,11 @@ export namespace Prisma {
     NOT?: betsScalarWhereWithAggregatesInput | betsScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"bets"> | number
     description?: StringWithAggregatesFilter<"bets"> | string
-    created_at?: DateTimeWithAggregatesFilter<"bets"> | Date | string
-    deadline_at?: DateTimeWithAggregatesFilter<"bets"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"bets"> | Date | string
+    deadlineAt?: DateTimeWithAggregatesFilter<"bets"> | Date | string
     status?: IntNullableWithAggregatesFilter<"bets"> | number | null
+    participants?: IntWithAggregatesFilter<"bets"> | number
+    amount?: IntWithAggregatesFilter<"bets"> | number
   }
 
   export type rolesWhereInput = {
@@ -12524,11 +13861,136 @@ export namespace Prisma {
     balance?: IntWithAggregatesFilter<"userWallets"> | number
   }
 
+  export type betEntriesWhereInput = {
+    AND?: betEntriesWhereInput | betEntriesWhereInput[]
+    OR?: betEntriesWhereInput[]
+    NOT?: betEntriesWhereInput | betEntriesWhereInput[]
+    id?: IntFilter<"betEntries"> | number
+    optionId?: IntNullableFilter<"betEntries"> | number | null
+    userId?: IntNullableFilter<"betEntries"> | number | null
+    amount?: IntFilter<"betEntries"> | number
+    isWinner?: BoolFilter<"betEntries"> | boolean
+    betOptions?: XOR<BetOptionsNullableScalarRelationFilter, betOptionsWhereInput> | null
+    users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+  }
+
+  export type betEntriesOrderByWithRelationInput = {
+    id?: SortOrder
+    optionId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+    betOptions?: betOptionsOrderByWithRelationInput
+    users?: usersOrderByWithRelationInput
+  }
+
+  export type betEntriesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: betEntriesWhereInput | betEntriesWhereInput[]
+    OR?: betEntriesWhereInput[]
+    NOT?: betEntriesWhereInput | betEntriesWhereInput[]
+    optionId?: IntNullableFilter<"betEntries"> | number | null
+    userId?: IntNullableFilter<"betEntries"> | number | null
+    amount?: IntFilter<"betEntries"> | number
+    isWinner?: BoolFilter<"betEntries"> | boolean
+    betOptions?: XOR<BetOptionsNullableScalarRelationFilter, betOptionsWhereInput> | null
+    users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+  }, "id">
+
+  export type betEntriesOrderByWithAggregationInput = {
+    id?: SortOrder
+    optionId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+    _count?: betEntriesCountOrderByAggregateInput
+    _avg?: betEntriesAvgOrderByAggregateInput
+    _max?: betEntriesMaxOrderByAggregateInput
+    _min?: betEntriesMinOrderByAggregateInput
+    _sum?: betEntriesSumOrderByAggregateInput
+  }
+
+  export type betEntriesScalarWhereWithAggregatesInput = {
+    AND?: betEntriesScalarWhereWithAggregatesInput | betEntriesScalarWhereWithAggregatesInput[]
+    OR?: betEntriesScalarWhereWithAggregatesInput[]
+    NOT?: betEntriesScalarWhereWithAggregatesInput | betEntriesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"betEntries"> | number
+    optionId?: IntNullableWithAggregatesFilter<"betEntries"> | number | null
+    userId?: IntNullableWithAggregatesFilter<"betEntries"> | number | null
+    amount?: IntWithAggregatesFilter<"betEntries"> | number
+    isWinner?: BoolWithAggregatesFilter<"betEntries"> | boolean
+  }
+
+  export type betOptionsWhereInput = {
+    AND?: betOptionsWhereInput | betOptionsWhereInput[]
+    OR?: betOptionsWhereInput[]
+    NOT?: betOptionsWhereInput | betOptionsWhereInput[]
+    id?: IntFilter<"betOptions"> | number
+    betId?: IntNullableFilter<"betOptions"> | number | null
+    description?: StringFilter<"betOptions"> | string
+    amount?: IntFilter<"betOptions"> | number
+    isWinner?: BoolFilter<"betOptions"> | boolean
+    quote?: FloatFilter<"betOptions"> | number
+    betEntries?: BetEntriesListRelationFilter
+    bets?: XOR<BetsNullableScalarRelationFilter, betsWhereInput> | null
+  }
+
+  export type betOptionsOrderByWithRelationInput = {
+    id?: SortOrder
+    betId?: SortOrderInput | SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+    quote?: SortOrder
+    betEntries?: betEntriesOrderByRelationAggregateInput
+    bets?: betsOrderByWithRelationInput
+  }
+
+  export type betOptionsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: betOptionsWhereInput | betOptionsWhereInput[]
+    OR?: betOptionsWhereInput[]
+    NOT?: betOptionsWhereInput | betOptionsWhereInput[]
+    betId?: IntNullableFilter<"betOptions"> | number | null
+    description?: StringFilter<"betOptions"> | string
+    amount?: IntFilter<"betOptions"> | number
+    isWinner?: BoolFilter<"betOptions"> | boolean
+    quote?: FloatFilter<"betOptions"> | number
+    betEntries?: BetEntriesListRelationFilter
+    bets?: XOR<BetsNullableScalarRelationFilter, betsWhereInput> | null
+  }, "id">
+
+  export type betOptionsOrderByWithAggregationInput = {
+    id?: SortOrder
+    betId?: SortOrderInput | SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+    quote?: SortOrder
+    _count?: betOptionsCountOrderByAggregateInput
+    _avg?: betOptionsAvgOrderByAggregateInput
+    _max?: betOptionsMaxOrderByAggregateInput
+    _min?: betOptionsMinOrderByAggregateInput
+    _sum?: betOptionsSumOrderByAggregateInput
+  }
+
+  export type betOptionsScalarWhereWithAggregatesInput = {
+    AND?: betOptionsScalarWhereWithAggregatesInput | betOptionsScalarWhereWithAggregatesInput[]
+    OR?: betOptionsScalarWhereWithAggregatesInput[]
+    NOT?: betOptionsScalarWhereWithAggregatesInput | betOptionsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"betOptions"> | number
+    betId?: IntNullableWithAggregatesFilter<"betOptions"> | number | null
+    description?: StringWithAggregatesFilter<"betOptions"> | string
+    amount?: IntWithAggregatesFilter<"betOptions"> | number
+    isWinner?: BoolWithAggregatesFilter<"betOptions"> | boolean
+    quote?: FloatWithAggregatesFilter<"betOptions"> | number
+  }
+
   export type usersCreateInput = {
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
+    betEntries?: betEntriesCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
@@ -12538,11 +14000,11 @@ export namespace Prisma {
 
   export type usersUncheckedCreateInput = {
     id?: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
     role?: number | null
+    betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
@@ -12550,10 +14012,10 @@ export namespace Prisma {
   }
 
   export type usersUpdateInput = {
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
@@ -12563,11 +14025,11 @@ export namespace Prisma {
 
   export type usersUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
+    betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
@@ -12576,135 +14038,94 @@ export namespace Prisma {
 
   export type usersCreateManyInput = {
     id?: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
     role?: number | null
   }
 
   export type usersUpdateManyMutationInput = {
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
   export type usersUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type betDetailsCreateInput = {
-    description: string
-    quote: number
-    value: number
-    bets?: betsCreateNestedOneWithoutBetDetailsInput
-  }
-
-  export type betDetailsUncheckedCreateInput = {
-    id?: number
-    betId?: number | null
-    description: string
-    quote: number
-    value: number
-  }
-
-  export type betDetailsUpdateInput = {
-    description?: StringFieldUpdateOperationsInput | string
-    quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
-    bets?: betsUpdateOneWithoutBetDetailsNestedInput
-  }
-
-  export type betDetailsUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    betId?: NullableIntFieldUpdateOperationsInput | number | null
-    description?: StringFieldUpdateOperationsInput | string
-    quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type betDetailsCreateManyInput = {
-    id?: number
-    betId?: number | null
-    description: string
-    quote: number
-    value: number
-  }
-
-  export type betDetailsUpdateManyMutationInput = {
-    description?: StringFieldUpdateOperationsInput | string
-    quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type betDetailsUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    betId?: NullableIntFieldUpdateOperationsInput | number | null
-    description?: StringFieldUpdateOperationsInput | string
-    quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
-  }
-
   export type betsCreateInput = {
     description: string
-    created_at?: Date | string
-    deadline_at: Date | string
-    betDetails?: betDetailsCreateNestedManyWithoutBetsInput
+    createdAt?: Date | string
+    deadlineAt: Date | string
+    participants?: number
+    amount?: number
+    betOptions?: betOptionsCreateNestedManyWithoutBetsInput
     status_bets_statusTostatus?: statusCreateNestedOneWithoutBets_bets_statusTostatusInput
   }
 
   export type betsUncheckedCreateInput = {
     id?: number
     description: string
-    created_at?: Date | string
-    deadline_at: Date | string
+    createdAt?: Date | string
+    deadlineAt: Date | string
     status?: number | null
-    betDetails?: betDetailsUncheckedCreateNestedManyWithoutBetsInput
+    participants?: number
+    amount?: number
+    betOptions?: betOptionsUncheckedCreateNestedManyWithoutBetsInput
   }
 
   export type betsUpdateInput = {
     description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    betDetails?: betDetailsUpdateManyWithoutBetsNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    betOptions?: betOptionsUpdateManyWithoutBetsNestedInput
     status_bets_statusTostatus?: statusUpdateOneWithoutBets_bets_statusTostatusNestedInput
   }
 
   export type betsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: NullableIntFieldUpdateOperationsInput | number | null
-    betDetails?: betDetailsUncheckedUpdateManyWithoutBetsNestedInput
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    betOptions?: betOptionsUncheckedUpdateManyWithoutBetsNestedInput
   }
 
   export type betsCreateManyInput = {
     id?: number
     description: string
-    created_at?: Date | string
-    deadline_at: Date | string
+    createdAt?: Date | string
+    deadlineAt: Date | string
     status?: number | null
+    participants?: number
+    amount?: number
   }
 
   export type betsUpdateManyMutationInput = {
     description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
   export type betsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: NullableIntFieldUpdateOperationsInput | number | null
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
   export type rolesCreateInput = {
@@ -12975,6 +14396,120 @@ export namespace Prisma {
     balance?: IntFieldUpdateOperationsInput | number
   }
 
+  export type betEntriesCreateInput = {
+    amount: number
+    isWinner?: boolean
+    betOptions?: betOptionsCreateNestedOneWithoutBetEntriesInput
+    users?: usersCreateNestedOneWithoutBetEntriesInput
+  }
+
+  export type betEntriesUncheckedCreateInput = {
+    id?: number
+    optionId?: number | null
+    userId?: number | null
+    amount: number
+    isWinner?: boolean
+  }
+
+  export type betEntriesUpdateInput = {
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    betOptions?: betOptionsUpdateOneWithoutBetEntriesNestedInput
+    users?: usersUpdateOneWithoutBetEntriesNestedInput
+  }
+
+  export type betEntriesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    optionId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type betEntriesCreateManyInput = {
+    id?: number
+    optionId?: number | null
+    userId?: number | null
+    amount: number
+    isWinner?: boolean
+  }
+
+  export type betEntriesUpdateManyMutationInput = {
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type betEntriesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    optionId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type betOptionsCreateInput = {
+    description: string
+    amount: number
+    isWinner?: boolean
+    quote: number
+    betEntries?: betEntriesCreateNestedManyWithoutBetOptionsInput
+    bets?: betsCreateNestedOneWithoutBetOptionsInput
+  }
+
+  export type betOptionsUncheckedCreateInput = {
+    id?: number
+    betId?: number | null
+    description: string
+    amount: number
+    isWinner?: boolean
+    quote: number
+    betEntries?: betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput
+  }
+
+  export type betOptionsUpdateInput = {
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    quote?: FloatFieldUpdateOperationsInput | number
+    betEntries?: betEntriesUpdateManyWithoutBetOptionsNestedInput
+    bets?: betsUpdateOneWithoutBetOptionsNestedInput
+  }
+
+  export type betOptionsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    betId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    quote?: FloatFieldUpdateOperationsInput | number
+    betEntries?: betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput
+  }
+
+  export type betOptionsCreateManyInput = {
+    id?: number
+    betId?: number | null
+    description: string
+    amount: number
+    isWinner?: boolean
+    quote: number
+  }
+
+  export type betOptionsUpdateManyMutationInput = {
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    quote?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type betOptionsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    betId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    quote?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -13012,6 +14547,12 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type BetEntriesListRelationFilter = {
+    every?: betEntriesWhereInput
+    some?: betEntriesWhereInput
+    none?: betEntriesWhereInput
+  }
+
   export type TradeOffersListRelationFilter = {
     every?: tradeOffersWhereInput
     some?: tradeOffersWhereInput
@@ -13039,6 +14580,10 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
+  export type betEntriesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type tradeOffersOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -13049,8 +14594,7 @@ export namespace Prisma {
 
   export type usersCountOrderByAggregateInput = {
     id?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    name?: SortOrder
     username?: SortOrder
     password?: SortOrder
     role?: SortOrder
@@ -13063,8 +14607,7 @@ export namespace Prisma {
 
   export type usersMaxOrderByAggregateInput = {
     id?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    name?: SortOrder
     username?: SortOrder
     password?: SortOrder
     role?: SortOrder
@@ -13072,8 +14615,7 @@ export namespace Prisma {
 
   export type usersMinOrderByAggregateInput = {
     id?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    name?: SortOrder
     username?: SortOrder
     password?: SortOrder
     role?: SortOrder
@@ -13134,76 +14676,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type BetsNullableScalarRelationFilter = {
-    is?: betsWhereInput | null
-    isNot?: betsWhereInput | null
-  }
-
-  export type betDetailsCountOrderByAggregateInput = {
-    id?: SortOrder
-    betId?: SortOrder
-    description?: SortOrder
-    quote?: SortOrder
-    value?: SortOrder
-  }
-
-  export type betDetailsAvgOrderByAggregateInput = {
-    id?: SortOrder
-    betId?: SortOrder
-    quote?: SortOrder
-    value?: SortOrder
-  }
-
-  export type betDetailsMaxOrderByAggregateInput = {
-    id?: SortOrder
-    betId?: SortOrder
-    description?: SortOrder
-    quote?: SortOrder
-    value?: SortOrder
-  }
-
-  export type betDetailsMinOrderByAggregateInput = {
-    id?: SortOrder
-    betId?: SortOrder
-    description?: SortOrder
-    quote?: SortOrder
-    value?: SortOrder
-  }
-
-  export type betDetailsSumOrderByAggregateInput = {
-    id?: SortOrder
-    betId?: SortOrder
-    quote?: SortOrder
-    value?: SortOrder
-  }
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -13215,10 +14687,10 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type BetDetailsListRelationFilter = {
-    every?: betDetailsWhereInput
-    some?: betDetailsWhereInput
-    none?: betDetailsWhereInput
+  export type BetOptionsListRelationFilter = {
+    every?: betOptionsWhereInput
+    some?: betOptionsWhereInput
+    none?: betOptionsWhereInput
   }
 
   export type StatusNullableScalarRelationFilter = {
@@ -13226,42 +14698,52 @@ export namespace Prisma {
     isNot?: statusWhereInput | null
   }
 
-  export type betDetailsOrderByRelationAggregateInput = {
+  export type betOptionsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type betsCountOrderByAggregateInput = {
     id?: SortOrder
     description?: SortOrder
-    created_at?: SortOrder
-    deadline_at?: SortOrder
+    createdAt?: SortOrder
+    deadlineAt?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
   export type betsAvgOrderByAggregateInput = {
     id?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
   export type betsMaxOrderByAggregateInput = {
     id?: SortOrder
     description?: SortOrder
-    created_at?: SortOrder
-    deadline_at?: SortOrder
+    createdAt?: SortOrder
+    deadlineAt?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
   export type betsMinOrderByAggregateInput = {
     id?: SortOrder
     description?: SortOrder
-    created_at?: SortOrder
-    deadline_at?: SortOrder
+    createdAt?: SortOrder
+    deadlineAt?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
   export type betsSumOrderByAggregateInput = {
     id?: SortOrder
     status?: SortOrder
+    participants?: SortOrder
+    amount?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -13588,6 +15070,142 @@ export namespace Prisma {
     balance?: SortOrder
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type BetOptionsNullableScalarRelationFilter = {
+    is?: betOptionsWhereInput | null
+    isNot?: betOptionsWhereInput | null
+  }
+
+  export type betEntriesCountOrderByAggregateInput = {
+    id?: SortOrder
+    optionId?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+  }
+
+  export type betEntriesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    optionId?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+  }
+
+  export type betEntriesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    optionId?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+  }
+
+  export type betEntriesMinOrderByAggregateInput = {
+    id?: SortOrder
+    optionId?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+  }
+
+  export type betEntriesSumOrderByAggregateInput = {
+    id?: SortOrder
+    optionId?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type BetsNullableScalarRelationFilter = {
+    is?: betsWhereInput | null
+    isNot?: betsWhereInput | null
+  }
+
+  export type betOptionsCountOrderByAggregateInput = {
+    id?: SortOrder
+    betId?: SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+    quote?: SortOrder
+  }
+
+  export type betOptionsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    betId?: SortOrder
+    amount?: SortOrder
+    quote?: SortOrder
+  }
+
+  export type betOptionsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    betId?: SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+    quote?: SortOrder
+  }
+
+  export type betOptionsMinOrderByAggregateInput = {
+    id?: SortOrder
+    betId?: SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    isWinner?: SortOrder
+    quote?: SortOrder
+  }
+
+  export type betOptionsSumOrderByAggregateInput = {
+    id?: SortOrder
+    betId?: SortOrder
+    amount?: SortOrder
+    quote?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type betEntriesCreateNestedManyWithoutUsersInput = {
+    create?: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput> | betEntriesCreateWithoutUsersInput[] | betEntriesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
+    createMany?: betEntriesCreateManyUsersInputEnvelope
+    connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+  }
+
   export type tradeOffersCreateNestedManyWithoutUsersInput = {
     create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
@@ -13621,6 +15239,13 @@ export namespace Prisma {
     connect?: rolesWhereUniqueInput
   }
 
+  export type betEntriesUncheckedCreateNestedManyWithoutUsersInput = {
+    create?: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput> | betEntriesCreateWithoutUsersInput[] | betEntriesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
+    createMany?: betEntriesCreateManyUsersInputEnvelope
+    connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+  }
+
   export type tradeOffersUncheckedCreateNestedManyWithoutUsersInput = {
     create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
@@ -13650,6 +15275,20 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type betEntriesUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput> | betEntriesCreateWithoutUsersInput[] | betEntriesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
+    upsert?: betEntriesUpsertWithWhereUniqueWithoutUsersInput | betEntriesUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: betEntriesCreateManyUsersInputEnvelope
+    set?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    disconnect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    delete?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    update?: betEntriesUpdateWithWhereUniqueWithoutUsersInput | betEntriesUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: betEntriesUpdateManyWithWhereWithoutUsersInput | betEntriesUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
   }
 
   export type tradeOffersUpdateManyWithoutUsersNestedInput = {
@@ -13730,6 +15369,20 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type betEntriesUncheckedUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput> | betEntriesCreateWithoutUsersInput[] | betEntriesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
+    upsert?: betEntriesUpsertWithWhereUniqueWithoutUsersInput | betEntriesUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: betEntriesCreateManyUsersInputEnvelope
+    set?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    disconnect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    delete?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    update?: betEntriesUpdateWithWhereUniqueWithoutUsersInput | betEntriesUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: betEntriesUpdateManyWithWhereWithoutUsersInput | betEntriesUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
+  }
+
   export type tradeOffersUncheckedUpdateManyWithoutUsersNestedInput = {
     create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
@@ -13782,35 +15435,11 @@ export namespace Prisma {
     update?: XOR<XOR<userWalletsUpdateToOneWithWhereWithoutUsersInput, userWalletsUpdateWithoutUsersInput>, userWalletsUncheckedUpdateWithoutUsersInput>
   }
 
-  export type betsCreateNestedOneWithoutBetDetailsInput = {
-    create?: XOR<betsCreateWithoutBetDetailsInput, betsUncheckedCreateWithoutBetDetailsInput>
-    connectOrCreate?: betsCreateOrConnectWithoutBetDetailsInput
-    connect?: betsWhereUniqueInput
-  }
-
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type betsUpdateOneWithoutBetDetailsNestedInput = {
-    create?: XOR<betsCreateWithoutBetDetailsInput, betsUncheckedCreateWithoutBetDetailsInput>
-    connectOrCreate?: betsCreateOrConnectWithoutBetDetailsInput
-    upsert?: betsUpsertWithoutBetDetailsInput
-    disconnect?: betsWhereInput | boolean
-    delete?: betsWhereInput | boolean
-    connect?: betsWhereUniqueInput
-    update?: XOR<XOR<betsUpdateToOneWithWhereWithoutBetDetailsInput, betsUpdateWithoutBetDetailsInput>, betsUncheckedUpdateWithoutBetDetailsInput>
-  }
-
-  export type betDetailsCreateNestedManyWithoutBetsInput = {
-    create?: XOR<betDetailsCreateWithoutBetsInput, betDetailsUncheckedCreateWithoutBetsInput> | betDetailsCreateWithoutBetsInput[] | betDetailsUncheckedCreateWithoutBetsInput[]
-    connectOrCreate?: betDetailsCreateOrConnectWithoutBetsInput | betDetailsCreateOrConnectWithoutBetsInput[]
-    createMany?: betDetailsCreateManyBetsInputEnvelope
-    connect?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
+  export type betOptionsCreateNestedManyWithoutBetsInput = {
+    create?: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput> | betOptionsCreateWithoutBetsInput[] | betOptionsUncheckedCreateWithoutBetsInput[]
+    connectOrCreate?: betOptionsCreateOrConnectWithoutBetsInput | betOptionsCreateOrConnectWithoutBetsInput[]
+    createMany?: betOptionsCreateManyBetsInputEnvelope
+    connect?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
   }
 
   export type statusCreateNestedOneWithoutBets_bets_statusTostatusInput = {
@@ -13819,29 +15448,29 @@ export namespace Prisma {
     connect?: statusWhereUniqueInput
   }
 
-  export type betDetailsUncheckedCreateNestedManyWithoutBetsInput = {
-    create?: XOR<betDetailsCreateWithoutBetsInput, betDetailsUncheckedCreateWithoutBetsInput> | betDetailsCreateWithoutBetsInput[] | betDetailsUncheckedCreateWithoutBetsInput[]
-    connectOrCreate?: betDetailsCreateOrConnectWithoutBetsInput | betDetailsCreateOrConnectWithoutBetsInput[]
-    createMany?: betDetailsCreateManyBetsInputEnvelope
-    connect?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
+  export type betOptionsUncheckedCreateNestedManyWithoutBetsInput = {
+    create?: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput> | betOptionsCreateWithoutBetsInput[] | betOptionsUncheckedCreateWithoutBetsInput[]
+    connectOrCreate?: betOptionsCreateOrConnectWithoutBetsInput | betOptionsCreateOrConnectWithoutBetsInput[]
+    createMany?: betOptionsCreateManyBetsInputEnvelope
+    connect?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
-  export type betDetailsUpdateManyWithoutBetsNestedInput = {
-    create?: XOR<betDetailsCreateWithoutBetsInput, betDetailsUncheckedCreateWithoutBetsInput> | betDetailsCreateWithoutBetsInput[] | betDetailsUncheckedCreateWithoutBetsInput[]
-    connectOrCreate?: betDetailsCreateOrConnectWithoutBetsInput | betDetailsCreateOrConnectWithoutBetsInput[]
-    upsert?: betDetailsUpsertWithWhereUniqueWithoutBetsInput | betDetailsUpsertWithWhereUniqueWithoutBetsInput[]
-    createMany?: betDetailsCreateManyBetsInputEnvelope
-    set?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
-    disconnect?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
-    delete?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
-    connect?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
-    update?: betDetailsUpdateWithWhereUniqueWithoutBetsInput | betDetailsUpdateWithWhereUniqueWithoutBetsInput[]
-    updateMany?: betDetailsUpdateManyWithWhereWithoutBetsInput | betDetailsUpdateManyWithWhereWithoutBetsInput[]
-    deleteMany?: betDetailsScalarWhereInput | betDetailsScalarWhereInput[]
+  export type betOptionsUpdateManyWithoutBetsNestedInput = {
+    create?: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput> | betOptionsCreateWithoutBetsInput[] | betOptionsUncheckedCreateWithoutBetsInput[]
+    connectOrCreate?: betOptionsCreateOrConnectWithoutBetsInput | betOptionsCreateOrConnectWithoutBetsInput[]
+    upsert?: betOptionsUpsertWithWhereUniqueWithoutBetsInput | betOptionsUpsertWithWhereUniqueWithoutBetsInput[]
+    createMany?: betOptionsCreateManyBetsInputEnvelope
+    set?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
+    disconnect?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
+    delete?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
+    connect?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
+    update?: betOptionsUpdateWithWhereUniqueWithoutBetsInput | betOptionsUpdateWithWhereUniqueWithoutBetsInput[]
+    updateMany?: betOptionsUpdateManyWithWhereWithoutBetsInput | betOptionsUpdateManyWithWhereWithoutBetsInput[]
+    deleteMany?: betOptionsScalarWhereInput | betOptionsScalarWhereInput[]
   }
 
   export type statusUpdateOneWithoutBets_bets_statusTostatusNestedInput = {
@@ -13854,18 +15483,18 @@ export namespace Prisma {
     update?: XOR<XOR<statusUpdateToOneWithWhereWithoutBets_bets_statusTostatusInput, statusUpdateWithoutBets_bets_statusTostatusInput>, statusUncheckedUpdateWithoutBets_bets_statusTostatusInput>
   }
 
-  export type betDetailsUncheckedUpdateManyWithoutBetsNestedInput = {
-    create?: XOR<betDetailsCreateWithoutBetsInput, betDetailsUncheckedCreateWithoutBetsInput> | betDetailsCreateWithoutBetsInput[] | betDetailsUncheckedCreateWithoutBetsInput[]
-    connectOrCreate?: betDetailsCreateOrConnectWithoutBetsInput | betDetailsCreateOrConnectWithoutBetsInput[]
-    upsert?: betDetailsUpsertWithWhereUniqueWithoutBetsInput | betDetailsUpsertWithWhereUniqueWithoutBetsInput[]
-    createMany?: betDetailsCreateManyBetsInputEnvelope
-    set?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
-    disconnect?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
-    delete?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
-    connect?: betDetailsWhereUniqueInput | betDetailsWhereUniqueInput[]
-    update?: betDetailsUpdateWithWhereUniqueWithoutBetsInput | betDetailsUpdateWithWhereUniqueWithoutBetsInput[]
-    updateMany?: betDetailsUpdateManyWithWhereWithoutBetsInput | betDetailsUpdateManyWithWhereWithoutBetsInput[]
-    deleteMany?: betDetailsScalarWhereInput | betDetailsScalarWhereInput[]
+  export type betOptionsUncheckedUpdateManyWithoutBetsNestedInput = {
+    create?: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput> | betOptionsCreateWithoutBetsInput[] | betOptionsUncheckedCreateWithoutBetsInput[]
+    connectOrCreate?: betOptionsCreateOrConnectWithoutBetsInput | betOptionsCreateOrConnectWithoutBetsInput[]
+    upsert?: betOptionsUpsertWithWhereUniqueWithoutBetsInput | betOptionsUpsertWithWhereUniqueWithoutBetsInput[]
+    createMany?: betOptionsCreateManyBetsInputEnvelope
+    set?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
+    disconnect?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
+    delete?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
+    connect?: betOptionsWhereUniqueInput | betOptionsWhereUniqueInput[]
+    update?: betOptionsUpdateWithWhereUniqueWithoutBetsInput | betOptionsUpdateWithWhereUniqueWithoutBetsInput[]
+    updateMany?: betOptionsUpdateManyWithWhereWithoutBetsInput | betOptionsUpdateManyWithWhereWithoutBetsInput[]
+    deleteMany?: betOptionsScalarWhereInput | betOptionsScalarWhereInput[]
   }
 
   export type usersCreateNestedManyWithoutRolesInput = {
@@ -14092,6 +15721,108 @@ export namespace Prisma {
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutUserWalletsInput, usersUpdateWithoutUserWalletsInput>, usersUncheckedUpdateWithoutUserWalletsInput>
   }
 
+  export type betOptionsCreateNestedOneWithoutBetEntriesInput = {
+    create?: XOR<betOptionsCreateWithoutBetEntriesInput, betOptionsUncheckedCreateWithoutBetEntriesInput>
+    connectOrCreate?: betOptionsCreateOrConnectWithoutBetEntriesInput
+    connect?: betOptionsWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutBetEntriesInput = {
+    create?: XOR<usersCreateWithoutBetEntriesInput, usersUncheckedCreateWithoutBetEntriesInput>
+    connectOrCreate?: usersCreateOrConnectWithoutBetEntriesInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type betOptionsUpdateOneWithoutBetEntriesNestedInput = {
+    create?: XOR<betOptionsCreateWithoutBetEntriesInput, betOptionsUncheckedCreateWithoutBetEntriesInput>
+    connectOrCreate?: betOptionsCreateOrConnectWithoutBetEntriesInput
+    upsert?: betOptionsUpsertWithoutBetEntriesInput
+    disconnect?: betOptionsWhereInput | boolean
+    delete?: betOptionsWhereInput | boolean
+    connect?: betOptionsWhereUniqueInput
+    update?: XOR<XOR<betOptionsUpdateToOneWithWhereWithoutBetEntriesInput, betOptionsUpdateWithoutBetEntriesInput>, betOptionsUncheckedUpdateWithoutBetEntriesInput>
+  }
+
+  export type usersUpdateOneWithoutBetEntriesNestedInput = {
+    create?: XOR<usersCreateWithoutBetEntriesInput, usersUncheckedCreateWithoutBetEntriesInput>
+    connectOrCreate?: usersCreateOrConnectWithoutBetEntriesInput
+    upsert?: usersUpsertWithoutBetEntriesInput
+    disconnect?: usersWhereInput | boolean
+    delete?: usersWhereInput | boolean
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutBetEntriesInput, usersUpdateWithoutBetEntriesInput>, usersUncheckedUpdateWithoutBetEntriesInput>
+  }
+
+  export type betEntriesCreateNestedManyWithoutBetOptionsInput = {
+    create?: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput> | betEntriesCreateWithoutBetOptionsInput[] | betEntriesUncheckedCreateWithoutBetOptionsInput[]
+    connectOrCreate?: betEntriesCreateOrConnectWithoutBetOptionsInput | betEntriesCreateOrConnectWithoutBetOptionsInput[]
+    createMany?: betEntriesCreateManyBetOptionsInputEnvelope
+    connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+  }
+
+  export type betsCreateNestedOneWithoutBetOptionsInput = {
+    create?: XOR<betsCreateWithoutBetOptionsInput, betsUncheckedCreateWithoutBetOptionsInput>
+    connectOrCreate?: betsCreateOrConnectWithoutBetOptionsInput
+    connect?: betsWhereUniqueInput
+  }
+
+  export type betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput = {
+    create?: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput> | betEntriesCreateWithoutBetOptionsInput[] | betEntriesUncheckedCreateWithoutBetOptionsInput[]
+    connectOrCreate?: betEntriesCreateOrConnectWithoutBetOptionsInput | betEntriesCreateOrConnectWithoutBetOptionsInput[]
+    createMany?: betEntriesCreateManyBetOptionsInputEnvelope
+    connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type betEntriesUpdateManyWithoutBetOptionsNestedInput = {
+    create?: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput> | betEntriesCreateWithoutBetOptionsInput[] | betEntriesUncheckedCreateWithoutBetOptionsInput[]
+    connectOrCreate?: betEntriesCreateOrConnectWithoutBetOptionsInput | betEntriesCreateOrConnectWithoutBetOptionsInput[]
+    upsert?: betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput | betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput[]
+    createMany?: betEntriesCreateManyBetOptionsInputEnvelope
+    set?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    disconnect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    delete?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    update?: betEntriesUpdateWithWhereUniqueWithoutBetOptionsInput | betEntriesUpdateWithWhereUniqueWithoutBetOptionsInput[]
+    updateMany?: betEntriesUpdateManyWithWhereWithoutBetOptionsInput | betEntriesUpdateManyWithWhereWithoutBetOptionsInput[]
+    deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
+  }
+
+  export type betsUpdateOneWithoutBetOptionsNestedInput = {
+    create?: XOR<betsCreateWithoutBetOptionsInput, betsUncheckedCreateWithoutBetOptionsInput>
+    connectOrCreate?: betsCreateOrConnectWithoutBetOptionsInput
+    upsert?: betsUpsertWithoutBetOptionsInput
+    disconnect?: betsWhereInput | boolean
+    delete?: betsWhereInput | boolean
+    connect?: betsWhereUniqueInput
+    update?: XOR<XOR<betsUpdateToOneWithWhereWithoutBetOptionsInput, betsUpdateWithoutBetOptionsInput>, betsUncheckedUpdateWithoutBetOptionsInput>
+  }
+
+  export type betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput = {
+    create?: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput> | betEntriesCreateWithoutBetOptionsInput[] | betEntriesUncheckedCreateWithoutBetOptionsInput[]
+    connectOrCreate?: betEntriesCreateOrConnectWithoutBetOptionsInput | betEntriesCreateOrConnectWithoutBetOptionsInput[]
+    upsert?: betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput | betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput[]
+    createMany?: betEntriesCreateManyBetOptionsInputEnvelope
+    set?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    disconnect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    delete?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
+    update?: betEntriesUpdateWithWhereUniqueWithoutBetOptionsInput | betEntriesUpdateWithWhereUniqueWithoutBetOptionsInput[]
+    updateMany?: betEntriesUpdateManyWithWhereWithoutBetOptionsInput | betEntriesUpdateManyWithWhereWithoutBetOptionsInput[]
+    deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -14197,22 +15928,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -14336,6 +16051,58 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type betEntriesCreateWithoutUsersInput = {
+    amount: number
+    isWinner?: boolean
+    betOptions?: betOptionsCreateNestedOneWithoutBetEntriesInput
+  }
+
+  export type betEntriesUncheckedCreateWithoutUsersInput = {
+    id?: number
+    optionId?: number | null
+    amount: number
+    isWinner?: boolean
+  }
+
+  export type betEntriesCreateOrConnectWithoutUsersInput = {
+    where: betEntriesWhereUniqueInput
+    create: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput>
+  }
+
+  export type betEntriesCreateManyUsersInputEnvelope = {
+    data: betEntriesCreateManyUsersInput | betEntriesCreateManyUsersInput[]
+    skipDuplicates?: boolean
+  }
+
   export type tradeOffersCreateWithoutUsersInput = {
     id?: bigint | number
     value: number
@@ -14445,6 +16212,33 @@ export namespace Prisma {
   export type rolesCreateOrConnectWithoutUsersInput = {
     where: rolesWhereUniqueInput
     create: XOR<rolesCreateWithoutUsersInput, rolesUncheckedCreateWithoutUsersInput>
+  }
+
+  export type betEntriesUpsertWithWhereUniqueWithoutUsersInput = {
+    where: betEntriesWhereUniqueInput
+    update: XOR<betEntriesUpdateWithoutUsersInput, betEntriesUncheckedUpdateWithoutUsersInput>
+    create: XOR<betEntriesCreateWithoutUsersInput, betEntriesUncheckedCreateWithoutUsersInput>
+  }
+
+  export type betEntriesUpdateWithWhereUniqueWithoutUsersInput = {
+    where: betEntriesWhereUniqueInput
+    data: XOR<betEntriesUpdateWithoutUsersInput, betEntriesUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type betEntriesUpdateManyWithWhereWithoutUsersInput = {
+    where: betEntriesScalarWhereInput
+    data: XOR<betEntriesUpdateManyMutationInput, betEntriesUncheckedUpdateManyWithoutUsersInput>
+  }
+
+  export type betEntriesScalarWhereInput = {
+    AND?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
+    OR?: betEntriesScalarWhereInput[]
+    NOT?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
+    id?: IntFilter<"betEntries"> | number
+    optionId?: IntNullableFilter<"betEntries"> | number | null
+    userId?: IntNullableFilter<"betEntries"> | number | null
+    amount?: IntFilter<"betEntries"> | number
+    isWinner?: BoolFilter<"betEntries"> | boolean
   }
 
   export type tradeOffersUpsertWithWhereUniqueWithoutUsersInput = {
@@ -14559,72 +16353,30 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type betsCreateWithoutBetDetailsInput = {
+  export type betOptionsCreateWithoutBetsInput = {
     description: string
-    created_at?: Date | string
-    deadline_at: Date | string
-    status_bets_statusTostatus?: statusCreateNestedOneWithoutBets_bets_statusTostatusInput
+    amount: number
+    isWinner?: boolean
+    quote: number
+    betEntries?: betEntriesCreateNestedManyWithoutBetOptionsInput
   }
 
-  export type betsUncheckedCreateWithoutBetDetailsInput = {
+  export type betOptionsUncheckedCreateWithoutBetsInput = {
     id?: number
     description: string
-    created_at?: Date | string
-    deadline_at: Date | string
-    status?: number | null
-  }
-
-  export type betsCreateOrConnectWithoutBetDetailsInput = {
-    where: betsWhereUniqueInput
-    create: XOR<betsCreateWithoutBetDetailsInput, betsUncheckedCreateWithoutBetDetailsInput>
-  }
-
-  export type betsUpsertWithoutBetDetailsInput = {
-    update: XOR<betsUpdateWithoutBetDetailsInput, betsUncheckedUpdateWithoutBetDetailsInput>
-    create: XOR<betsCreateWithoutBetDetailsInput, betsUncheckedCreateWithoutBetDetailsInput>
-    where?: betsWhereInput
-  }
-
-  export type betsUpdateToOneWithWhereWithoutBetDetailsInput = {
-    where?: betsWhereInput
-    data: XOR<betsUpdateWithoutBetDetailsInput, betsUncheckedUpdateWithoutBetDetailsInput>
-  }
-
-  export type betsUpdateWithoutBetDetailsInput = {
-    description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_bets_statusTostatus?: statusUpdateOneWithoutBets_bets_statusTostatusNestedInput
-  }
-
-  export type betsUncheckedUpdateWithoutBetDetailsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type betDetailsCreateWithoutBetsInput = {
-    description: string
+    amount: number
+    isWinner?: boolean
     quote: number
-    value: number
+    betEntries?: betEntriesUncheckedCreateNestedManyWithoutBetOptionsInput
   }
 
-  export type betDetailsUncheckedCreateWithoutBetsInput = {
-    id?: number
-    description: string
-    quote: number
-    value: number
+  export type betOptionsCreateOrConnectWithoutBetsInput = {
+    where: betOptionsWhereUniqueInput
+    create: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput>
   }
 
-  export type betDetailsCreateOrConnectWithoutBetsInput = {
-    where: betDetailsWhereUniqueInput
-    create: XOR<betDetailsCreateWithoutBetsInput, betDetailsUncheckedCreateWithoutBetsInput>
-  }
-
-  export type betDetailsCreateManyBetsInputEnvelope = {
-    data: betDetailsCreateManyBetsInput | betDetailsCreateManyBetsInput[]
+  export type betOptionsCreateManyBetsInputEnvelope = {
+    data: betOptionsCreateManyBetsInput | betOptionsCreateManyBetsInput[]
     skipDuplicates?: boolean
   }
 
@@ -14642,31 +16394,32 @@ export namespace Prisma {
     create: XOR<statusCreateWithoutBets_bets_statusTostatusInput, statusUncheckedCreateWithoutBets_bets_statusTostatusInput>
   }
 
-  export type betDetailsUpsertWithWhereUniqueWithoutBetsInput = {
-    where: betDetailsWhereUniqueInput
-    update: XOR<betDetailsUpdateWithoutBetsInput, betDetailsUncheckedUpdateWithoutBetsInput>
-    create: XOR<betDetailsCreateWithoutBetsInput, betDetailsUncheckedCreateWithoutBetsInput>
+  export type betOptionsUpsertWithWhereUniqueWithoutBetsInput = {
+    where: betOptionsWhereUniqueInput
+    update: XOR<betOptionsUpdateWithoutBetsInput, betOptionsUncheckedUpdateWithoutBetsInput>
+    create: XOR<betOptionsCreateWithoutBetsInput, betOptionsUncheckedCreateWithoutBetsInput>
   }
 
-  export type betDetailsUpdateWithWhereUniqueWithoutBetsInput = {
-    where: betDetailsWhereUniqueInput
-    data: XOR<betDetailsUpdateWithoutBetsInput, betDetailsUncheckedUpdateWithoutBetsInput>
+  export type betOptionsUpdateWithWhereUniqueWithoutBetsInput = {
+    where: betOptionsWhereUniqueInput
+    data: XOR<betOptionsUpdateWithoutBetsInput, betOptionsUncheckedUpdateWithoutBetsInput>
   }
 
-  export type betDetailsUpdateManyWithWhereWithoutBetsInput = {
-    where: betDetailsScalarWhereInput
-    data: XOR<betDetailsUpdateManyMutationInput, betDetailsUncheckedUpdateManyWithoutBetsInput>
+  export type betOptionsUpdateManyWithWhereWithoutBetsInput = {
+    where: betOptionsScalarWhereInput
+    data: XOR<betOptionsUpdateManyMutationInput, betOptionsUncheckedUpdateManyWithoutBetsInput>
   }
 
-  export type betDetailsScalarWhereInput = {
-    AND?: betDetailsScalarWhereInput | betDetailsScalarWhereInput[]
-    OR?: betDetailsScalarWhereInput[]
-    NOT?: betDetailsScalarWhereInput | betDetailsScalarWhereInput[]
-    id?: IntFilter<"betDetails"> | number
-    betId?: IntNullableFilter<"betDetails"> | number | null
-    description?: StringFilter<"betDetails"> | string
-    quote?: FloatFilter<"betDetails"> | number
-    value?: IntFilter<"betDetails"> | number
+  export type betOptionsScalarWhereInput = {
+    AND?: betOptionsScalarWhereInput | betOptionsScalarWhereInput[]
+    OR?: betOptionsScalarWhereInput[]
+    NOT?: betOptionsScalarWhereInput | betOptionsScalarWhereInput[]
+    id?: IntFilter<"betOptions"> | number
+    betId?: IntNullableFilter<"betOptions"> | number | null
+    description?: StringFilter<"betOptions"> | string
+    amount?: IntFilter<"betOptions"> | number
+    isWinner?: BoolFilter<"betOptions"> | boolean
+    quote?: FloatFilter<"betOptions"> | number
   }
 
   export type statusUpsertWithoutBets_bets_statusTostatusInput = {
@@ -14690,10 +16443,10 @@ export namespace Prisma {
   }
 
   export type usersCreateWithoutRolesInput = {
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
+    betEntries?: betEntriesCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
@@ -14702,10 +16455,10 @@ export namespace Prisma {
 
   export type usersUncheckedCreateWithoutRolesInput = {
     id?: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
+    betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
@@ -14743,8 +16496,7 @@ export namespace Prisma {
     OR?: usersScalarWhereInput[]
     NOT?: usersScalarWhereInput | usersScalarWhereInput[]
     id?: IntFilter<"users"> | number
-    firstName?: StringFilter<"users"> | string
-    lastName?: StringFilter<"users"> | string
+    name?: StringFilter<"users"> | string
     username?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     role?: IntNullableFilter<"users"> | number | null
@@ -14752,17 +16504,21 @@ export namespace Prisma {
 
   export type betsCreateWithoutStatus_bets_statusTostatusInput = {
     description: string
-    created_at?: Date | string
-    deadline_at: Date | string
-    betDetails?: betDetailsCreateNestedManyWithoutBetsInput
+    createdAt?: Date | string
+    deadlineAt: Date | string
+    participants?: number
+    amount?: number
+    betOptions?: betOptionsCreateNestedManyWithoutBetsInput
   }
 
   export type betsUncheckedCreateWithoutStatus_bets_statusTostatusInput = {
     id?: number
     description: string
-    created_at?: Date | string
-    deadline_at: Date | string
-    betDetails?: betDetailsUncheckedCreateNestedManyWithoutBetsInput
+    createdAt?: Date | string
+    deadlineAt: Date | string
+    participants?: number
+    amount?: number
+    betOptions?: betOptionsUncheckedCreateNestedManyWithoutBetsInput
   }
 
   export type betsCreateOrConnectWithoutStatus_bets_statusTostatusInput = {
@@ -14797,9 +16553,11 @@ export namespace Prisma {
     NOT?: betsScalarWhereInput | betsScalarWhereInput[]
     id?: IntFilter<"bets"> | number
     description?: StringFilter<"bets"> | string
-    created_at?: DateTimeFilter<"bets"> | Date | string
-    deadline_at?: DateTimeFilter<"bets"> | Date | string
+    createdAt?: DateTimeFilter<"bets"> | Date | string
+    deadlineAt?: DateTimeFilter<"bets"> | Date | string
     status?: IntNullableFilter<"bets"> | number | null
+    participants?: IntFilter<"bets"> | number
+    amount?: IntFilter<"bets"> | number
   }
 
   export type tradesCreateWithoutTradeOffersInput = {
@@ -14827,10 +16585,10 @@ export namespace Prisma {
   }
 
   export type usersCreateWithoutTradeOffersInput = {
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
+    betEntries?: betEntriesCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
@@ -14839,11 +16597,11 @@ export namespace Prisma {
 
   export type usersUncheckedCreateWithoutTradeOffersInput = {
     id?: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
     role?: number | null
+    betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
@@ -14896,10 +16654,10 @@ export namespace Prisma {
   }
 
   export type usersUpdateWithoutTradeOffersInput = {
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
@@ -14908,11 +16666,11 @@ export namespace Prisma {
 
   export type usersUncheckedUpdateWithoutTradeOffersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
+    betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
@@ -14945,10 +16703,10 @@ export namespace Prisma {
   }
 
   export type usersCreateWithoutTrades_trades_customerIdTousersInput = {
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
+    betEntries?: betEntriesCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
@@ -14957,11 +16715,11 @@ export namespace Prisma {
 
   export type usersUncheckedCreateWithoutTrades_trades_customerIdTousersInput = {
     id?: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
     role?: number | null
+    betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
@@ -14973,10 +16731,10 @@ export namespace Prisma {
   }
 
   export type usersCreateWithoutTrades_trades_supplierIdTousersInput = {
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
+    betEntries?: betEntriesCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
@@ -14985,11 +16743,11 @@ export namespace Prisma {
 
   export type usersUncheckedCreateWithoutTrades_trades_supplierIdTousersInput = {
     id?: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
     role?: number | null
+    betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
@@ -15028,10 +16786,10 @@ export namespace Prisma {
   }
 
   export type usersUpdateWithoutTrades_trades_customerIdTousersInput = {
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
@@ -15040,11 +16798,11 @@ export namespace Prisma {
 
   export type usersUncheckedUpdateWithoutTrades_trades_customerIdTousersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
+    betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
@@ -15062,10 +16820,10 @@ export namespace Prisma {
   }
 
   export type usersUpdateWithoutTrades_trades_supplierIdTousersInput = {
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
@@ -15074,21 +16832,21 @@ export namespace Prisma {
 
   export type usersUncheckedUpdateWithoutTrades_trades_supplierIdTousersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
+    betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
 
   export type usersCreateWithoutUserWalletsInput = {
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
+    betEntries?: betEntriesCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
@@ -15097,11 +16855,11 @@ export namespace Prisma {
 
   export type usersUncheckedCreateWithoutUserWalletsInput = {
     id?: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
     role?: number | null
+    betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
     tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
@@ -15124,10 +16882,10 @@ export namespace Prisma {
   }
 
   export type usersUpdateWithoutUserWalletsInput = {
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
@@ -15136,14 +16894,226 @@ export namespace Prisma {
 
   export type usersUncheckedUpdateWithoutUserWalletsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: NullableIntFieldUpdateOperationsInput | number | null
+    betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
+    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
+    trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
+    trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
+  }
+
+  export type betOptionsCreateWithoutBetEntriesInput = {
+    description: string
+    amount: number
+    isWinner?: boolean
+    quote: number
+    bets?: betsCreateNestedOneWithoutBetOptionsInput
+  }
+
+  export type betOptionsUncheckedCreateWithoutBetEntriesInput = {
+    id?: number
+    betId?: number | null
+    description: string
+    amount: number
+    isWinner?: boolean
+    quote: number
+  }
+
+  export type betOptionsCreateOrConnectWithoutBetEntriesInput = {
+    where: betOptionsWhereUniqueInput
+    create: XOR<betOptionsCreateWithoutBetEntriesInput, betOptionsUncheckedCreateWithoutBetEntriesInput>
+  }
+
+  export type usersCreateWithoutBetEntriesInput = {
+    name: string
+    username: string
+    password: string
+    tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
+    trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
+    trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
+    userWallets?: userWalletsCreateNestedOneWithoutUsersInput
+    roles?: rolesCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutBetEntriesInput = {
+    id?: number
+    name: string
+    username: string
+    password: string
+    role?: number | null
+    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
+    trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
+    trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
+    userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutBetEntriesInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutBetEntriesInput, usersUncheckedCreateWithoutBetEntriesInput>
+  }
+
+  export type betOptionsUpsertWithoutBetEntriesInput = {
+    update: XOR<betOptionsUpdateWithoutBetEntriesInput, betOptionsUncheckedUpdateWithoutBetEntriesInput>
+    create: XOR<betOptionsCreateWithoutBetEntriesInput, betOptionsUncheckedCreateWithoutBetEntriesInput>
+    where?: betOptionsWhereInput
+  }
+
+  export type betOptionsUpdateToOneWithWhereWithoutBetEntriesInput = {
+    where?: betOptionsWhereInput
+    data: XOR<betOptionsUpdateWithoutBetEntriesInput, betOptionsUncheckedUpdateWithoutBetEntriesInput>
+  }
+
+  export type betOptionsUpdateWithoutBetEntriesInput = {
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    quote?: FloatFieldUpdateOperationsInput | number
+    bets?: betsUpdateOneWithoutBetOptionsNestedInput
+  }
+
+  export type betOptionsUncheckedUpdateWithoutBetEntriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    betId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    quote?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type usersUpsertWithoutBetEntriesInput = {
+    update: XOR<usersUpdateWithoutBetEntriesInput, usersUncheckedUpdateWithoutBetEntriesInput>
+    create: XOR<usersCreateWithoutBetEntriesInput, usersUncheckedCreateWithoutBetEntriesInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutBetEntriesInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutBetEntriesInput, usersUncheckedUpdateWithoutBetEntriesInput>
+  }
+
+  export type usersUpdateWithoutBetEntriesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
+    trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
+    trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
+    userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
+    roles?: rolesUpdateOneWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutBetEntriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
     tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
+    userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
+  }
+
+  export type betEntriesCreateWithoutBetOptionsInput = {
+    amount: number
+    isWinner?: boolean
+    users?: usersCreateNestedOneWithoutBetEntriesInput
+  }
+
+  export type betEntriesUncheckedCreateWithoutBetOptionsInput = {
+    id?: number
+    userId?: number | null
+    amount: number
+    isWinner?: boolean
+  }
+
+  export type betEntriesCreateOrConnectWithoutBetOptionsInput = {
+    where: betEntriesWhereUniqueInput
+    create: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput>
+  }
+
+  export type betEntriesCreateManyBetOptionsInputEnvelope = {
+    data: betEntriesCreateManyBetOptionsInput | betEntriesCreateManyBetOptionsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type betsCreateWithoutBetOptionsInput = {
+    description: string
+    createdAt?: Date | string
+    deadlineAt: Date | string
+    participants?: number
+    amount?: number
+    status_bets_statusTostatus?: statusCreateNestedOneWithoutBets_bets_statusTostatusInput
+  }
+
+  export type betsUncheckedCreateWithoutBetOptionsInput = {
+    id?: number
+    description: string
+    createdAt?: Date | string
+    deadlineAt: Date | string
+    status?: number | null
+    participants?: number
+    amount?: number
+  }
+
+  export type betsCreateOrConnectWithoutBetOptionsInput = {
+    where: betsWhereUniqueInput
+    create: XOR<betsCreateWithoutBetOptionsInput, betsUncheckedCreateWithoutBetOptionsInput>
+  }
+
+  export type betEntriesUpsertWithWhereUniqueWithoutBetOptionsInput = {
+    where: betEntriesWhereUniqueInput
+    update: XOR<betEntriesUpdateWithoutBetOptionsInput, betEntriesUncheckedUpdateWithoutBetOptionsInput>
+    create: XOR<betEntriesCreateWithoutBetOptionsInput, betEntriesUncheckedCreateWithoutBetOptionsInput>
+  }
+
+  export type betEntriesUpdateWithWhereUniqueWithoutBetOptionsInput = {
+    where: betEntriesWhereUniqueInput
+    data: XOR<betEntriesUpdateWithoutBetOptionsInput, betEntriesUncheckedUpdateWithoutBetOptionsInput>
+  }
+
+  export type betEntriesUpdateManyWithWhereWithoutBetOptionsInput = {
+    where: betEntriesScalarWhereInput
+    data: XOR<betEntriesUpdateManyMutationInput, betEntriesUncheckedUpdateManyWithoutBetOptionsInput>
+  }
+
+  export type betsUpsertWithoutBetOptionsInput = {
+    update: XOR<betsUpdateWithoutBetOptionsInput, betsUncheckedUpdateWithoutBetOptionsInput>
+    create: XOR<betsCreateWithoutBetOptionsInput, betsUncheckedCreateWithoutBetOptionsInput>
+    where?: betsWhereInput
+  }
+
+  export type betsUpdateToOneWithWhereWithoutBetOptionsInput = {
+    where?: betsWhereInput
+    data: XOR<betsUpdateWithoutBetOptionsInput, betsUncheckedUpdateWithoutBetOptionsInput>
+  }
+
+  export type betsUpdateWithoutBetOptionsInput = {
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    status_bets_statusTostatus?: statusUpdateOneWithoutBets_bets_statusTostatusNestedInput
+  }
+
+  export type betsUncheckedUpdateWithoutBetOptionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type betEntriesCreateManyUsersInput = {
+    id?: number
+    optionId?: number | null
+    amount: number
+    isWinner?: boolean
   }
 
   export type tradeOffersCreateManyUsersInput = {
@@ -15170,6 +17140,26 @@ export namespace Prisma {
     createdAt?: Date | string
     deadlineAt?: Date | string | null
     tradedAt?: Date | string | null
+  }
+
+  export type betEntriesUpdateWithoutUsersInput = {
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    betOptions?: betOptionsUpdateOneWithoutBetEntriesNestedInput
+  }
+
+  export type betEntriesUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    optionId?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type betEntriesUncheckedUpdateManyWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    optionId?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type tradeOffersUpdateWithoutUsersInput = {
@@ -15252,46 +17242,51 @@ export namespace Prisma {
     tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type betDetailsCreateManyBetsInput = {
+  export type betOptionsCreateManyBetsInput = {
     id?: number
     description: string
+    amount: number
+    isWinner?: boolean
     quote: number
-    value: number
   }
 
-  export type betDetailsUpdateWithoutBetsInput = {
+  export type betOptionsUpdateWithoutBetsInput = {
     description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    betEntries?: betEntriesUpdateManyWithoutBetOptionsNestedInput
   }
 
-  export type betDetailsUncheckedUpdateWithoutBetsInput = {
+  export type betOptionsUncheckedUpdateWithoutBetsInput = {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
+    betEntries?: betEntriesUncheckedUpdateManyWithoutBetOptionsNestedInput
   }
 
-  export type betDetailsUncheckedUpdateManyWithoutBetsInput = {
+  export type betOptionsUncheckedUpdateManyWithoutBetsInput = {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
     quote?: FloatFieldUpdateOperationsInput | number
-    value?: IntFieldUpdateOperationsInput | number
   }
 
   export type usersCreateManyRolesInput = {
     id?: number
-    firstName: string
-    lastName: string
+    name: string
     username: string
     password: string
   }
 
   export type usersUpdateWithoutRolesInput = {
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
@@ -15300,10 +17295,10 @@ export namespace Prisma {
 
   export type usersUncheckedUpdateWithoutRolesInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
     tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
@@ -15312,8 +17307,7 @@ export namespace Prisma {
 
   export type usersUncheckedUpdateManyWithoutRolesInput = {
     id?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
@@ -15321,30 +17315,38 @@ export namespace Prisma {
   export type betsCreateManyStatus_bets_statusTostatusInput = {
     id?: number
     description: string
-    created_at?: Date | string
-    deadline_at: Date | string
+    createdAt?: Date | string
+    deadlineAt: Date | string
+    participants?: number
+    amount?: number
   }
 
   export type betsUpdateWithoutStatus_bets_statusTostatusInput = {
     description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    betDetails?: betDetailsUpdateManyWithoutBetsNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    betOptions?: betOptionsUpdateManyWithoutBetsNestedInput
   }
 
   export type betsUncheckedUpdateWithoutStatus_bets_statusTostatusInput = {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    betDetails?: betDetailsUncheckedUpdateManyWithoutBetsNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    betOptions?: betOptionsUncheckedUpdateManyWithoutBetsNestedInput
   }
 
   export type betsUncheckedUpdateManyWithoutStatus_bets_statusTostatusInput = {
     id?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadline_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
   }
 
   export type tradeOffersCreateManyTradesInput = {
@@ -15377,6 +17379,33 @@ export namespace Prisma {
     value?: IntFieldUpdateOperationsInput | number
     isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type betEntriesCreateManyBetOptionsInput = {
+    id?: number
+    userId?: number | null
+    amount: number
+    isWinner?: boolean
+  }
+
+  export type betEntriesUpdateWithoutBetOptionsInput = {
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+    users?: usersUpdateOneWithoutBetEntriesNestedInput
+  }
+
+  export type betEntriesUncheckedUpdateWithoutBetOptionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type betEntriesUncheckedUpdateManyWithoutBetOptionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    isWinner?: BoolFieldUpdateOperationsInput | boolean
   }
 
 

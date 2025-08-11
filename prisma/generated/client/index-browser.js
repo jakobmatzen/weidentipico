@@ -122,27 +122,20 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
-  firstName: 'firstName',
-  lastName: 'lastName',
+  name: 'name',
   username: 'username',
   password: 'password',
   role: 'role'
 };
 
-exports.Prisma.BetDetailsScalarFieldEnum = {
-  id: 'id',
-  betId: 'betId',
-  description: 'description',
-  quote: 'quote',
-  value: 'value'
-};
-
 exports.Prisma.BetsScalarFieldEnum = {
   id: 'id',
   description: 'description',
-  created_at: 'created_at',
-  deadline_at: 'deadline_at',
-  status: 'status'
+  createdAt: 'createdAt',
+  deadlineAt: 'deadlineAt',
+  status: 'status',
+  participants: 'participants',
+  amount: 'amount'
 };
 
 exports.Prisma.RolesScalarFieldEnum = {
@@ -184,6 +177,23 @@ exports.Prisma.UserWalletsScalarFieldEnum = {
   balance: 'balance'
 };
 
+exports.Prisma.BetEntriesScalarFieldEnum = {
+  id: 'id',
+  optionId: 'optionId',
+  userId: 'userId',
+  amount: 'amount',
+  isWinner: 'isWinner'
+};
+
+exports.Prisma.BetOptionsScalarFieldEnum = {
+  id: 'id',
+  betId: 'betId',
+  description: 'description',
+  amount: 'amount',
+  isWinner: 'isWinner',
+  quote: 'quote'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -202,14 +212,15 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   users: 'users',
-  betDetails: 'betDetails',
   bets: 'bets',
   roles: 'roles',
   services: 'services',
   status: 'status',
   tradeOffers: 'tradeOffers',
   trades: 'trades',
-  userWallets: 'userWallets'
+  userWallets: 'userWallets',
+  betEntries: 'betEntries',
+  betOptions: 'betOptions'
 };
 
 /**

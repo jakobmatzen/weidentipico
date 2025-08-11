@@ -2,7 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -13,6 +13,7 @@
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
+    "@internationalized/date": "^3.8.2",
     "@nuxt/eslint": "1.7.0",
     "@nuxt/image": "1.10.0",
     "@nuxt/kit": "^4.0.1",
