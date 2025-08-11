@@ -89,7 +89,7 @@ export const betRouter = router({
               amount: input.amount
             }
           })
-          await prisma.bets.update({
+          const bet = await prisma.bets.update({
             where: {
               id: input.betId
             },
@@ -102,22 +102,46 @@ export const betRouter = router({
               }
             }
           })
-          await prisma.betOptions.update({
+          const betOptions = await prisma.betOptions.findMany({
             where: {
-              id: input.betEntry.optionId
-            },
-            data: {
-              amount: {
-                increment: input.amount
-              },
-              quote: input.quote
+              betId: input.betId
             }
           })
+          const updatePromises = betOptions.map((option) => {
+            if (option.id === input.betEntry.optionId) {
+              return prisma.betOptions.update({
+                where: {
+                  id: option.id
+                },
+                data: {
+                  amount: {
+                    increment: input.amount
+                  },
+                  quote: input.quote
+                }
+              })
+            }
+            else if (option.amount > 0) {
+              const newQuote = bet.amount / option.amount
+              return prisma.betOptions.update({
+                where: {
+                  id: option.id
+                },
+                data: {
+                  quote: newQuote
+                }
+              })
+            }
+            else {
+              return null
+            }
+          })
+          await Promise.all(updatePromises)
         })
       }
       catch (error) {
         console.log(error)
-        throw new Error('Fehler beim Erstellen der Wette.')
+        throw new Error('Fehler beim Platzieren der Wette.')
       }
     }),
   closeBet: publicProcedure
