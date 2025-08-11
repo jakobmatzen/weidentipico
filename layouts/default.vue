@@ -5,7 +5,7 @@ import { LazySharedLogoutDialog } from '#components'
 const { user } = storeToRefs(useUserStore())
 
 const links = computed<NavigationMenuItem[]>(() => [[{
-  label: 'Wetten',
+  label: `Wetten (${useBetStore().getBets.length})`,
   icon: 'i-lucide-dices',
   to: '/'
 }, {
@@ -26,7 +26,7 @@ const links = computed<NavigationMenuItem[]>(() => [[{
   label: 'Leaderboard',
   icon: 'i-lucide-chart-no-axes-column',
 }, {
-  label: 'Hinterzimmer',
+  label: `Hinterzimmer (${useBetStore().getBetsForAdminOpen.length})`,
   icon: 'i-lucide-door-closed-locked',
   to: '/hinterzimmer',
   class: user.value?.role === 1 ? '' : 'hidden'

@@ -8,7 +8,7 @@ const props = defineProps<{
 
 const emit = defineEmits(['close'])
 
-const selectedOption = ref<RadioGroupValue>(props.bet.betOptions![0].id)
+const selectedOption = ref<RadioGroupValue>(props.bet.status === 1 ? props.bet.betOptions![0].id : props.bet.betOptions!.find(option => option.isWinner)!.id)
 
 async function payout() {
   const error = await useBetStore().payout(props.bet, selectedOption.value as number)
@@ -39,9 +39,10 @@ async function payout() {
             <URadioGroup
               v-model="selectedOption" :items="props.bet.betOptions" value-key="id"
               :description="false"
+              :disabled="props.bet.status === 2"
             >
               <template #label="{ item }">
-                <span>{{ item.description }}</span>
+                <span>{{ `${item.description} ${item.isWinner ? '(Gewinner)' : ''}` }}</span>
               </template>
               <template #description="{ item }">
                 <div class="flex justify-between items-center">
@@ -64,7 +65,7 @@ async function payout() {
     </template>
     <template #footer="{ close }">
       <UButton label="Schließen" variant="outline" color="neutral" size="sm" @click="close()" />
-      <UButton label="Auszahlen" color="primary" class="ml-2" size="sm" @click="payout()" />
+      <UButton v-if="props.bet.status === 1" label="Auszahlen" color="primary" class="ml-2" size="sm" @click="payout()" />
     </template>
   </UModal>
 </template>

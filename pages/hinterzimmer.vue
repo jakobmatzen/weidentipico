@@ -1,12 +1,26 @@
 <script setup lang="ts">
+import type { TabsItem } from '@nuxt/ui'
 import { betFilterOptions } from '~/constants/BetFilter'
 
 definePageMeta({
   middleware: ['redirect-non-admin', 'redirect-login']
 })
 
-const { getBetsForAdmin } = storeToRefs(useBetStore())
+const { getBetsForAdminOpen, getBetsForAdminClosed } = storeToRefs(useBetStore())
 const { betForm } = storeToRefs(useFormStore())
+
+const items = computed<TabsItem[]>(() => [
+  {
+    label: `Offen (${getBetsForAdminOpen.value.length})`,
+    icon: 'i-lucide-clipboard-check',
+    slot: 'open-tasks' as const
+  },
+  {
+    label: `Geschlossen (${getBetsForAdminClosed.value.length})`,
+    icon: 'i-lucide-archive',
+    slot: 'archive' as const
+  }
+])
 </script>
 
 <template>
@@ -19,9 +33,18 @@ const { betForm } = storeToRefs(useFormStore())
         </UButtonGroup>
       </div>
     </div>
-    <div class="flex-1 overflow-y-auto px-5 mt-4">
-      <BetsBetCard v-for="bet in getBetsForAdmin" :key="bet.id" :bet="bet" :hinterzimmer="true" />
-    </div>
+    <UTabs :items="items" variant="link" class="w-full h-full flex flex-col mt-4" :ui="{ content: 'flex flex-col h-full' }" size="sm">
+      <template #open-tasks>
+        <div class="max-h-[27rem] overflow-y-auto px-5 mt-2">
+          <BetsBetCard v-for="bet in getBetsForAdminOpen" :key="bet.id" :bet="bet" :hinterzimmer="true" />
+        </div>
+      </template>
+      <template #archive>
+        <div class="max-h-[27rem] overflow-y-auto px-5 mt-2">
+          <BetsBetCard v-for="bet in getBetsForAdminClosed" :key="bet.id" :bet="bet" :hinterzimmer="true" />
+        </div>
+      </template>
+    </UTabs>
   </div>
   <div v-else class="h-full flex flex-col justify-center px-2 py-6">
     <span class="text-center italic text-xl text-neutral-500">Daten werden geladen...</span>

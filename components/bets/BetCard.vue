@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Bet } from '~/models/Bet'
-import { LazyBetsBetDetailsEntry, LazyBetsBetDetailsPayout } from '#components'
+import { LazyBetsBetDetails, LazyBetsBetDetailsAdmin } from '#components'
 
 const props = defineProps<{
   bet: Bet
@@ -13,10 +13,10 @@ function openBetDetails() {
     return
   }
   if (props.hinterzimmer) {
-    useOverlay().create(LazyBetsBetDetailsPayout).open({ bet: props.bet })
+    useOverlay().create(LazyBetsBetDetailsAdmin).open({ bet: props.bet })
   }
   else {
-    useOverlay().create(LazyBetsBetDetailsEntry).open({ bet: props.bet })
+    useOverlay().create(LazyBetsBetDetails).open({ bet: props.bet })
   }
 }
 </script>
