@@ -16,7 +16,7 @@ const { betForm } = storeToRefs(useFormStore())
       <div class="flex items-center">
         <UButtonGroup size="sm">
           <USelect v-model="betForm.selectedBetFilterOption" :items="betFilterOptions" icon="i-lucide-filter" />
-          <UButton v-model="betForm.selectedSort" variant="outline" color="neutral" :icon="betForm.selectedSort === 'asc' ? 'i-lucide-arrow-up' : 'i-lucide-arrow-down'" @click="betForm.selectedSort = betForm.selectedSort === 'asc' ? 'desc' : 'asc'" />
+          <UButton v-model="betForm.selectedSort" variant="outline" color="neutral" :icon="betForm.selectedSort === 'asc' ? 'i-heroicons-bars-arrow-up' : 'i-heroicons-bars-arrow-down'" @click="betForm.selectedSort = betForm.selectedSort === 'asc' ? 'desc' : 'asc'" />
         </UButtonGroup>
       </div>
       <UButton label="Erstellen" icon="i-lucide-circle-fading-plus" variant="outline" size="sm" @click="useFormStore().$reset(), useOverlay().create(LazyBetsAddBetDialog).open()" />

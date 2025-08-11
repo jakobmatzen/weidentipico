@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'login'
+  layout: 'login',
+  middleware: 'redirect-home'
 })
 
 const { loginForm } = storeToRefs(useFormStore())

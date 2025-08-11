@@ -87,6 +87,7 @@ model betEntries {
   optionId   Int?
   userId     Int?
   amount     Int
+  isWinner   Boolean     @default(false)
   betOptions betOptions? @relation(fields: [optionId], references: [id], onDelete: Restrict)
   users      users?      @relation(fields: [userId], references: [id], onDelete: Restrict)
 }
@@ -96,8 +97,9 @@ model betOptions {
   id          Int          @id(map: "betDetails_pkey") @default(autoincrement())
   betId       Int?
   description String
-  votes       Int
   amount      Int
+  isWinner    Boolean      @default(false)
+  quote       Float        @db.Real
   betEntries  betEntries[]
   bets        bets?        @relation(fields: [betId], references: [id], onDelete: Restrict, map: "betDetails_betId_fkey")
 }

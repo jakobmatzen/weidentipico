@@ -16,12 +16,12 @@ export const useBetStore = defineStore('betStore', {
     getBets: (state) => {
       const userId = useUserStore().user?.id
       const formStore = useFormStore()
-      let filteredBets = state.bets.filter(bet => {
+      const filteredBets = state.bets.filter((bet) => {
         if (bet.deadlineAt < new Date()) {
           return false
         }
         if (userId && bet.betOptions) {
-          const userHasBet = bet.betOptions.some(option => 
+          const userHasBet = bet.betOptions.some(option =>
             option.betEntries?.some(entry => entry.userId === userId)
           )
           if (userHasBet) {
@@ -50,9 +50,8 @@ export const useBetStore = defineStore('betStore', {
       return filteredBets
     },
     getBetsForAdmin: (state) => {
-      const userId = useUserStore().user?.id
       const formStore = useFormStore()
-      let filteredBets = state.bets.filter(bet => {
+      const filteredBets = state.bets.filter((bet) => {
         if (bet.deadlineAt > new Date()) {
           return false
         }
@@ -111,15 +110,42 @@ export const useBetStore = defineStore('betStore', {
         return error
       }
     },
-    async placeBet(betId: number, betEntry: BetEntry, amount: number) {
+    async placeBet(betId: number, betEntry: BetEntry, amount: number, quote: number) {
       this.loading = true
       try {
         const { $trpc } = useNuxtApp()
         await $trpc.bets.placeBet.mutate({
           betId,
           betEntry: betEntry.toJson(),
-          amount
+          amount,
+          quote
         })
+        this.loading = false
+      }
+      catch (error) {
+        useNotificationStore().addError(useNotificationStore().getErrorMessage(error))
+        this.loading = false
+        return error
+      }
+    },
+    async closeBet(betId: number) {
+      this.loading = true
+      try {
+        const { $trpc } = useNuxtApp()
+        await $trpc.bets.closeBet.mutate({ betId })
+        this.loading = false
+      }
+      catch (error) {
+        useNotificationStore().addError(useNotificationStore().getErrorMessage(error))
+        this.loading = false
+        return error
+      }
+    },
+    async payout(bet: Bet, optionId: number) {
+      this.loading = true
+      try {
+        const { $trpc } = useNuxtApp()
+        await $trpc.bets.payout.mutate({ bet: bet.toJson(), optionId })
         this.loading = false
       }
       catch (error) {

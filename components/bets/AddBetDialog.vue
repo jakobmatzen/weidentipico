@@ -12,7 +12,7 @@ const { betForm } = storeToRefs(useFormStore())
 watch(() => betForm.value.optionCount, (newCount) => {
   const currentLength = betForm.value.options.length
   if (newCount > currentLength) {
-    betForm.value.options.push(...new Array(newCount - currentLength).fill(''))
+    betForm.value.options.push(...Array.from({ length: newCount - currentLength }, () => ''))
   }
   else if (newCount < currentLength) {
     betForm.value.options.splice(newCount)
@@ -66,39 +66,39 @@ function inputValidation(deadline: Date) {
 </script>
 
 <template>
-    <UModal title="Wette erstellen" :close="false" :dismissible="false">
-        <template #body>
-    <div class="h-full flex flex-col items-center">
-    <UFormField label="Titel" class="w-full">
-      <UInput v-model="betForm.title" size="sm" class="w-full" />
-    </UFormField>
-    <UFormField label="Frist" class="w-full mt-4">
-      <UButtonGroup class="w-full" size="sm">
-        <SharedDatePicker
-          v-model="betForm.date"
-          :min-value="new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate())"
-        />
-        <SharedTimePicker v-model="betForm.time" />
-      </UButtonGroup>
-    </UFormField>
-    <UFormField label="Anzahl der Optionen" class="w-full mt-4">
-      <USlider v-model="betForm.optionCount" :min="2" :max="16" class="mt-2" size="sm" />
-      <div class="flex justify-center mt-2">
-        <span class="text-sm">{{ betForm.optionCount }}</span>
-      </div>
-    </UFormField>
-    <div class="max-h-[13rem] overflow-y-auto w-full px-4 border border-neutral-700 rounded-lg pb-4 mt-4">
-      <UFormField v-for="i in betForm.optionCount" :key="i" :label="`Option ${i}`" class="w-full mt-3">
-        <UInput v-model="betForm.options[i - 1]" size="sm" class="w-full" />
-      </UFormField>
+  <UModal title="Wette erstellen" :close="false" :dismissible="false">
+    <template #body>
+      <div class="h-full flex flex-col items-center">
+        <UFormField label="Titel" class="w-full">
+          <UInput v-model="betForm.title" size="sm" class="w-full" />
+        </UFormField>
+        <UFormField label="Frist" class="w-full mt-4">
+          <UButtonGroup class="w-full" size="sm">
+            <SharedDatePicker
+              v-model="betForm.date"
+              :min-value="new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate())"
+            />
+            <SharedTimePicker v-model="betForm.time" />
+          </UButtonGroup>
+        </UFormField>
+        <UFormField label="Anzahl der Optionen" class="w-full mt-4">
+          <USlider v-model="betForm.optionCount" :min="2" :max="16" class="mt-2" size="sm" />
+          <div class="flex justify-center mt-2">
+            <span class="text-sm">{{ betForm.optionCount }}</span>
+          </div>
+        </UFormField>
+        <div class="max-h-[13rem] overflow-y-auto w-full px-4 border border-neutral-700 rounded-lg pb-4 mt-4">
+          <UFormField v-for="i in betForm.optionCount" :key="i" :label="`Option ${i}`" class="w-full mt-3">
+            <UInput v-model="betForm.options[i - 1]" size="sm" class="w-full" />
+          </UFormField>
         </div>
-    </div>
+      </div>
     </template>
-  <template #footer>
-    <div class="flex">
-      <UButton label="Abbrechen" variant="outline" color="neutral" size="sm" @click="emit('close')" />
-      <UButton label="Erstellen" size="sm" class="ml-2" @click="createBet()" />
-    </div>
-  </template>
+    <template #footer>
+      <div class="flex">
+        <UButton label="Abbrechen" variant="outline" color="neutral" size="sm" @click="emit('close')" />
+        <UButton label="Erstellen" size="sm" class="ml-2" @click="createBet()" />
+      </div>
+    </template>
   </UModal>
 </template>

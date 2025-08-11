@@ -5,8 +5,9 @@ interface BaseBetOption {
   id: number
   betId: number
   description: string
+  quote: number
   amount: number
-  votes: number
+  isWinner: boolean
   betEntries?: BetEntry[]
 }
 
@@ -14,15 +15,17 @@ interface BaseBetOption {
  * @param id The identifier of the bet option.
  * @param betId The identifier of the bet.
  * @param description The description of the bet option.
- * @param votes The votes of the bet option.
+ * @param quote The quote of the bet option.
+ * @param isWinner If this option is the winner of the bet.
  * @param amount The amount of the bet option.
  */
 export class BetOption implements BaseBetOption {
   id: number
   betId: number
   description: string
+  quote: number
   amount: number
-  votes: number
+  isWinner: boolean
   betEntries?: BetEntry[]
 
   /**
@@ -33,8 +36,9 @@ export class BetOption implements BaseBetOption {
     this.id = args.id
     this.betId = args.betId
     this.description = args.description
+    this.quote = args.quote
     this.amount = args.amount
-    this.votes = args.votes
+    this.isWinner = args.isWinner
     this.betEntries = args.betEntries
   }
 
@@ -47,8 +51,9 @@ export class BetOption implements BaseBetOption {
       id: this.id,
       betId: this.betId,
       description: this.description,
+      quote: this.quote,
       amount: this.amount,
-      votes: this.votes,
+      isWinner: this.isWinner,
       betEntries: this.betEntries ? this.betEntries.map((entry: BetEntry) => entry.toJson()) : []
     }
   }
@@ -66,8 +71,9 @@ export class BetOption implements BaseBetOption {
         id: data.id,
         betId: data.betId,
         description: data.description,
+        quote: data.quote,
         amount: data.amount,
-        votes: data.votes,
+        isWinner: data.isWinner,
         betEntries: data.betEntries ? data.betEntries.map((entry: any) => BetEntry.parseFromDbData(entry)) : undefined
       })
       return item
@@ -90,8 +96,9 @@ export class BetOption implements BaseBetOption {
         id: data.id,
         betId: data.betId,
         description: data.description,
+        quote: data.quote,
         amount: data.amount,
-        votes: data.votes,
+        isWinner: data.isWinner,
         betEntries: data.betEntries
       })
       return item
@@ -110,8 +117,9 @@ export class BetOption implements BaseBetOption {
       id: z.number().optional(),
       betId: z.number(),
       description: z.string(),
+      quote: z.number(),
       amount: z.number(),
-      votes: z.number(),
+      isWinner: z.boolean(),
       betEntries: z.array(BetEntry.getZodObject())
     })
   }

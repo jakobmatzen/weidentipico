@@ -15,12 +15,12 @@ const { betForm } = storeToRefs(useFormStore())
       <div class="flex items-center">
         <UButtonGroup size="sm">
           <USelect v-model="betForm.selectedBetFilterOption" :items="betFilterOptions" icon="i-lucide-filter" />
-          <UButton v-model="betForm.selectedSort" variant="outline" color="neutral" :icon="betForm.selectedSort === 'asc' ? 'i-lucide-arrow-up' : 'i-lucide-arrow-down'" @click="betForm.selectedSort = betForm.selectedSort === 'asc' ? 'desc' : 'asc'" />
+          <UButton v-model="betForm.selectedSort" variant="outline" color="neutral" :icon="betForm.selectedSort === 'asc' ? 'i-heroicons-bars-arrow-up' : 'i-heroicons-bars-arrow-down'" @click="betForm.selectedSort = betForm.selectedSort === 'asc' ? 'desc' : 'asc'" />
         </UButtonGroup>
       </div>
     </div>
     <div class="flex-1 overflow-y-auto px-5 mt-4">
-      <BetsBetCard v-for="bet in getBetsForAdmin" :key="bet.id" :bet="bet" />
+      <BetsBetCard v-for="bet in getBetsForAdmin" :key="bet.id" :bet="bet" :hinterzimmer="true" />
     </div>
   </div>
   <div v-else class="h-full flex flex-col justify-center px-2 py-6">

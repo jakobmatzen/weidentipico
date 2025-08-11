@@ -181,15 +181,17 @@ exports.Prisma.BetEntriesScalarFieldEnum = {
   id: 'id',
   optionId: 'optionId',
   userId: 'userId',
-  amount: 'amount'
+  amount: 'amount',
+  isWinner: 'isWinner'
 };
 
 exports.Prisma.BetOptionsScalarFieldEnum = {
   id: 'id',
   betId: 'betId',
   description: 'description',
-  votes: 'votes',
-  amount: 'amount'
+  amount: 'amount',
+  isWinner: 'isWinner',
+  quote: 'quote'
 };
 
 exports.Prisma.SortOrder = {
