@@ -13,6 +13,11 @@ export const useUserStore = defineStore('userStore', {
     user: undefined,
     loading: false
   }),
+  getters: {
+    getLeaderboard: state => state.users
+      .filter(user => user.username !== 'admin')
+      .sort((a, b) => (b.userWallet?.balance ?? 0) - (a.userWallet?.balance ?? 0))
+  },
   actions: {
     async fetchData() {
       this.loading = true

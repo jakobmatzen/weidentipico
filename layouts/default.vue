@@ -26,6 +26,7 @@ const links = computed<NavigationMenuItem[]>(() => [[{
 }, {
   label: 'Leaderboard',
   icon: 'i-lucide-chart-no-axes-column',
+  to: '/leaderboard'
 }, {
   label: `Hinterzimmer (${useBetStore().getBetsForAdminOpen.length})`,
   icon: 'i-lucide-door-closed-locked',
@@ -45,7 +46,7 @@ const links = computed<NavigationMenuItem[]>(() => [[{
         <UButton variant="link" icon="i-lucide-menu" size="xl" class="mr-2" />
         <template #header>
           <div class="flex items-center pb-4 border-b border-neutral-800">
-            <UAvatar src="https://github.com/shadcn.png" size="lg" />
+            <UAvatar :src="`/users/${user?.username}.jpeg`" :alt="user?.name" size="lg" img-class="object-cover" />
             <div class="flex flex-col ml-3 justify-center">
               <span class="text-sm font-medium">{{ user?.name }}</span>
               <span class="text-xs mt-1 text-neutral-400">NKoins: {{ user?.userWallet?.balance }}</span>
