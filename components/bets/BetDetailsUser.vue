@@ -6,21 +6,9 @@ const props = defineProps<{
   bet: Bet
 }>()
 
-const emit = defineEmits(['close'])
+const option = computed(() => props.bet.betOptions!.find(option => option.betEntries?.some(entry => entry.userId === useUserStore().user?.id))!)
 
-const selectedOption = ref<RadioGroupValue>(props.bet.status === 1 ? props.bet.betOptions![0].id : props.bet.betOptions!.find(option => option.isWinner)!.id)
-
-async function payout() {
-  const error = await useBetStore().payout(props.bet, selectedOption.value as number)
-  if (error) {
-    return
-  }
-  useBetStore().fetchData()
-  useUserStore().fetchData()
-  useFormStore().$reset()
-  useNotificationStore().addSuccess('Gewinne wurden erfolgreich ausgeschüttet.')
-  emit('close')
-}
+const selectedOption = ref<RadioGroupValue>(option.value.id)
 </script>
 
 <template>
@@ -28,6 +16,7 @@ async function payout() {
     <template #body>
       <div class="flex flex-col h-full">
         <span class="text-lg font-medium">{{ props.bet.description }}</span>
+        <span class="text-sm text-neutral-400 mt-2">Du hast <span class="font-semibold">{{ option.betEntries?.find(entry => entry.userId === useUserStore().user?.id)!.amount! }}</span> NKoins eingesetzt</span>
         <div class="flex flex-col p-3 rounded-lg border border-neutral-600 bg-slate-800 mt-4">
           <div
             class="flex w-full justify-between text-xs text-neutral-400 mb-3 pb-3 border-b border-neutral-600"
@@ -39,7 +28,7 @@ async function payout() {
             <URadioGroup
               v-model="selectedOption" :items="props.bet.betOptions" value-key="id"
               :description="false"
-              :disabled="props.bet.status === 2"
+              disabled
             >
               <template #label="{ item }">
                 <span>{{ `${item.description} ${item.isWinner ? '(Gewinner)' : ''}` }}</span>
@@ -53,13 +42,16 @@ async function payout() {
             </URadioGroup>
           </div>
         </div>
-        <span class="text-xs text-neutral-400 mt-4">Geschlossen am
-          <span class="font-semibold">{{ props.bet.deadlineAt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${props.bet.deadlineAt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} ` }} Uhr</span></span>
+        <span v-if="props.bet.status === 1" class="text-xs text-neutral-400 mt-4">Schließt am
+          <span class="font-semibold">{{ props.bet.deadlineAt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${props.bet.deadlineAt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} ` }} Uhr</span>
+        </span>
+        <span v-else class="text-xs text-neutral-400 mt-4">Geschlossen am
+          <span class="font-semibold">{{ props.bet.deadlineAt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${props.bet.deadlineAt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} ` }} Uhr</span>
+        </span>
       </div>
     </template>
     <template #footer="{ close }">
       <UButton label="Schließen" variant="outline" color="neutral" size="sm" @click="close()" />
-      <UButton v-if="props.bet.status === 1" label="Auszahlen" color="primary" class="ml-2" size="sm" @click="payout()" />
     </template>
   </UModal>
 </template>

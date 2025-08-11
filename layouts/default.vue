@@ -16,8 +16,9 @@ const links = computed<NavigationMenuItem[]>(() => [[{
   icon: 'i-lucide-user',
   defaultOpen: true,
   children: [{
-    label: 'Wetten',
+    label: `Wetten (${useBetStore().getBetsForUserOpen.length})`,
     icon: 'i-lucide-dices',
+    to: '/user/bets',
   }, {
     label: 'Marktplatz',
     icon: 'i-lucide-store',

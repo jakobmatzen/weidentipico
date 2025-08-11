@@ -46,7 +46,7 @@ async function createBet() {
 function inputValidation(deadline: Date) {
   const isValid = ref(true)
   if (betForm.value.title === '') {
-    useNotificationStore().addError('Bitte den Titel der Wette angeben.')
+    useNotificationStore().addError('Die Wette muss einen Titel haben.')
     isValid.value = false
   }
   if (betForm.value.title.length > 100) {

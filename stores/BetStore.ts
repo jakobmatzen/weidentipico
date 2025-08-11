@@ -102,6 +102,78 @@ export const useBetStore = defineStore('betStore', {
         }
       })
       return filteredBets
+    },
+    getBetsForUserOpen: (state) => {
+      const userId = useUserStore().user?.id
+      const formStore = useFormStore()
+      const filteredBets = state.bets.filter((bet) => {
+        if (bet.status === 2) {
+          return false
+        }
+        if (userId && bet.betOptions) {
+          const userHasBet = bet.betOptions.some(option =>
+            option.betEntries?.some(entry => entry.userId === userId)
+          )
+          if (!userHasBet) {
+            return false
+          }
+        }
+        return true
+      })
+      filteredBets.sort((a, b) => {
+        const sortDirection = formStore.betForm.selectedSort === 'asc' ? 1 : -1
+        switch (formStore.betForm.selectedBetFilterOption) {
+          case 'deadlineAt':
+            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+          case 'createdAt':
+            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+          case 'amount':
+            return sortDirection * (a.amount - b.amount)
+          case 'participants':
+            return sortDirection * (a.participants - b.participants)
+          case 'description':
+            return sortDirection * a.description.localeCompare(b.description)
+          default:
+            return 0
+        }
+      })
+      return filteredBets
+    },
+    getBetsForUserClosed: (state) => {
+      const userId = useUserStore().user?.id
+      const formStore = useFormStore()
+      const filteredBets = state.bets.filter((bet) => {
+        if (bet.status === 1) {
+          return false
+        }
+        if (userId && bet.betOptions) {
+          const userHasBet = bet.betOptions.some(option =>
+            option.betEntries?.some(entry => entry.userId === userId)
+          )
+          if (!userHasBet) {
+            return false
+          }
+        }
+        return true
+      })
+      filteredBets.sort((a, b) => {
+        const sortDirection = formStore.betForm.selectedSort === 'asc' ? 1 : -1
+        switch (formStore.betForm.selectedBetFilterOption) {
+          case 'deadlineAt':
+            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+          case 'createdAt':
+            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+          case 'amount':
+            return sortDirection * (a.amount - b.amount)
+          case 'participants':
+            return sortDirection * (a.participants - b.participants)
+          case 'description':
+            return sortDirection * a.description.localeCompare(b.description)
+          default:
+            return 0
+        }
+      })
+      return filteredBets
     }
   },
   actions: {
