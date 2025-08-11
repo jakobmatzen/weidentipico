@@ -3,8 +3,7 @@ import { UserWallet } from './UserWallet'
 
 interface BaseUser {
   id: number
-  firstName: string
-  lastName: string
+  name: string
   username: string
   password: string
   role: number
@@ -13,15 +12,13 @@ interface BaseUser {
 
 /**
  * @param id The identifier of the user.
- * @param firstName The first name of the user.
- * @param lastName The last name of the user.
+ * @param name The name of the user.
  * @param username The username of the user.
  * @param password The password of the user.
  */
 export class User implements BaseUser {
   id: number
-  firstName: string
-  lastName: string
+  name: string
   username: string
   password: string
   role: number
@@ -33,8 +30,7 @@ export class User implements BaseUser {
    */
   constructor(args: BaseUser) {
     this.id = args.id
-    this.firstName = args.firstName
-    this.lastName = args.lastName
+    this.name = args.name
     this.username = args.username
     this.password = args.password
     this.role = args.role
@@ -48,8 +44,7 @@ export class User implements BaseUser {
   toJson() {
     return {
       id: this.id,
-      firstName: this.firstName,
-      lastName: this.lastName,
+      name: this.name,
       username: this.username,
       password: this.password,
       role: this.role,
@@ -68,8 +63,7 @@ export class User implements BaseUser {
     try {
       const item: User = new User({
         id: data.id,
-        firstName: data.firstName,
-        lastName: data.lastName,
+        name: data.name,
         username: data.username,
         password: data.password,
         role: data.role,
@@ -93,8 +87,7 @@ export class User implements BaseUser {
     try {
       const item: User = new User({
         id: data.id,
-        firstName: data.firstName,
-        lastName: data.lastName,
+        name: data.name,
         username: data.username,
         password: data.password,
         role: data.role,
@@ -114,8 +107,7 @@ export class User implements BaseUser {
   static getZodObject() {
     return z.object({
       id: z.number(),
-      firstName: z.string(),
-      lastName: z.string(),
+      name: z.string(),
       username: z.string(),
       role: z.number(),
       password: z.string()

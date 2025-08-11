@@ -5,7 +5,7 @@ const { user } = storeToRefs(useUserStore())
 
 function logout() {
   emit('close')
-  useNotificationStore().addSuccess(`Bis bald, ${user.value?.firstName}!`, 'Logout')
+  useNotificationStore().addSuccess(`Bis bald, ${user.value?.name}!`, 'Logout')
   user.value = undefined
   navigateTo('/login')
 }

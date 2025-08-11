@@ -25,6 +25,11 @@ const links = computed<NavigationMenuItem[]>(() => [[{
 }, {
   label: 'Leaderboard',
   icon: 'i-lucide-chart-no-axes-column',
+}, {
+  label: 'Hinterzimmer',
+  icon: 'i-lucide-door-closed-locked',
+  to: '/hinterzimmer',
+  class: user.value?.role === 1 ? '' : 'hidden'
 }]])
 </script>
 
@@ -41,7 +46,7 @@ const links = computed<NavigationMenuItem[]>(() => [[{
           <div class="flex items-center pb-4 border-b border-neutral-800">
             <UAvatar src="https://github.com/shadcn.png" size="lg" />
             <div class="flex flex-col ml-3 justify-center">
-              <span class="text-sm font-medium">{{ user?.firstName }} {{ user?.lastName }}</span>
+              <span class="text-sm font-medium">{{ user?.name }}</span>
               <span class="text-xs mt-1 text-neutral-400">NKoins: {{ user?.userWallet?.balance }}</span>
             </div>
           </div>

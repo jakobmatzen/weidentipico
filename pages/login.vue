@@ -6,18 +6,13 @@ definePageMeta({
 const { loginForm } = storeToRefs(useFormStore())
 
 async function login() {
-  try {
-    const error = await useUserStore().login(loginForm.value.username, loginForm.value.password)
-    if (error) {
-      throw error
-    }
-    useNotificationStore().addSuccess(`Willkommen, ${useUserStore().user?.firstName}!`, 'Login')
-    navigateTo('/')
-    useFormStore().$reset()
+  const error = await useUserStore().login(loginForm.value.username, loginForm.value.password)
+  if (error) {
+    return
   }
-  catch (error) {
-
-  }
+  useNotificationStore().addSuccess(`Willkommen, ${useUserStore().user?.name}!`, 'Login')
+  navigateTo('/')
+  useFormStore().$reset()
 }
 </script>
 
