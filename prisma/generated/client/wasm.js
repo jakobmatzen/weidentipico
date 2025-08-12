@@ -143,23 +143,9 @@ exports.Prisma.RolesScalarFieldEnum = {
   description: 'description'
 };
 
-exports.Prisma.ServicesScalarFieldEnum = {
-  id: 'id',
-  description: 'description'
-};
-
 exports.Prisma.StatusScalarFieldEnum = {
   id: 'id',
   description: 'description'
-};
-
-exports.Prisma.TradeOffersScalarFieldEnum = {
-  id: 'id',
-  tradeId: 'tradeId',
-  userId: 'userId',
-  value: 'value',
-  isAccepted: 'isAccepted',
-  createdAt: 'createdAt'
 };
 
 exports.Prisma.TradesScalarFieldEnum = {
@@ -169,7 +155,9 @@ exports.Prisma.TradesScalarFieldEnum = {
   service: 'service',
   createdAt: 'createdAt',
   deadlineAt: 'deadlineAt',
-  tradedAt: 'tradedAt'
+  confirmedAt: 'confirmedAt',
+  price: 'price',
+  acceptedAt: 'acceptedAt'
 };
 
 exports.Prisma.UserWalletsScalarFieldEnum = {
@@ -214,9 +202,7 @@ exports.Prisma.ModelName = {
   users: 'users',
   bets: 'bets',
   roles: 'roles',
-  services: 'services',
   status: 'status',
-  tradeOffers: 'tradeOffers',
   trades: 'trades',
   userWallets: 'userWallets',
   betEntries: 'betEntries',

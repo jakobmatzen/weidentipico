@@ -54,7 +54,7 @@ function inputValidation(deadline: Date) {
     isValid.value = false
   }
   if (deadline < new Date()) {
-    useNotificationStore().addError('Die Wette kann nicht in der Vergangenheit stattfinden.')
+    useNotificationStore().addError('Die Deadline der Wette kann nicht in der Vergangenheit liegen.')
     isValid.value = false
   }
   if (betForm.value.options.some((option, index) => index < betForm.value.optionCount && option.trim() === '')) {
@@ -72,7 +72,7 @@ function inputValidation(deadline: Date) {
         <UFormField label="Titel" class="w-full">
           <UInput v-model="betForm.title" size="sm" class="w-full" />
         </UFormField>
-        <UFormField label="Frist" class="w-full mt-4">
+        <UFormField label="Deadline" class="w-full mt-4">
           <UButtonGroup class="w-full" size="sm">
             <SharedDatePicker
               v-model="betForm.date"

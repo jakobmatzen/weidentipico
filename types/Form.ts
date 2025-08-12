@@ -16,3 +16,15 @@ export interface BetForm {
   selectedBetFilterOption: string
   selectedSort: string
 }
+
+export interface MarketplaceForm {
+  service: string
+  date: Date
+  time: {
+    hours: number
+    minutes: number
+  }
+  price: number
+  selectedMarketplaceFilterOption: string
+  selectedMarketplaceSort: string
+}

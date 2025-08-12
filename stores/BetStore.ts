@@ -183,7 +183,7 @@ export const useBetStore = defineStore('betStore', {
         const { $trpc } = useNuxtApp()
         const data = await $trpc.bets.getAllBets.query()
         if (data) {
-          this.bets = data.map((bet: any) => Bet.parseFromDbData(bet))
+          this.bets = data.map(raw => Bet.parseFromDbData(raw))
         }
       }
       catch (error) {

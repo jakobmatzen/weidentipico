@@ -29,20 +29,10 @@ export type bets = $Result.DefaultSelection<Prisma.$betsPayload>
  */
 export type roles = $Result.DefaultSelection<Prisma.$rolesPayload>
 /**
- * Model services
- * 
- */
-export type services = $Result.DefaultSelection<Prisma.$servicesPayload>
-/**
  * Model status
  * 
  */
 export type status = $Result.DefaultSelection<Prisma.$statusPayload>
-/**
- * Model tradeOffers
- * 
- */
-export type tradeOffers = $Result.DefaultSelection<Prisma.$tradeOffersPayload>
 /**
  * Model trades
  * 
@@ -220,16 +210,6 @@ export class PrismaClient<
   get roles(): Prisma.rolesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.services`: Exposes CRUD operations for the **services** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Services
-    * const services = await prisma.services.findMany()
-    * ```
-    */
-  get services(): Prisma.servicesDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.status`: Exposes CRUD operations for the **status** model.
     * Example usage:
     * ```ts
@@ -238,16 +218,6 @@ export class PrismaClient<
     * ```
     */
   get status(): Prisma.statusDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.tradeOffers`: Exposes CRUD operations for the **tradeOffers** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more TradeOffers
-    * const tradeOffers = await prisma.tradeOffers.findMany()
-    * ```
-    */
-  get tradeOffers(): Prisma.tradeOffersDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.trades`: Exposes CRUD operations for the **trades** model.
@@ -731,9 +701,7 @@ export namespace Prisma {
     users: 'users',
     bets: 'bets',
     roles: 'roles',
-    services: 'services',
     status: 'status',
-    tradeOffers: 'tradeOffers',
     trades: 'trades',
     userWallets: 'userWallets',
     betEntries: 'betEntries',
@@ -756,7 +724,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "bets" | "roles" | "services" | "status" | "tradeOffers" | "trades" | "userWallets" | "betEntries" | "betOptions"
+      modelProps: "users" | "bets" | "roles" | "status" | "trades" | "userWallets" | "betEntries" | "betOptions"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -982,80 +950,6 @@ export namespace Prisma {
           }
         }
       }
-      services: {
-        payload: Prisma.$servicesPayload<ExtArgs>
-        fields: Prisma.servicesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.servicesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.servicesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>
-          }
-          findFirst: {
-            args: Prisma.servicesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.servicesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>
-          }
-          findMany: {
-            args: Prisma.servicesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>[]
-          }
-          create: {
-            args: Prisma.servicesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>
-          }
-          createMany: {
-            args: Prisma.servicesCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.servicesCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>[]
-          }
-          delete: {
-            args: Prisma.servicesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>
-          }
-          update: {
-            args: Prisma.servicesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>
-          }
-          deleteMany: {
-            args: Prisma.servicesDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.servicesUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.servicesUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>[]
-          }
-          upsert: {
-            args: Prisma.servicesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicesPayload>
-          }
-          aggregate: {
-            args: Prisma.ServicesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateServices>
-          }
-          groupBy: {
-            args: Prisma.servicesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ServicesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.servicesCountArgs<ExtArgs>
-            result: $Utils.Optional<ServicesCountAggregateOutputType> | number
-          }
-        }
-      }
       status: {
         payload: Prisma.$statusPayload<ExtArgs>
         fields: Prisma.statusFieldRefs
@@ -1127,80 +1021,6 @@ export namespace Prisma {
           count: {
             args: Prisma.statusCountArgs<ExtArgs>
             result: $Utils.Optional<StatusCountAggregateOutputType> | number
-          }
-        }
-      }
-      tradeOffers: {
-        payload: Prisma.$tradeOffersPayload<ExtArgs>
-        fields: Prisma.tradeOffersFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.tradeOffersFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.tradeOffersFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>
-          }
-          findFirst: {
-            args: Prisma.tradeOffersFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.tradeOffersFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>
-          }
-          findMany: {
-            args: Prisma.tradeOffersFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>[]
-          }
-          create: {
-            args: Prisma.tradeOffersCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>
-          }
-          createMany: {
-            args: Prisma.tradeOffersCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.tradeOffersCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>[]
-          }
-          delete: {
-            args: Prisma.tradeOffersDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>
-          }
-          update: {
-            args: Prisma.tradeOffersUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>
-          }
-          deleteMany: {
-            args: Prisma.tradeOffersDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.tradeOffersUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.tradeOffersUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>[]
-          }
-          upsert: {
-            args: Prisma.tradeOffersUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tradeOffersPayload>
-          }
-          aggregate: {
-            args: Prisma.TradeOffersAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTradeOffers>
-          }
-          groupBy: {
-            args: Prisma.tradeOffersGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TradeOffersGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.tradeOffersCountArgs<ExtArgs>
-            result: $Utils.Optional<TradeOffersCountAggregateOutputType> | number
           }
         }
       }
@@ -1587,9 +1407,7 @@ export namespace Prisma {
     users?: usersOmit
     bets?: betsOmit
     roles?: rolesOmit
-    services?: servicesOmit
     status?: statusOmit
-    tradeOffers?: tradeOffersOmit
     trades?: tradesOmit
     userWallets?: userWalletsOmit
     betEntries?: betEntriesOmit
@@ -1689,14 +1507,12 @@ export namespace Prisma {
 
   export type UsersCountOutputType = {
     betEntries: number
-    tradeOffers: number
     trades_trades_customerIdTousers: number
     trades_trades_supplierIdTousers: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     betEntries?: boolean | UsersCountOutputTypeCountBetEntriesArgs
-    tradeOffers?: boolean | UsersCountOutputTypeCountTradeOffersArgs
     trades_trades_customerIdTousers?: boolean | UsersCountOutputTypeCountTrades_trades_customerIdTousersArgs
     trades_trades_supplierIdTousers?: boolean | UsersCountOutputTypeCountTrades_trades_supplierIdTousersArgs
   }
@@ -1717,13 +1533,6 @@ export namespace Prisma {
    */
   export type UsersCountOutputTypeCountBetEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: betEntriesWhereInput
-  }
-
-  /**
-   * UsersCountOutputType without action
-   */
-  export type UsersCountOutputTypeCountTradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: tradeOffersWhereInput
   }
 
   /**
@@ -1831,37 +1640,6 @@ export namespace Prisma {
    */
   export type StatusCountOutputTypeCountBets_bets_statusTostatusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: betsWhereInput
-  }
-
-
-  /**
-   * Count Type TradesCountOutputType
-   */
-
-  export type TradesCountOutputType = {
-    tradeOffers: number
-  }
-
-  export type TradesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tradeOffers?: boolean | TradesCountOutputTypeCountTradeOffersArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * TradesCountOutputType without action
-   */
-  export type TradesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TradesCountOutputType
-     */
-    select?: TradesCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * TradesCountOutputType without action
-   */
-  export type TradesCountOutputTypeCountTradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: tradeOffersWhereInput
   }
 
 
@@ -2103,7 +1881,6 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     betEntries?: boolean | users$betEntriesArgs<ExtArgs>
-    tradeOffers?: boolean | users$tradeOffersArgs<ExtArgs>
     trades_trades_customerIdTousers?: boolean | users$trades_trades_customerIdTousersArgs<ExtArgs>
     trades_trades_supplierIdTousers?: boolean | users$trades_trades_supplierIdTousersArgs<ExtArgs>
     userWallets?: boolean | users$userWalletsArgs<ExtArgs>
@@ -2140,7 +1917,6 @@ export namespace Prisma {
   export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "username" | "password" | "role", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     betEntries?: boolean | users$betEntriesArgs<ExtArgs>
-    tradeOffers?: boolean | users$tradeOffersArgs<ExtArgs>
     trades_trades_customerIdTousers?: boolean | users$trades_trades_customerIdTousersArgs<ExtArgs>
     trades_trades_supplierIdTousers?: boolean | users$trades_trades_supplierIdTousersArgs<ExtArgs>
     userWallets?: boolean | users$userWalletsArgs<ExtArgs>
@@ -2158,7 +1934,6 @@ export namespace Prisma {
     name: "users"
     objects: {
       betEntries: Prisma.$betEntriesPayload<ExtArgs>[]
-      tradeOffers: Prisma.$tradeOffersPayload<ExtArgs>[]
       trades_trades_customerIdTousers: Prisma.$tradesPayload<ExtArgs>[]
       trades_trades_supplierIdTousers: Prisma.$tradesPayload<ExtArgs>[]
       userWallets: Prisma.$userWalletsPayload<ExtArgs> | null
@@ -2565,7 +2340,6 @@ export namespace Prisma {
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     betEntries<T extends users$betEntriesArgs<ExtArgs> = {}>(args?: Subset<T, users$betEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$betEntriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    tradeOffers<T extends users$tradeOffersArgs<ExtArgs> = {}>(args?: Subset<T, users$tradeOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     trades_trades_customerIdTousers<T extends users$trades_trades_customerIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, users$trades_trades_customerIdTousersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     trades_trades_supplierIdTousers<T extends users$trades_trades_supplierIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, users$trades_trades_supplierIdTousersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     userWallets<T extends users$userWalletsArgs<ExtArgs> = {}>(args?: Subset<T, users$userWalletsArgs<ExtArgs>>): Prisma__userWalletsClient<$Result.GetResult<Prisma.$userWalletsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -3021,30 +2795,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BetEntriesScalarFieldEnum | BetEntriesScalarFieldEnum[]
-  }
-
-  /**
-   * users.tradeOffers
-   */
-  export type users$tradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    where?: tradeOffersWhereInput
-    orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
-    cursor?: tradeOffersWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TradeOffersScalarFieldEnum | TradeOffersScalarFieldEnum[]
   }
 
   /**
@@ -5397,996 +5147,6 @@ export namespace Prisma {
 
 
   /**
-   * Model services
-   */
-
-  export type AggregateServices = {
-    _count: ServicesCountAggregateOutputType | null
-    _avg: ServicesAvgAggregateOutputType | null
-    _sum: ServicesSumAggregateOutputType | null
-    _min: ServicesMinAggregateOutputType | null
-    _max: ServicesMaxAggregateOutputType | null
-  }
-
-  export type ServicesAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type ServicesSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type ServicesMinAggregateOutputType = {
-    id: number | null
-    description: string | null
-  }
-
-  export type ServicesMaxAggregateOutputType = {
-    id: number | null
-    description: string | null
-  }
-
-  export type ServicesCountAggregateOutputType = {
-    id: number
-    description: number
-    _all: number
-  }
-
-
-  export type ServicesAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type ServicesSumAggregateInputType = {
-    id?: true
-  }
-
-  export type ServicesMinAggregateInputType = {
-    id?: true
-    description?: true
-  }
-
-  export type ServicesMaxAggregateInputType = {
-    id?: true
-    description?: true
-  }
-
-  export type ServicesCountAggregateInputType = {
-    id?: true
-    description?: true
-    _all?: true
-  }
-
-  export type ServicesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which services to aggregate.
-     */
-    where?: servicesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of services to fetch.
-     */
-    orderBy?: servicesOrderByWithRelationInput | servicesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: servicesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` services from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` services.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned services
-    **/
-    _count?: true | ServicesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ServicesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ServicesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ServicesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ServicesMaxAggregateInputType
-  }
-
-  export type GetServicesAggregateType<T extends ServicesAggregateArgs> = {
-        [P in keyof T & keyof AggregateServices]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateServices[P]>
-      : GetScalarType<T[P], AggregateServices[P]>
-  }
-
-
-
-
-  export type servicesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: servicesWhereInput
-    orderBy?: servicesOrderByWithAggregationInput | servicesOrderByWithAggregationInput[]
-    by: ServicesScalarFieldEnum[] | ServicesScalarFieldEnum
-    having?: servicesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ServicesCountAggregateInputType | true
-    _avg?: ServicesAvgAggregateInputType
-    _sum?: ServicesSumAggregateInputType
-    _min?: ServicesMinAggregateInputType
-    _max?: ServicesMaxAggregateInputType
-  }
-
-  export type ServicesGroupByOutputType = {
-    id: number
-    description: string
-    _count: ServicesCountAggregateOutputType | null
-    _avg: ServicesAvgAggregateOutputType | null
-    _sum: ServicesSumAggregateOutputType | null
-    _min: ServicesMinAggregateOutputType | null
-    _max: ServicesMaxAggregateOutputType | null
-  }
-
-  type GetServicesGroupByPayload<T extends servicesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ServicesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ServicesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ServicesGroupByOutputType[P]>
-            : GetScalarType<T[P], ServicesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type servicesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    description?: boolean
-  }, ExtArgs["result"]["services"]>
-
-  export type servicesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    description?: boolean
-  }, ExtArgs["result"]["services"]>
-
-  export type servicesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    description?: boolean
-  }, ExtArgs["result"]["services"]>
-
-  export type servicesSelectScalar = {
-    id?: boolean
-    description?: boolean
-  }
-
-  export type servicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description", ExtArgs["result"]["services"]>
-
-  export type $servicesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "services"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      description: string
-    }, ExtArgs["result"]["services"]>
-    composites: {}
-  }
-
-  type servicesGetPayload<S extends boolean | null | undefined | servicesDefaultArgs> = $Result.GetResult<Prisma.$servicesPayload, S>
-
-  type servicesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<servicesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ServicesCountAggregateInputType | true
-    }
-
-  export interface servicesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['services'], meta: { name: 'services' } }
-    /**
-     * Find zero or one Services that matches the filter.
-     * @param {servicesFindUniqueArgs} args - Arguments to find a Services
-     * @example
-     * // Get one Services
-     * const services = await prisma.services.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends servicesFindUniqueArgs>(args: SelectSubset<T, servicesFindUniqueArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Services that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {servicesFindUniqueOrThrowArgs} args - Arguments to find a Services
-     * @example
-     * // Get one Services
-     * const services = await prisma.services.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends servicesFindUniqueOrThrowArgs>(args: SelectSubset<T, servicesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Services that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicesFindFirstArgs} args - Arguments to find a Services
-     * @example
-     * // Get one Services
-     * const services = await prisma.services.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends servicesFindFirstArgs>(args?: SelectSubset<T, servicesFindFirstArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Services that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicesFindFirstOrThrowArgs} args - Arguments to find a Services
-     * @example
-     * // Get one Services
-     * const services = await prisma.services.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends servicesFindFirstOrThrowArgs>(args?: SelectSubset<T, servicesFindFirstOrThrowArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Services that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicesFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Services
-     * const services = await prisma.services.findMany()
-     * 
-     * // Get first 10 Services
-     * const services = await prisma.services.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const servicesWithIdOnly = await prisma.services.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends servicesFindManyArgs>(args?: SelectSubset<T, servicesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Services.
-     * @param {servicesCreateArgs} args - Arguments to create a Services.
-     * @example
-     * // Create one Services
-     * const Services = await prisma.services.create({
-     *   data: {
-     *     // ... data to create a Services
-     *   }
-     * })
-     * 
-     */
-    create<T extends servicesCreateArgs>(args: SelectSubset<T, servicesCreateArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Services.
-     * @param {servicesCreateManyArgs} args - Arguments to create many Services.
-     * @example
-     * // Create many Services
-     * const services = await prisma.services.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends servicesCreateManyArgs>(args?: SelectSubset<T, servicesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Services and returns the data saved in the database.
-     * @param {servicesCreateManyAndReturnArgs} args - Arguments to create many Services.
-     * @example
-     * // Create many Services
-     * const services = await prisma.services.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Services and only return the `id`
-     * const servicesWithIdOnly = await prisma.services.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends servicesCreateManyAndReturnArgs>(args?: SelectSubset<T, servicesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Services.
-     * @param {servicesDeleteArgs} args - Arguments to delete one Services.
-     * @example
-     * // Delete one Services
-     * const Services = await prisma.services.delete({
-     *   where: {
-     *     // ... filter to delete one Services
-     *   }
-     * })
-     * 
-     */
-    delete<T extends servicesDeleteArgs>(args: SelectSubset<T, servicesDeleteArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Services.
-     * @param {servicesUpdateArgs} args - Arguments to update one Services.
-     * @example
-     * // Update one Services
-     * const services = await prisma.services.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends servicesUpdateArgs>(args: SelectSubset<T, servicesUpdateArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Services.
-     * @param {servicesDeleteManyArgs} args - Arguments to filter Services to delete.
-     * @example
-     * // Delete a few Services
-     * const { count } = await prisma.services.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends servicesDeleteManyArgs>(args?: SelectSubset<T, servicesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Services.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicesUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Services
-     * const services = await prisma.services.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends servicesUpdateManyArgs>(args: SelectSubset<T, servicesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Services and returns the data updated in the database.
-     * @param {servicesUpdateManyAndReturnArgs} args - Arguments to update many Services.
-     * @example
-     * // Update many Services
-     * const services = await prisma.services.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Services and only return the `id`
-     * const servicesWithIdOnly = await prisma.services.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends servicesUpdateManyAndReturnArgs>(args: SelectSubset<T, servicesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Services.
-     * @param {servicesUpsertArgs} args - Arguments to update or create a Services.
-     * @example
-     * // Update or create a Services
-     * const services = await prisma.services.upsert({
-     *   create: {
-     *     // ... data to create a Services
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Services we want to update
-     *   }
-     * })
-     */
-    upsert<T extends servicesUpsertArgs>(args: SelectSubset<T, servicesUpsertArgs<ExtArgs>>): Prisma__servicesClient<$Result.GetResult<Prisma.$servicesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Services.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicesCountArgs} args - Arguments to filter Services to count.
-     * @example
-     * // Count the number of Services
-     * const count = await prisma.services.count({
-     *   where: {
-     *     // ... the filter for the Services we want to count
-     *   }
-     * })
-    **/
-    count<T extends servicesCountArgs>(
-      args?: Subset<T, servicesCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ServicesCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Services.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServicesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ServicesAggregateArgs>(args: Subset<T, ServicesAggregateArgs>): Prisma.PrismaPromise<GetServicesAggregateType<T>>
-
-    /**
-     * Group by Services.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {servicesGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends servicesGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: servicesGroupByArgs['orderBy'] }
-        : { orderBy?: servicesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, servicesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServicesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the services model
-   */
-  readonly fields: servicesFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for services.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__servicesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the services model
-   */
-  interface servicesFieldRefs {
-    readonly id: FieldRef<"services", 'Int'>
-    readonly description: FieldRef<"services", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * services findUnique
-   */
-  export type servicesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * Filter, which services to fetch.
-     */
-    where: servicesWhereUniqueInput
-  }
-
-  /**
-   * services findUniqueOrThrow
-   */
-  export type servicesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * Filter, which services to fetch.
-     */
-    where: servicesWhereUniqueInput
-  }
-
-  /**
-   * services findFirst
-   */
-  export type servicesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * Filter, which services to fetch.
-     */
-    where?: servicesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of services to fetch.
-     */
-    orderBy?: servicesOrderByWithRelationInput | servicesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for services.
-     */
-    cursor?: servicesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` services from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` services.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of services.
-     */
-    distinct?: ServicesScalarFieldEnum | ServicesScalarFieldEnum[]
-  }
-
-  /**
-   * services findFirstOrThrow
-   */
-  export type servicesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * Filter, which services to fetch.
-     */
-    where?: servicesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of services to fetch.
-     */
-    orderBy?: servicesOrderByWithRelationInput | servicesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for services.
-     */
-    cursor?: servicesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` services from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` services.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of services.
-     */
-    distinct?: ServicesScalarFieldEnum | ServicesScalarFieldEnum[]
-  }
-
-  /**
-   * services findMany
-   */
-  export type servicesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * Filter, which services to fetch.
-     */
-    where?: servicesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of services to fetch.
-     */
-    orderBy?: servicesOrderByWithRelationInput | servicesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing services.
-     */
-    cursor?: servicesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` services from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` services.
-     */
-    skip?: number
-    distinct?: ServicesScalarFieldEnum | ServicesScalarFieldEnum[]
-  }
-
-  /**
-   * services create
-   */
-  export type servicesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * The data needed to create a services.
-     */
-    data: XOR<servicesCreateInput, servicesUncheckedCreateInput>
-  }
-
-  /**
-   * services createMany
-   */
-  export type servicesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many services.
-     */
-    data: servicesCreateManyInput | servicesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * services createManyAndReturn
-   */
-  export type servicesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * The data used to create many services.
-     */
-    data: servicesCreateManyInput | servicesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * services update
-   */
-  export type servicesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * The data needed to update a services.
-     */
-    data: XOR<servicesUpdateInput, servicesUncheckedUpdateInput>
-    /**
-     * Choose, which services to update.
-     */
-    where: servicesWhereUniqueInput
-  }
-
-  /**
-   * services updateMany
-   */
-  export type servicesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update services.
-     */
-    data: XOR<servicesUpdateManyMutationInput, servicesUncheckedUpdateManyInput>
-    /**
-     * Filter which services to update
-     */
-    where?: servicesWhereInput
-    /**
-     * Limit how many services to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * services updateManyAndReturn
-   */
-  export type servicesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * The data used to update services.
-     */
-    data: XOR<servicesUpdateManyMutationInput, servicesUncheckedUpdateManyInput>
-    /**
-     * Filter which services to update
-     */
-    where?: servicesWhereInput
-    /**
-     * Limit how many services to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * services upsert
-   */
-  export type servicesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * The filter to search for the services to update in case it exists.
-     */
-    where: servicesWhereUniqueInput
-    /**
-     * In case the services found by the `where` argument doesn't exist, create a new services with this data.
-     */
-    create: XOR<servicesCreateInput, servicesUncheckedCreateInput>
-    /**
-     * In case the services was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<servicesUpdateInput, servicesUncheckedUpdateInput>
-  }
-
-  /**
-   * services delete
-   */
-  export type servicesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-    /**
-     * Filter which services to delete.
-     */
-    where: servicesWhereUniqueInput
-  }
-
-  /**
-   * services deleteMany
-   */
-  export type servicesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which services to delete
-     */
-    where?: servicesWhereInput
-    /**
-     * Limit how many services to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * services without action
-   */
-  export type servicesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the services
-     */
-    select?: servicesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the services
-     */
-    omit?: servicesOmit<ExtArgs> | null
-  }
-
-
-  /**
    * Model status
    */
 
@@ -7452,1169 +6212,6 @@ export namespace Prisma {
 
 
   /**
-   * Model tradeOffers
-   */
-
-  export type AggregateTradeOffers = {
-    _count: TradeOffersCountAggregateOutputType | null
-    _avg: TradeOffersAvgAggregateOutputType | null
-    _sum: TradeOffersSumAggregateOutputType | null
-    _min: TradeOffersMinAggregateOutputType | null
-    _max: TradeOffersMaxAggregateOutputType | null
-  }
-
-  export type TradeOffersAvgAggregateOutputType = {
-    id: number | null
-    tradeId: number | null
-    userId: number | null
-    value: number | null
-  }
-
-  export type TradeOffersSumAggregateOutputType = {
-    id: bigint | null
-    tradeId: number | null
-    userId: number | null
-    value: number | null
-  }
-
-  export type TradeOffersMinAggregateOutputType = {
-    id: bigint | null
-    tradeId: number | null
-    userId: number | null
-    value: number | null
-    isAccepted: boolean | null
-    createdAt: Date | null
-  }
-
-  export type TradeOffersMaxAggregateOutputType = {
-    id: bigint | null
-    tradeId: number | null
-    userId: number | null
-    value: number | null
-    isAccepted: boolean | null
-    createdAt: Date | null
-  }
-
-  export type TradeOffersCountAggregateOutputType = {
-    id: number
-    tradeId: number
-    userId: number
-    value: number
-    isAccepted: number
-    createdAt: number
-    _all: number
-  }
-
-
-  export type TradeOffersAvgAggregateInputType = {
-    id?: true
-    tradeId?: true
-    userId?: true
-    value?: true
-  }
-
-  export type TradeOffersSumAggregateInputType = {
-    id?: true
-    tradeId?: true
-    userId?: true
-    value?: true
-  }
-
-  export type TradeOffersMinAggregateInputType = {
-    id?: true
-    tradeId?: true
-    userId?: true
-    value?: true
-    isAccepted?: true
-    createdAt?: true
-  }
-
-  export type TradeOffersMaxAggregateInputType = {
-    id?: true
-    tradeId?: true
-    userId?: true
-    value?: true
-    isAccepted?: true
-    createdAt?: true
-  }
-
-  export type TradeOffersCountAggregateInputType = {
-    id?: true
-    tradeId?: true
-    userId?: true
-    value?: true
-    isAccepted?: true
-    createdAt?: true
-    _all?: true
-  }
-
-  export type TradeOffersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tradeOffers to aggregate.
-     */
-    where?: tradeOffersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tradeOffers to fetch.
-     */
-    orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: tradeOffersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tradeOffers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tradeOffers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned tradeOffers
-    **/
-    _count?: true | TradeOffersCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: TradeOffersAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: TradeOffersSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: TradeOffersMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: TradeOffersMaxAggregateInputType
-  }
-
-  export type GetTradeOffersAggregateType<T extends TradeOffersAggregateArgs> = {
-        [P in keyof T & keyof AggregateTradeOffers]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTradeOffers[P]>
-      : GetScalarType<T[P], AggregateTradeOffers[P]>
-  }
-
-
-
-
-  export type tradeOffersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: tradeOffersWhereInput
-    orderBy?: tradeOffersOrderByWithAggregationInput | tradeOffersOrderByWithAggregationInput[]
-    by: TradeOffersScalarFieldEnum[] | TradeOffersScalarFieldEnum
-    having?: tradeOffersScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: TradeOffersCountAggregateInputType | true
-    _avg?: TradeOffersAvgAggregateInputType
-    _sum?: TradeOffersSumAggregateInputType
-    _min?: TradeOffersMinAggregateInputType
-    _max?: TradeOffersMaxAggregateInputType
-  }
-
-  export type TradeOffersGroupByOutputType = {
-    id: bigint
-    tradeId: number | null
-    userId: number | null
-    value: number
-    isAccepted: boolean | null
-    createdAt: Date
-    _count: TradeOffersCountAggregateOutputType | null
-    _avg: TradeOffersAvgAggregateOutputType | null
-    _sum: TradeOffersSumAggregateOutputType | null
-    _min: TradeOffersMinAggregateOutputType | null
-    _max: TradeOffersMaxAggregateOutputType | null
-  }
-
-  type GetTradeOffersGroupByPayload<T extends tradeOffersGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<TradeOffersGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof TradeOffersGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TradeOffersGroupByOutputType[P]>
-            : GetScalarType<T[P], TradeOffersGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type tradeOffersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    tradeId?: boolean
-    userId?: boolean
-    value?: boolean
-    isAccepted?: boolean
-    createdAt?: boolean
-    trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
-    users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["tradeOffers"]>
-
-  export type tradeOffersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    tradeId?: boolean
-    userId?: boolean
-    value?: boolean
-    isAccepted?: boolean
-    createdAt?: boolean
-    trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
-    users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["tradeOffers"]>
-
-  export type tradeOffersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    tradeId?: boolean
-    userId?: boolean
-    value?: boolean
-    isAccepted?: boolean
-    createdAt?: boolean
-    trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
-    users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }, ExtArgs["result"]["tradeOffers"]>
-
-  export type tradeOffersSelectScalar = {
-    id?: boolean
-    tradeId?: boolean
-    userId?: boolean
-    value?: boolean
-    isAccepted?: boolean
-    createdAt?: boolean
-  }
-
-  export type tradeOffersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tradeId" | "userId" | "value" | "isAccepted" | "createdAt", ExtArgs["result"]["tradeOffers"]>
-  export type tradeOffersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
-    users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }
-  export type tradeOffersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
-    users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }
-  export type tradeOffersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    trades?: boolean | tradeOffers$tradesArgs<ExtArgs>
-    users?: boolean | tradeOffers$usersArgs<ExtArgs>
-  }
-
-  export type $tradeOffersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "tradeOffers"
-    objects: {
-      trades: Prisma.$tradesPayload<ExtArgs> | null
-      users: Prisma.$usersPayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      tradeId: number | null
-      userId: number | null
-      value: number
-      isAccepted: boolean | null
-      createdAt: Date
-    }, ExtArgs["result"]["tradeOffers"]>
-    composites: {}
-  }
-
-  type tradeOffersGetPayload<S extends boolean | null | undefined | tradeOffersDefaultArgs> = $Result.GetResult<Prisma.$tradeOffersPayload, S>
-
-  type tradeOffersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<tradeOffersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TradeOffersCountAggregateInputType | true
-    }
-
-  export interface tradeOffersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tradeOffers'], meta: { name: 'tradeOffers' } }
-    /**
-     * Find zero or one TradeOffers that matches the filter.
-     * @param {tradeOffersFindUniqueArgs} args - Arguments to find a TradeOffers
-     * @example
-     * // Get one TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends tradeOffersFindUniqueArgs>(args: SelectSubset<T, tradeOffersFindUniqueArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one TradeOffers that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {tradeOffersFindUniqueOrThrowArgs} args - Arguments to find a TradeOffers
-     * @example
-     * // Get one TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends tradeOffersFindUniqueOrThrowArgs>(args: SelectSubset<T, tradeOffersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first TradeOffers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tradeOffersFindFirstArgs} args - Arguments to find a TradeOffers
-     * @example
-     * // Get one TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends tradeOffersFindFirstArgs>(args?: SelectSubset<T, tradeOffersFindFirstArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first TradeOffers that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tradeOffersFindFirstOrThrowArgs} args - Arguments to find a TradeOffers
-     * @example
-     * // Get one TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends tradeOffersFindFirstOrThrowArgs>(args?: SelectSubset<T, tradeOffersFindFirstOrThrowArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more TradeOffers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tradeOffersFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.findMany()
-     * 
-     * // Get first 10 TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const tradeOffersWithIdOnly = await prisma.tradeOffers.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends tradeOffersFindManyArgs>(args?: SelectSubset<T, tradeOffersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a TradeOffers.
-     * @param {tradeOffersCreateArgs} args - Arguments to create a TradeOffers.
-     * @example
-     * // Create one TradeOffers
-     * const TradeOffers = await prisma.tradeOffers.create({
-     *   data: {
-     *     // ... data to create a TradeOffers
-     *   }
-     * })
-     * 
-     */
-    create<T extends tradeOffersCreateArgs>(args: SelectSubset<T, tradeOffersCreateArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many TradeOffers.
-     * @param {tradeOffersCreateManyArgs} args - Arguments to create many TradeOffers.
-     * @example
-     * // Create many TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends tradeOffersCreateManyArgs>(args?: SelectSubset<T, tradeOffersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many TradeOffers and returns the data saved in the database.
-     * @param {tradeOffersCreateManyAndReturnArgs} args - Arguments to create many TradeOffers.
-     * @example
-     * // Create many TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many TradeOffers and only return the `id`
-     * const tradeOffersWithIdOnly = await prisma.tradeOffers.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends tradeOffersCreateManyAndReturnArgs>(args?: SelectSubset<T, tradeOffersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a TradeOffers.
-     * @param {tradeOffersDeleteArgs} args - Arguments to delete one TradeOffers.
-     * @example
-     * // Delete one TradeOffers
-     * const TradeOffers = await prisma.tradeOffers.delete({
-     *   where: {
-     *     // ... filter to delete one TradeOffers
-     *   }
-     * })
-     * 
-     */
-    delete<T extends tradeOffersDeleteArgs>(args: SelectSubset<T, tradeOffersDeleteArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one TradeOffers.
-     * @param {tradeOffersUpdateArgs} args - Arguments to update one TradeOffers.
-     * @example
-     * // Update one TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends tradeOffersUpdateArgs>(args: SelectSubset<T, tradeOffersUpdateArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more TradeOffers.
-     * @param {tradeOffersDeleteManyArgs} args - Arguments to filter TradeOffers to delete.
-     * @example
-     * // Delete a few TradeOffers
-     * const { count } = await prisma.tradeOffers.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends tradeOffersDeleteManyArgs>(args?: SelectSubset<T, tradeOffersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more TradeOffers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tradeOffersUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends tradeOffersUpdateManyArgs>(args: SelectSubset<T, tradeOffersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more TradeOffers and returns the data updated in the database.
-     * @param {tradeOffersUpdateManyAndReturnArgs} args - Arguments to update many TradeOffers.
-     * @example
-     * // Update many TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more TradeOffers and only return the `id`
-     * const tradeOffersWithIdOnly = await prisma.tradeOffers.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends tradeOffersUpdateManyAndReturnArgs>(args: SelectSubset<T, tradeOffersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one TradeOffers.
-     * @param {tradeOffersUpsertArgs} args - Arguments to update or create a TradeOffers.
-     * @example
-     * // Update or create a TradeOffers
-     * const tradeOffers = await prisma.tradeOffers.upsert({
-     *   create: {
-     *     // ... data to create a TradeOffers
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the TradeOffers we want to update
-     *   }
-     * })
-     */
-    upsert<T extends tradeOffersUpsertArgs>(args: SelectSubset<T, tradeOffersUpsertArgs<ExtArgs>>): Prisma__tradeOffersClient<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of TradeOffers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tradeOffersCountArgs} args - Arguments to filter TradeOffers to count.
-     * @example
-     * // Count the number of TradeOffers
-     * const count = await prisma.tradeOffers.count({
-     *   where: {
-     *     // ... the filter for the TradeOffers we want to count
-     *   }
-     * })
-    **/
-    count<T extends tradeOffersCountArgs>(
-      args?: Subset<T, tradeOffersCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], TradeOffersCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a TradeOffers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TradeOffersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends TradeOffersAggregateArgs>(args: Subset<T, TradeOffersAggregateArgs>): Prisma.PrismaPromise<GetTradeOffersAggregateType<T>>
-
-    /**
-     * Group by TradeOffers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tradeOffersGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends tradeOffersGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: tradeOffersGroupByArgs['orderBy'] }
-        : { orderBy?: tradeOffersGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, tradeOffersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTradeOffersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the tradeOffers model
-   */
-  readonly fields: tradeOffersFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for tradeOffers.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__tradeOffersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    trades<T extends tradeOffers$tradesArgs<ExtArgs> = {}>(args?: Subset<T, tradeOffers$tradesArgs<ExtArgs>>): Prisma__tradesClient<$Result.GetResult<Prisma.$tradesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    users<T extends tradeOffers$usersArgs<ExtArgs> = {}>(args?: Subset<T, tradeOffers$usersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the tradeOffers model
-   */
-  interface tradeOffersFieldRefs {
-    readonly id: FieldRef<"tradeOffers", 'BigInt'>
-    readonly tradeId: FieldRef<"tradeOffers", 'Int'>
-    readonly userId: FieldRef<"tradeOffers", 'Int'>
-    readonly value: FieldRef<"tradeOffers", 'Int'>
-    readonly isAccepted: FieldRef<"tradeOffers", 'Boolean'>
-    readonly createdAt: FieldRef<"tradeOffers", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * tradeOffers findUnique
-   */
-  export type tradeOffersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * Filter, which tradeOffers to fetch.
-     */
-    where: tradeOffersWhereUniqueInput
-  }
-
-  /**
-   * tradeOffers findUniqueOrThrow
-   */
-  export type tradeOffersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * Filter, which tradeOffers to fetch.
-     */
-    where: tradeOffersWhereUniqueInput
-  }
-
-  /**
-   * tradeOffers findFirst
-   */
-  export type tradeOffersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * Filter, which tradeOffers to fetch.
-     */
-    where?: tradeOffersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tradeOffers to fetch.
-     */
-    orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tradeOffers.
-     */
-    cursor?: tradeOffersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tradeOffers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tradeOffers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tradeOffers.
-     */
-    distinct?: TradeOffersScalarFieldEnum | TradeOffersScalarFieldEnum[]
-  }
-
-  /**
-   * tradeOffers findFirstOrThrow
-   */
-  export type tradeOffersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * Filter, which tradeOffers to fetch.
-     */
-    where?: tradeOffersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tradeOffers to fetch.
-     */
-    orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tradeOffers.
-     */
-    cursor?: tradeOffersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tradeOffers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tradeOffers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tradeOffers.
-     */
-    distinct?: TradeOffersScalarFieldEnum | TradeOffersScalarFieldEnum[]
-  }
-
-  /**
-   * tradeOffers findMany
-   */
-  export type tradeOffersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * Filter, which tradeOffers to fetch.
-     */
-    where?: tradeOffersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tradeOffers to fetch.
-     */
-    orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing tradeOffers.
-     */
-    cursor?: tradeOffersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tradeOffers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tradeOffers.
-     */
-    skip?: number
-    distinct?: TradeOffersScalarFieldEnum | TradeOffersScalarFieldEnum[]
-  }
-
-  /**
-   * tradeOffers create
-   */
-  export type tradeOffersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * The data needed to create a tradeOffers.
-     */
-    data: XOR<tradeOffersCreateInput, tradeOffersUncheckedCreateInput>
-  }
-
-  /**
-   * tradeOffers createMany
-   */
-  export type tradeOffersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many tradeOffers.
-     */
-    data: tradeOffersCreateManyInput | tradeOffersCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * tradeOffers createManyAndReturn
-   */
-  export type tradeOffersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * The data used to create many tradeOffers.
-     */
-    data: tradeOffersCreateManyInput | tradeOffersCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * tradeOffers update
-   */
-  export type tradeOffersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * The data needed to update a tradeOffers.
-     */
-    data: XOR<tradeOffersUpdateInput, tradeOffersUncheckedUpdateInput>
-    /**
-     * Choose, which tradeOffers to update.
-     */
-    where: tradeOffersWhereUniqueInput
-  }
-
-  /**
-   * tradeOffers updateMany
-   */
-  export type tradeOffersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update tradeOffers.
-     */
-    data: XOR<tradeOffersUpdateManyMutationInput, tradeOffersUncheckedUpdateManyInput>
-    /**
-     * Filter which tradeOffers to update
-     */
-    where?: tradeOffersWhereInput
-    /**
-     * Limit how many tradeOffers to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * tradeOffers updateManyAndReturn
-   */
-  export type tradeOffersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * The data used to update tradeOffers.
-     */
-    data: XOR<tradeOffersUpdateManyMutationInput, tradeOffersUncheckedUpdateManyInput>
-    /**
-     * Filter which tradeOffers to update
-     */
-    where?: tradeOffersWhereInput
-    /**
-     * Limit how many tradeOffers to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * tradeOffers upsert
-   */
-  export type tradeOffersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * The filter to search for the tradeOffers to update in case it exists.
-     */
-    where: tradeOffersWhereUniqueInput
-    /**
-     * In case the tradeOffers found by the `where` argument doesn't exist, create a new tradeOffers with this data.
-     */
-    create: XOR<tradeOffersCreateInput, tradeOffersUncheckedCreateInput>
-    /**
-     * In case the tradeOffers was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<tradeOffersUpdateInput, tradeOffersUncheckedUpdateInput>
-  }
-
-  /**
-   * tradeOffers delete
-   */
-  export type tradeOffersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    /**
-     * Filter which tradeOffers to delete.
-     */
-    where: tradeOffersWhereUniqueInput
-  }
-
-  /**
-   * tradeOffers deleteMany
-   */
-  export type tradeOffersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tradeOffers to delete
-     */
-    where?: tradeOffersWhereInput
-    /**
-     * Limit how many tradeOffers to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * tradeOffers.trades
-   */
-  export type tradeOffers$tradesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the trades
-     */
-    select?: tradesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the trades
-     */
-    omit?: tradesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradesInclude<ExtArgs> | null
-    where?: tradesWhereInput
-  }
-
-  /**
-   * tradeOffers.users
-   */
-  export type tradeOffers$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    where?: usersWhereInput
-  }
-
-  /**
-   * tradeOffers without action
-   */
-  export type tradeOffersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model trades
    */
 
@@ -8630,12 +6227,14 @@ export namespace Prisma {
     id: number | null
     supplierId: number | null
     customerId: number | null
+    price: number | null
   }
 
   export type TradesSumAggregateOutputType = {
     id: number | null
     supplierId: number | null
     customerId: number | null
+    price: number | null
   }
 
   export type TradesMinAggregateOutputType = {
@@ -8645,7 +6244,9 @@ export namespace Prisma {
     service: string | null
     createdAt: Date | null
     deadlineAt: Date | null
-    tradedAt: Date | null
+    confirmedAt: Date | null
+    price: number | null
+    acceptedAt: Date | null
   }
 
   export type TradesMaxAggregateOutputType = {
@@ -8655,7 +6256,9 @@ export namespace Prisma {
     service: string | null
     createdAt: Date | null
     deadlineAt: Date | null
-    tradedAt: Date | null
+    confirmedAt: Date | null
+    price: number | null
+    acceptedAt: Date | null
   }
 
   export type TradesCountAggregateOutputType = {
@@ -8665,7 +6268,9 @@ export namespace Prisma {
     service: number
     createdAt: number
     deadlineAt: number
-    tradedAt: number
+    confirmedAt: number
+    price: number
+    acceptedAt: number
     _all: number
   }
 
@@ -8674,12 +6279,14 @@ export namespace Prisma {
     id?: true
     supplierId?: true
     customerId?: true
+    price?: true
   }
 
   export type TradesSumAggregateInputType = {
     id?: true
     supplierId?: true
     customerId?: true
+    price?: true
   }
 
   export type TradesMinAggregateInputType = {
@@ -8689,7 +6296,9 @@ export namespace Prisma {
     service?: true
     createdAt?: true
     deadlineAt?: true
-    tradedAt?: true
+    confirmedAt?: true
+    price?: true
+    acceptedAt?: true
   }
 
   export type TradesMaxAggregateInputType = {
@@ -8699,7 +6308,9 @@ export namespace Prisma {
     service?: true
     createdAt?: true
     deadlineAt?: true
-    tradedAt?: true
+    confirmedAt?: true
+    price?: true
+    acceptedAt?: true
   }
 
   export type TradesCountAggregateInputType = {
@@ -8709,7 +6320,9 @@ export namespace Prisma {
     service?: true
     createdAt?: true
     deadlineAt?: true
-    tradedAt?: true
+    confirmedAt?: true
+    price?: true
+    acceptedAt?: true
     _all?: true
   }
 
@@ -8803,10 +6416,12 @@ export namespace Prisma {
     id: number
     supplierId: number | null
     customerId: number | null
-    service: string | null
+    service: string
     createdAt: Date
-    deadlineAt: Date | null
-    tradedAt: Date | null
+    deadlineAt: Date
+    confirmedAt: Date | null
+    price: number
+    acceptedAt: Date | null
     _count: TradesCountAggregateOutputType | null
     _avg: TradesAvgAggregateOutputType | null
     _sum: TradesSumAggregateOutputType | null
@@ -8835,11 +6450,11 @@ export namespace Prisma {
     service?: boolean
     createdAt?: boolean
     deadlineAt?: boolean
-    tradedAt?: boolean
-    tradeOffers?: boolean | trades$tradeOffersArgs<ExtArgs>
+    confirmedAt?: boolean
+    price?: boolean
+    acceptedAt?: boolean
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
-    _count?: boolean | TradesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["trades"]>
 
   export type tradesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8849,7 +6464,9 @@ export namespace Prisma {
     service?: boolean
     createdAt?: boolean
     deadlineAt?: boolean
-    tradedAt?: boolean
+    confirmedAt?: boolean
+    price?: boolean
+    acceptedAt?: boolean
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
   }, ExtArgs["result"]["trades"]>
@@ -8861,7 +6478,9 @@ export namespace Prisma {
     service?: boolean
     createdAt?: boolean
     deadlineAt?: boolean
-    tradedAt?: boolean
+    confirmedAt?: boolean
+    price?: boolean
+    acceptedAt?: boolean
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
   }, ExtArgs["result"]["trades"]>
@@ -8873,15 +6492,15 @@ export namespace Prisma {
     service?: boolean
     createdAt?: boolean
     deadlineAt?: boolean
-    tradedAt?: boolean
+    confirmedAt?: boolean
+    price?: boolean
+    acceptedAt?: boolean
   }
 
-  export type tradesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supplierId" | "customerId" | "service" | "createdAt" | "deadlineAt" | "tradedAt", ExtArgs["result"]["trades"]>
+  export type tradesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supplierId" | "customerId" | "service" | "createdAt" | "deadlineAt" | "confirmedAt" | "price" | "acceptedAt", ExtArgs["result"]["trades"]>
   export type tradesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tradeOffers?: boolean | trades$tradeOffersArgs<ExtArgs>
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
     users_trades_supplierIdTousers?: boolean | trades$users_trades_supplierIdTousersArgs<ExtArgs>
-    _count?: boolean | TradesCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type tradesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users_trades_customerIdTousers?: boolean | trades$users_trades_customerIdTousersArgs<ExtArgs>
@@ -8895,7 +6514,6 @@ export namespace Prisma {
   export type $tradesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "trades"
     objects: {
-      tradeOffers: Prisma.$tradeOffersPayload<ExtArgs>[]
       users_trades_customerIdTousers: Prisma.$usersPayload<ExtArgs> | null
       users_trades_supplierIdTousers: Prisma.$usersPayload<ExtArgs> | null
     }
@@ -8903,10 +6521,12 @@ export namespace Prisma {
       id: number
       supplierId: number | null
       customerId: number | null
-      service: string | null
+      service: string
       createdAt: Date
-      deadlineAt: Date | null
-      tradedAt: Date | null
+      deadlineAt: Date
+      confirmedAt: Date | null
+      price: number
+      acceptedAt: Date | null
     }, ExtArgs["result"]["trades"]>
     composites: {}
   }
@@ -9301,7 +6921,6 @@ export namespace Prisma {
    */
   export interface Prisma__tradesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    tradeOffers<T extends trades$tradeOffersArgs<ExtArgs> = {}>(args?: Subset<T, trades$tradeOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tradeOffersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users_trades_customerIdTousers<T extends trades$users_trades_customerIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, trades$users_trades_customerIdTousersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     users_trades_supplierIdTousers<T extends trades$users_trades_supplierIdTousersArgs<ExtArgs> = {}>(args?: Subset<T, trades$users_trades_supplierIdTousersArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
@@ -9339,7 +6958,9 @@ export namespace Prisma {
     readonly service: FieldRef<"trades", 'String'>
     readonly createdAt: FieldRef<"trades", 'DateTime'>
     readonly deadlineAt: FieldRef<"trades", 'DateTime'>
-    readonly tradedAt: FieldRef<"trades", 'DateTime'>
+    readonly confirmedAt: FieldRef<"trades", 'DateTime'>
+    readonly price: FieldRef<"trades", 'Int'>
+    readonly acceptedAt: FieldRef<"trades", 'DateTime'>
   }
     
 
@@ -9558,7 +7179,7 @@ export namespace Prisma {
     /**
      * The data needed to create a trades.
      */
-    data?: XOR<tradesCreateInput, tradesUncheckedCreateInput>
+    data: XOR<tradesCreateInput, tradesUncheckedCreateInput>
   }
 
   /**
@@ -9733,30 +7354,6 @@ export namespace Prisma {
      * Limit how many trades to delete.
      */
     limit?: number
-  }
-
-  /**
-   * trades.tradeOffers
-   */
-  export type trades$tradeOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tradeOffers
-     */
-    select?: tradeOffersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tradeOffers
-     */
-    omit?: tradeOffersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tradeOffersInclude<ExtArgs> | null
-    where?: tradeOffersWhereInput
-    orderBy?: tradeOffersOrderByWithRelationInput | tradeOffersOrderByWithRelationInput[]
-    cursor?: tradeOffersWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TradeOffersScalarFieldEnum | TradeOffersScalarFieldEnum[]
   }
 
   /**
@@ -13235,32 +10832,12 @@ export namespace Prisma {
   export type RolesScalarFieldEnum = (typeof RolesScalarFieldEnum)[keyof typeof RolesScalarFieldEnum]
 
 
-  export const ServicesScalarFieldEnum: {
-    id: 'id',
-    description: 'description'
-  };
-
-  export type ServicesScalarFieldEnum = (typeof ServicesScalarFieldEnum)[keyof typeof ServicesScalarFieldEnum]
-
-
   export const StatusScalarFieldEnum: {
     id: 'id',
     description: 'description'
   };
 
   export type StatusScalarFieldEnum = (typeof StatusScalarFieldEnum)[keyof typeof StatusScalarFieldEnum]
-
-
-  export const TradeOffersScalarFieldEnum: {
-    id: 'id',
-    tradeId: 'tradeId',
-    userId: 'userId',
-    value: 'value',
-    isAccepted: 'isAccepted',
-    createdAt: 'createdAt'
-  };
-
-  export type TradeOffersScalarFieldEnum = (typeof TradeOffersScalarFieldEnum)[keyof typeof TradeOffersScalarFieldEnum]
 
 
   export const TradesScalarFieldEnum: {
@@ -13270,7 +10847,9 @@ export namespace Prisma {
     service: 'service',
     createdAt: 'createdAt',
     deadlineAt: 'deadlineAt',
-    tradedAt: 'tradedAt'
+    confirmedAt: 'confirmedAt',
+    price: 'price',
+    acceptedAt: 'acceptedAt'
   };
 
   export type TradesScalarFieldEnum = (typeof TradesScalarFieldEnum)[keyof typeof TradesScalarFieldEnum]
@@ -13379,20 +10958,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'BigInt'
-   */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
-    
-
-
-  /**
-   * Reference to a field of type 'BigInt[]'
-   */
-  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -13426,7 +10991,6 @@ export namespace Prisma {
     password?: StringFilter<"users"> | string
     role?: IntNullableFilter<"users"> | number | null
     betEntries?: BetEntriesListRelationFilter
-    tradeOffers?: TradeOffersListRelationFilter
     trades_trades_customerIdTousers?: TradesListRelationFilter
     trades_trades_supplierIdTousers?: TradesListRelationFilter
     userWallets?: XOR<UserWalletsNullableScalarRelationFilter, userWalletsWhereInput> | null
@@ -13440,7 +11004,6 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrderInput | SortOrder
     betEntries?: betEntriesOrderByRelationAggregateInput
-    tradeOffers?: tradeOffersOrderByRelationAggregateInput
     trades_trades_customerIdTousers?: tradesOrderByRelationAggregateInput
     trades_trades_supplierIdTousers?: tradesOrderByRelationAggregateInput
     userWallets?: userWalletsOrderByWithRelationInput
@@ -13457,7 +11020,6 @@ export namespace Prisma {
     password?: StringFilter<"users"> | string
     role?: IntNullableFilter<"users"> | number | null
     betEntries?: BetEntriesListRelationFilter
-    tradeOffers?: TradeOffersListRelationFilter
     trades_trades_customerIdTousers?: TradesListRelationFilter
     trades_trades_supplierIdTousers?: TradesListRelationFilter
     userWallets?: XOR<UserWalletsNullableScalarRelationFilter, userWalletsWhereInput> | null
@@ -13600,45 +11162,6 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"roles"> | string
   }
 
-  export type servicesWhereInput = {
-    AND?: servicesWhereInput | servicesWhereInput[]
-    OR?: servicesWhereInput[]
-    NOT?: servicesWhereInput | servicesWhereInput[]
-    id?: IntFilter<"services"> | number
-    description?: StringFilter<"services"> | string
-  }
-
-  export type servicesOrderByWithRelationInput = {
-    id?: SortOrder
-    description?: SortOrder
-  }
-
-  export type servicesWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: servicesWhereInput | servicesWhereInput[]
-    OR?: servicesWhereInput[]
-    NOT?: servicesWhereInput | servicesWhereInput[]
-    description?: StringFilter<"services"> | string
-  }, "id">
-
-  export type servicesOrderByWithAggregationInput = {
-    id?: SortOrder
-    description?: SortOrder
-    _count?: servicesCountOrderByAggregateInput
-    _avg?: servicesAvgOrderByAggregateInput
-    _max?: servicesMaxOrderByAggregateInput
-    _min?: servicesMinOrderByAggregateInput
-    _sum?: servicesSumOrderByAggregateInput
-  }
-
-  export type servicesScalarWhereWithAggregatesInput = {
-    AND?: servicesScalarWhereWithAggregatesInput | servicesScalarWhereWithAggregatesInput[]
-    OR?: servicesScalarWhereWithAggregatesInput[]
-    NOT?: servicesScalarWhereWithAggregatesInput | servicesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"services"> | number
-    description?: StringWithAggregatesFilter<"services"> | string
-  }
-
   export type statusWhereInput = {
     AND?: statusWhereInput | statusWhereInput[]
     OR?: statusWhereInput[]
@@ -13681,71 +11204,6 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"status"> | string
   }
 
-  export type tradeOffersWhereInput = {
-    AND?: tradeOffersWhereInput | tradeOffersWhereInput[]
-    OR?: tradeOffersWhereInput[]
-    NOT?: tradeOffersWhereInput | tradeOffersWhereInput[]
-    id?: BigIntFilter<"tradeOffers"> | bigint | number
-    tradeId?: IntNullableFilter<"tradeOffers"> | number | null
-    userId?: IntNullableFilter<"tradeOffers"> | number | null
-    value?: IntFilter<"tradeOffers"> | number
-    isAccepted?: BoolNullableFilter<"tradeOffers"> | boolean | null
-    createdAt?: DateTimeFilter<"tradeOffers"> | Date | string
-    trades?: XOR<TradesNullableScalarRelationFilter, tradesWhereInput> | null
-    users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
-  }
-
-  export type tradeOffersOrderByWithRelationInput = {
-    id?: SortOrder
-    tradeId?: SortOrderInput | SortOrder
-    userId?: SortOrderInput | SortOrder
-    value?: SortOrder
-    isAccepted?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    trades?: tradesOrderByWithRelationInput
-    users?: usersOrderByWithRelationInput
-  }
-
-  export type tradeOffersWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
-    AND?: tradeOffersWhereInput | tradeOffersWhereInput[]
-    OR?: tradeOffersWhereInput[]
-    NOT?: tradeOffersWhereInput | tradeOffersWhereInput[]
-    tradeId?: IntNullableFilter<"tradeOffers"> | number | null
-    userId?: IntNullableFilter<"tradeOffers"> | number | null
-    value?: IntFilter<"tradeOffers"> | number
-    isAccepted?: BoolNullableFilter<"tradeOffers"> | boolean | null
-    createdAt?: DateTimeFilter<"tradeOffers"> | Date | string
-    trades?: XOR<TradesNullableScalarRelationFilter, tradesWhereInput> | null
-    users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
-  }, "id">
-
-  export type tradeOffersOrderByWithAggregationInput = {
-    id?: SortOrder
-    tradeId?: SortOrderInput | SortOrder
-    userId?: SortOrderInput | SortOrder
-    value?: SortOrder
-    isAccepted?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    _count?: tradeOffersCountOrderByAggregateInput
-    _avg?: tradeOffersAvgOrderByAggregateInput
-    _max?: tradeOffersMaxOrderByAggregateInput
-    _min?: tradeOffersMinOrderByAggregateInput
-    _sum?: tradeOffersSumOrderByAggregateInput
-  }
-
-  export type tradeOffersScalarWhereWithAggregatesInput = {
-    AND?: tradeOffersScalarWhereWithAggregatesInput | tradeOffersScalarWhereWithAggregatesInput[]
-    OR?: tradeOffersScalarWhereWithAggregatesInput[]
-    NOT?: tradeOffersScalarWhereWithAggregatesInput | tradeOffersScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"tradeOffers"> | bigint | number
-    tradeId?: IntNullableWithAggregatesFilter<"tradeOffers"> | number | null
-    userId?: IntNullableWithAggregatesFilter<"tradeOffers"> | number | null
-    value?: IntWithAggregatesFilter<"tradeOffers"> | number
-    isAccepted?: BoolNullableWithAggregatesFilter<"tradeOffers"> | boolean | null
-    createdAt?: DateTimeWithAggregatesFilter<"tradeOffers"> | Date | string
-  }
-
   export type tradesWhereInput = {
     AND?: tradesWhereInput | tradesWhereInput[]
     OR?: tradesWhereInput[]
@@ -13753,11 +11211,12 @@ export namespace Prisma {
     id?: IntFilter<"trades"> | number
     supplierId?: IntNullableFilter<"trades"> | number | null
     customerId?: IntNullableFilter<"trades"> | number | null
-    service?: StringNullableFilter<"trades"> | string | null
+    service?: StringFilter<"trades"> | string
     createdAt?: DateTimeFilter<"trades"> | Date | string
-    deadlineAt?: DateTimeNullableFilter<"trades"> | Date | string | null
-    tradedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
-    tradeOffers?: TradeOffersListRelationFilter
+    deadlineAt?: DateTimeFilter<"trades"> | Date | string
+    confirmedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
+    price?: IntFilter<"trades"> | number
+    acceptedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
     users_trades_customerIdTousers?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
     users_trades_supplierIdTousers?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
   }
@@ -13766,11 +11225,12 @@ export namespace Prisma {
     id?: SortOrder
     supplierId?: SortOrderInput | SortOrder
     customerId?: SortOrderInput | SortOrder
-    service?: SortOrderInput | SortOrder
+    service?: SortOrder
     createdAt?: SortOrder
-    deadlineAt?: SortOrderInput | SortOrder
-    tradedAt?: SortOrderInput | SortOrder
-    tradeOffers?: tradeOffersOrderByRelationAggregateInput
+    deadlineAt?: SortOrder
+    confirmedAt?: SortOrderInput | SortOrder
+    price?: SortOrder
+    acceptedAt?: SortOrderInput | SortOrder
     users_trades_customerIdTousers?: usersOrderByWithRelationInput
     users_trades_supplierIdTousers?: usersOrderByWithRelationInput
   }
@@ -13782,11 +11242,12 @@ export namespace Prisma {
     NOT?: tradesWhereInput | tradesWhereInput[]
     supplierId?: IntNullableFilter<"trades"> | number | null
     customerId?: IntNullableFilter<"trades"> | number | null
-    service?: StringNullableFilter<"trades"> | string | null
+    service?: StringFilter<"trades"> | string
     createdAt?: DateTimeFilter<"trades"> | Date | string
-    deadlineAt?: DateTimeNullableFilter<"trades"> | Date | string | null
-    tradedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
-    tradeOffers?: TradeOffersListRelationFilter
+    deadlineAt?: DateTimeFilter<"trades"> | Date | string
+    confirmedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
+    price?: IntFilter<"trades"> | number
+    acceptedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
     users_trades_customerIdTousers?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
     users_trades_supplierIdTousers?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
   }, "id">
@@ -13795,10 +11256,12 @@ export namespace Prisma {
     id?: SortOrder
     supplierId?: SortOrderInput | SortOrder
     customerId?: SortOrderInput | SortOrder
-    service?: SortOrderInput | SortOrder
+    service?: SortOrder
     createdAt?: SortOrder
-    deadlineAt?: SortOrderInput | SortOrder
-    tradedAt?: SortOrderInput | SortOrder
+    deadlineAt?: SortOrder
+    confirmedAt?: SortOrderInput | SortOrder
+    price?: SortOrder
+    acceptedAt?: SortOrderInput | SortOrder
     _count?: tradesCountOrderByAggregateInput
     _avg?: tradesAvgOrderByAggregateInput
     _max?: tradesMaxOrderByAggregateInput
@@ -13813,10 +11276,12 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"trades"> | number
     supplierId?: IntNullableWithAggregatesFilter<"trades"> | number | null
     customerId?: IntNullableWithAggregatesFilter<"trades"> | number | null
-    service?: StringNullableWithAggregatesFilter<"trades"> | string | null
+    service?: StringWithAggregatesFilter<"trades"> | string
     createdAt?: DateTimeWithAggregatesFilter<"trades"> | Date | string
-    deadlineAt?: DateTimeNullableWithAggregatesFilter<"trades"> | Date | string | null
-    tradedAt?: DateTimeNullableWithAggregatesFilter<"trades"> | Date | string | null
+    deadlineAt?: DateTimeWithAggregatesFilter<"trades"> | Date | string
+    confirmedAt?: DateTimeNullableWithAggregatesFilter<"trades"> | Date | string | null
+    price?: IntWithAggregatesFilter<"trades"> | number
+    acceptedAt?: DateTimeNullableWithAggregatesFilter<"trades"> | Date | string | null
   }
 
   export type userWalletsWhereInput = {
@@ -13991,7 +11456,6 @@ export namespace Prisma {
     username: string
     password: string
     betEntries?: betEntriesCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
@@ -14005,7 +11469,6 @@ export namespace Prisma {
     password: string
     role?: number | null
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
@@ -14016,7 +11479,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
@@ -14030,7 +11492,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
     betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
@@ -14164,38 +11625,6 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type servicesCreateInput = {
-    description: string
-  }
-
-  export type servicesUncheckedCreateInput = {
-    id?: number
-    description: string
-  }
-
-  export type servicesUpdateInput = {
-    description?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type servicesUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type servicesCreateManyInput = {
-    id?: number
-    description: string
-  }
-
-  export type servicesUpdateManyMutationInput = {
-    description?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type servicesUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-  }
-
   export type statusCreateInput = {
     description: string
     bets_bets_statusTostatus?: betsCreateNestedManyWithoutStatus_bets_statusTostatusInput
@@ -14232,73 +11661,13 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type tradeOffersCreateInput = {
-    id?: bigint | number
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-    trades?: tradesCreateNestedOneWithoutTradeOffersInput
-    users?: usersCreateNestedOneWithoutTradeOffersInput
-  }
-
-  export type tradeOffersUncheckedCreateInput = {
-    id?: bigint | number
-    tradeId?: number | null
-    userId?: number | null
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-  }
-
-  export type tradeOffersUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    trades?: tradesUpdateOneWithoutTradeOffersNestedInput
-    users?: usersUpdateOneWithoutTradeOffersNestedInput
-  }
-
-  export type tradeOffersUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    tradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type tradeOffersCreateManyInput = {
-    id?: bigint | number
-    tradeId?: number | null
-    userId?: number | null
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-  }
-
-  export type tradeOffersUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type tradeOffersUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    tradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type tradesCreateInput = {
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
-    tradeOffers?: tradeOffersCreateNestedManyWithoutTradesInput
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
     users_trades_customerIdTousers?: usersCreateNestedOneWithoutTrades_trades_customerIdTousersInput
     users_trades_supplierIdTousers?: usersCreateNestedOneWithoutTrades_trades_supplierIdTousersInput
   }
@@ -14307,19 +11676,21 @@ export namespace Prisma {
     id?: number
     supplierId?: number | null
     customerId?: number | null
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutTradesInput
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
   }
 
   export type tradesUpdateInput = {
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradeOffers?: tradeOffersUpdateManyWithoutTradesNestedInput
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     users_trades_customerIdTousers?: usersUpdateOneWithoutTrades_trades_customerIdTousersNestedInput
     users_trades_supplierIdTousers?: usersUpdateOneWithoutTrades_trades_supplierIdTousersNestedInput
   }
@@ -14328,38 +11699,45 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutTradesNestedInput
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tradesCreateManyInput = {
     id?: number
     supplierId?: number | null
     customerId?: number | null
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
   }
 
   export type tradesUpdateManyMutationInput = {
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tradesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type userWalletsCreateInput = {
@@ -14553,12 +11931,6 @@ export namespace Prisma {
     none?: betEntriesWhereInput
   }
 
-  export type TradeOffersListRelationFilter = {
-    every?: tradeOffersWhereInput
-    some?: tradeOffersWhereInput
-    none?: tradeOffersWhereInput
-  }
-
   export type TradesListRelationFilter = {
     every?: tradesWhereInput
     some?: tradesWhereInput
@@ -14581,10 +11953,6 @@ export namespace Prisma {
   }
 
   export type betEntriesOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type tradeOffersOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14793,29 +12161,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type servicesCountOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-  }
-
-  export type servicesAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type servicesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-  }
-
-  export type servicesMinOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-  }
-
-  export type servicesSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type BetsListRelationFilter = {
     every?: betsWhereInput
     some?: betsWhereInput
@@ -14849,112 +12194,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type TradesNullableScalarRelationFilter = {
-    is?: tradesWhereInput | null
-    isNot?: tradesWhereInput | null
-  }
-
-  export type UsersNullableScalarRelationFilter = {
-    is?: usersWhereInput | null
-    isNot?: usersWhereInput | null
-  }
-
-  export type tradeOffersCountOrderByAggregateInput = {
-    id?: SortOrder
-    tradeId?: SortOrder
-    userId?: SortOrder
-    value?: SortOrder
-    isAccepted?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type tradeOffersAvgOrderByAggregateInput = {
-    id?: SortOrder
-    tradeId?: SortOrder
-    userId?: SortOrder
-    value?: SortOrder
-  }
-
-  export type tradeOffersMaxOrderByAggregateInput = {
-    id?: SortOrder
-    tradeId?: SortOrder
-    userId?: SortOrder
-    value?: SortOrder
-    isAccepted?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type tradeOffersMinOrderByAggregateInput = {
-    id?: SortOrder
-    tradeId?: SortOrder
-    userId?: SortOrder
-    value?: SortOrder
-    isAccepted?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type tradeOffersSumOrderByAggregateInput = {
-    id?: SortOrder
-    tradeId?: SortOrder
-    userId?: SortOrder
-    value?: SortOrder
-  }
-
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -14966,6 +12205,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type UsersNullableScalarRelationFilter = {
+    is?: usersWhereInput | null
+    isNot?: usersWhereInput | null
+  }
+
   export type tradesCountOrderByAggregateInput = {
     id?: SortOrder
     supplierId?: SortOrder
@@ -14973,13 +12217,16 @@ export namespace Prisma {
     service?: SortOrder
     createdAt?: SortOrder
     deadlineAt?: SortOrder
-    tradedAt?: SortOrder
+    confirmedAt?: SortOrder
+    price?: SortOrder
+    acceptedAt?: SortOrder
   }
 
   export type tradesAvgOrderByAggregateInput = {
     id?: SortOrder
     supplierId?: SortOrder
     customerId?: SortOrder
+    price?: SortOrder
   }
 
   export type tradesMaxOrderByAggregateInput = {
@@ -14989,7 +12236,9 @@ export namespace Prisma {
     service?: SortOrder
     createdAt?: SortOrder
     deadlineAt?: SortOrder
-    tradedAt?: SortOrder
+    confirmedAt?: SortOrder
+    price?: SortOrder
+    acceptedAt?: SortOrder
   }
 
   export type tradesMinOrderByAggregateInput = {
@@ -14999,31 +12248,16 @@ export namespace Prisma {
     service?: SortOrder
     createdAt?: SortOrder
     deadlineAt?: SortOrder
-    tradedAt?: SortOrder
+    confirmedAt?: SortOrder
+    price?: SortOrder
+    acceptedAt?: SortOrder
   }
 
   export type tradesSumOrderByAggregateInput = {
     id?: SortOrder
     supplierId?: SortOrder
     customerId?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
+    price?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15206,13 +12440,6 @@ export namespace Prisma {
     connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
   }
 
-  export type tradeOffersCreateNestedManyWithoutUsersInput = {
-    create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
-    createMany?: tradeOffersCreateManyUsersInputEnvelope
-    connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-  }
-
   export type tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput = {
     create?: XOR<tradesCreateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput> | tradesCreateWithoutUsers_trades_customerIdTousersInput[] | tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput[]
     connectOrCreate?: tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput | tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput[]
@@ -15244,13 +12471,6 @@ export namespace Prisma {
     connectOrCreate?: betEntriesCreateOrConnectWithoutUsersInput | betEntriesCreateOrConnectWithoutUsersInput[]
     createMany?: betEntriesCreateManyUsersInputEnvelope
     connect?: betEntriesWhereUniqueInput | betEntriesWhereUniqueInput[]
-  }
-
-  export type tradeOffersUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
-    createMany?: tradeOffersCreateManyUsersInputEnvelope
-    connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
   }
 
   export type tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput = {
@@ -15289,20 +12509,6 @@ export namespace Prisma {
     update?: betEntriesUpdateWithWhereUniqueWithoutUsersInput | betEntriesUpdateWithWhereUniqueWithoutUsersInput[]
     updateMany?: betEntriesUpdateManyWithWhereWithoutUsersInput | betEntriesUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
-  }
-
-  export type tradeOffersUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
-    upsert?: tradeOffersUpsertWithWhereUniqueWithoutUsersInput | tradeOffersUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: tradeOffersCreateManyUsersInputEnvelope
-    set?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    disconnect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    delete?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    update?: tradeOffersUpdateWithWhereUniqueWithoutUsersInput | tradeOffersUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: tradeOffersUpdateManyWithWhereWithoutUsersInput | tradeOffersUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
   }
 
   export type tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput = {
@@ -15381,20 +12587,6 @@ export namespace Prisma {
     update?: betEntriesUpdateWithWhereUniqueWithoutUsersInput | betEntriesUpdateWithWhereUniqueWithoutUsersInput[]
     updateMany?: betEntriesUpdateManyWithWhereWithoutUsersInput | betEntriesUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: betEntriesScalarWhereInput | betEntriesScalarWhereInput[]
-  }
-
-  export type tradeOffersUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput> | tradeOffersCreateWithoutUsersInput[] | tradeOffersUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: tradeOffersCreateOrConnectWithoutUsersInput | tradeOffersCreateOrConnectWithoutUsersInput[]
-    upsert?: tradeOffersUpsertWithWhereUniqueWithoutUsersInput | tradeOffersUpsertWithWhereUniqueWithoutUsersInput[]
-    createMany?: tradeOffersCreateManyUsersInputEnvelope
-    set?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    disconnect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    delete?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    update?: tradeOffersUpdateWithWhereUniqueWithoutUsersInput | tradeOffersUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: tradeOffersUpdateManyWithWhereWithoutUsersInput | tradeOffersUpdateManyWithWhereWithoutUsersInput[]
-    deleteMany?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
   }
 
   export type tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput = {
@@ -15581,57 +12773,6 @@ export namespace Prisma {
     deleteMany?: betsScalarWhereInput | betsScalarWhereInput[]
   }
 
-  export type tradesCreateNestedOneWithoutTradeOffersInput = {
-    create?: XOR<tradesCreateWithoutTradeOffersInput, tradesUncheckedCreateWithoutTradeOffersInput>
-    connectOrCreate?: tradesCreateOrConnectWithoutTradeOffersInput
-    connect?: tradesWhereUniqueInput
-  }
-
-  export type usersCreateNestedOneWithoutTradeOffersInput = {
-    create?: XOR<usersCreateWithoutTradeOffersInput, usersUncheckedCreateWithoutTradeOffersInput>
-    connectOrCreate?: usersCreateOrConnectWithoutTradeOffersInput
-    connect?: usersWhereUniqueInput
-  }
-
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
-  }
-
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
-  }
-
-  export type tradesUpdateOneWithoutTradeOffersNestedInput = {
-    create?: XOR<tradesCreateWithoutTradeOffersInput, tradesUncheckedCreateWithoutTradeOffersInput>
-    connectOrCreate?: tradesCreateOrConnectWithoutTradeOffersInput
-    upsert?: tradesUpsertWithoutTradeOffersInput
-    disconnect?: tradesWhereInput | boolean
-    delete?: tradesWhereInput | boolean
-    connect?: tradesWhereUniqueInput
-    update?: XOR<XOR<tradesUpdateToOneWithWhereWithoutTradeOffersInput, tradesUpdateWithoutTradeOffersInput>, tradesUncheckedUpdateWithoutTradeOffersInput>
-  }
-
-  export type usersUpdateOneWithoutTradeOffersNestedInput = {
-    create?: XOR<usersCreateWithoutTradeOffersInput, usersUncheckedCreateWithoutTradeOffersInput>
-    connectOrCreate?: usersCreateOrConnectWithoutTradeOffersInput
-    upsert?: usersUpsertWithoutTradeOffersInput
-    disconnect?: usersWhereInput | boolean
-    delete?: usersWhereInput | boolean
-    connect?: usersWhereUniqueInput
-    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutTradeOffersInput, usersUpdateWithoutTradeOffersInput>, usersUncheckedUpdateWithoutTradeOffersInput>
-  }
-
-  export type tradeOffersCreateNestedManyWithoutTradesInput = {
-    create?: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput> | tradeOffersCreateWithoutTradesInput[] | tradeOffersUncheckedCreateWithoutTradesInput[]
-    connectOrCreate?: tradeOffersCreateOrConnectWithoutTradesInput | tradeOffersCreateOrConnectWithoutTradesInput[]
-    createMany?: tradeOffersCreateManyTradesInputEnvelope
-    connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-  }
-
   export type usersCreateNestedOneWithoutTrades_trades_customerIdTousersInput = {
     create?: XOR<usersCreateWithoutTrades_trades_customerIdTousersInput, usersUncheckedCreateWithoutTrades_trades_customerIdTousersInput>
     connectOrCreate?: usersCreateOrConnectWithoutTrades_trades_customerIdTousersInput
@@ -15644,33 +12785,8 @@ export namespace Prisma {
     connect?: usersWhereUniqueInput
   }
 
-  export type tradeOffersUncheckedCreateNestedManyWithoutTradesInput = {
-    create?: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput> | tradeOffersCreateWithoutTradesInput[] | tradeOffersUncheckedCreateWithoutTradesInput[]
-    connectOrCreate?: tradeOffersCreateOrConnectWithoutTradesInput | tradeOffersCreateOrConnectWithoutTradesInput[]
-    createMany?: tradeOffersCreateManyTradesInputEnvelope
-    connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
-  }
-
-  export type tradeOffersUpdateManyWithoutTradesNestedInput = {
-    create?: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput> | tradeOffersCreateWithoutTradesInput[] | tradeOffersUncheckedCreateWithoutTradesInput[]
-    connectOrCreate?: tradeOffersCreateOrConnectWithoutTradesInput | tradeOffersCreateOrConnectWithoutTradesInput[]
-    upsert?: tradeOffersUpsertWithWhereUniqueWithoutTradesInput | tradeOffersUpsertWithWhereUniqueWithoutTradesInput[]
-    createMany?: tradeOffersCreateManyTradesInputEnvelope
-    set?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    disconnect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    delete?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    update?: tradeOffersUpdateWithWhereUniqueWithoutTradesInput | tradeOffersUpdateWithWhereUniqueWithoutTradesInput[]
-    updateMany?: tradeOffersUpdateManyWithWhereWithoutTradesInput | tradeOffersUpdateManyWithWhereWithoutTradesInput[]
-    deleteMany?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
   }
 
   export type usersUpdateOneWithoutTrades_trades_customerIdTousersNestedInput = {
@@ -15691,20 +12807,6 @@ export namespace Prisma {
     delete?: usersWhereInput | boolean
     connect?: usersWhereUniqueInput
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutTrades_trades_supplierIdTousersInput, usersUpdateWithoutTrades_trades_supplierIdTousersInput>, usersUncheckedUpdateWithoutTrades_trades_supplierIdTousersInput>
-  }
-
-  export type tradeOffersUncheckedUpdateManyWithoutTradesNestedInput = {
-    create?: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput> | tradeOffersCreateWithoutTradesInput[] | tradeOffersUncheckedCreateWithoutTradesInput[]
-    connectOrCreate?: tradeOffersCreateOrConnectWithoutTradesInput | tradeOffersCreateOrConnectWithoutTradesInput[]
-    upsert?: tradeOffersUpsertWithWhereUniqueWithoutTradesInput | tradeOffersUpsertWithWhereUniqueWithoutTradesInput[]
-    createMany?: tradeOffersCreateManyTradesInputEnvelope
-    set?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    disconnect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    delete?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    connect?: tradeOffersWhereUniqueInput | tradeOffersWhereUniqueInput[]
-    update?: tradeOffersUpdateWithWhereUniqueWithoutTradesInput | tradeOffersUpdateWithWhereUniqueWithoutTradesInput[]
-    updateMany?: tradeOffersUpdateManyWithWhereWithoutTradesInput | tradeOffersUpdateManyWithWhereWithoutTradesInput[]
-    deleteMany?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
   }
 
   export type usersCreateNestedOneWithoutUserWalletsInput = {
@@ -15955,60 +13057,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -16018,23 +13066,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -16103,49 +13134,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type tradeOffersCreateWithoutUsersInput = {
-    id?: bigint | number
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-    trades?: tradesCreateNestedOneWithoutTradeOffersInput
-  }
-
-  export type tradeOffersUncheckedCreateWithoutUsersInput = {
-    id?: bigint | number
-    tradeId?: number | null
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-  }
-
-  export type tradeOffersCreateOrConnectWithoutUsersInput = {
-    where: tradeOffersWhereUniqueInput
-    create: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput>
-  }
-
-  export type tradeOffersCreateManyUsersInputEnvelope = {
-    data: tradeOffersCreateManyUsersInput | tradeOffersCreateManyUsersInput[]
-    skipDuplicates?: boolean
-  }
-
   export type tradesCreateWithoutUsers_trades_customerIdTousersInput = {
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
-    tradeOffers?: tradeOffersCreateNestedManyWithoutTradesInput
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
     users_trades_supplierIdTousers?: usersCreateNestedOneWithoutTrades_trades_supplierIdTousersInput
   }
 
   export type tradesUncheckedCreateWithoutUsers_trades_customerIdTousersInput = {
     id?: number
     supplierId?: number | null
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutTradesInput
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
   }
 
   export type tradesCreateOrConnectWithoutUsers_trades_customerIdTousersInput = {
@@ -16159,22 +13166,24 @@ export namespace Prisma {
   }
 
   export type tradesCreateWithoutUsers_trades_supplierIdTousersInput = {
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
-    tradeOffers?: tradeOffersCreateNestedManyWithoutTradesInput
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
     users_trades_customerIdTousers?: usersCreateNestedOneWithoutTrades_trades_customerIdTousersInput
   }
 
   export type tradesUncheckedCreateWithoutUsers_trades_supplierIdTousersInput = {
     id?: number
     customerId?: number | null
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutTradesInput
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
   }
 
   export type tradesCreateOrConnectWithoutUsers_trades_supplierIdTousersInput = {
@@ -16241,34 +13250,6 @@ export namespace Prisma {
     isWinner?: BoolFilter<"betEntries"> | boolean
   }
 
-  export type tradeOffersUpsertWithWhereUniqueWithoutUsersInput = {
-    where: tradeOffersWhereUniqueInput
-    update: XOR<tradeOffersUpdateWithoutUsersInput, tradeOffersUncheckedUpdateWithoutUsersInput>
-    create: XOR<tradeOffersCreateWithoutUsersInput, tradeOffersUncheckedCreateWithoutUsersInput>
-  }
-
-  export type tradeOffersUpdateWithWhereUniqueWithoutUsersInput = {
-    where: tradeOffersWhereUniqueInput
-    data: XOR<tradeOffersUpdateWithoutUsersInput, tradeOffersUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type tradeOffersUpdateManyWithWhereWithoutUsersInput = {
-    where: tradeOffersScalarWhereInput
-    data: XOR<tradeOffersUpdateManyMutationInput, tradeOffersUncheckedUpdateManyWithoutUsersInput>
-  }
-
-  export type tradeOffersScalarWhereInput = {
-    AND?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
-    OR?: tradeOffersScalarWhereInput[]
-    NOT?: tradeOffersScalarWhereInput | tradeOffersScalarWhereInput[]
-    id?: BigIntFilter<"tradeOffers"> | bigint | number
-    tradeId?: IntNullableFilter<"tradeOffers"> | number | null
-    userId?: IntNullableFilter<"tradeOffers"> | number | null
-    value?: IntFilter<"tradeOffers"> | number
-    isAccepted?: BoolNullableFilter<"tradeOffers"> | boolean | null
-    createdAt?: DateTimeFilter<"tradeOffers"> | Date | string
-  }
-
   export type tradesUpsertWithWhereUniqueWithoutUsers_trades_customerIdTousersInput = {
     where: tradesWhereUniqueInput
     update: XOR<tradesUpdateWithoutUsers_trades_customerIdTousersInput, tradesUncheckedUpdateWithoutUsers_trades_customerIdTousersInput>
@@ -16292,10 +13273,12 @@ export namespace Prisma {
     id?: IntFilter<"trades"> | number
     supplierId?: IntNullableFilter<"trades"> | number | null
     customerId?: IntNullableFilter<"trades"> | number | null
-    service?: StringNullableFilter<"trades"> | string | null
+    service?: StringFilter<"trades"> | string
     createdAt?: DateTimeFilter<"trades"> | Date | string
-    deadlineAt?: DateTimeNullableFilter<"trades"> | Date | string | null
-    tradedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
+    deadlineAt?: DateTimeFilter<"trades"> | Date | string
+    confirmedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
+    price?: IntFilter<"trades"> | number
+    acceptedAt?: DateTimeNullableFilter<"trades"> | Date | string | null
   }
 
   export type tradesUpsertWithWhereUniqueWithoutUsers_trades_supplierIdTousersInput = {
@@ -16447,7 +13430,6 @@ export namespace Prisma {
     username: string
     password: string
     betEntries?: betEntriesCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
@@ -16459,7 +13441,6 @@ export namespace Prisma {
     username: string
     password: string
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
@@ -16560,154 +13541,11 @@ export namespace Prisma {
     amount?: IntFilter<"bets"> | number
   }
 
-  export type tradesCreateWithoutTradeOffersInput = {
-    service?: string | null
-    createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
-    users_trades_customerIdTousers?: usersCreateNestedOneWithoutTrades_trades_customerIdTousersInput
-    users_trades_supplierIdTousers?: usersCreateNestedOneWithoutTrades_trades_supplierIdTousersInput
-  }
-
-  export type tradesUncheckedCreateWithoutTradeOffersInput = {
-    id?: number
-    supplierId?: number | null
-    customerId?: number | null
-    service?: string | null
-    createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
-  }
-
-  export type tradesCreateOrConnectWithoutTradeOffersInput = {
-    where: tradesWhereUniqueInput
-    create: XOR<tradesCreateWithoutTradeOffersInput, tradesUncheckedCreateWithoutTradeOffersInput>
-  }
-
-  export type usersCreateWithoutTradeOffersInput = {
-    name: string
-    username: string
-    password: string
-    betEntries?: betEntriesCreateNestedManyWithoutUsersInput
-    trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
-    trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
-    userWallets?: userWalletsCreateNestedOneWithoutUsersInput
-    roles?: rolesCreateNestedOneWithoutUsersInput
-  }
-
-  export type usersUncheckedCreateWithoutTradeOffersInput = {
-    id?: number
-    name: string
-    username: string
-    password: string
-    role?: number | null
-    betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
-    trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
-    trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
-    userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
-  }
-
-  export type usersCreateOrConnectWithoutTradeOffersInput = {
-    where: usersWhereUniqueInput
-    create: XOR<usersCreateWithoutTradeOffersInput, usersUncheckedCreateWithoutTradeOffersInput>
-  }
-
-  export type tradesUpsertWithoutTradeOffersInput = {
-    update: XOR<tradesUpdateWithoutTradeOffersInput, tradesUncheckedUpdateWithoutTradeOffersInput>
-    create: XOR<tradesCreateWithoutTradeOffersInput, tradesUncheckedCreateWithoutTradeOffersInput>
-    where?: tradesWhereInput
-  }
-
-  export type tradesUpdateToOneWithWhereWithoutTradeOffersInput = {
-    where?: tradesWhereInput
-    data: XOR<tradesUpdateWithoutTradeOffersInput, tradesUncheckedUpdateWithoutTradeOffersInput>
-  }
-
-  export type tradesUpdateWithoutTradeOffersInput = {
-    service?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    users_trades_customerIdTousers?: usersUpdateOneWithoutTrades_trades_customerIdTousersNestedInput
-    users_trades_supplierIdTousers?: usersUpdateOneWithoutTrades_trades_supplierIdTousersNestedInput
-  }
-
-  export type tradesUncheckedUpdateWithoutTradeOffersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    supplierId?: NullableIntFieldUpdateOperationsInput | number | null
-    customerId?: NullableIntFieldUpdateOperationsInput | number | null
-    service?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type usersUpsertWithoutTradeOffersInput = {
-    update: XOR<usersUpdateWithoutTradeOffersInput, usersUncheckedUpdateWithoutTradeOffersInput>
-    create: XOR<usersCreateWithoutTradeOffersInput, usersUncheckedCreateWithoutTradeOffersInput>
-    where?: usersWhereInput
-  }
-
-  export type usersUpdateToOneWithWhereWithoutTradeOffersInput = {
-    where?: usersWhereInput
-    data: XOR<usersUpdateWithoutTradeOffersInput, usersUncheckedUpdateWithoutTradeOffersInput>
-  }
-
-  export type usersUpdateWithoutTradeOffersInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
-    trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
-    trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
-    userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
-    roles?: rolesUpdateOneWithoutUsersNestedInput
-  }
-
-  export type usersUncheckedUpdateWithoutTradeOffersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: NullableIntFieldUpdateOperationsInput | number | null
-    betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
-    trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
-    trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
-    userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
-  }
-
-  export type tradeOffersCreateWithoutTradesInput = {
-    id?: bigint | number
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-    users?: usersCreateNestedOneWithoutTradeOffersInput
-  }
-
-  export type tradeOffersUncheckedCreateWithoutTradesInput = {
-    id?: bigint | number
-    userId?: number | null
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-  }
-
-  export type tradeOffersCreateOrConnectWithoutTradesInput = {
-    where: tradeOffersWhereUniqueInput
-    create: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput>
-  }
-
-  export type tradeOffersCreateManyTradesInputEnvelope = {
-    data: tradeOffersCreateManyTradesInput | tradeOffersCreateManyTradesInput[]
-    skipDuplicates?: boolean
-  }
-
   export type usersCreateWithoutTrades_trades_customerIdTousersInput = {
     name: string
     username: string
     password: string
     betEntries?: betEntriesCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
     roles?: rolesCreateNestedOneWithoutUsersInput
@@ -16720,7 +13558,6 @@ export namespace Prisma {
     password: string
     role?: number | null
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
   }
@@ -16735,7 +13572,6 @@ export namespace Prisma {
     username: string
     password: string
     betEntries?: betEntriesCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
     roles?: rolesCreateNestedOneWithoutUsersInput
@@ -16748,7 +13584,6 @@ export namespace Prisma {
     password: string
     role?: number | null
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
   }
@@ -16756,22 +13591,6 @@ export namespace Prisma {
   export type usersCreateOrConnectWithoutTrades_trades_supplierIdTousersInput = {
     where: usersWhereUniqueInput
     create: XOR<usersCreateWithoutTrades_trades_supplierIdTousersInput, usersUncheckedCreateWithoutTrades_trades_supplierIdTousersInput>
-  }
-
-  export type tradeOffersUpsertWithWhereUniqueWithoutTradesInput = {
-    where: tradeOffersWhereUniqueInput
-    update: XOR<tradeOffersUpdateWithoutTradesInput, tradeOffersUncheckedUpdateWithoutTradesInput>
-    create: XOR<tradeOffersCreateWithoutTradesInput, tradeOffersUncheckedCreateWithoutTradesInput>
-  }
-
-  export type tradeOffersUpdateWithWhereUniqueWithoutTradesInput = {
-    where: tradeOffersWhereUniqueInput
-    data: XOR<tradeOffersUpdateWithoutTradesInput, tradeOffersUncheckedUpdateWithoutTradesInput>
-  }
-
-  export type tradeOffersUpdateManyWithWhereWithoutTradesInput = {
-    where: tradeOffersScalarWhereInput
-    data: XOR<tradeOffersUpdateManyMutationInput, tradeOffersUncheckedUpdateManyWithoutTradesInput>
   }
 
   export type usersUpsertWithoutTrades_trades_customerIdTousersInput = {
@@ -16790,7 +13609,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
     roles?: rolesUpdateOneWithoutUsersNestedInput
@@ -16803,7 +13621,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
     betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
@@ -16824,7 +13641,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
     roles?: rolesUpdateOneWithoutUsersNestedInput
@@ -16837,7 +13653,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
     betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
   }
@@ -16847,7 +13662,6 @@ export namespace Prisma {
     username: string
     password: string
     betEntries?: betEntriesCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     roles?: rolesCreateNestedOneWithoutUsersInput
@@ -16860,7 +13674,6 @@ export namespace Prisma {
     password: string
     role?: number | null
     betEntries?: betEntriesUncheckedCreateNestedManyWithoutUsersInput
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
   }
@@ -16886,7 +13699,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     roles?: rolesUpdateOneWithoutUsersNestedInput
@@ -16899,7 +13711,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
     betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
   }
@@ -16930,7 +13741,6 @@ export namespace Prisma {
     name: string
     username: string
     password: string
-    tradeOffers?: tradeOffersCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsCreateNestedOneWithoutUsersInput
@@ -16943,7 +13753,6 @@ export namespace Prisma {
     username: string
     password: string
     role?: number | null
-    tradeOffers?: tradeOffersUncheckedCreateNestedManyWithoutUsersInput
     trades_trades_customerIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_customerIdTousersInput
     trades_trades_supplierIdTousers?: tradesUncheckedCreateNestedManyWithoutUsers_trades_supplierIdTousersInput
     userWallets?: userWalletsUncheckedCreateNestedOneWithoutUsersInput
@@ -16997,7 +13806,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
@@ -17010,7 +13818,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: NullableIntFieldUpdateOperationsInput | number | null
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
@@ -17116,30 +13923,26 @@ export namespace Prisma {
     isWinner?: boolean
   }
 
-  export type tradeOffersCreateManyUsersInput = {
-    id?: bigint | number
-    tradeId?: number | null
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-  }
-
   export type tradesCreateManyUsers_trades_customerIdTousersInput = {
     id?: number
     supplierId?: number | null
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
   }
 
   export type tradesCreateManyUsers_trades_supplierIdTousersInput = {
     id?: number
     customerId?: number | null
-    service?: string | null
+    service: string
     createdAt?: Date | string
-    deadlineAt?: Date | string | null
-    tradedAt?: Date | string | null
+    deadlineAt: Date | string
+    confirmedAt?: Date | string | null
+    price: number
+    acceptedAt?: Date | string | null
   }
 
   export type betEntriesUpdateWithoutUsersInput = {
@@ -17162,84 +13965,68 @@ export namespace Prisma {
     isWinner?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type tradeOffersUpdateWithoutUsersInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    trades?: tradesUpdateOneWithoutTradeOffersNestedInput
-  }
-
-  export type tradeOffersUncheckedUpdateWithoutUsersInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    tradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type tradeOffersUncheckedUpdateManyWithoutUsersInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    tradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type tradesUpdateWithoutUsers_trades_customerIdTousersInput = {
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradeOffers?: tradeOffersUpdateManyWithoutTradesNestedInput
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     users_trades_supplierIdTousers?: usersUpdateOneWithoutTrades_trades_supplierIdTousersNestedInput
   }
 
   export type tradesUncheckedUpdateWithoutUsers_trades_customerIdTousersInput = {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutTradesNestedInput
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersInput = {
     id?: IntFieldUpdateOperationsInput | number
     supplierId?: NullableIntFieldUpdateOperationsInput | number | null
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tradesUpdateWithoutUsers_trades_supplierIdTousersInput = {
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradeOffers?: tradeOffersUpdateManyWithoutTradesNestedInput
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     users_trades_customerIdTousers?: usersUpdateOneWithoutTrades_trades_customerIdTousersNestedInput
   }
 
   export type tradesUncheckedUpdateWithoutUsers_trades_supplierIdTousersInput = {
     id?: IntFieldUpdateOperationsInput | number
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutTradesNestedInput
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersInput = {
     id?: IntFieldUpdateOperationsInput | number
     customerId?: NullableIntFieldUpdateOperationsInput | number | null
-    service?: NullableStringFieldUpdateOperationsInput | string | null
+    service?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deadlineAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tradedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confirmedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    acceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type betOptionsCreateManyBetsInput = {
@@ -17287,7 +14074,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     betEntries?: betEntriesUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUpdateOneWithoutUsersNestedInput
@@ -17299,7 +14085,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     betEntries?: betEntriesUncheckedUpdateManyWithoutUsersNestedInput
-    tradeOffers?: tradeOffersUncheckedUpdateManyWithoutUsersNestedInput
     trades_trades_customerIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_customerIdTousersNestedInput
     trades_trades_supplierIdTousers?: tradesUncheckedUpdateManyWithoutUsers_trades_supplierIdTousersNestedInput
     userWallets?: userWalletsUncheckedUpdateOneWithoutUsersNestedInput
@@ -17347,38 +14132,6 @@ export namespace Prisma {
     deadlineAt?: DateTimeFieldUpdateOperationsInput | Date | string
     participants?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type tradeOffersCreateManyTradesInput = {
-    id?: bigint | number
-    userId?: number | null
-    value: number
-    isAccepted?: boolean | null
-    createdAt?: Date | string
-  }
-
-  export type tradeOffersUpdateWithoutTradesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: usersUpdateOneWithoutTradeOffersNestedInput
-  }
-
-  export type tradeOffersUncheckedUpdateWithoutTradesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type tradeOffersUncheckedUpdateManyWithoutTradesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    value?: IntFieldUpdateOperationsInput | number
-    isAccepted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type betEntriesCreateManyBetOptionsInput = {

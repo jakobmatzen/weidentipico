@@ -9,17 +9,16 @@ datasource db {
 }
 
 model users {
-  id                              Int           @id @default(autoincrement())
+  id                              Int          @id @default(autoincrement())
   name                            String
   username                        String
   password                        String
   role                            Int?
   betEntries                      betEntries[]
-  tradeOffers                     tradeOffers[]
-  trades_trades_customerIdTousers trades[]      @relation("trades_customerIdTousers")
-  trades_trades_supplierIdTousers trades[]      @relation("trades_supplierIdTousers")
+  trades_trades_customerIdTousers trades[]     @relation("trades_customerIdTousers")
+  trades_trades_supplierIdTousers trades[]     @relation("trades_supplierIdTousers")
   userWallets                     userWallets?
-  roles                           roles?        @relation(fields: [role], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  roles                           roles?       @relation(fields: [role], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model bets {
@@ -40,39 +39,24 @@ model roles {
   users       users[]
 }
 
-model services {
-  id          Int    @id @default(autoincrement())
-  description String
-}
-
 model status {
   id                       Int    @id @default(autoincrement())
   description              String
   bets_bets_statusTostatus bets[] @relation("bets_statusTostatus")
 }
 
-model tradeOffers {
-  id         BigInt   @id @default(autoincrement())
-  tradeId    Int?
-  userId     Int?
-  value      Int
-  isAccepted Boolean?
-  createdAt  DateTime @default(now()) @db.Timestamptz(6)
-  trades     trades?  @relation(fields: [tradeId], references: [id], onDelete: Restrict)
-  users      users?   @relation(fields: [userId], references: [id], onDelete: Restrict)
-}
-
 model trades {
-  id                             Int           @id @default(autoincrement())
+  id                             Int       @id @default(autoincrement())
   supplierId                     Int?
   customerId                     Int?
-  service                        String?
-  createdAt                      DateTime      @default(now()) @db.Timestamptz(6)
-  deadlineAt                     DateTime?     @db.Timestamptz(6)
-  tradedAt                       DateTime?     @db.Timestamptz(6)
-  tradeOffers                    tradeOffers[]
-  users_trades_customerIdTousers users?        @relation("trades_customerIdTousers", fields: [customerId], references: [id], onDelete: Restrict)
-  users_trades_supplierIdTousers users?        @relation("trades_supplierIdTousers", fields: [supplierId], references: [id], onDelete: Restrict)
+  service                        String
+  createdAt                      DateTime  @default(now()) @db.Timestamptz(6)
+  deadlineAt                     DateTime  @db.Timestamptz(6)
+  confirmedAt                    DateTime? @db.Timestamptz(6)
+  price                          Int
+  acceptedAt                     DateTime? @db.Timestamptz(6)
+  users_trades_customerIdTousers users?    @relation("trades_customerIdTousers", fields: [customerId], references: [id], onDelete: Restrict)
+  users_trades_supplierIdTousers users?    @relation("trades_supplierIdTousers", fields: [supplierId], references: [id], onDelete: Restrict)
 }
 
 model userWallets {
