@@ -1,4 +1,6 @@
+import { asc, eq } from 'drizzle-orm'
 import { z } from 'zod'
+import { betEntries, betOptions, bets, userWallets } from '~/drizzle/schema'
 import { Bet } from '~/models/Bet'
 import { BetEntry } from '~/models/BetEntry'
 import { publicProcedure, router } from '../init'
@@ -7,21 +9,31 @@ export const betRouter = router({
   getAllBets: publicProcedure
     .query(async ({ ctx }) => {
       try {
-        return ctx.prisma.bets.findMany({
-          orderBy: {
-            deadlineAt: 'asc'
-          },
-          include: {
-            betOptions: {
-              orderBy: {
-                id: 'asc'
-              },
-              include: {
-                betEntries: true
-              }
-            }
-          }
-        })
+        const allBets = await ctx.db.select().from(bets).orderBy(asc(bets.deadlineAt))
+
+        const betsWithOptions = await Promise.all(
+          allBets.map(async (bet) => {
+            const options = await ctx.db
+              .select()
+              .from(betOptions)
+              .where(eq(betOptions.betId, bet.id))
+              .orderBy(asc(betOptions.id))
+
+            const optionsWithEntries = await Promise.all(
+              options.map(async (option) => {
+                const entries = await ctx.db
+                  .select()
+                  .from(betEntries)
+                  .where(eq(betEntries.optionId, option.id))
+                return { ...option, betEntries: entries }
+              })
+            )
+
+            return { ...bet, betOptions: optionsWithEntries }
+          })
+        )
+
+        return betsWithOptions
       }
       catch (error) {
         console.error(`Fehler beim Laden der Wetten: ${error}`)
@@ -35,27 +47,24 @@ export const betRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       try {
-        await ctx.prisma.$transaction(async (prisma) => {
-          const bet = await prisma.bets.create({
-            data: {
-              description: input.bet.description,
-              createdAt: input.bet.createdAt,
-              deadlineAt: input.bet.deadlineAt,
-              status: input.bet.status,
-              participants: input.bet.participants,
-              amount: input.bet.amount
-            }
-          })
-          await prisma.betOptions.createMany({
-            data: input.betOptions.map((option: string) => ({
-              betId: bet.id,
-              description: option,
-              quote: 0,
-              amount: 0,
-              isWinner: false,
-            }))
-          })
-        })
+        const [bet] = await ctx.db.insert(bets).values({
+          description: input.bet.description,
+          createdAt: input.bet.createdAt.toISOString(),
+          deadlineAt: input.bet.deadlineAt.toISOString(),
+          status: input.bet.status,
+          participants: input.bet.participants,
+          amount: input.bet.amount
+        }).returning()
+
+        await ctx.db.insert(betOptions).values(
+          input.betOptions.map((option: string) => ({
+            betId: bet.id,
+            description: option,
+            quote: 0,
+            amount: 0,
+            isWinner: false,
+          }))
+        )
       }
       catch (error) {
         console.log(error)
@@ -71,73 +80,84 @@ export const betRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       try {
-        await ctx.prisma.$transaction(async (prisma) => {
-          await prisma.userWallets.update({
-            where: {
-              id: input.betEntry.userId
-            },
-            data: {
-              balance: {
-                decrement: input.amount
-              }
-            }
-          })
-          await prisma.betEntries.create({
-            data: {
-              optionId: input.betEntry.optionId,
-              userId: input.betEntry.userId,
-              amount: input.amount
-            }
-          })
-          const bet = await prisma.bets.update({
-            where: {
-              id: input.betId
-            },
-            data: {
-              participants: {
-                increment: 1
-              },
-              amount: {
-                increment: input.amount
-              }
-            }
-          })
-          const betOptions = await prisma.betOptions.findMany({
-            where: {
-              betId: input.betId
-            }
-          })
-          const updatePromises = betOptions.map((option) => {
-            if (option.id === input.betEntry.optionId) {
-              return prisma.betOptions.update({
-                where: {
-                  id: option.id
-                },
-                data: {
-                  amount: {
-                    increment: input.amount
-                  },
-                  quote: input.quote
-                }
-              })
-            }
-            else if (option.amount > 0) {
-              const newQuote = bet.amount / option.amount
-              return prisma.betOptions.update({
-                where: {
-                  id: option.id
-                },
-                data: {
-                  quote: newQuote
-                }
-              })
-            }
-            else {
-              return null
-            }
-          })
-          await Promise.all(updatePromises)
+        // Get current wallet balance
+        const [currentWallet] = await ctx.db
+          .select()
+          .from(userWallets)
+          .where(eq(userWallets.id, input.betEntry.userId))
+
+        if (!currentWallet) {
+          throw new Error('Wallet nicht gefunden.')
+        }
+
+        // Update user wallet
+        await ctx.db
+          .update(userWallets)
+          .set({ balance: currentWallet.balance - input.amount })
+          .where(eq(userWallets.id, input.betEntry.userId))
+
+        // Create bet entry
+        await ctx.db.insert(betEntries).values({
+          optionId: input.betEntry.optionId,
+          userId: input.betEntry.userId,
+          amount: input.amount
         })
+
+        // Get current bet data
+        const [currentBet] = await ctx.db
+          .select()
+          .from(bets)
+          .where(eq(bets.id, input.betId))
+
+        if (!currentBet) {
+          throw new Error('Wette nicht gefunden.')
+        }
+
+        // Update bet
+        await ctx.db
+          .update(bets)
+          .set({
+            participants: currentBet.participants + 1,
+            amount: currentBet.amount + input.amount
+          })
+          .where(eq(bets.id, input.betId))
+
+        // Get updated bet for calculations
+        const [bet] = await ctx.db
+          .select()
+          .from(bets)
+          .where(eq(bets.id, input.betId))
+
+        // Get all bet options
+        const betOptionsList = await ctx.db
+          .select()
+          .from(betOptions)
+          .where(eq(betOptions.betId, input.betId))
+
+        // Update bet options
+        const updatePromises = betOptionsList.map(async (option) => {
+          if (option.id === input.betEntry.optionId) {
+            return ctx.db
+              .update(betOptions)
+              .set({
+                amount: option.amount + input.amount,
+                quote: input.quote
+              })
+              .where(eq(betOptions.id, option.id))
+          }
+          else if (option.amount > 0) {
+            const newQuote = bet.amount / option.amount
+            return ctx.db
+              .update(betOptions)
+              .set({ quote: newQuote })
+              .where(eq(betOptions.id, option.id))
+          }
+          else {
+            return null
+          }
+        })
+
+        await Promise.all(updatePromises.filter(Boolean))
       }
       catch (error) {
         console.log(error)
@@ -150,14 +170,12 @@ export const betRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       try {
-        await ctx.prisma.bets.update({
-          where: {
-            id: input.betId
-          },
-          data: {
-            deadlineAt: new Date(Date.now() + 2 * 60 * 60 * 1000),
-          }
-        })
+        await ctx.db
+          .update(bets)
+          .set({
+            deadlineAt: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(),
+          })
+          .where(eq(bets.id, input.betId))
       }
       catch (error) {
         console.log(error)
@@ -171,41 +189,57 @@ export const betRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       try {
-        await ctx.prisma.$transaction(async (prisma) => {
-          await prisma.bets.update({
-            where: {
-              id: input.bet.id
-            },
-            data: {
-              status: 2
+        // Update bet status
+        if (!input.bet.id) {
+          throw new Error('Bet ID ist erforderlich.')
+        }
+        await ctx.db
+          .update(bets)
+          .set({ status: 2 })
+          .where(eq(bets.id, input.bet.id))
+
+        // Update winning option
+        await ctx.db
+          .update(betOptions)
+          .set({ isWinner: true })
+          .where(eq(betOptions.id, input.optionId))
+
+        // Get bet entries for the winning option
+        const betEntriesList = await ctx.db
+          .select()
+          .from(betEntries)
+          .where(eq(betEntries.optionId, input.optionId))
+
+        // Get the winning option to get the quote
+        const [winningOption] = await ctx.db
+          .select()
+          .from(betOptions)
+          .where(eq(betOptions.id, input.optionId))
+
+        if (!winningOption) {
+          throw new Error('Gewinnoption nicht gefunden.')
+        }
+
+        // Update user wallets for winners
+        for (const entry of betEntriesList) {
+          if (entry.userId) {
+            // Get current wallet balance
+            const [currentWallet] = await ctx.db
+              .select()
+              .from(userWallets)
+              .where(eq(userWallets.id, entry.userId))
+
+            if (currentWallet) {
+              const winnings = entry.amount * winningOption.quote
+              await ctx.db
+                .update(userWallets)
+                .set({
+                  balance: currentWallet.balance + winnings
+                })
+                .where(eq(userWallets.id, entry.userId))
             }
-          })
-          await prisma.betOptions.update({
-            where: {
-              id: input.optionId
-            },
-            data: {
-              isWinner: true
-            }
-          })
-          const betEntries = await prisma.betEntries.findMany({
-            where: {
-              optionId: input.optionId
-            }
-          })
-          for (const entry of betEntries) {
-            await prisma.userWallets.update({
-              where: {
-                id: entry.userId!
-              },
-              data: {
-                balance: {
-                  increment: entry.amount * input.bet.betOptions.find(option => option.id === input.optionId)!.quote
-                }
-              }
-            })
           }
-        })
+        }
       }
       catch (error) {
         console.log(error)
