@@ -90,5 +90,40 @@ export const marketplaceRouter = router({
         console.log(error)
         throw new Error(useNotificationStore().getErrorMessage(error))
       }
+    }),
+  confirmTrade: publicProcedure
+    .input(z.object({
+      tradeId: z.number(),
+      confirmedAt: z.date()
+    }))
+    .mutation(async ({ ctx, input }) => {
+      try {
+        await ctx.prisma.$transaction(async (prisma) => {
+          const updatedTrade = await prisma.trades.update({
+            where: {
+              id: input.tradeId
+            },
+            data: {
+              confirmedAt: input.confirmedAt
+            }
+          })
+          if (updatedTrade) {
+            await prisma.userWallets.update({
+              where: {
+                id: updatedTrade.supplierId!
+              },
+              data: {
+                balance: {
+                  increment: updatedTrade.price
+                }
+              }
+            })
+          }
+        })
+      }
+      catch (error) {
+        console.log(error)
+        throw new Error('Fehler beim Bestätigen der Transaktion.')
+      }
     })
 })

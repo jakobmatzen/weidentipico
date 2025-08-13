@@ -184,6 +184,19 @@ export const useMarketplaceStore = defineStore('marketplaceStore', {
         this.loading = false
         return error
       }
+    },
+    async confirmTrade(tradeId: number, confirmedAt: Date) {
+      this.loading = true
+      try {
+        const { $trpc } = useNuxtApp()
+        await $trpc.marketplace.confirmTrade.mutate({ tradeId, confirmedAt })
+        this.loading = false
+      }
+      catch (error) {
+        useNotificationStore().addError(useNotificationStore().getErrorMessage(error))
+        this.loading = false
+        return error
+      }
     }
   }
 })

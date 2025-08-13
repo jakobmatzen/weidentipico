@@ -46,7 +46,7 @@ const items = computed<TabsItem[]>(() => [
       </template>
       <template #accepted>
         <div class="max-h-[27rem] overflow-y-auto px-5 mt-2">
-          <MarketplaceTradeCard v-for="trade in getUserTradesAccepted" :key="trade.id" :trade="trade" />
+          <MarketplaceTradeCardAccepted v-for="trade in getUserTradesAccepted" :key="trade.id" :trade="trade" />
         </div>
       </template>
       <template #confirmed>
