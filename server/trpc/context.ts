@@ -1,16 +1,18 @@
-import { PrismaClient } from '@/prisma/generated/client'
+import { drizzle } from 'drizzle-orm/postgres-js'
+import postgres from 'postgres'
 
-let prisma: PrismaClient
+let db: ReturnType<typeof drizzle>
 
 /**
  * Creates context for an incoming request
  * @link https://trpc.io/docs/context
  */
 export function createContext() {
-    if (!prisma) {
-        prisma = new PrismaClient()
-    }
-    return { prisma }
+  if (!db) {
+    const client = postgres(process.env.DIRECT_URL!)
+    db = drizzle(client)
+  }
+  return { db }
 }
 
 export type Context = Awaited<ReturnType<typeof createContext>>

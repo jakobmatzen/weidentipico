@@ -4,6 +4,6 @@ import { appRouter } from '~/server/trpc/routers'
 
 // export API handler
 export default createTRPCNuxtHandler({
-    router: appRouter,
-    createContext
+  router: appRouter,
+  createContext
 })

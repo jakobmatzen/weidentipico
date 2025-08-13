@@ -1,16 +1,42 @@
+import type { BetForm, LoginForm, MarketplaceForm } from '~/types/Form'
 import { defineStore } from 'pinia'
-import type { LoginForm } from '~/types/Form'
 
 interface State {
-    loginForm: LoginForm
+  loginForm: LoginForm
+  betForm: BetForm
+  marketplaceForm: MarketplaceForm
 }
 
 export const useFormStore = defineStore('formStore', {
-    state: (): State => ({
-        loginForm: {
-            username: '',
-            password: ''
-        }
-    }),
-    persist: true
+  state: (): State => ({
+    loginForm: {
+      username: '',
+      password: ''
+    },
+    betForm: {
+      title: '',
+      optionCount: 2,
+      options: [],
+      date: new Date(),
+      time: {
+        hours: new Date().getHours(),
+        minutes: new Date().getMinutes()
+      },
+      amount: 1,
+      selectedBetFilterOption: 'createdAt',
+      selectedSort: 'desc'
+    },
+    marketplaceForm: {
+      service: '',
+      date: new Date(),
+      time: {
+        hours: new Date().getHours(),
+        minutes: new Date().getMinutes()
+      },
+      price: 0,
+      selectedMarketplaceFilterOption: 'createdAt',
+      selectedMarketplaceSort: 'desc'
+    }
+  }),
+  persist: true
 })
