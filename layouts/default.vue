@@ -21,8 +21,9 @@ const links = computed<NavigationMenuItem[]>(() => [[{
     icon: 'i-lucide-dices',
     to: '/user/bets',
   }, {
-    label: 'Marktplatz',
+    label: `Marktplatz (${useMarketplaceStore().getUserTradesOpen.length + useMarketplaceStore().getUserTradesAccepted.length})`,
     icon: 'i-lucide-store',
+    to: '/user/marketplace'
   }]
 }, {
   label: 'Leaderboard',

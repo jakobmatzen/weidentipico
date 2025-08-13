@@ -5,6 +5,7 @@ const props = defineProps<{
   placeholder?: string
   minValue?: CalendarDate
   maxValue?: CalendarDate
+  turnOff?: boolean
 }>()
 
 const emit = defineEmits(['select'])
@@ -36,10 +37,11 @@ function update() {
 </script>
 
 <template>
-  <UPopover>
+  <UPopover :disabled="props.turnOff">
     <UButton
       color="neutral" variant="outline" class="w-full" size="sm"
       :class="!modelValue && !props.placeholder ? 'text-dimmed' : ''"
+      :disabled="props.turnOff"
     >
       {{ modelValue ? df.format(modelValue.toDate(getLocalTimeZone())) : props.placeholder ? props.placeholder
         : 'Datum...' }}

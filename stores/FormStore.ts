@@ -23,8 +23,8 @@ export const useFormStore = defineStore('formStore', {
         minutes: new Date().getMinutes()
       },
       amount: 1,
-      selectedBetFilterOption: 'deadlineAt',
-      selectedSort: 'asc'
+      selectedBetFilterOption: 'createdAt',
+      selectedSort: 'desc'
     },
     marketplaceForm: {
       service: '',
@@ -34,8 +34,8 @@ export const useFormStore = defineStore('formStore', {
         minutes: new Date().getMinutes()
       },
       price: 0,
-      selectedMarketplaceFilterOption: 'deadlineAt',
-      selectedMarketplaceSort: 'asc'
+      selectedMarketplaceFilterOption: 'createdAt',
+      selectedMarketplaceSort: 'desc'
     }
   }),
   persist: true
