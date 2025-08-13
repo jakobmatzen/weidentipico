@@ -21,7 +21,7 @@ const { betForm } = storeToRefs(useFormStore())
       </div>
       <UButton label="Erstellen" icon="i-lucide-circle-fading-plus" variant="outline" size="sm" @click="useFormStore().$reset(), useOverlay().create(LazyBetsAddBetDialog).open()" />
     </div>
-    <div class="flex-1 overflow-y-auto px-5 mt-4">
+    <div class="max-h-[30rem] overflow-y-auto px-5 mt-4">
       <BetsBetCard v-for="bet in getBets" :key="bet.id" :bet="bet" />
     </div>
   </div>

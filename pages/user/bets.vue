@@ -12,11 +12,11 @@ const { betForm } = storeToRefs(useFormStore())
 const items = computed<TabsItem[]>(() => [
   {
     label: `Offen (${getBetsForUserOpen.value.length})`,
-    icon: 'i-lucide-clipboard-check',
+    icon: 'i-lucide-clipboard-clock',
     slot: 'open-tasks' as const
   },
   {
-    label: `Geschlossen (${getBetsForUserClosed.value.length})`,
+    label: `Abgeschlossen (${getBetsForUserClosed.value.length})`,
     icon: 'i-lucide-archive',
     slot: 'archive' as const
   }

@@ -9,8 +9,9 @@ const links = computed<NavigationMenuItem[]>(() => [[{
   icon: 'i-lucide-dices',
   to: '/'
 }, {
-  label: 'Marktplatz',
-  icon: 'i-lucide-store'
+  label: `Marktplatz (${useMarketplaceStore().getTradeOffers.length + useMarketplaceStore().getTradeRequests.length})`,
+  icon: 'i-lucide-store',
+  to: '/marketplace'
 }, {
   label: 'Meins',
   icon: 'i-lucide-user',
@@ -20,8 +21,9 @@ const links = computed<NavigationMenuItem[]>(() => [[{
     icon: 'i-lucide-dices',
     to: '/user/bets',
   }, {
-    label: 'Marktplatz',
+    label: `Marktplatz (${useMarketplaceStore().getUserTradesOpen.length + useMarketplaceStore().getUserTradesAccepted.length})`,
     icon: 'i-lucide-store',
+    to: '/user/marketplace'
   }]
 }, {
   label: 'Leaderboard',

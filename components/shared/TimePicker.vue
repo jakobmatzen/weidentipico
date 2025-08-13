@@ -1,10 +1,14 @@
 <script setup lang="ts">
+const props = defineProps<{
+  turnOff?: boolean
+}>()
+
 const time = defineModel<{ hours: number, minutes: number }>()
 </script>
 
 <template>
-  <UPopover>
-    <UButton color="neutral" variant="outline" class="w-full" size="sm" :class="!time ? 'text-dimmed' : ''">
+  <UPopover :disabled="props.turnOff">
+    <UButton color="neutral" variant="outline" class="w-full" size="sm" :class="!time ? 'text-dimmed' : ''" :disabled="props.turnOff">
       {{ time ? `${time.hours}:${time.minutes === 0 ? '00' : time.minutes < 10 ? `0${time.minutes}`
         : time.minutes} Uhr` : 'Uhrzeit...' }}
     </UButton>

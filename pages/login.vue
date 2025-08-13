@@ -11,7 +11,7 @@ async function login() {
   if (error) {
     return
   }
-  useNotificationStore().addSuccess(`Willkommen, ${useUserStore().user?.name}!`, 'Login')
+  useNotificationStore().addSuccess(`Moin ${useUserStore().user?.name}!`, 'Login')
   navigateTo('/')
   useFormStore().$reset()
 }
