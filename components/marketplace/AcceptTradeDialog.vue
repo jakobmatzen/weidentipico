@@ -12,7 +12,7 @@ async function acceptTrade() {
     useNotificationStore().addError('Das Angebot ist bereits abgelaufen. Bitte lade die Seite neu.')
     return
   }
-  const error = await useMarketplaceStore().acceptTrade(props.trade.id!, useUserStore().user!.id!, new Date())
+  const error = await useMarketplaceStore().acceptTrade(props.trade.id!, useUserStore().user!.id!, new Date(new Date().getTime() + 2 * 60 * 60 * 1000))
   if (error) {
     return
   }

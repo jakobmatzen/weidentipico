@@ -8,7 +8,7 @@ const props = defineProps<{
 const emit = defineEmits(['close'])
 
 async function confirmTrade() {
-  const error = await useMarketplaceStore().confirmTrade(props.trade.id!, new Date())
+  const error = await useMarketplaceStore().confirmTrade(props.trade.id!, new Date(new Date().getTime() + 2 * 60 * 60 * 1000))
   if (error) {
     return
   }

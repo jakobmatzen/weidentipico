@@ -7,7 +7,7 @@ const props = defineProps<{
 }>()
 
 function openTradeDetails() {
-  if (useUserStore().user!.userWallet!.balance < props.trade.price) {
+  if (props.trade.customerId === null && useUserStore().user!.userWallet!.balance < props.trade.price) {
     useNotificationStore().addError('Du hast nicht genügend NKoins.')
   }
   else {
