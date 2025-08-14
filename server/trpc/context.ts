@@ -4,7 +4,7 @@ import * as schema from '../drizzle/schema'
 
 export function createContext() {
   // Create fresh connection per request (correct for edge runtime)
-  const client = postgres(process.env.DIRECT_URL!)
+  const client = postgres(process.env.DATABASE_URL!)
 
   const db = drizzle(client, { schema })
   return { db }
