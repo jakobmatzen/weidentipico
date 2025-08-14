@@ -49,8 +49,8 @@ export const betRouter = router({
       try {
         const [bet] = await ctx.db.insert(bets).values({
           description: input.bet.description,
-          createdAt: input.bet.createdAt.toISOString(),
-          deadlineAt: input.bet.deadlineAt.toISOString(),
+          createdAt: input.bet.createdAt,
+          deadlineAt: input.bet.deadlineAt,
           status: input.bet.status,
           participants: input.bet.participants,
           amount: input.bet.amount

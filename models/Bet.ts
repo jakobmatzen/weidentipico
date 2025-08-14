@@ -54,8 +54,8 @@ export class Bet implements BaseBet {
     return {
       id: this.id,
       description: this.description,
-      createdAt: new Date(new Date(this.createdAt).getTime() + 2 * 60 * 60 * 1000),
-      deadlineAt: new Date(new Date(this.deadlineAt).getTime() + 2 * 60 * 60 * 1000),
+      createdAt: this.createdAt.toISOString(), // Convert to string
+      deadlineAt: this.deadlineAt.toISOString(), // Convert to string
       status: this.status,
       participants: this.participants,
       amount: this.amount,
@@ -123,8 +123,8 @@ export class Bet implements BaseBet {
     return z.object({
       id: z.number().optional(),
       description: z.string(),
-      createdAt: z.date(),
-      deadlineAt: z.date(),
+      createdAt: z.string(),
+      deadlineAt: z.string(),
       status: z.number(),
       participants: z.number(),
       amount: z.number(),
