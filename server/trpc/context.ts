@@ -1,11 +1,12 @@
-import { drizzle } from 'drizzle-orm/postgres-js'
-import postgres from 'postgres'
+import { Pool } from '@neondatabase/serverless'
+import { drizzle } from 'drizzle-orm/neon-serverless'
+
 import * as schema from '../drizzle/schema'
 
 export function createContext() {
-  const client = postgres(process.env.SERVERLESS_URL!)
-
-  const db = drizzle(client, { schema })
+  // Neon is designed for serverless/edge environments
+  const pool = new Pool({ connectionString: process.env.SERVERLESS_URL })
+  const db = drizzle({ client: pool, schema })
   return { db }
 }
 
