@@ -4,14 +4,22 @@ import { LazySharedLogoutDialog } from '#components'
 
 const { user } = storeToRefs(useUserStore())
 
+const open = ref(false)
+
 const links = computed<NavigationMenuItem[]>(() => [[{
   label: `Wetten (${useBetStore().getBets.length})`,
   icon: 'i-lucide-dices',
-  to: '/'
+  to: '/',
+  onSelect: () => {
+    open.value = false
+  }
 }, {
   label: `Marktplatz (${useMarketplaceStore().getTradeOffers.length + useMarketplaceStore().getTradeRequests.length})`,
   icon: 'i-lucide-store',
-  to: '/marketplace'
+  to: '/marketplace',
+  onSelect: () => {
+    open.value = false
+  }
 }, {
   label: 'Meins',
   icon: 'i-lucide-user',
@@ -20,20 +28,32 @@ const links = computed<NavigationMenuItem[]>(() => [[{
     label: `Wetten (${useBetStore().getBetsForUserOpen.length})`,
     icon: 'i-lucide-dices',
     to: '/user/bets',
+    onSelect: () => {
+      open.value = false
+    }
   }, {
     label: `Marktplatz (${useMarketplaceStore().getUserTradesOpen.length + useMarketplaceStore().getUserTradesAccepted.length})`,
     icon: 'i-lucide-store',
-    to: '/user/marketplace'
+    to: '/user/marketplace',
+    onSelect: () => {
+      open.value = false
+    }
   }]
 }, {
   label: 'Leaderboard',
   icon: 'i-lucide-chart-no-axes-column',
-  to: '/leaderboard'
+  to: '/leaderboard',
+  onSelect: () => {
+    open.value = false
+  }
 }, {
   label: `Hinterzimmer (${useBetStore().getBetsForAdminOpen.length})`,
   icon: 'i-lucide-door-closed-locked',
   to: '/hinterzimmer',
-  class: user.value?.role === 1 ? '' : 'hidden'
+  class: user.value?.role === 1 ? '' : 'hidden',
+  onSelect: () => {
+    open.value = false
+  }
 }]])
 </script>
 
@@ -44,7 +64,7 @@ const links = computed<NavigationMenuItem[]>(() => [[{
         <UIcon name="i-lucide-trees" class="h-6 w-6 ml-4 text-primary-400" @click="navigateTo('/')" />
         <img src="/tipico_logo_white.svg" alt="Logo" class="mt-0.5 h-14 w-14 ml-2">
       </div>
-      <UDrawer direction="right" :handle="false">
+      <UDrawer v-model:open="open" direction="right" :handle="false">
         <UButton variant="link" icon="i-lucide-menu" size="xl" class="mr-2" />
         <template #header>
           <div class="flex items-center pb-4 border-b border-neutral-800">
