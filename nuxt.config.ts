@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt'
   ],
+  nitro: {
+    minify: false
+  },
   piniaPersistedstate: {
     storage: 'localStorage'
   },

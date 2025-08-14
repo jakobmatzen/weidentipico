@@ -1,6 +1,7 @@
 import { Bet } from '~/models/Bet'
 import { BetEntry } from '~/models/BetEntry'
 import { BetOption } from '~/models/BetOption'
+import { Trade } from '~/models/Trade'
 import { User } from '~/models/User'
 import { UserWallet } from '~/models/UserWallet'
 
@@ -12,6 +13,8 @@ export default definePayloadPlugin(() => {
   definePayloadReviver('BetOption', (data) => { return BetOption.parseFromJsonData(data) })
   definePayloadReducer('BetEntry', (data) => { return data instanceof BetEntry && data.toJson() })
   definePayloadReviver('BetEntry', (data) => { return BetEntry.parseFromJsonData(data) })
+  definePayloadReducer('Trade', (data) => { return data instanceof Trade && data.toJson() })
+  definePayloadReviver('Trade', (data) => { return Trade.parseFromJsonData(data) })
   definePayloadReducer('User', (data) => { return data instanceof User && data.toJson() })
   definePayloadReviver('User', (data) => { return User.parseFromJsonData(data) })
   definePayloadReducer('UserWallet', (data) => { return data instanceof UserWallet && data.toJson() })

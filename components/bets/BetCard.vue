@@ -11,7 +11,7 @@ const props = defineProps<{
 const option = computed(() => useUserStore().user ? props.bet.betOptions!.find(option => option.betEntries?.some(entry => entry.userId === useUserStore().user?.id))! : null)
 
 function openBetDetails() {
-  if (useUserStore().user?.userWallet?.balance === 0) {
+  if (!props.meins && useUserStore().user?.userWallet?.balance === 0) {
     useNotificationStore().addError('Du hast keine NKoins mehr.')
     return
   }

@@ -24,6 +24,9 @@ watch(() => betForm.value.amount, () => {
 })
 
 async function placeBet() {
+  if (!inputValidation()) {
+    return
+  }
   if (props.bet.deadlineAt < new Date()) {
     useNotificationStore().addError('Die Wette ist bereits abgelaufen. Bitte lade die Seite neu.')
     return
@@ -54,6 +57,14 @@ async function closeBet() {
   useUserStore().fetchData()
   useNotificationStore().addSuccess('Wette erfolgreich geschlossen.')
   emit('close')
+}
+
+function inputValidation() {
+  if (betForm.value.amount > user.value!.userWallet!.balance!) {
+    useNotificationStore().addError('Du hast nicht genügend NKoins.')
+    return false
+  }
+  return true
 }
 </script>
 

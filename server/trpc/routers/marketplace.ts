@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm'
 import z from 'zod'
-import { trades, users, userWallets } from '~/drizzle/schema'
 import { Trade } from '~/models/Trade'
+import { trades, users, userWallets } from '~/server/drizzle/schema'
 import { publicProcedure, router } from '../init'
 
 export const marketplaceRouter = router({

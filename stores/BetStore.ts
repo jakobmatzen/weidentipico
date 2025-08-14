@@ -197,6 +197,8 @@ export const useBetStore = defineStore('betStore', {
       this.loading = true
       try {
         const { $trpc } = useNuxtApp()
+
+        console.log(bet.toJson())
         await $trpc.bets.createBet.mutate({
           bet: bet.toJson(),
           betOptions

@@ -87,6 +87,10 @@ function inputValidation(deadline: Date) {
     useNotificationStore().addError('Die Deadline des Angebots kann nicht in der Vergangenheit liegen.')
     isValid.value = false
   }
+  if (serviceType.value === 'Ich suche' && marketplaceForm.value.price > user.value!.userWallet!.balance!) {
+    useNotificationStore().addError('Du hast nicht genügend NKoins.')
+    isValid.value = false
+  }
   return isValid.value
 }
 </script>

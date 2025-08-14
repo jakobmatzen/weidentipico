@@ -1,8 +1,8 @@
 import { asc, eq } from 'drizzle-orm'
 import { z } from 'zod'
-import { betEntries, betOptions, bets, userWallets } from '~/drizzle/schema'
 import { Bet } from '~/models/Bet'
 import { BetEntry } from '~/models/BetEntry'
+import { betEntries, betOptions, bets, userWallets } from '~/server/drizzle/schema'
 import { publicProcedure, router } from '../init'
 
 export const betRouter = router({
@@ -49,8 +49,8 @@ export const betRouter = router({
       try {
         const [bet] = await ctx.db.insert(bets).values({
           description: input.bet.description,
-          createdAt: input.bet.createdAt.toISOString(),
-          deadlineAt: input.bet.deadlineAt.toISOString(),
+          createdAt: input.bet.createdAt,
+          deadlineAt: input.bet.deadlineAt,
           status: input.bet.status,
           participants: input.bet.participants,
           amount: input.bet.amount
