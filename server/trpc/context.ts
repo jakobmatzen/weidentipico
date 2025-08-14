@@ -1,17 +1,11 @@
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
+import * as schema from '../drizzle/schema'
 
-let db: ReturnType<typeof drizzle>
-
-/**
- * Creates context for an incoming request
- * @link https://trpc.io/docs/context
- */
 export function createContext() {
-  if (!db) {
-    const client = postgres(process.env.DATABASE_URL!)
-    db = drizzle(client)
-  }
+  const client = postgres(process.env.SERVERLESS_URL!)
+
+  const db = drizzle(client, { schema })
   return { db }
 }
 
