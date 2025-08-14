@@ -33,7 +33,7 @@ async function acceptTrade() {
     <template #body>
       <div class="flex flex-col">
         <span class="text-lg font-medium">{{ props.trade.service }}</span>
-        <span class="text-sm mt-4">{{ props.trade.supplierId ? 'Möchtest du dieses Angebot kaufen?' : 'Möchtest du dieses Angebot annehmen?' }}</span>
+        <span class="text-sm mt-4">{{ props.trade.supplierId ? 'Möchtest du diese Dienstleistung kaufen?' : 'Möchtest du dieses Angebot annehmen?' }}</span>
       </div>
     </template>
     <template #footer="{ close }">
