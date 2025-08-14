@@ -9,7 +9,7 @@ let db: ReturnType<typeof drizzle>
  */
 export function createContext() {
   if (!db) {
-    const client = postgres(process.env.DIRECT_URL!)
+    const client = postgres(process.env.DATABASE_URL!)
     db = drizzle(client)
   }
   return { db }

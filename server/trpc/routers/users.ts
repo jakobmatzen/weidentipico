@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm'
 import { z } from 'zod'
-import { users, userWallets } from '~/drizzle/schema'
+import { users, userWallets } from '~/server/drizzle/schema'
 import { publicProcedure, router } from '../init'
 
 export const userRouter = router({

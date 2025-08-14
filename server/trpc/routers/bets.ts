@@ -1,8 +1,8 @@
 import { asc, eq } from 'drizzle-orm'
 import { z } from 'zod'
-import { betEntries, betOptions, bets, userWallets } from '~/drizzle/schema'
 import { Bet } from '~/models/Bet'
 import { BetEntry } from '~/models/BetEntry'
+import { betEntries, betOptions, bets, userWallets } from '~/server/drizzle/schema'
 import { publicProcedure, router } from '../init'
 
 export const betRouter = router({
