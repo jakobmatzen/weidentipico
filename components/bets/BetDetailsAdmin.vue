@@ -32,7 +32,7 @@ async function payout() {
           <div
             class="flex w-full justify-between text-xs text-neutral-400 mb-3 pb-3 border-b border-neutral-600"
           >
-            <span><span class="font-semibold">{{ props.bet.participants === 1 ? `${props.bet.participants} Teilnehme/r` : `${props.bet.participants} Teilnehmende` }}</span></span>
+            <span><span class="font-semibold">{{ bet.participants }}</span> {{ bet.participants === 1 ? 'Teilnehme/r' : 'Teilnehmende' }}</span>
             <span><span class="font-semibold">{{ props.bet.amount }}</span> NKoins</span>
           </div>
           <div class="max-h-[15rem] overflow-y-auto">

@@ -23,6 +23,26 @@ watch(() => betForm.value.amount, () => {
   }
 })
 
+function handleAmountInput(event: Event) {
+  const target = event.target as HTMLInputElement
+  const value = Number.parseInt(target.value)
+  const maxAmount = user.value?.userWallet?.balance || 1
+  if (target.value === '' || Number.isNaN(value)) {
+    target.value = '1'
+    betForm.value.amount = 1
+    return
+  }
+
+  if (value > maxAmount) {
+    target.value = maxAmount.toString()
+    betForm.value.amount = maxAmount
+  }
+  else if (value < 1) {
+    target.value = '1'
+    betForm.value.amount = 1
+  }
+}
+
 async function placeBet() {
   if (!inputValidation()) {
     return
@@ -101,7 +121,15 @@ function inputValidation() {
           <UFormField label="Einsatz" class="w-full">
             <USlider v-model="betForm.amount" :min="1" :max="user?.userWallet?.balance" class="mt-2" />
             <div class="flex items-center justify-center mt-2">
-              <UInput v-model="betForm.amount" size="sm" class="w-20" type="number" />
+              <UInput
+                v-model="betForm.amount"
+                size="sm"
+                class="w-20"
+                type="number"
+                :min="1"
+                :max="user?.userWallet?.balance"
+                @input="handleAmountInput"
+              />
               <span class="text-sm ml-2">{{ betForm.amount === 1 ? ' NKoin' : ' NKoins' }}</span>
             </div>
           </UFormField>
