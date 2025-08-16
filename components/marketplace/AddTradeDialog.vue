@@ -20,6 +20,28 @@ watch(serviceType, () => {
   marketplaceForm.value.price = 0
 })
 
+function handlePriceInput(event: Event) {
+  const target = event.target as HTMLInputElement
+  const value = Number.parseInt(target.value)
+  const maxPrice = serviceType.value === 'Ich biete' ? 10000 : (user.value?.userWallet?.balance || 0)
+
+  // Handle empty input or NaN (when user deletes content)
+  if (target.value === '' || Number.isNaN(value)) {
+    target.value = '0'
+    marketplaceForm.value.price = 0
+    return
+  }
+
+  if (value > maxPrice) {
+    target.value = maxPrice.toString()
+    marketplaceForm.value.price = maxPrice
+  }
+  else if (value < 0) {
+    target.value = '0'
+    marketplaceForm.value.price = 0
+  }
+}
+
 async function createTrade() {
   const deadline = new Date(marketplaceForm.value.date)
   deadline.setHours(marketplaceForm.value.time.hours, marketplaceForm.value.time.minutes, 0, 0)
@@ -109,7 +131,16 @@ function inputValidation(deadline: Date) {
           <UFormField label="Preis" class="w-full">
             <USlider v-model="marketplaceForm.price" :min="0" :max="serviceType === 'Ich biete' ? 10000 : user!.userWallet!.balance" :step="100" class="mt-2" :disabled="props?.trade && !isEditing ? true : false" />
             <div class="flex items-center justify-center mt-2">
-              <UInput v-model="marketplaceForm.price" size="sm" class="w-20" type="number" :disabled="props?.trade && !isEditing ? true : false" />
+              <UInput
+                v-model="marketplaceForm.price"
+                size="sm"
+                class="w-20"
+                type="number"
+                :min="0"
+                :max="serviceType === 'Ich biete' ? 10000 : user?.userWallet?.balance"
+                :disabled="props?.trade && !isEditing ? true : false"
+                @input="handlePriceInput"
+              />
               <span class="text-sm ml-2">{{ marketplaceForm.price === 1 ? ' NKoin' : ' NKoins' }}</span>
             </div>
           </UFormField>

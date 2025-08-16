@@ -12,7 +12,7 @@ const { marketplaceForm } = storeToRefs(useFormStore())
 const items = computed<TabsItem[]>(() => [
   {
     label: `Offen (${getUserTradesOpen.value.length})`,
-    icon: 'i-lucide-clipboard-clock',
+    icon: 'i-lucide-clock-fading',
     slot: 'open' as const
   },
   {

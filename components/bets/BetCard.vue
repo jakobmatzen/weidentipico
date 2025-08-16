@@ -34,7 +34,7 @@ function openBetDetails() {
   >
     <span class="truncate max-w-full font-medium text-sm">{{ bet.description }}</span>
     <div v-if="!props.meins || bet.status === 1" class="flex w-full justify-between mt-2 text-xs text-neutral-400">
-      <span><span class="font-semibold">{{ bet.participants === 1 ? `${bet.participants} Teilnehme/r` : `${bet.participants}` }}</span> Teilnehmende</span>
+      <span><span class="font-semibold">{{ bet.participants }}</span> {{ bet.participants === 1 ? 'Teilnehme/r' : 'Teilnehmende' }}</span>
       <span><span class="font-semibold">{{ bet.amount }}</span> NKoins</span>
     </div>
     <div v-else class="flex w-full justify-between items-center mt-2 text-xs text-neutral-400">

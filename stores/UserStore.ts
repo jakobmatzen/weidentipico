@@ -42,6 +42,7 @@ export const useUserStore = defineStore('userStore', {
     async login(username: string, password: string) {
       this.loading = true
       try {
+        await this.fetchData()
         const user = this.users.find((user: User) => user.username === username && user.password === password)
         if (user) {
           this.user = user
