@@ -70,10 +70,10 @@ export class Trade implements BaseTrade {
       customerId: this.customerId,
       service: this.service,
       price: this.price,
-      createdAt: new Date(new Date(this.createdAt).getTime() + 2 * 60 * 60 * 1000),
-      deadlineAt: new Date(new Date(this.deadlineAt).getTime() + 2 * 60 * 60 * 1000),
-      acceptedAt: this.acceptedAt !== null ? new Date(new Date(this.acceptedAt).getTime() + 2 * 60 * 60 * 1000) : null,
-      confirmedAt: this.confirmedAt !== null ? new Date(new Date(this.confirmedAt).getTime() + 2 * 60 * 60 * 1000) : null,
+      createdAt: this.createdAt,
+      deadlineAt: this.deadlineAt,
+      acceptedAt: this.acceptedAt,
+      confirmedAt: this.confirmedAt,
       supplier: this.supplier ? this.supplier.toJson() : undefined,
       customer: this.customer ? this.customer.toJson() : undefined
     }
@@ -94,10 +94,10 @@ export class Trade implements BaseTrade {
         customerId: data.customerId,
         service: data.service,
         price: data.price,
-        createdAt: new Date(new Date(data.createdAt).getTime() - 2 * 60 * 60 * 1000),
-        deadlineAt: new Date(new Date(data.deadlineAt).getTime() - 2 * 60 * 60 * 1000),
-        acceptedAt: data.acceptedAt !== null ? new Date(new Date(data.acceptedAt).getTime() - 2 * 60 * 60 * 1000) : null,
-        confirmedAt: data.confirmedAt !== null ? new Date(new Date(data.confirmedAt).getTime() - 2 * 60 * 60 * 1000) : null,
+        createdAt: data.createdAt,
+        deadlineAt: data.deadlineAt,
+        acceptedAt: data.acceptedAt,
+        confirmedAt: data.confirmedAt,
         supplier: data.users_trades_supplierIdTousers ? User.parseFromDbData(data.users_trades_supplierIdTousers) : undefined,
         customer: data.users_trades_customerIdTousers ? User.parseFromDbData(data.users_trades_customerIdTousers) : undefined
       })

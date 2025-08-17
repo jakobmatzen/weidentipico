@@ -75,8 +75,8 @@ export class Bet implements BaseBet {
       const item: Bet = new Bet({
         id: data.id,
         description: data.description,
-        createdAt: new Date(new Date(data.createdAt).getTime() - 2 * 60 * 60 * 1000),
-        deadlineAt: new Date(new Date(data.deadlineAt).getTime() - 2 * 60 * 60 * 1000),
+        createdAt: data.createdAt,
+        deadlineAt: data.deadlineAt,
         status: data.status,
         participants: data.participants,
         amount: data.amount,
