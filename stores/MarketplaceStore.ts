@@ -15,7 +15,7 @@ export const useMarketplaceStore = defineStore('marketplaceStore', {
     getTradeOffers: (state) => {
       const userId = useUserStore().user?.id
       const formStore = useFormStore()
-      const filteredTrades = state.trades.filter(trade => trade.supplierId !== null && trade.customerId === null && trade.supplierId !== userId && trade.deadlineAt > new Date())
+      const filteredTrades = state.trades.filter(trade => trade.supplierId !== null && trade.customerId === null && trade.supplierId !== userId && new Date(trade.deadlineAt) > new Date())
       filteredTrades.sort((a, b) => {
         const sortDirection = formStore.marketplaceForm.selectedMarketplaceSort === 'asc' ? 1 : -1
         switch (formStore.marketplaceForm.selectedMarketplaceFilterOption) {
@@ -34,7 +34,7 @@ export const useMarketplaceStore = defineStore('marketplaceStore', {
     getTradeRequests: (state) => {
       const userId = useUserStore().user?.id
       const formStore = useFormStore()
-      const filteredTrades = state.trades.filter(trade => trade.customerId !== null && trade.supplierId === null && trade.customerId !== userId && trade.deadlineAt > new Date())
+      const filteredTrades = state.trades.filter(trade => trade.customerId !== null && trade.supplierId === null && trade.customerId !== userId && new Date(trade.deadlineAt) > new Date())
       filteredTrades.sort((a, b) => {
         const sortDirection = formStore.marketplaceForm.selectedMarketplaceSort === 'asc' ? 1 : -1
         switch (formStore.marketplaceForm.selectedMarketplaceFilterOption) {

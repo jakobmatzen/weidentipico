@@ -17,7 +17,7 @@ export const useBetStore = defineStore('betStore', {
       const userId = useUserStore().user?.id
       const formStore = useFormStore()
       const filteredBets = state.bets.filter((bet) => {
-        if (bet.deadlineAt < new Date()) {
+        if (new Date(bet.deadlineAt) < new Date()) {
           return false
         }
         if (userId && bet.betOptions) {
@@ -52,7 +52,7 @@ export const useBetStore = defineStore('betStore', {
     getBetsForAdminOpen: (state) => {
       const formStore = useFormStore()
       const filteredBets = state.bets.filter((bet) => {
-        if (bet.deadlineAt > new Date() || bet.status === 2) {
+        if (new Date(bet.deadlineAt) > new Date() || bet.status === 2) {
           return false
         }
         return true
@@ -79,7 +79,7 @@ export const useBetStore = defineStore('betStore', {
     getBetsForAdminClosed: (state) => {
       const formStore = useFormStore()
       const filteredBets = state.bets.filter((bet) => {
-        if (bet.deadlineAt > new Date() || bet.status === 1) {
+        if (new Date(bet.deadlineAt) > new Date() || bet.status === 1) {
           return false
         }
         return true

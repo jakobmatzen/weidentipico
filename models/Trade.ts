@@ -70,10 +70,10 @@ export class Trade implements BaseTrade {
       customerId: this.customerId,
       service: this.service,
       price: this.price,
-      createdAt: this.createdAt,
-      deadlineAt: this.deadlineAt,
-      acceptedAt: this.acceptedAt,
-      confirmedAt: this.confirmedAt,
+      createdAt: new Date(this.createdAt.getTime() + 2 * 60 * 60 * 1000).toISOString(),
+      deadlineAt: new Date(this.deadlineAt.getTime() + 2 * 60 * 60 * 1000).toISOString(),
+      acceptedAt: this.acceptedAt ? new Date(this.acceptedAt.getTime() + 2 * 60 * 60 * 1000).toISOString() : null,
+      confirmedAt: this.confirmedAt ? new Date(this.confirmedAt.getTime() + 2 * 60 * 60 * 1000).toISOString() : null,
       supplier: this.supplier ? this.supplier.toJson() : undefined,
       customer: this.customer ? this.customer.toJson() : undefined
     }
@@ -94,10 +94,10 @@ export class Trade implements BaseTrade {
         customerId: data.customerId,
         service: data.service,
         price: data.price,
-        createdAt: data.createdAt,
-        deadlineAt: data.deadlineAt,
-        acceptedAt: data.acceptedAt,
-        confirmedAt: data.confirmedAt,
+        createdAt: new Date(new Date(data.createdAt).getTime() - 2 * 60 * 60 * 1000),
+        deadlineAt: new Date(new Date(data.deadlineAt).getTime() - 2 * 60 * 60 * 1000),
+        acceptedAt: data.acceptedAt ? new Date(new Date(data.acceptedAt).getTime() - 2 * 60 * 60 * 1000) : null,
+        confirmedAt: data.confirmedAt ? new Date(new Date(data.confirmedAt).getTime() - 2 * 60 * 60 * 1000) : null,
         supplier: data.users_trades_supplierIdTousers ? User.parseFromDbData(data.users_trades_supplierIdTousers) : undefined,
         customer: data.users_trades_customerIdTousers ? User.parseFromDbData(data.users_trades_customerIdTousers) : undefined
       })
@@ -148,10 +148,10 @@ export class Trade implements BaseTrade {
       customerId: z.number().nullable(),
       service: z.string(),
       price: z.number(),
-      createdAt: z.date(),
-      deadlineAt: z.date(),
-      acceptedAt: z.date().nullable(),
-      confirmedAt: z.date().nullable(),
+      createdAt: z.string(),
+      deadlineAt: z.string(),
+      acceptedAt: z.string().nullable(),
+      confirmedAt: z.string().nullable(),
       supplier: User.getZodObject().optional(),
       customer: User.getZodObject().optional()
     })

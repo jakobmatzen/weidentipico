@@ -54,8 +54,8 @@ export class Bet implements BaseBet {
     return {
       id: this.id,
       description: this.description,
-      createdAt: this.createdAt.toISOString(), // Convert to string
-      deadlineAt: this.deadlineAt.toISOString(), // Convert to string
+      createdAt: new Date(this.createdAt.getTime() + 2 * 60 * 60 * 1000).toISOString(), // Convert to string
+      deadlineAt: new Date(this.deadlineAt.getTime() + 2 * 60 * 60 * 1000).toISOString(), // Convert to string
       status: this.status,
       participants: this.participants,
       amount: this.amount,
@@ -75,8 +75,8 @@ export class Bet implements BaseBet {
       const item: Bet = new Bet({
         id: data.id,
         description: data.description,
-        createdAt: data.createdAt,
-        deadlineAt: data.deadlineAt,
+        createdAt: new Date(new Date(data.createdAt).getTime() - 2 * 60 * 60 * 1000),
+        deadlineAt: new Date(new Date(data.deadlineAt).getTime() - 2 * 60 * 60 * 1000),
         status: data.status,
         participants: data.participants,
         amount: data.amount,

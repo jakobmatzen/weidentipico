@@ -43,10 +43,10 @@ export const marketplaceRouter = router({
       try {
         const [trade] = await ctx.db.insert(trades).values({
           ...input.trade,
-          createdAt: input.trade.createdAt.toISOString(),
-          deadlineAt: input.trade.deadlineAt.toISOString(),
-          confirmedAt: input.trade.confirmedAt?.toISOString(),
-          acceptedAt: input.trade.acceptedAt?.toISOString()
+          createdAt: new Date(input.trade.createdAt).toISOString(),
+          deadlineAt: new Date(input.trade.deadlineAt).toISOString(),
+          confirmedAt: input.trade.confirmedAt ? new Date(input.trade.confirmedAt).toISOString() : null,
+          acceptedAt: input.trade.acceptedAt ? new Date(input.trade.acceptedAt).toISOString() : null
         }).returning()
         return trade
       }
@@ -69,7 +69,7 @@ export const marketplaceRouter = router({
           .set({
             service: input.trade.service,
             price: input.trade.price,
-            deadlineAt: input.trade.deadlineAt.toISOString()
+            deadlineAt: new Date(input.trade.deadlineAt).toISOString()
           })
           .where(eq(trades.id, input.trade.id))
           .returning()
@@ -104,7 +104,7 @@ export const marketplaceRouter = router({
           .set({
             supplierId: trade?.supplierId ? trade.supplierId : input.userId,
             customerId: trade?.customerId ? trade.customerId : input.userId,
-            acceptedAt: input.acceptedAt.toISOString()
+            acceptedAt: new Date(input.acceptedAt).toISOString()
           })
           .where(eq(trades.id, input.tradeId))
           .returning()
@@ -141,7 +141,7 @@ export const marketplaceRouter = router({
         const [updatedTrade] = await ctx.db
           .update(trades)
           .set({
-            confirmedAt: input.confirmedAt.toISOString()
+            confirmedAt: new Date(input.confirmedAt).toISOString()
           })
           .where(eq(trades.id, input.tradeId))
           .returning()
