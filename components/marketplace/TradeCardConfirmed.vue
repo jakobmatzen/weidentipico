@@ -20,6 +20,6 @@ const { user } = storeToRefs(useUserStore())
       </div>
       <span><span class="font-semibold" :class="user && props.trade.supplierId !== user.id ? 'text-primary-700' : 'text-green-700'">{{ user && props.trade.supplierId !== user.id ? `- ${props.trade.price}` : `+ ${props.trade.price}` }}</span> NKoins</span>
     </div>
-    <span class="mt-3 pt-3 border-t border-neutral-600 text-xs text-neutral-400">Bestätigt am <span class="font-semibold">{{ props.trade.confirmedAt ? props.trade.confirmedAt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '' }}</span> um <span class="font-semibold">{{ `${props.trade.confirmedAt ? props.trade.confirmedAt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) : 'N/A'} Uhr` }}</span></span>
+    <span class="mt-3 pt-3 border-t border-neutral-600 text-xs text-neutral-400">Bestätigt am <span class="font-semibold">{{ props.trade.confirmedAt ? new Date(props.trade.confirmedAt).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '' }}</span> um <span class="font-semibold">{{ `${props.trade.confirmedAt ? new Date(props.trade.confirmedAt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) : 'N/A'} Uhr` }}</span></span>
   </div>
 </template>

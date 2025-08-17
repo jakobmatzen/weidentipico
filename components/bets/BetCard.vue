@@ -46,8 +46,8 @@ function openBetDetails() {
       <span v-else><span class="font-semibold text-primary-700">{{ `- ${option ? option.betEntries?.find(entry => entry.userId === useUserStore().user?.id)!.amount : ''}` }}</span> NKoins</span>
     </div>
     <span v-if="bet.status === 1" class="mt-3 pt-3 border-t border-neutral-600 text-xs text-neutral-400">Schließt am
-      <span class="font-semibold">{{ bet.deadlineAt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${bet.deadlineAt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} Uhr` }}</span></span>
+      <span class="font-semibold">{{ new Date(bet.deadlineAt).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${new Date(bet.deadlineAt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} Uhr` }}</span></span>
     <span v-else class="mt-3 pt-3 border-t border-neutral-600 text-xs text-neutral-400">Geschlossen am
-      <span class="font-semibold">{{ bet.deadlineAt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${bet.deadlineAt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} Uhr` }}</span></span>
+      <span class="font-semibold">{{ new Date(bet.deadlineAt).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${new Date(bet.deadlineAt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} Uhr` }}</span></span>
   </div>
 </template>

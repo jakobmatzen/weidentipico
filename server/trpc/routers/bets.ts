@@ -173,7 +173,7 @@ export const betRouter = router({
         await ctx.db
           .update(bets)
           .set({
-            deadlineAt: new Date().toISOString(),
+            deadlineAt: new Date(new Date().getTime()).toISOString(),
           })
           .where(eq(bets.id, input.betId))
       }

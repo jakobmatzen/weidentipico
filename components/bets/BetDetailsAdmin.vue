@@ -54,7 +54,7 @@ async function payout() {
           </div>
         </div>
         <span class="text-xs text-neutral-400 mt-4">Geschlossen am
-          <span class="font-semibold">{{ props.bet.deadlineAt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${props.bet.deadlineAt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} ` }} Uhr</span></span>
+          <span class="font-semibold">{{ new Date(props.bet.deadlineAt).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}</span> um <span class="font-semibold">{{ `${new Date(props.bet.deadlineAt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} ` }} Uhr</span></span>
       </div>
     </template>
     <template #footer="{ close }">

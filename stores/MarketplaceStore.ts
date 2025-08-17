@@ -20,9 +20,9 @@ export const useMarketplaceStore = defineStore('marketplaceStore', {
         const sortDirection = formStore.marketplaceForm.selectedMarketplaceSort === 'asc' ? 1 : -1
         switch (formStore.marketplaceForm.selectedMarketplaceFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'price':
             return sortDirection * (a.price - b.price)
           default:
@@ -39,9 +39,9 @@ export const useMarketplaceStore = defineStore('marketplaceStore', {
         const sortDirection = formStore.marketplaceForm.selectedMarketplaceSort === 'asc' ? 1 : -1
         switch (formStore.marketplaceForm.selectedMarketplaceFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'price':
             return sortDirection * (a.price - b.price)
           default:
@@ -65,9 +65,9 @@ export const useMarketplaceStore = defineStore('marketplaceStore', {
         const sortDirection = formStore.marketplaceForm.selectedMarketplaceSort === 'asc' ? 1 : -1
         switch (formStore.marketplaceForm.selectedMarketplaceFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'price':
             return sortDirection * (a.price - b.price)
           default:
@@ -91,9 +91,9 @@ export const useMarketplaceStore = defineStore('marketplaceStore', {
         const sortDirection = formStore.marketplaceForm.selectedMarketplaceSort === 'asc' ? 1 : -1
         switch (formStore.marketplaceForm.selectedMarketplaceFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'price':
             return sortDirection * (a.price - b.price)
           default:
@@ -117,9 +117,9 @@ export const useMarketplaceStore = defineStore('marketplaceStore', {
         const sortDirection = formStore.marketplaceForm.selectedMarketplaceSort === 'asc' ? 1 : -1
         switch (formStore.marketplaceForm.selectedMarketplaceFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'price':
             return sortDirection * (a.price - b.price)
           default:

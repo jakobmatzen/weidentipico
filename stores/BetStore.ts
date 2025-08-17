@@ -34,9 +34,9 @@ export const useBetStore = defineStore('betStore', {
         const sortDirection = formStore.betForm.selectedSort === 'asc' ? 1 : -1
         switch (formStore.betForm.selectedBetFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'amount':
             return sortDirection * (a.amount - b.amount)
           case 'participants':
@@ -61,9 +61,9 @@ export const useBetStore = defineStore('betStore', {
         const sortDirection = formStore.betForm.selectedSort === 'asc' ? 1 : -1
         switch (formStore.betForm.selectedBetFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'amount':
             return sortDirection * (a.amount - b.amount)
           case 'participants':
@@ -124,9 +124,9 @@ export const useBetStore = defineStore('betStore', {
         const sortDirection = formStore.betForm.selectedSort === 'asc' ? 1 : -1
         switch (formStore.betForm.selectedBetFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'amount':
             return sortDirection * (a.amount - b.amount)
           case 'participants':
@@ -160,9 +160,9 @@ export const useBetStore = defineStore('betStore', {
         const sortDirection = formStore.betForm.selectedSort === 'asc' ? 1 : -1
         switch (formStore.betForm.selectedBetFilterOption) {
           case 'deadlineAt':
-            return sortDirection * (a.deadlineAt.getTime() - b.deadlineAt.getTime())
+            return sortDirection * (new Date(a.deadlineAt).getTime() - new Date(b.deadlineAt).getTime())
           case 'createdAt':
-            return sortDirection * (a.createdAt.getTime() - b.createdAt.getTime())
+            return sortDirection * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
           case 'amount':
             return sortDirection * (a.amount - b.amount)
           case 'participants':
