@@ -231,10 +231,11 @@ export const betRouter = router({
 
             if (currentWallet) {
               const winnings = entry.amount * winningOption.quote
+              const winningsRounded = winnings.toFixed(0)
               await ctx.db
                 .update(userWallets)
                 .set({
-                  balance: currentWallet.balance + winnings
+                  balance: currentWallet.balance + Number(winningsRounded)
                 })
                 .where(eq(userWallets.id, entry.userId))
             }

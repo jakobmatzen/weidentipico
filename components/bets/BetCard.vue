@@ -42,7 +42,7 @@ function openBetDetails() {
         <UIcon :name="option ? option.isWinner ? 'i-heroicons-check-circle' : 'i-heroicons-x-circle' : ''" :class="option ? option.isWinner ? 'text-green-700' : 'text-primary-700' : ''" class="w-5 h-5" />
         <span class="ml-1">{{ option ? option.isWinner ? 'Gewonnen' : 'Verkackt' : '' }}</span>
       </div>
-      <span v-if="option && option.isWinner"><span class="font-semibold text-green-700">{{ `+ ${option ? option.betEntries?.find(entry => entry.userId === useUserStore().user?.id)!.amount! * option.quote : ''}` }}</span> NKoins</span>
+      <span v-if="option && option.isWinner"><span class="font-semibold text-green-700">{{ `+ ${option ? (option.betEntries?.find(entry => entry.userId === useUserStore().user?.id)!.amount! * option.quote).toFixed(0) : ''}` }}</span> NKoins</span>
       <span v-else><span class="font-semibold text-primary-700">{{ `- ${option ? option.betEntries?.find(entry => entry.userId === useUserStore().user?.id)!.amount : ''}` }}</span> NKoins</span>
     </div>
     <span v-if="bet.status === 1" class="mt-3 pt-3 border-t border-neutral-600 text-xs text-neutral-400">Schließt am
